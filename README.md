@@ -3,7 +3,7 @@ modify https://github.com/waynezxcv/Gallop
 
 
 VVRichText is a powerful rich text framework that support Asynchronous display.It encapsulates CoreText's rich text functions and commonly used image processing capabilities.
-just need use VVTextStorage object instead of UILabel object and use LWImageStorage object instead of UIImageView object,VVRichText will make sure your app scroll smoothly
+just need use VVTextStorage object instead of UILabel object and use VVImageStorage object instead of UIImageView object,VVRichText will make sure your app scroll smoothly
 
 
 Features
