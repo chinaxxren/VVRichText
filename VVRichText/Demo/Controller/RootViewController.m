@@ -59,10 +59,10 @@
             cell.textLabel.text = @"进行HTML解析示例";
             break;
         case 4:
-            cell.textLabel.text = @"使用Gif示例";
+            cell.textLabel.text = @"使用一个Gif示例";
             break;
         case 5:
-            cell.textLabel.text = @"使用GifList示例";
+            cell.textLabel.text = @"本地加载多个Gif使用示例";
             break;
         case 6:
             cell.textLabel.text = @"异步性能示例";

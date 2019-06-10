@@ -20,7 +20,7 @@ static CGFloat gifSize = 30;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = @"LWImageStorage使用示例";
+    self.title = @"本地加载多个Gif使用示例";
     [self.view addSubview:self.tableView];
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Test"
