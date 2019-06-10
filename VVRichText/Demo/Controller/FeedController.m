@@ -229,7 +229,6 @@ const CGFloat kRefreshBoundary = 170.0f;
                           withRowAnimation:UITableViewRowAnimationNone];
 }
 
-
 //展开Cell
 - (void)openTableViewCell:(TableViewCell *)cell {
     FeedLayout *layout = self.dataSource[cell.indexPath.row];
@@ -242,8 +241,7 @@ const CGFloat kRefreshBoundary = 170.0f;
 
 
     self.dataSource[cell.indexPath.row] = newLayout;
-    [self.tableView reloadRowsAtIndexPaths:@[cell.indexPath]
-                          withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView reloadRowsAtIndexPaths:@[cell.indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 //折叠Cell
@@ -258,8 +256,7 @@ const CGFloat kRefreshBoundary = 170.0f;
 
 
     self.dataSource[cell.indexPath.row] = newLayout;
-    [self.tableView reloadRowsAtIndexPaths:@[cell.indexPath]
-                          withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView reloadRowsAtIndexPaths:@[cell.indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 //发表评论
@@ -419,8 +416,7 @@ const CGFloat kRefreshBoundary = 170.0f;
     if (_tableView) {
         return _tableView;
     }
-    _tableView = [[UITableView alloc] initWithFrame:SCREEN_BOUNDS
-                                              style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:SCREEN_BOUNDS style:UITableViewStylePlain];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

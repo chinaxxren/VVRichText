@@ -138,30 +138,22 @@
                 return;
             }
 
+            VVAsyncImageView *reuseImageView;
             VVImageStorage *imageStorage = self.layout.imageStorages[i];
+            if ([imageStorage.contents isKindOfClass:[VVImage class]]) {
+                VVImage *image = (VVImage *) imageStorage.contents;
+                if (image.animatedImageType == YYImageTypeGIF) {
+                    reuseImageView = [self createPoolAsyncImageView:imageStorage];
+                    reuseImageView.image = image;
+                    continue;
+                }
+            }
 
-            if (![imageStorage.contents isKindOfClass:[UIImage class]]) {
+            if ([imageStorage.contents isKindOfClass:[UIImage class]] && imageStorage.localImageType == VVLocalImageDrawInVVAsyncDisplayView) {
                 continue;
             }
 
-            if (imageStorage.localImageType == VVLocalImageDrawInVVAsyncDisplayView) {
-                continue;
-            }
-
-            VVAsyncImageView *reuseImageView = [self _dequeueReusableImageContainerWithIdentifier:imageStorage.identifier];
-            if (!reuseImageView) {
-                reuseImageView = [[VVAsyncImageView alloc] initWithFrame:CGRectZero];
-                reuseImageView.identifier = imageStorage.identifier;
-                [self addSubview:reuseImageView];
-            }
-
-            reuseImageView.backgroundColor = imageStorage.backgroundColor;
-            reuseImageView.displayAsynchronously = self.displaysAsynchronously;
-            reuseImageView.contentMode = imageStorage.contentMode;
-            reuseImageView.frame = imageStorage.frame;
-            reuseImageView.hidden = NO;
-            [self.imageContainers addObject:reuseImageView];
-
+            reuseImageView = [self createPoolAsyncImageView:imageStorage];
             if ([imageStorage.contents isKindOfClass:[VVImage class]]) {
                 VVImage *image = (VVImage *) imageStorage.contents;
                 if (image.animatedImageType == YYImageTypeGIF) {
@@ -179,6 +171,23 @@
             [reuseImageView vv_setImageWihtImageStorage:imageStorage resize:resizeBlock completion:nil];
         }
     }
+}
+
+- (VVAsyncImageView *)createPoolAsyncImageView:(VVImageStorage *)imageStorage {
+    VVAsyncImageView *reuseImageView = [self _dequeueReusableImageContainerWithIdentifier:imageStorage.identifier];
+    if (!reuseImageView) {
+        reuseImageView = [[VVAsyncImageView alloc] initWithFrame:CGRectZero];
+        reuseImageView.identifier = imageStorage.identifier;
+        [self addSubview:reuseImageView];
+    }
+
+    reuseImageView.backgroundColor = imageStorage.backgroundColor;
+    reuseImageView.displayAsynchronously = self.displaysAsynchronously;
+    reuseImageView.contentMode = imageStorage.contentMode;
+    reuseImageView.frame = imageStorage.frame;
+    reuseImageView.hidden = NO;
+    [self.imageContainers addObject:reuseImageView];
+    return reuseImageView;
 }
 
 - (VVAsyncImageView *)_dequeueReusableImageContainerWithIdentifier:(NSString *)identifier {

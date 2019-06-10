@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c56719a5-153c-494b-9d01-ccb5a7defed7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/Controller/GifListController.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/Controller/GifListController.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/Controller/RootViewController.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/Controller/RootViewController.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText.xcworkspace/xcuserdata/jiangmingz.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText.xcworkspace/xcuserdata/jiangmingz.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText.xcworkspace/xcuserdata/jiangmingz.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText.xcworkspace/xcuserdata/jiangmingz.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/Controller/FeedController.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/Controller/FeedController.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Source/VVAsyncDisplayView.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Source/VVAsyncDisplayView.m" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,28 +14,55 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="iphoneos_4bbecd266bd1401d24c35bc4e49d2cb263af8627" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="iphoneos_f4d7ac8497ea2f92c3ba1ed9546a7d36a58fc6a0" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/GifListController.m">
+        <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/FeedController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="21" lean-forward="true" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+            <state relative-caret-position="5100">
+              <caret line="304" lean-forward="true" selection-start-line="304" selection-end-line="304" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Layout/FeedLayout.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="239">
+              <caret line="18" column="55" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVImageStorage.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="20" column="47" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVImageStorage.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="45" column="28" lean-forward="true" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
               <folding>
-                <element signature="e#1#30#0" expanded="true" />
+                <element signature="e#1#27#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/RootViewController.m">
+        <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVAsyncDisplayView.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="642">
-              <caret line="74" column="1" lean-forward="true" selection-start-line="74" selection-start-column="1" selection-end-line="74" selection-end-column="1" />
+            <state relative-caret-position="318">
+              <caret line="153" column="92" selection-start-line="153" selection-start-column="92" selection-end-line="153" selection-end-column="92" />
               <folding>
-                <element signature="e#1#31#0" expanded="true" />
+                <element signature="e#2#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -42,7 +72,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>kDegreesToRadian</find>
       <find>displayQueue</find>
       <find>[[NSMutableArray alloc] init]</find>
       <find>fadeShow</find>
@@ -72,6 +101,7 @@
       <find>attributedString</find>
       <find>_fakeDatasource</find>
       <find>5741401933</find>
+      <find>coverScreenshotAndDelayRemoveWithCell</find>
     </findStrings>
     <replaceStrings>
       <replace>[NSMutableArray new]</replace>
@@ -126,15 +156,15 @@
         <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/RichTextController.m" />
         <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/ArticleListController.m" />
         <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/ImageController.m" />
-        <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/FeedController.m" />
         <option value="$PROJECT_DIR$/VVRichText/Demo/Layout/FeedLayout.m" />
         <option value="$PROJECT_DIR$/VVRichText/Demo/Model/StatusModel.m" />
         <option value="$PROJECT_DIR$/VVRichText/Source/VVImageStorage.m" />
         <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/GifController.m" />
         <option value="$PROJECT_DIR$/VVRichText/Source/VVAsyncImageView.h" />
-        <option value="$PROJECT_DIR$/VVRichText/Source/VVAsyncDisplayView.m" />
         <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/GifListController.m" />
         <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/RootViewController.m" />
+        <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/FeedController.m" />
+        <option value="$PROJECT_DIR$/VVRichText/Source/VVAsyncDisplayView.m" />
       </list>
     </option>
   </component>
@@ -236,12 +266,20 @@
       <workItem from="1560085462696" duration="3235000" />
       <workItem from="1560089359746" duration="2859000" />
       <workItem from="1560133773810" duration="4308000" />
-      <workItem from="1560151125591" duration="7147000" />
+      <workItem from="1560151125591" duration="8473000" />
     </task>
+    <task id="LOCAL-00001" summary="增加注释">
+      <created>1560164132910</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1560164132910</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45008000" />
+    <option name="totallyTimeSpent" value="46334000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="0" />
@@ -295,6 +333,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="增加注释" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加注释" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVTextRunDelegate.h">
@@ -520,13 +562,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Layout/FeedLayout.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="34" lean-forward="true" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Model/StatusModel.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -541,13 +576,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/FeedController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="685" column="41" selection-start-line="685" selection-start-column="41" selection-end-line="685" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Pods/YYImage/YYImage/YYImage.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
@@ -559,24 +587,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVImageStorage.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="84" column="88" selection-start-line="84" selection-start-column="88" selection-end-line="84" selection-end-column="88" />
-          <folding>
-            <element signature="e#1#27#0" expanded="true" />
-            <element signature="e#209#250#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVImageStorage.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -601,32 +611,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVAsyncDisplayView.m">
+    <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/RootViewController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="623">
-          <caret line="166" column="64" selection-start-line="166" selection-start-column="64" selection-end-line="166" selection-end-column="64" />
+        <state relative-caret-position="1105">
+          <caret line="65" column="18" lean-forward="true" selection-start-line="65" selection-start-column="18" selection-end-line="65" selection-end-column="18" />
           <folding>
-            <element signature="e#2#32#0" expanded="true" />
+            <element signature="e#1#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/GifListController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="21" lean-forward="true" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+        <state relative-caret-position="224">
+          <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
           <folding>
             <element signature="e#1#30#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/RootViewController.m">
+    <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/FeedController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="642">
-          <caret line="74" column="1" lean-forward="true" selection-start-line="74" selection-start-column="1" selection-end-line="74" selection-end-column="1" />
+        <state relative-caret-position="5100">
+          <caret line="304" lean-forward="true" selection-start-line="304" selection-end-line="304" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Layout/FeedLayout.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="18" column="55" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVImageStorage.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="20" column="47" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVImageStorage.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="45" column="28" lean-forward="true" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
           <folding>
-            <element signature="e#1#31#0" expanded="true" />
+            <element signature="e#1#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVAsyncDisplayView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="153" column="92" selection-start-line="153" selection-start-column="92" selection-end-line="153" selection-end-column="92" />
+          <folding>
+            <element signature="e#2#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
