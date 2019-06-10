@@ -29,10 +29,10 @@ static CGFloat gifSize = 30;
                                                                              action:@selector(test)];
 
 //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self dataSource];
+    [self dataSource];
 //        dispatch_async(dispatch_get_main_queue(), ^{
-            NSLog(@"reloadData");
-            [self.tableView reloadData];
+    NSLog(@"reloadData");
+    [self.tableView reloadData];
 //        });
 //    });
 }
@@ -87,8 +87,6 @@ static CGFloat gifSize = 30;
     for (int i = 0; i < 300; i++) {
         CGFloat width = [UIScreen mainScreen].bounds.size.width;
         NSInteger count = (NSInteger) (width / gifSize);
-        NSMutableString *mutableString = [NSMutableString new];
-        [mutableString appendFormat:@"%d->", i];
         VVLayout *layout = [[VVLayout alloc] init];
         for (int j = 0; j < count - 1; j++) {
             VVTextStorage *textStorage = [[VVTextStorage alloc] init];
@@ -100,21 +98,18 @@ static CGFloat gifSize = 30;
 
             NSInteger index = arc4random() % 141;
             NSString *name = [self gifWithIndex:index];
-            
-            NSString * bundlePath = [[NSBundle mainBundle] pathForResource:@"EmoticonQQ" ofType:@"bundle"];
-            
-            VVImage *gifImage = [[VVImage alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@/%@",bundlePath,name]];
-        
-            //UIImage *image = [UIImage imageNamed:name];
+
+            NSString *bundlePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"EmoticonQQ.bundle"];
+            NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+            bundlePath = [bundle pathForResource:name ofType:@"gif"];
+            VVImage *image = (VVImage *) [VVImage imageWithContentsOfFile:bundlePath];
 
             VVImageStorage *imageStorage = [[VVImageStorage alloc] init];
             imageStorage.frame = CGRectMake((j + 1) * gifSize, 0, gifSize, gifSize);
-            imageStorage.contents = gifImage;
+            imageStorage.contents = image;
             imageStorage.localImageType = VVLocalImageTypeDrawInVVAsyncImageView;
             imageStorage.contentMode = UIViewContentModeScaleAspectFill;
             [layout addStorage:imageStorage];
-
-            [mutableString appendFormat:@"%@ ", name];
         }
 
 //        NSLog(@"%@",mutableString);
@@ -132,12 +127,12 @@ static CGFloat gifSize = 30;
 
 - (NSString *)gifWithIndex:(NSInteger)index {
     NSMutableString *name = [NSMutableString new];
-    if( index < 10) {
+    if (index < 10) {
         [name appendString:@"00"];
-    } else if(index < 100) {
+    } else if (index < 100) {
         [name appendString:@"0"];
     }
-    [name appendFormat:@"%zd",index];
+    [name appendFormat:@"%zd", index];
     return name;
 }
 

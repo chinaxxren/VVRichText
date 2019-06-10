@@ -6,6 +6,7 @@
 #import "CALayer+VVTransaction.h"
 #import "VVAsyncImageView+WebCache.h"
 #import "VVFlag.h"
+#import "VVImage.h"
 
 @interface VVAsyncDisplayView () <VVAsyncDisplayLayerDelegate>
 
@@ -119,6 +120,7 @@
 }
 
 
+// 绘制在VVAsyncImageView上
 - (void)setImageStoragesResizeBlock:(void (^)(VVImageStorage *imageStorage, CGFloat delta))resizeBlock {
 
     VVFlag *displayFlag = _displayFlag;
@@ -137,7 +139,12 @@
             }
 
             VVImageStorage *imageStorage = self.layout.imageStorages[i];
-            if ([imageStorage.contents isKindOfClass:[UIImage class]] && imageStorage.localImageType == VVLocalImageDrawInVVAsyncDisplayView) {
+
+            if (![imageStorage.contents isKindOfClass:[UIImage class]]) {
+                continue;
+            }
+
+            if (imageStorage.localImageType == VVLocalImageDrawInVVAsyncDisplayView) {
                 continue;
             }
 
@@ -148,19 +155,28 @@
                 [self addSubview:reuseImageView];
             }
 
-            reuseImageView.displayAsynchronously = self.displaysAsynchronously;
             reuseImageView.backgroundColor = imageStorage.backgroundColor;
-            reuseImageView.clipsToBounds = imageStorage.clipsToBounds;
+            reuseImageView.displayAsynchronously = self.displaysAsynchronously;
             reuseImageView.contentMode = imageStorage.contentMode;
             reuseImageView.frame = imageStorage.frame;
+            reuseImageView.hidden = NO;
+            [self.imageContainers addObject:reuseImageView];
+
+            if ([imageStorage.contents isKindOfClass:[VVImage class]]) {
+                VVImage *image = (VVImage *) imageStorage.contents;
+                if (image.animatedImageType == YYImageTypeGIF) {
+                    reuseImageView.image = image;
+                    continue;
+                }
+            }
+
+            reuseImageView.clipsToBounds = imageStorage.clipsToBounds;
             reuseImageView.layer.shadowColor = imageStorage.shadowColor.CGColor;
             reuseImageView.layer.shadowOffset = imageStorage.shadowOffset;
             reuseImageView.layer.shadowOpacity = imageStorage.shadowOpacity;
             reuseImageView.layer.shadowRadius = imageStorage.shadowRadius;
-            reuseImageView.hidden = NO;
 
             [reuseImageView vv_setImageWihtImageStorage:imageStorage resize:resizeBlock completion:nil];
-            [self.imageContainers addObject:reuseImageView];
         }
     }
 }
@@ -218,11 +234,12 @@
         [self.delegate extraAsyncDisplayIncontext:context size:size isCancelled:isCancelledBlock];
     }
 
-    // 绘制图片内容
+    // 直接绘制在VVAsyncDisplayView上
     for (VVImageStorage *imageStorage in self.layout.imageStorages) {
         if (isCancelledBlock()) {
             return;
         }
+
         [imageStorage vv_drawInContext:context isCancelled:isCancelledBlock];
     }
 

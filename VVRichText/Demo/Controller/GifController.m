@@ -19,14 +19,14 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
 
+    NSString *bundlePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"EmoticonQQ.bundle"];
+    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+    bundlePath = [bundle pathForResource:@"001" ofType:@"gif"];
+    VVImage *image = (VVImage *) [VVImage imageWithContentsOfFile:bundlePath];
     VVImageStorage *imageStorage = [[VVImageStorage alloc] init];
-    imageStorage.contents = [VVImage imageNamed:@"football.gif"];
-    imageStorage.frame = CGRectMake(0.0, 0.0, 96, 64);
+    imageStorage.contents = image;
+    imageStorage.frame = CGRectMake(0.0, 0.0, 32, 32);
     imageStorage.localImageType = VVLocalImageTypeDrawInVVAsyncImageView;
-    imageStorage.cornerRadius = 10.0f;
-    imageStorage.cornerBackgroundColor = [UIColor whiteColor];
-    imageStorage.cornerBorderColor = [UIColor redColor];
-    imageStorage.cornerBorderWidth = 1.0f;
     imageStorage.contentMode = UIViewContentModeScaleAspectFill;
 
     self.layout = [[VVLayout alloc] init];

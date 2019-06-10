@@ -3,6 +3,7 @@
 
 #import "UIImage+VVRichText.h"
 #import "VVRichTextUtils.h"
+#import "VVImage.h"
 
 @interface VVImageStorage ()
 
@@ -82,6 +83,12 @@
     }
 
     if ([self.contents isKindOfClass:[UIImage class]] && self.localImageType == VVLocalImageDrawInVVAsyncDisplayView) {
+        if ([self.contents isKindOfClass:[VVImage class]]) {
+            VVImage *image = (VVImage *) self.contents;
+            if (image.animatedImageType == YYImageTypeGIF) {
+                return;
+            }
+        }
 
         UIImage *image = (UIImage *) self.contents;
         BOOL isOpaque = self.opaque;
