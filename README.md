@@ -1,5 +1,5 @@
 # VVRichText
-modify https://github.com/waynezxcv/Gallop
+修改和优化 https://github.com/waynezxcv/Gallop 库
 
 
 VVRichText is a powerful rich text framework that support Asynchronous display.It encapsulates CoreText's rich text functions and commonly used image processing capabilities.
