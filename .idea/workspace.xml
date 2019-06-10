@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c56719a5-153c-494b-9d01-ccb5a7defed7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText.xcworkspace/xcuserdata/jiangmingz.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText.xcworkspace/xcuserdata/jiangmingz.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VVRichText/Demo/Controller/GifListController.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/Controller/GifListController.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/Controller/RootViewController.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/Controller/RootViewController.m" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,11 +14,26 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="iphoneos_4bbecd266bd1401d24c35bc4e49d2cb263af8627" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/GifListController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="33" column="48" selection-start-line="33" selection-start-column="48" selection-end-line="33" selection-end-column="48" />
+            <state relative-caret-position="323">
+              <caret line="19" column="21" lean-forward="true" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+              <folding>
+                <element signature="e#1#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/RootViewController.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="642">
+              <caret line="74" column="1" lean-forward="true" selection-start-line="74" selection-start-column="1" selection-end-line="74" selection-end-column="1" />
+              <folding>
+                <element signature="e#1#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -111,7 +125,6 @@
         <option value="$PROJECT_DIR$/VVRichText/Source/VVTextLayout.m" />
         <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/RichTextController.m" />
         <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/ArticleListController.m" />
-        <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/RootViewController.m" />
         <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/ImageController.m" />
         <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/FeedController.m" />
         <option value="$PROJECT_DIR$/VVRichText/Demo/Layout/FeedLayout.m" />
@@ -121,6 +134,7 @@
         <option value="$PROJECT_DIR$/VVRichText/Source/VVAsyncImageView.h" />
         <option value="$PROJECT_DIR$/VVRichText/Source/VVAsyncDisplayView.m" />
         <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/GifListController.m" />
+        <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/RootViewController.m" />
       </list>
     </option>
   </component>
@@ -222,12 +236,12 @@
       <workItem from="1560085462696" duration="3235000" />
       <workItem from="1560089359746" duration="2859000" />
       <workItem from="1560133773810" duration="4308000" />
-      <workItem from="1560151125591" duration="6890000" />
+      <workItem from="1560151125591" duration="7147000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44751000" />
+    <option name="totallyTimeSpent" value="45008000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="0" />
@@ -489,16 +503,6 @@
     <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/RootViewController.h">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/RootViewController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2040">
-          <caret line="120" selection-start-line="120" selection-end-line="120" />
-          <folding>
-            <element signature="e#1#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/ImageController.m">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="93">
@@ -609,8 +613,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/GifListController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="33" column="48" selection-start-line="33" selection-start-column="48" selection-end-line="33" selection-end-column="48" />
+        <state relative-caret-position="323">
+          <caret line="19" column="21" lean-forward="true" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+          <folding>
+            <element signature="e#1#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/RootViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="642">
+          <caret line="74" column="1" lean-forward="true" selection-start-line="74" selection-start-column="1" selection-end-line="74" selection-end-column="1" />
+          <folding>
+            <element signature="e#1#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
