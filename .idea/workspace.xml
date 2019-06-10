@@ -4,11 +4,7 @@
     <list default="true" id="c56719a5-153c-494b-9d01-ccb5a7defed7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VVRichText.xcworkspace/xcuserdata/jiangmingz.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText.xcworkspace/xcuserdata/jiangmingz.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/Controller/GifController.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/Controller/GifController.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VVRichText/Demo/Controller/GifListController.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/Controller/GifListController.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/Model/StatusModel.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/Model/StatusModel.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/Source/VVAsyncDisplayView.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Source/VVAsyncDisplayView.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/Source/VVImageStorage.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Source/VVImageStorage.m" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,40 +16,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVAsyncDisplayView.m">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="145" column="12" selection-start-line="145" selection-start-column="12" selection-end-line="145" selection-end-column="12" />
-              <folding>
-                <element signature="e#2#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/GifController.m">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="28" column="73" selection-start-line="28" selection-start-column="73" selection-end-line="28" selection-end-column="73" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/GifListController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="108" column="42" selection-start-line="108" selection-start-column="42" selection-end-line="108" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVImageStorage.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+            <state relative-caret-position="510">
+              <caret line="33" column="48" selection-start-line="33" selection-start-column="48" selection-end-line="33" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -104,7 +70,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/MMRichText/Source/VVTransaction.h" />
         <option value="$PROJECT_DIR$/MMRichText/Source/VVTransaction.m" />
         <option value="$PROJECT_DIR$/MMRichText/Source/VVTransactionGroup.h" />
         <option value="$PROJECT_DIR$/MMRichText/Source/VVRichTextDefine.h" />
@@ -153,8 +118,9 @@
         <option value="$PROJECT_DIR$/VVRichText/Demo/Model/StatusModel.m" />
         <option value="$PROJECT_DIR$/VVRichText/Source/VVImageStorage.m" />
         <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/GifController.m" />
-        <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/GifListController.m" />
+        <option value="$PROJECT_DIR$/VVRichText/Source/VVAsyncImageView.h" />
         <option value="$PROJECT_DIR$/VVRichText/Source/VVAsyncDisplayView.m" />
+        <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/GifListController.m" />
       </list>
     </option>
   </component>
@@ -187,19 +153,6 @@
               <item name="" type="efc3779f:XcodeRootNode" />
               <item name="VVRichText" type="1d218c8b:XcodeProjectNode" />
               <item name="VVRichText" type="fcab9f18:XcodeViewNode" />
-            </path>
-            <path>
-              <item name="" type="efc3779f:XcodeRootNode" />
-              <item name="VVRichText" type="1d218c8b:XcodeProjectNode" />
-              <item name="VVRichText" type="fcab9f18:XcodeViewNode" />
-              <item name="Resource" type="fcab9f18:XcodeViewNode" />
-            </path>
-            <path>
-              <item name="" type="efc3779f:XcodeRootNode" />
-              <item name="VVRichText" type="1d218c8b:XcodeProjectNode" />
-              <item name="VVRichText" type="fcab9f18:XcodeViewNode" />
-              <item name="Resource" type="fcab9f18:XcodeViewNode" />
-              <item name="EmoticonQQ.bundle" type="fcab9f18:XcodeViewNode" />
             </path>
           </expand>
           <select />
@@ -269,12 +222,12 @@
       <workItem from="1560085462696" duration="3235000" />
       <workItem from="1560089359746" duration="2859000" />
       <workItem from="1560133773810" duration="4308000" />
-      <workItem from="1560151125591" duration="6332000" />
+      <workItem from="1560151125591" duration="6890000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44193000" />
+    <option name="totallyTimeSpent" value="44751000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="0" />
@@ -330,13 +283,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVTextParser.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="61" column="52" selection-start-line="61" selection-start-column="52" selection-end-line="61" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVTextRunDelegate.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -513,13 +459,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVAsyncImageView.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="27" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/ArticleListController.m">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="556">
@@ -637,13 +576,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/GifListController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="108" column="42" selection-start-line="108" selection-start-column="42" selection-end-line="108" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/GifController.m">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="388">
@@ -651,13 +583,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVAsyncImageView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVAsyncImageView.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVAsyncDisplayView.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="145" column="12" selection-start-line="145" selection-start-column="12" selection-end-line="145" selection-end-column="12" />
+        <state relative-caret-position="623">
+          <caret line="166" column="64" selection-start-line="166" selection-start-column="64" selection-end-line="166" selection-end-column="64" />
           <folding>
             <element signature="e#2#32#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/GifListController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="33" column="48" selection-start-line="33" selection-start-column="48" selection-end-line="33" selection-end-column="48" />
         </state>
       </provider>
     </entry>

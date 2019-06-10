@@ -28,13 +28,21 @@ static CGFloat gifSize = 30;
                                                                              target:self
                                                                              action:@selector(test)];
 
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-    [self dataSource];
-//        dispatch_async(dispatch_get_main_queue(), ^{
-    NSLog(@"reloadData");
-    [self.tableView reloadData];
-//        });
-//    });
+    UILabel *label = [[UILabel alloc] initWithFrame:self.view.bounds];
+    label.text = @"数据加载中....";
+    label.textColor = [UIColor blackColor];
+    label.backgroundColor = [UIColor whiteColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:label];
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self dataSource];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"reloadData");
+            [label removeFromSuperview];
+            [self.tableView reloadData];
+        });
+    });
 }
 
 - (void)test {
@@ -112,7 +120,6 @@ static CGFloat gifSize = 30;
             [layout addStorage:imageStorage];
         }
 
-//        NSLog(@"%@",mutableString);
         [_dataSource addObject:layout];
     }
 
