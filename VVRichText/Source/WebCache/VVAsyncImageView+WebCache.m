@@ -57,7 +57,7 @@ static void _croppedImageBackingSizeAndDrawRectInBounds(CGSize sourceImageSize, 
 
     @autoreleasepool {
         if (imageStorage.isBlur) {
-            image = [image vv_applyBlurWithRadius:20 tintColor:RGB(0, 0, 0, 0.15f) saturationDeltaFactor:1.4 maskImage:nil];
+            image = [image vv_applyBlurWithRadius:20.0f tintColor:RGB(0, 0, 0, 0.15f) saturationDeltaFactor:1.4 maskImage:nil];
         }
 
         BOOL forceUpscaling = NO;
@@ -67,7 +67,7 @@ static void _croppedImageBackingSizeAndDrawRectInBounds(CGSize sourceImageSize, 
         UIViewContentMode contentMode = imageStorage.contentMode;
         CGFloat contentsScale = imageStorage.contentsScale;
         CGRect cropDisplayBounds = CGRectZero;
-        CGRect cropRect = CGRectMake(0.5, 0.5, 0, 0);
+        CGRect cropRect = CGRectMake(0.5f, 0.5f, 0.0f, 0.0f);
         BOOL hasValidCropBounds = cropEnabled && !CGRectIsNull(cropDisplayBounds) && !CGRectIsEmpty(cropDisplayBounds);
         CGRect bounds = (hasValidCropBounds ? cropDisplayBounds : imageStorage.bounds);
         CGSize imageSize = image.size;
@@ -114,7 +114,7 @@ static void _croppedImageBackingSizeAndDrawRectInBounds(CGSize sourceImageSize, 
 
         if (isOpaque && backgroundColor) {
             [backgroundColor setFill];
-            UIRectFill(CGRectMake(0, 0, backingSize.width, backingSize.height));
+            UIRectFill(CGRectMake(0.0f, 0.0f, backingSize.width, backingSize.height));
         }
 
         UIBezierPath *cornerPath = [UIBezierPath bezierPathWithRoundedRect:imageDrawRect

@@ -13,7 +13,10 @@
     self = [super init];
     if (self) {
         self.type = dict[@"type"];
-        self.avatar = [NSURL URLWithString:dict[@"avatar"]];
+        if([dict[@"avatar"] length]  > 0) {
+            self.avatar = [NSURL URLWithString:dict[@"avatar"]];
+        }
+        
         self.content = dict[@"content"];
         self.detail = dict[@"detail"];
         self.date = [NSDate dateWithTimeIntervalSince1970:[dict[@"date"] floatValue]];

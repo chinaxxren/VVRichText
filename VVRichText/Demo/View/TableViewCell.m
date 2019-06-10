@@ -204,7 +204,7 @@
     self.line.frame = self.cellLayout.lineRect;
 }
 
-- (void)setCellLayout:(CellLayout *)cellLayout {
+- (void)setCellLayout:(FeedLayout *)cellLayout {
 
     [self.menu menuHide];
 

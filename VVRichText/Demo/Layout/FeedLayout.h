@@ -24,7 +24,7 @@
 #define WEBSITE_COVER_IDENTIFIER @"cover"
 
 
-@interface CellLayout : VVLayout
+@interface FeedLayout : VVLayout
 
 @property(nonatomic, strong) StatusModel *statusModel;
 @property(nonatomic, assign) CGFloat cellHeight;

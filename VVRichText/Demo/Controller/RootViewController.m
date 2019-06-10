@@ -119,8 +119,4 @@
     }
 }
 
-- (UITableViewCellAccessoryType)tableView:(UITableView *)tableView accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath NS_DEPRECATED_IOS(2_0, 3_0) __TVOS_PROHIBITED {
-    return UITableViewCellAccessoryDisclosureIndicator;
-}
-
 @end

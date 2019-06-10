@@ -1,9 +1,9 @@
 
-#import "CellLayout.h"
+#import "FeedLayout.h"
 
 #import "VVTextParser.h"
 
-@implementation CellLayout
+@implementation FeedLayout
 
 - (id)initWithStatusModel:(StatusModel *)statusModel
                     index:(NSInteger)index
@@ -17,7 +17,11 @@
 
             //头像模型 avatarImageStorage
             VVImageStorage *avatarStorage = [[VVImageStorage alloc] initWithIdentifier:AVATAR_IDENTIFIER];
-            avatarStorage.contents = statusModel.avatar;
+            if (statusModel.avatar) {
+                avatarStorage.contents = statusModel.avatar;
+            } else {
+                avatarStorage.contents = [UIImage imageNamed:@"defaultavatar.png"];
+            }
             avatarStorage.cornerRadius = 20.0f;
             avatarStorage.cornerBackgroundColor = [UIColor whiteColor];
             avatarStorage.backgroundColor = [UIColor whiteColor];

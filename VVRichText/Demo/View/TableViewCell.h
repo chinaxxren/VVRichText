@@ -10,13 +10,13 @@
 
 
 #import <UIKit/UIKit.h>
-#import "CellLayout.h"
+#import "FeedLayout.h"
 #import "VVRichText.h"
 
 @interface TableViewCell : UITableViewCell
 
 @property(nonatomic, assign) BOOL displaysAsynchronously;//是否异步绘制
-@property(nonatomic, strong) CellLayout *cellLayout;
+@property(nonatomic, strong) FeedLayout *cellLayout;
 @property(nonatomic, strong) NSIndexPath *indexPath;
 @property(nonatomic, copy) void (^clickedImageCallback)(TableViewCell *cell, NSInteger imageIndex);
 @property(nonatomic, copy) void (^clickedLikeButtonCallback)(TableViewCell *cell, BOOL isLike);

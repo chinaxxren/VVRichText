@@ -111,7 +111,7 @@
 		79F4215D0348B5B844E9A20DD2901D78 /* 053.png in Resources */ = {isa = PBXBuildFile; fileRef = 279517546D28F80039FE1F94E9FC3E38 /* 053.png */; };
 		79FB038131A76F6C9E35AD9E7A7D79D7 /* 038.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C6C097E03CA518BA0BC8812A55FEEC5 /* 038.png */; };
 		7ABBD031649F1087265837F11CA5E5E4 /* 029.png in Resources */ = {isa = PBXBuildFile; fileRef = F3278CF37298B6FE6DD24B69B0D257DB /* 029.png */; };
-		7BDCBF7162D882A07197E64066F8991E /* CellLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD43B62D6FE30F3C4CE158D1C0EC2AE /* CellLayout.m */; };
+		7BDCBF7162D882A07197E64066F8991E /* FeedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD43B62D6FE30F3C4CE158D1C0EC2AE /* FeedLayout.m */; };
 		7C05526D55EB9B625BA7860B6E064318 /* 123.png in Resources */ = {isa = PBXBuildFile; fileRef = 60DA9CBCAB51E3DE7EA162B398EEFBF7 /* 123.png */; };
 		7C1D40EA2E6DA31F524FC25B1B0936F3 /* VVTextLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D9327C9624CF2BC71C52C93C4C345C /* VVTextLine.m */; };
 		7EFC879E25D57BF69D9B628CC5CC09CD /* 024.png in Resources */ = {isa = PBXBuildFile; fileRef = 65CC354989897D980A7DD64232D2395C /* 024.png */; };
@@ -164,6 +164,8 @@
 		B6CDECA81E8C58AB9D45B783F16D0FBE /* 125.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E3C8336921F56A4BD046A16D38BD6B /* 125.png */; };
 		B7D8E0AB03C4EDDF0B68450707EA578C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B348C926B46956B410DF0D8423875E12 /* main.m */; };
 		B896A1CE700017BCA4BBB12ABF97B315 /* 131.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B2DDECD1718D8AC23BF05F8D3B55818 /* 131.png */; };
+		B91188CD22AE454C0010AC91 /* football.gif in Resources */ = {isa = PBXBuildFile; fileRef = B91188CC22AE454C0010AC91 /* football.gif */; };
+		B91188D122AE56800010AC91 /* defaultavatar.png in Resources */ = {isa = PBXBuildFile; fileRef = B91188D022AE56800010AC91 /* defaultavatar.png */; };
 		B952DA7CD99E0CD948BBB42A1640C49D /* 045.png in Resources */ = {isa = PBXBuildFile; fileRef = BF86D5FA7026B6478A947380DD1EB940 /* 045.png */; };
 		BAF1CB8D225C1EC420CFEE5C19269627 /* 057.png in Resources */ = {isa = PBXBuildFile; fileRef = B84D3A1CD4681B721240DAA33322DC5B /* 057.png */; };
 		BB3967EDFD1DB7B119EE500B738B5455 /* ImageDemoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6000E9763B2C8A9067492A137E9CE5C6 /* ImageDemoTableViewCell.m */; };
@@ -409,11 +411,13 @@
 		B3D01A6DD8E75817B1F439A7640BF06B /* 073.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 073.png; sourceTree = "<group>"; };
 		B411D88A08DDA358911566615A4505B6 /* 076.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 076.png; sourceTree = "<group>"; };
 		B84D3A1CD4681B721240DAA33322DC5B /* 057.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 057.png; sourceTree = "<group>"; };
+		B91188CC22AE454C0010AC91 /* football.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = football.gif; sourceTree = "<group>"; };
+		B91188D022AE56800010AC91 /* defaultavatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultavatar.png; sourceTree = "<group>"; };
 		B931A52010353A5D494C9AB09F561828 /* CommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentView.h; sourceTree = "<group>"; };
 		BAA6980E24835FDEBA35A373CD312521 /* VVImageStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVImageStorage.m; sourceTree = "<group>"; };
 		BB1FF60C1ACA35F995D62ABC12A23A7E /* NSMutableAttributedString+VVRichText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+VVRichText.m"; sourceTree = "<group>"; };
 		BB89E0EE35418BFF97FBC5B3A619949B /* 064.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 064.png; sourceTree = "<group>"; };
-		BCD43B62D6FE30F3C4CE158D1C0EC2AE /* CellLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellLayout.m; sourceTree = "<group>"; };
+		BCD43B62D6FE30F3C4CE158D1C0EC2AE /* FeedLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedLayout.m; sourceTree = "<group>"; };
 		BD60151EEE1F301D150AE8BFD51691A6 /* VVTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVTransaction.h; sourceTree = "<group>"; };
 		BEE294229B3FD5978C8085E54F157D56 /* 074.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 074.png; sourceTree = "<group>"; };
 		BF57D4725A74FE0D0F3837F8ADD9BF31 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -433,7 +437,7 @@
 		CA5BD893885C923F294E974B7EFF00C3 /* AutoFitSizeTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoFitSizeTextView.m; sourceTree = "<group>"; };
 		CA7DD353D44A60A25792C0EEEB6F38E3 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		CAAE370D42DC25142B63923C08D7AEFB /* 106.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 106.png; sourceTree = "<group>"; };
-		CAE58915A615705BA1A028C5B1ACC921 /* CellLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellLayout.h; sourceTree = "<group>"; };
+		CAE58915A615705BA1A028C5B1ACC921 /* FeedLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedLayout.h; sourceTree = "<group>"; };
 		CBB239B4893A532B4E75D5103942E6D9 /* 037.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 037.png; sourceTree = "<group>"; };
 		CBB87A4812A98CC37BB87454436ECB87 /* 138.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 138.png; sourceTree = "<group>"; };
 		CBDBEE2204958AF848B5549FBE41B579 /* 116.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 116.png; sourceTree = "<group>"; };
@@ -606,8 +610,8 @@
 		9278EC7DB10438B552A1C768DA6D800E /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				CAE58915A615705BA1A028C5B1ACC921 /* CellLayout.h */,
-				BCD43B62D6FE30F3C4CE158D1C0EC2AE /* CellLayout.m */,
+				CAE58915A615705BA1A028C5B1ACC921 /* FeedLayout.h */,
+				BCD43B62D6FE30F3C4CE158D1C0EC2AE /* FeedLayout.m */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -631,6 +635,8 @@
 		99C31A2DCFF0E956681F9F54ADD334FD /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				B91188D022AE56800010AC91 /* defaultavatar.png */,
+				B91188CC22AE454C0010AC91 /* football.gif */,
 				A5825BF0C802AAD58F34EE9393050E83 /* Images */,
 				84656DFCDEFF96E589742D67FB02EF2C /* EmoticonQQ.bundle */,
 				081393E52043C54C72E5FC9FAC94A1D0 /* articlelist.plist */,
@@ -1074,8 +1080,10 @@
 				6220B855E50BC9FEC430BDD23EEA0BE9 /* 117.png in Resources */,
 				6211CFBDAB6D620E52182C67DA2B0AAF /* 118.png in Resources */,
 				C4EE068696E914E5EC1BBCCB4FB206A4 /* 119.png in Resources */,
+				B91188CD22AE454C0010AC91 /* football.gif in Resources */,
 				1DD21FE5EC8B01C7812231268264A070 /* 120.png in Resources */,
 				6906F75EC9A44502A09E848184E73215 /* 121.png in Resources */,
+				B91188D122AE56800010AC91 /* defaultavatar.png in Resources */,
 				1379C714FF2AC108FC01D72E0D42E206 /* 122.png in Resources */,
 				7C05526D55EB9B625BA7860B6E064318 /* 123.png in Resources */,
 				27395832018256CE3C4B7D27EC8CA8B5 /* 124.png in Resources */,
@@ -1161,7 +1169,7 @@
 				F3925467BF8BA6F44813DF037BF24B26 /* CALayer+VVTransaction.m in Sources */,
 				2FE9C24527D8EB6034576474F442509A /* CALayer+WebCache.m in Sources */,
 				C5982EAD86EEAD85C040A3BF3BF677A9 /* CALayer+WebCacheOperation.m in Sources */,
-				7BDCBF7162D882A07197E64066F8991E /* CellLayout.m in Sources */,
+				7BDCBF7162D882A07197E64066F8991E /* FeedLayout.m in Sources */,
 				A639C897CE477B72C3FDB2063445D51D /* CommentModel.m in Sources */,
 				A0D494963E149F39D8DA913BE5C3178A /* CommentView.m in Sources */,
 				C5B9D1E21D6DDF82AF430AA187469A42 /* GifController.m in Sources */,

@@ -89,7 +89,7 @@ const CGFloat kRefreshBoundary = 170.0f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CellLayout *layout = self.dataSource[indexPath.row];
+    FeedLayout *layout = self.dataSource[indexPath.row];
     return layout.cellHeight;
 }
 
@@ -107,7 +107,7 @@ const CGFloat kRefreshBoundary = 170.0f;
     cell.displaysAsynchronously = self.displaysAsynchronously;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.indexPath = indexPath;
-    CellLayout *cellLayout = self.dataSource[indexPath.row];
+    FeedLayout *cellLayout = self.dataSource[indexPath.row];
     cell.cellLayout = cellLayout;
     [self callbackWithCell:cell];
 }
@@ -209,7 +209,7 @@ const CGFloat kRefreshBoundary = 170.0f;
 
 //点赞
 - (void)tableViewCell:(TableViewCell *)cell didClickedLikeButtonWithIsLike:(BOOL)isLike {
-    CellLayout *layout = self.dataSource[cell.indexPath.row];
+    FeedLayout *layout = self.dataSource[cell.indexPath.row];
     NSMutableArray *newLikeList = [[NSMutableArray alloc] initWithArray:layout.statusModel.likeList];
     if (isLike) {
         [newLikeList addObject:@"chinaxxren的粉丝"];
@@ -232,9 +232,9 @@ const CGFloat kRefreshBoundary = 170.0f;
 
 //展开Cell
 - (void)openTableViewCell:(TableViewCell *)cell {
-    CellLayout *layout = self.dataSource[cell.indexPath.row];
+    FeedLayout *layout = self.dataSource[cell.indexPath.row];
     StatusModel *model = layout.statusModel;
-    CellLayout *newLayout = [[CellLayout alloc] initContentOpendLayoutWithStatusModel:model
+    FeedLayout *newLayout = [[FeedLayout alloc] initContentOpendLayoutWithStatusModel:model
                                                                                 index:cell.indexPath.row
                                                                         dateFormatter:self.dateFormatter];
 
@@ -248,9 +248,9 @@ const CGFloat kRefreshBoundary = 170.0f;
 
 //折叠Cell
 - (void)closeTableViewCell:(TableViewCell *)cell {
-    CellLayout *layout = self.dataSource[cell.indexPath.row];
+    FeedLayout *layout = self.dataSource[cell.indexPath.row];
     StatusModel *model = layout.statusModel;
-    CellLayout *newLayout = [[CellLayout alloc] initWithStatusModel:model
+    FeedLayout *newLayout = [[FeedLayout alloc] initWithStatusModel:model
                                                               index:cell.indexPath.row
                                                       dateFormatter:self.dateFormatter];
 
@@ -265,7 +265,7 @@ const CGFloat kRefreshBoundary = 170.0f;
 //发表评论
 - (void)postCommentWithCommentModel:(CommentModel *)model {
 
-    CellLayout *layout = self.dataSource[model.index];
+    FeedLayout *layout = self.dataSource[model.index];
     NSMutableArray *newCommentLists = [[NSMutableArray alloc] initWithArray:layout.statusModel.commentList];
     NSDictionary *newComment = @{@"from": model.from,
             @"to": model.to,
@@ -273,7 +273,7 @@ const CGFloat kRefreshBoundary = 170.0f;
     [newCommentLists addObject:newComment];
     StatusModel *statusModel = layout.statusModel;
     statusModel.commentList = newCommentLists;
-    CellLayout *newLayout = [self layoutWithStatusModel:statusModel index:model.index];
+    FeedLayout *newLayout = [self layoutWithStatusModel:statusModel index:model.index];
 
 
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:model.index inSection:0]];
@@ -359,8 +359,8 @@ const CGFloat kRefreshBoundary = 170.0f;
 }
 
 
-- (CellLayout *)layoutWithStatusModel:(StatusModel *)statusModel index:(NSInteger)index {
-    CellLayout *layout = [[CellLayout alloc] initWithStatusModel:statusModel
+- (FeedLayout *)layoutWithStatusModel:(StatusModel *)statusModel index:(NSInteger)index {
+    FeedLayout *layout = [[FeedLayout alloc] initWithStatusModel:statusModel
                                                            index:index
                                                    dateFormatter:self.dateFormatter];
     return layout;
@@ -470,7 +470,7 @@ const CGFloat kRefreshBoundary = 170.0f;
             @[
                     @{@"type": @"image",
                             @"name": @"型格志style",
-                            @"avatar": @"http://tp4.sinaimg.cn/5747171147/50/5741401933/0",
+                            @"avatar": @"",
                             @"content": @"春天卫衣的正确打开方式https://github.com/waynezxcv/VVRichText",
                             @"date": @"1459668442",
 
@@ -606,7 +606,7 @@ const CGFloat kRefreshBoundary = 170.0f;
 
                     @{@"type": @"image",
                             @"name": @"Instagram热门",
-                            @"avatar": @"http://tp4.sinaimg.cn/5074408479/50/5706839595/0",
+                            @"avatar": @"",
                             @"content": @"Austin Butler & Vanessa Hudgens  想试试看扑到一个一米八几的人怀里是有多舒服[心]",
                             @"date": @"1459668442",
 

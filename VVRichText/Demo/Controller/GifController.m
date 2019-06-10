@@ -19,18 +19,14 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
 
-//    self.gifImageView = [[FLAnimatedImageView alloc] initWithFrame:CGRectMake((self.view.bounds.size.width - 100) *0.5f, 50, 100, 100)];
-//    [self.gifImageView sd_setImageWithURL:[NSURL URLWithString:@"http://ww3.sinaimg.cn/bmiddle/006qdyzsly1fctmnzwqcwg307505pasc.gif"]];
-//    [self.view addSubview:self.gifImageView];
-
     VVImageStorage *imageStorage = [[VVImageStorage alloc] init];
-//    imageStorage.contents = [NSURL URLWithString:@"http://ww3.sinaimg.cn/bmiddle/006qdyzsly1fctmnzwqcwg307505pasc.gif"];
-//    imageStorage.contents = [NSURL URLWithString:@"http://img4.bitautoimg.com/autoalbum/files/20101220/862/13374086240035_1469891_15.JPG"];
-//    imageStorage.frame = CGRectMake(0.0, 0.0, 100, 100);
-
-    imageStorage.contents = [VVImage imageNamed:@"1.gif"];
-    imageStorage.frame = CGRectMake(0.0, 0.0, 28, 28);
+    imageStorage.contents = [VVImage imageNamed:@"football.gif"];
+    imageStorage.frame = CGRectMake(0.0, 0.0, 96, 64);
     imageStorage.localImageType = VVLocalImageTypeDrawInVVAsyncImageView;
+    imageStorage.cornerRadius = 10.0f;
+    imageStorage.cornerBackgroundColor = [UIColor whiteColor];
+    imageStorage.cornerBorderColor = [UIColor redColor];
+    imageStorage.cornerBorderWidth = 1.0f;
     imageStorage.contentMode = UIViewContentModeScaleAspectFill;
 
     self.layout = [[VVLayout alloc] init];
@@ -56,11 +52,6 @@
     }];
     [alertController addAction:alertAction];
     [self presentViewController:alertController animated:YES completion:NULL];
-}
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    self.displayView.layout = nil;
-    self.displayView.layout = self.layout;
 }
 
 
