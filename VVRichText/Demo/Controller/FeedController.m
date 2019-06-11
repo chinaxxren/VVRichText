@@ -5,6 +5,8 @@
 #import "TableViewHeader.h"
 #import "CommentView.h"
 
+const CGFloat kRefreshBoundary = 170.0f;
+
 @interface FeedController () <UITableViewDataSource, UITableViewDelegate>
 
 @property(nonatomic, strong) NSArray *feedDatas;
@@ -17,10 +19,6 @@
 @property(nonatomic, assign) BOOL displaysAsynchronously;//是否异步绘制
 
 @end
-
-
-const CGFloat kRefreshBoundary = 170.0f;
-
 
 @implementation FeedController
 
@@ -478,7 +476,6 @@ const CGFloat kRefreshBoundary = 170.0f;
                             @"http://ww2.sinaimg.cn/thumbnail/006gWxKPgw1f2jelwmsoej30fx0fywfq.jpg",
                             @"http://ww4.sinaimg.cn/thumbnail/006gWxKPgw1f2jem32ccrj30xm0sdwjt.jpg",
                             @"http://ww4.sinaimg.cn/thumbnail/006gWxKPgw1f2jelyhutwj30fz0fxwfr.jpg",],
-
 
                             @"statusID": @"8",
                             @"commentList": @[@{@"from": @"SIZE潮流生活",

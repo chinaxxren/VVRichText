@@ -83,7 +83,6 @@
             [VVTextParser parseHttpURLWithTextStorage:contentTextStorage
                                             linkColor:RGB(113, 129, 161, 1)
                                        highlightColor:RGB(0, 0, 0, 0.15f)];
-
             //添加长按复制
             [contentTextStorage vv_addLongPressActionWithData:contentTextStorage.text
                                                highLightColor:RGB(0, 0, 0, 0.25f)];
@@ -139,10 +138,7 @@
                         }
                     }
                 }
-            }
-
-                //网页链接类型
-            else if ([statusModel.type isEqualToString:MESSAGE_TYPE_WEBSITE]) {
+            } else if ([statusModel.type isEqualToString:MESSAGE_TYPE_WEBSITE]) { //网页链接类型
                 //这个CGRect用来绘制背景颜色
                 self.websitePosition = CGRectMake(nameTextStorage.left,
                         contentBottom + 5.0f,
@@ -175,11 +171,7 @@
                 [detailTextStorage vv_addLinkForWholeTextStorageWithData:@"https://github.com/chinaxxren/VVRichText"
                                                           highLightColor:RGB(0, 0, 0, 0.15)];
                 [self addStorage:detailTextStorage];
-            }
-
-                //视频类型
-            else if ([statusModel.type isEqualToString:MESSAGE_TYPE_VIDEO]) {
-                //TODO：
+            } else if ([statusModel.type isEqualToString:MESSAGE_TYPE_VIDEO]) { //视频类型
 
             }
 

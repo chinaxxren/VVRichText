@@ -26,6 +26,7 @@ static inline NSRegularExpression *TelRegularExpression();
     if (!text) {
         return;
     }
+
     NSArray *resultArray = [EmojiRegularExpression() matchesInString:text
                                                              options:0
                                                                range:NSMakeRange(0, text.length)];
@@ -76,6 +77,7 @@ static inline NSRegularExpression *TelRegularExpression();
     if (!text) {
         return;
     }
+    
     NSArray *resultArray = [AccountRegularExpression() matchesInString:text
                                                                options:0
                                                                  range:NSMakeRange(0, text.length)];
@@ -99,6 +101,7 @@ static inline NSRegularExpression *TelRegularExpression();
     if (!text) {
         return;
     }
+    
     NSArray *resultArray = [TopicRegularExpression() matchesInString:text
                                                              options:0
                                                                range:NSMakeRange(0, text.length)];
@@ -122,6 +125,7 @@ static inline NSRegularExpression *TelRegularExpression();
     if (!text) {
         return;
     }
+    
     NSArray *resultArray = [TelRegularExpression() matchesInString:text
                                                            options:0
                                                              range:NSMakeRange(0, text.length)];

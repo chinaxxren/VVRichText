@@ -401,10 +401,6 @@
         return;
     }
 
-    if (self.textLayout) {
-        return;
-    }
-
     VVTextContainer *textContainer = [VVTextContainer vv_textContainerWithSize:self.frame.size];
     textContainer.maxNumberOfLines = self.maxNumberOfLines;
     textContainer.vericalAlignment = self.vericalAlignment;

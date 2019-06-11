@@ -48,15 +48,12 @@
     self.frame = CGRectZero;
     self.bounds = CGRectZero;
     self.cornerRadius = 0.0f;
-    self.cornerBackgroundColor = [UIColor whiteColor];
-    self.cornerBorderColor = [UIColor whiteColor];
     self.cornerBorderWidth = 0.0f;
     self.shadowColor = nil;
     self.shadowOpacity = 0.0f;
     self.shadowOffset = CGSizeZero;
     self.shadowRadius = 0.0f;
     self.contentsScale = [VVRichTextUtils contentsScale];
-    self.backgroundColor = [UIColor whiteColor];
     self.contentMode = UIViewContentModeScaleToFill;
 }
 
