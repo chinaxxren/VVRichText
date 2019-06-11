@@ -15,6 +15,10 @@
 
 @implementation GifController
 
+- (void)dealloc {
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 

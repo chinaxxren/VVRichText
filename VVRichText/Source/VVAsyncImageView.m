@@ -4,6 +4,10 @@
 
 @implementation VVAsyncImageView
 
+- (void)dealloc {
+    
+}
+
 @end
 
 

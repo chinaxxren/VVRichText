@@ -6,4 +6,5 @@ use_frameworks!
 target "VVRichText" do
   pod 'SDWebImage'
   pod 'YYImage/WebP'
+  pod 'MLeaksFinder'
 end
