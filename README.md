@@ -16,3 +16,5 @@ VVRichText 是一个富文本显示,编辑组件，支持异步文本渲染。
 https://github.com/ibireme/YYText
 https://github.com/SDWebImage/SDWebImageYYPlugin
 https://github.com/waynezxcv/Gallop
+
+*** 
