@@ -116,6 +116,7 @@
     for (VVStorage *storage in self.totalStorages) {
         suggestHeight = suggestHeight > storage.bottom ? suggestHeight : storage.bottom;
     }
+
     return suggestHeight + bottomMargin;
 }
 

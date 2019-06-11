@@ -7,7 +7,7 @@
 
 @interface FeedController () <UITableViewDataSource, UITableViewDelegate>
 
-@property(nonatomic, strong) NSArray *fakeDatasource;
+@property(nonatomic, strong) NSArray *feedDatas;
 @property(nonatomic, strong) UITableView *tableView;
 @property(nonatomic, strong) NSMutableArray *dataSource;
 @property(nonatomic, strong) TableViewHeader *tableViewHeader;
@@ -25,7 +25,6 @@ const CGFloat kRefreshBoundary = 170.0f;
 @implementation FeedController
 
 #pragma mark - ViewControllerLifeCycle
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -155,7 +154,7 @@ const CGFloat kRefreshBoundary = 170.0f;
 
 //开始评论
 - (void)commentWithCell:(TableViewCell *)cell {
-    self.postComment.from = @"Waynezxcv的粉丝";
+    self.postComment.from = @"china的粉丝";
     self.postComment.to = @"";
     self.postComment.index = cell.indexPath.row;
     self.commentView.placeHolder = @"评论";
@@ -166,7 +165,7 @@ const CGFloat kRefreshBoundary = 170.0f;
 
 //开始回复评论
 - (void)reCommentWithCell:(TableViewCell *)cell commentModel:(CommentModel *)commentModel {
-    self.postComment.from = @"waynezxcv的粉丝";
+    self.postComment.from = @"beijing";
     self.postComment.to = commentModel.to;
     self.postComment.index = commentModel.index;
     self.commentView.placeHolder = [NSString stringWithFormat:@"回复%@:", commentModel.to];
@@ -177,14 +176,15 @@ const CGFloat kRefreshBoundary = 170.0f;
 
 //点击查看大图
 - (void)tableViewCell:(TableViewCell *)cell showImageBrowserWithImageIndex:(NSInteger)imageIndex {
-
+    NSString *imgURL = cell.cellLayout.statusModel.imgs[imageIndex];
+    NSLog(@"imgURL->%@", imgURL);
 }
 
 //查看头像
 - (void)showAvatarWithCell:(TableViewCell *)cell {
-
+    NSURL *avatarURL = cell.cellLayout.statusModel.avatar;
+    NSLog(@"avatarURL->%@", avatarURL);
 }
-
 
 /* 由于是异步绘制，而且为了减少View的层级，整个显示内容都是在同一个UIView上面，所以会在刷新的时候闪一下，这里可以先把原先Cell的内容截图覆盖在Cell上，
  延迟0.25s后待刷新完成后，再将这个截图从Cell上移除 */
@@ -192,10 +192,7 @@ const CGFloat kRefreshBoundary = 170.0f;
     UIImage *screenshot = [VVRichTextUtils screenshotFromView:cell];
     UIImageView *imgView = [[UIImageView alloc] initWithFrame:[self.tableView convertRect:cell.frame toView:self.tableView]];
 
-    imgView.frame = CGRectMake(imgView.frame.origin.x,
-            imgView.frame.origin.y,
-            imgView.frame.size.width,
-            cellHeight);
+    imgView.frame = CGRectMake(imgView.frame.origin.x, imgView.frame.origin.y, imgView.frame.size.width, cellHeight);
     imgView.contentMode = UIViewContentModeTop;
     imgView.backgroundColor = [UIColor whiteColor];
     imgView.image = screenshot;
@@ -225,8 +222,7 @@ const CGFloat kRefreshBoundary = 170.0f;
     [self coverScreenshotAndDelayRemoveWithCell:cell cellHeight:layout.cellHeight];
 
     self.dataSource[cell.indexPath.row] = layout;
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:cell.indexPath.row inSection:0]]
-                          withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:cell.indexPath.row inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 //展开Cell
@@ -260,23 +256,22 @@ const CGFloat kRefreshBoundary = 170.0f;
 }
 
 //发表评论
-- (void)postCommentWithCommentModel:(CommentModel *)model {
+- (void)postCommentWithCommentModel:(CommentModel *)commentModel {
 
-    FeedLayout *layout = self.dataSource[model.index];
+    FeedLayout *layout = self.dataSource[commentModel.index];
     NSMutableArray *newCommentLists = [[NSMutableArray alloc] initWithArray:layout.statusModel.commentList];
-    NSDictionary *newComment = @{@"from": model.from, @"to": model.to,@"content": model.content};
+    NSDictionary *newComment = @{@"from": commentModel.from, @"to": commentModel.to, @"content": commentModel.content};
     [newCommentLists addObject:newComment];
     StatusModel *statusModel = layout.statusModel;
     statusModel.commentList = newCommentLists;
-    FeedLayout *newLayout = [self layoutWithStatusModel:statusModel index:model.index];
+    FeedLayout *newLayout = [self layoutWithStatusModel:statusModel index:commentModel.index];
 
 
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:model.index inSection:0]];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:commentModel.index inSection:0]];
     [self coverScreenshotAndDelayRemoveWithCell:cell cellHeight:newLayout.cellHeight];
 
-    self.dataSource[model.index] = newLayout;
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:model.index inSection:0]]
-                          withRowAnimation:UITableViewRowAnimationNone];
+    self.dataSource[commentModel.index] = newLayout;
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:commentModel.index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 
@@ -332,8 +327,8 @@ const CGFloat kRefreshBoundary = 170.0f;
     if (self.needRefresh) {
         [self.dataSource removeAllObjects];
         for (NSInteger i = 0; i < 1; i++) {//让数据更多
-            for (NSInteger i = 0; i < self.fakeDatasource.count; i++) {
-                VVLayout *layout = [self layoutWithStatusModel:[[StatusModel alloc] initWithDict:self.fakeDatasource[i]] index:i];
+            for (NSInteger i = 0; i < self.feedDatas.count; i++) {
+                VVLayout *layout = [self layoutWithStatusModel:[[StatusModel alloc] initWithDict:self.feedDatas[i]] index:i];
                 [self.dataSource addObject:layout];
             }
         }
@@ -355,9 +350,7 @@ const CGFloat kRefreshBoundary = 170.0f;
 
 
 - (FeedLayout *)layoutWithStatusModel:(StatusModel *)statusModel index:(NSInteger)index {
-    FeedLayout *layout = [[FeedLayout alloc] initWithStatusModel:statusModel
-                                                           index:index
-                                                   dateFormatter:self.dateFormatter];
+    FeedLayout *layout = [[FeedLayout alloc] initWithStatusModel:statusModel index:index dateFormatter:self.dateFormatter];
     return layout;
 }
 
@@ -384,9 +377,7 @@ const CGFloat kRefreshBoundary = 170.0f;
 
     UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"异步绘制开", @"异步绘制关"]];
     segmentedControl.selectedSegmentIndex = 0;
-    [segmentedControl addTarget:self
-                         action:@selector(segmentControlIndexChanged:)
-               forControlEvents:UIControlEventValueChanged];
+    [segmentedControl addTarget:self action:@selector(segmentControlIndexChanged:) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView = segmentedControl;
 
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
@@ -394,11 +385,11 @@ const CGFloat kRefreshBoundary = 170.0f;
     [self.view addSubview:self.commentView];
 }
 
-
 - (CommentView *)commentView {
     if (_commentView) {
         return _commentView;
     }
+
     __weak typeof(self) wself = self;
     _commentView = [[CommentView alloc]
             initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 54.0f)
@@ -456,16 +447,16 @@ const CGFloat kRefreshBoundary = 170.0f;
     return _postComment;
 }
 
-- (NSArray *)fakeDatasource {
-    if (_fakeDatasource) {
-        return _fakeDatasource;
+- (NSArray *)feedDatas {
+    if (_feedDatas) {
+        return _feedDatas;
     }
-    _fakeDatasource =
+    _feedDatas =
             @[
                     @{@"type": @"image",
                             @"name": @"型格志style",
                             @"avatar": @"",
-                            @"content": @"春天卫衣的正确打开方式https://github.com/waynezxcv/VVRichText",
+                            @"content": @"春天卫衣的正确打开方式https://github.com/chinaxxren/VVRichText",
                             @"date": @"1459668442",
 
                             @"imgs": @[@"http://ww2.sinaimg.cn/bmiddle/006gWxKPgw1f2jeloxwhnj30fu0g0ta5.jpg",
@@ -491,10 +482,10 @@ const CGFloat kRefreshBoundary = 170.0f;
 
                             @"statusID": @"8",
                             @"commentList": @[@{@"from": @"SIZE潮流生活",
-                            @"to": @"waynezxcv",
+                            @"to": @"shanghai",
                             @"content": @"使用VVRichText适合包含文字、图片高性能的展示型界面的构建。"}],
                             @"isLike": @(NO),
-                            @"likeList": @[@"waynezxcv"]},
+                            @"likeList": @[@"chengdu"]},
 
                     @{@"type": @"image",
                             @"name": @"someone",
@@ -507,16 +498,16 @@ const CGFloat kRefreshBoundary = 170.0f;
 
                             @"statusID": @"22",
                             @"commentList": @[@{@"from": @"someone",
-                            @"to": @"waynezxcv",
+                            @"to": @"wannnnnner",
                             @"content": @"支持GIF"}],
                             @"isLike": @(NO),
-                            @"likeList": @[@"waynezxcv"]},
+                            @"likeList": @[@"kkkkkker"]},
 
 
                     @{@"type": @"image",
                             @"name": @"SIZE潮流生活",
                             @"avatar": @"http://tp2.sinaimg.cn/1829483361/50/5753078359/1",
-                            @"content": @"近日[心][心][心][心][心][心][face]，adidas Originals😂为经典鞋款Stan Smith打造Primeknit版本，并带来全新的“OG”系列。简约的鞋身采用白色透气Primeknit针织材质制作，再将Stan Smith代表性的绿、红、深蓝三个元年色调融入到鞋舌和后跟点缀，最后搭载上米白色大底来保留其复古风味。据悉该鞋款将在今月登陆全球各大adidas Originals指定店舖。https://github.com/waynezxcv/VVRichText <-",
+                            @"content": @"近日[心][心][心][心][心][心][face]，adidas Originals😂为经典鞋款Stan Smith打造Primeknit版本，并带来全新的“OG”系列。简约的鞋身采用白色透气Primeknit针织材质制作，再将Stan Smith代表性的绿、红、深蓝三个元年色调融入到鞋舌和后跟点缀，最后搭载上米白色大底来保留其复古风味。据悉该鞋款将在今月登陆全球各大adidas Originals指定店舖。https://github.com/chinaxxren/VVRichText <-",
                             @"date": @"1459668442",
 
                             @"imgs": @[@"http://ww2.sinaimg.cn/bmiddle/6d0bb361gw1f2jim2hgxij20lo0egwgc.jpg",
@@ -536,14 +527,14 @@ const CGFloat kRefreshBoundary = 170.0f;
                             @"commentList": @[@{@"from": @"SIZE潮流生活",
                             @"to": @"",
                             @"content": @"哈哈哈..."},
-                            @{@"from": @"waynezxcv",
+                            @{@"from": @"guangzhou",
                                     @"to": @"SIZE潮流生活",
                                     @"content": @"哈哈哈哈"},
                             @{@"from": @"SIZE潮流生活",
-                                    @"to": @"waynezxcv",
+                                    @"to": @"shenzhen",
                                     @"content": @"使用VVRichText能保持滚动时的FPS在60hz"}],
                             @"isLike": @(NO),
-                            @"likeList": @[@"waynezxcv", @"伊布拉希莫维奇", @"权志龙", @"郜林", @"扎克伯格"]},
+                            @"likeList": @[@"张学友", @"伊布拉希莫维奇", @"权志龙", @"郜林", @"扎克伯格"]},
 
                     @{@"type": @"website",
                             @"name": @"Ronaldo",
@@ -560,7 +551,7 @@ const CGFloat kRefreshBoundary = 170.0f;
                             @"to": @"",
                             @"content": @"手动再见..."}],
                             @"isLike": @(NO),
-                            @"likeList": @[@"waynezxcv", @"VVRichText"]},
+                            @"likeList": @[@"tiantian", @"VVRichText"]},
 
 
                     @{@"type": @"image",
@@ -589,14 +580,14 @@ const CGFloat kRefreshBoundary = 170.0f;
                             @"commentList": @[@{@"from": @"炉石传说",
                             @"to": @"",
                             @"content": @"#炉石传说#"},
-                            @{@"from": @"waynezxcv",
+                            @{@"from": @"gamer",
                                     @"to": @"SIZE潮流生活",
                                     @"content": @"哈哈哈哈"},
                             @{@"from": @"SIZE潮流生活",
-                                    @"to": @"waynezxcv",
+                                    @"to": @"styler",
                                     @"content": @"打得不错。"}],
                             @"isLike": @(NO),
-                            @"likeList": @[@"waynezxcv"]},
+                            @"likeList": @[@"sky"]},
 
                     @{@"type": @"image",
                             @"name": @"Instagram热门",
@@ -622,11 +613,11 @@ const CGFloat kRefreshBoundary = 170.0f;
 
 
                             @"statusID": @"3",
-                            @"commentList": @[@{@"from": @"waynezxcv",
+                            @"commentList": @[@{@"from": @"Tom",
                             @"to": @"SIZE潮流生活",
                             @"content": @"哈哈哈哈"},
                             @{@"from": @"SIZE潮流生活",
-                                    @"to": @"waynezxcv",
+                                    @"to": @"kkkk",
                                     @"content": @"+++"}],
                             @"isLike": @(NO),
                             @"likeList": @[@"Tim Cook"]},
@@ -635,7 +626,7 @@ const CGFloat kRefreshBoundary = 170.0f;
                     @{@"type": @"image",
                             @"name": @"头条新闻",
                             @"avatar": @"http://tp1.sinaimg.cn/1618051664/50/5735009977/0",
-                            @"content": @"#万象# 【熊孩子！4名小学生铁轨上设障碍物逼停火车】4名小学生打赌，1人认为火车会将石头碾成粉末，其余3人不信，认为只会碾碎，于是他们将道碴摆放在铁轨上。火车司机发现前方不远处的铁轨上，摆放了影响行车安全的障碍物，于是紧急采取制动，列车中途停车13分钟。O4名学生铁轨上设障碍物逼停火车#waynezxcv# nice",
+                            @"content": @"#万象# 【熊孩子！4名小学生铁轨上设障碍物逼停火车】4名小学生打赌，1人认为火车会将石头碾成粉末，其余3人不信，认为只会碾碎，于是他们将道碴摆放在铁轨上。火车司机发现前方不远处的铁轨上，摆放了影响行车安全的障碍物，于是紧急采取制动，列车中途停车13分钟。O4名学生铁轨上设障碍物逼停火车#mytags# nice",
                             @"date": @"1459668442",
 
                             @"imgs": @[@"http://ww2.sinaimg.cn/bmiddle/60718250jw1f2jg46smtmj20go0go77r.jpg"],
@@ -644,11 +635,11 @@ const CGFloat kRefreshBoundary = 170.0f;
 
 
                             @"statusID": @"4",
-                            @"commentList": @[@{@"from": @"waynezxcv",
+                            @"commentList": @[@{@"from": @"Tom",
                             @"to": @"SIZE潮流生活",
                             @"content": @"哈哈哈哈"},
                             @{@"from": @"SIZE潮流生活",
-                                    @"to": @"waynezxcv",
+                                    @"to": @"ooooer",
                                     @"content": @"打得不错。"}],
                             @"isLike": @(NO),
                             @"likeList": @[@"Tim Cook"]},
@@ -672,7 +663,7 @@ const CGFloat kRefreshBoundary = 170.0f;
                             @"to": @"",
                             @"content": @"统一回复,使用VVRichText来快速构建图文混排界面。享受如丝般顺滑的滚动体验。"}],
                             @"isLike": @(NO),
-                            @"likeList": @[@"waynezxcv"]},
+                            @"likeList": @[@"kkk"]},
 
 
                     @{@"type": @"image",
@@ -688,14 +679,14 @@ const CGFloat kRefreshBoundary = 170.0f;
                             @"commentList": @[@{@"from": @"SIZE潮流生活",
                             @"to": @"",
                             @"content": @"使用VVRichText来快速构建图文混排界面。享受如丝般顺滑的滚动体验。"},
-                            @{@"from": @"waynezxcv",
+                            @{@"from": @"xxyyzz",
                                     @"to": @"SIZE潮流生活",
                                     @"content": @"哈哈哈哈"},
                             @{@"from": @"SIZE潮流生活",
-                                    @"to": @"waynezxcv",
+                                    @"to": @"killer",
                                     @"content": @"打得不错。"}],
                             @"isLike": @(NO),
-                            @"likeList": @[@"waynezxcv"]},
+                            @"likeList": @[@"okkkker"]},
 
 
                     @{@"type": @"image",
@@ -711,14 +702,14 @@ const CGFloat kRefreshBoundary = 170.0f;
                             @"commentList": @[@{@"from": @"SIZE潮流生活",
                             @"to": @"",
                             @"content": @"使用VVRichText来快速构建图文混排界面。享受如丝般顺滑的滚动体验。"},
-                            @{@"from": @"waynezxcv",
+                            @{@"from": @"xin",
                                     @"to": @"SIZE潮流生活",
                                     @"content": @"哈哈哈哈"},
                             @{@"from": @"SIZE潮流生活",
-                                    @"to": @"waynezxcv",
+                                    @"to": @"wanger",
                                     @"content": @"打得不错。"}],
                             @"isLike": @(NO),
-                            @"likeList": @[@"waynezxcv"]},
+                            @"likeList": @[@"keeer"]},
 
 
                     @{@"type": @"image",
@@ -739,14 +730,14 @@ const CGFloat kRefreshBoundary = 170.0f;
 
 
                             @"statusID": @"10",
-                            @"commentList": @[@{@"from": @"waynezxcv",
+                            @"commentList": @[@{@"from": @"uuuuuer",
                             @"to": @"SIZE潮流生活",
                             @"content": @"哈哈哈哈"}],
                             @"isLike": @(NO),
-                            @"likeList": @[@"waynezxcv"]},
+                            @"likeList": @[@"balalala"]},
             ];
 
-    return _fakeDatasource;
+    return _feedDatas;
 }
 
 @end

@@ -4,25 +4,32 @@
     <list default="true" id="c56719a5-153c-494b-9d01-ccb5a7defed7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VVRichText.xcworkspace/xcuserdata/jiangmingz.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText.xcworkspace/xcuserdata/jiangmingz.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/AppDelegate.h" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/AppDelegate.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/AppDelegate.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/AppDelegate.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VVRichText/Demo/Controller/FeedController.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/Controller/FeedController.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/Controller/GifController.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/Controller/GifController.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/View/TextViewCell.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/View/TextViewCell.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/Source/VVAsyncDisplayView.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Source/VVAsyncDisplayView.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/Source/VVAsyncImageView.h" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Source/VVAsyncImageView.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/Source/VVAsyncImageView.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Source/VVAsyncImageView.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/Source/WebCache/CALayer+WebCache.h" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Source/WebCache/CALayer+WebCache.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/Source/WebCache/CALayer+WebCache.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Source/WebCache/CALayer+WebCache.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/Source/WebCache/SDAnimatedImage+YYAdditions.h" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Source/WebCache/SDAnimatedImage+YYAdditions.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/Source/WebCache/SDAnimatedImage+YYAdditions.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Source/WebCache/SDAnimatedImage+YYAdditions.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/Source/WebCache/SDImageYYCoder.h" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Source/WebCache/SDImageYYCoder.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/Source/WebCache/SDImageYYCoder.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Source/WebCache/SDImageYYCoder.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/Source/WebCache/YYAnimatedImageView+WebCache.h" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Source/WebCache/YYAnimatedImageView+WebCache.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/Source/WebCache/YYAnimatedImageView+WebCache.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Source/WebCache/YYAnimatedImageView+WebCache.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/Source/WebCache/YYImage+SDAdditions.h" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Source/WebCache/YYImage+SDAdditions.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/Source/WebCache/YYImage+SDAdditions.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Source/WebCache/YYImage+SDAdditions.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VVRichText/main.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/main.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/Layout/FeedLayout.h" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/Layout/FeedLayout.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/Layout/FeedLayout.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/Layout/FeedLayout.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/Model/ArticleListModel.h" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/Model/ArticleListModel.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/Model/ArticleListModel.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/Model/ArticleListModel.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/Model/CommentModel.h" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/Model/CommentModel.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/Model/CommentModel.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/Model/CommentModel.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/Model/StatusModel.h" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/Model/StatusModel.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/Model/StatusModel.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/Model/StatusModel.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/View/ArticleListTableViewCell.h" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/View/ArticleListTableViewCell.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/View/ArticleListTableViewCell.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/View/ArticleListTableViewCell.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/View/AutoFitSizeTextView.h" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/View/AutoFitSizeTextView.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/View/AutoFitSizeTextView.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/View/AutoFitSizeTextView.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/View/CommentView.h" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/View/CommentView.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/View/CommentView.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/View/CommentView.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/View/ImageDemoTableViewCell.h" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/View/ImageDemoTableViewCell.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/View/ImageDemoTableViewCell.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/View/ImageDemoTableViewCell.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/View/LikeButton.h" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/View/LikeButton.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/View/LikeButton.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/View/LikeButton.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/View/MenuView.h" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/View/MenuView.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/View/MenuView.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/View/MenuView.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/View/TableViewCell.h" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/View/TableViewCell.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/View/TableViewCell.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/View/TableViewCell.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/View/TableViewHeader.h" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/View/TableViewHeader.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Demo/View/TableViewHeader.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Demo/View/TableViewHeader.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText/Source/VVLayout.m" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText/Source/VVLayout.m" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,57 +40,31 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="iphoneos_f4d7ac8497ea2f92c3ba1ed9546a7d36a58fc6a0" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/GifController.m">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Layout/FeedLayout.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="482">
-              <caret line="37" column="65" selection-start-line="37" selection-start-column="65" selection-end-line="37" selection-end-column="65" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVAsyncImageView.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="190">
+              <caret line="746" column="57" selection-start-line="746" selection-start-column="57" selection-end-line="746" selection-end-column="57" />
               <folding>
-                <element signature="e#1#24#0" expanded="true" />
+                <element signature="e#1#23#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVAsyncImageView.m">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVLayout.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="294">
+              <caret line="56" column="8" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="8" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVImage.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVImage.m">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>displayQueue</find>
-      <find>[[NSMutableArray alloc] init]</find>
-      <find>fadeShow</find>
       <find>setup</find>
       <find>nameTextStorage</find>
       <find>likeTextStorage</find>
@@ -111,6 +92,9 @@
       <find>_fakeDatasource</find>
       <find>5741401933</find>
       <find>coverScreenshotAndDelayRemoveWithCell</find>
+      <find>layoutWithStatusModel</find>
+      <find>imagePostions</find>
+      <find>imagePositionArray</find>
     </findStrings>
     <replaceStrings>
       <replace>[NSMutableArray new]</replace>
@@ -123,8 +107,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/MMRichText/Source/VVTransactionGroup.h" />
-        <option value="$PROJECT_DIR$/MMRichText/Source/VVRichTextDefine.h" />
         <option value="$PROJECT_DIR$/MMRichText/Source/VVImageStorage.m" />
         <option value="$PROJECT_DIR$/MMRichText/Source/VVTextStorage.m" />
         <option value="$PROJECT_DIR$/VVRichText/Source/VVTransaction.h" />
@@ -164,21 +146,24 @@
         <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/RichTextController.m" />
         <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/ArticleListController.m" />
         <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/ImageController.m" />
-        <option value="$PROJECT_DIR$/VVRichText/Demo/Layout/FeedLayout.m" />
         <option value="$PROJECT_DIR$/VVRichText/Demo/Model/StatusModel.m" />
         <option value="$PROJECT_DIR$/VVRichText/Source/VVImageStorage.m" />
         <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/GifListController.m" />
         <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/RootViewController.m" />
-        <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/FeedController.m" />
         <option value="$PROJECT_DIR$/VVRichText/Source/VVAsyncDisplayView.m" />
         <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/GifController.m" />
         <option value="$PROJECT_DIR$/VVRichText/Source/VVAsyncImageView.h" />
         <option value="$PROJECT_DIR$/VVRichText/Source/VVAsyncImageView.m" />
+        <option value="$PROJECT_DIR$/VVRichText/Source/VVLayout.m" />
+        <option value="$PROJECT_DIR$/VVRichText/Demo/Layout/FeedLayout.h" />
+        <option value="$PROJECT_DIR$/VVRichText/Demo/Controller/FeedController.m" />
+        <option value="$PROJECT_DIR$/VVRichText/Demo/Layout/FeedLayout.m" />
       </list>
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
+    <option name="x" value="639" />
     <option name="y" value="23" />
     <option name="width" value="1680" />
     <option name="height" value="1027" />
@@ -191,38 +176,7 @@
     <panes>
       <pane id="Scope" />
       <pane id="Cidr.FilesView" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="" type="efc3779f:XcodeRootNode" />
-              <item name="Pods" type="1d218c8b:XcodeProjectNode" />
-            </path>
-            <path>
-              <item name="" type="efc3779f:XcodeRootNode" />
-              <item name="VVRichText" type="1d218c8b:XcodeProjectNode" />
-            </path>
-            <path>
-              <item name="" type="efc3779f:XcodeRootNode" />
-              <item name="VVRichText" type="1d218c8b:XcodeProjectNode" />
-              <item name="VVRichText" type="fcab9f18:XcodeViewNode" />
-            </path>
-            <path>
-              <item name="" type="efc3779f:XcodeRootNode" />
-              <item name="VVRichText" type="1d218c8b:XcodeProjectNode" />
-              <item name="VVRichText" type="fcab9f18:XcodeViewNode" />
-              <item name="Resource" type="fcab9f18:XcodeViewNode" />
-            </path>
-            <path>
-              <item name="" type="efc3779f:XcodeRootNode" />
-              <item name="VVRichText" type="1d218c8b:XcodeProjectNode" />
-              <item name="VVRichText" type="fcab9f18:XcodeViewNode" />
-              <item name="Source" type="fcab9f18:XcodeViewNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -287,7 +241,7 @@
       <workItem from="1560085462696" duration="3235000" />
       <workItem from="1560089359746" duration="2859000" />
       <workItem from="1560133773810" duration="4308000" />
-      <workItem from="1560151125591" duration="9703000" />
+      <workItem from="1560151125591" duration="11480000" />
     </task>
     <task id="LOCAL-00001" summary="增加注释">
       <created>1560164132910</created>
@@ -300,15 +254,15 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47564000" />
+    <option name="totallyTimeSpent" value="49341000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="1027" extended-state="0" />
+    <frame x="639" y="23" width="1680" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="Designer" order="1" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.21733822" />
+      <window_info content_ui="combo" id="Project" order="2" weight="0.21733822" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32894737" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
@@ -360,16 +314,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="增加注释" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVTextStorage.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="454" selection-start-line="454" selection-end-line="454" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/VVRichText/Source/UIImage+VVRichText.h">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/VVRichText/Source/UIImage+VVRichText.m">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -559,23 +503,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Layout/FeedLayout.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="33" column="49" selection-start-line="33" selection-start-column="49" selection-end-line="33" selection-end-column="49" />
-          <folding>
-            <element signature="e#296#316#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Model/StatusModel.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" column="35" lean-forward="true" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Model/StatusModel.m">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -617,13 +544,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Layout/FeedLayout.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="18" column="55" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVImageStorage.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -651,13 +571,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/FeedController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5100">
-          <caret line="304" lean-forward="true" selection-start-line="304" selection-end-line="304" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/GifController.m">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="482">
@@ -675,6 +588,13 @@
     <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVImage.m">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVAsyncImageView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVAsyncImageView.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -685,10 +605,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVAsyncImageView.m">
+    <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Model/StatusModel.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="238">
+          <caret line="15" column="40" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Layout/FeedLayout.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+          <folding>
+            <element signature="e#296#316#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VVRichText/Demo/View/TableViewCell.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Controller/FeedController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="178" column="55" selection-start-line="178" selection-start-column="55" selection-end-line="178" selection-end-column="55" />
+          <folding>
+            <element signature="e#1#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVLayout.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="56" column="8" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VVRichText/Demo/Layout/FeedLayout.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="746" column="57" selection-start-line="746" selection-start-column="57" selection-end-line="746" selection-end-column="57" />
+          <folding>
+            <element signature="e#1#23#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

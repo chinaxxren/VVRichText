@@ -1,17 +1,5 @@
 
 
-
-/********************* 有任何问题欢迎反馈给我 liuweiself@126.com ****************************************/
-/***************  https://github.com/waynezxcv/VVRichText 持续更新 ***************************/
-/******************** 正在不断完善中，谢谢~  Enjoy ******************************************************/
-
-
-
-
-
-
-
-
 #import "VVLayout.h"
 #import "StatusModel.h"
 
@@ -36,15 +24,11 @@
 @property(nonatomic, copy) NSArray *imagePostions;
 
 //文字过长时，折叠状态的布局模型
-- (id)initWithStatusModel:(StatusModel *)stautsModel
-                    index:(NSInteger)index
-            dateFormatter:(NSDateFormatter *)dateFormatter;
+- (id)initWithStatusModel:(StatusModel *)stautsModel index:(NSInteger)index dateFormatter:(NSDateFormatter *)dateFormatter;
 
 
 //文字过长时，打开状态的布局模型
-- (id)initContentOpendLayoutWithStatusModel:(StatusModel *)stautsModel
-                                      index:(NSInteger)index
-                              dateFormatter:(NSDateFormatter *)dateFormatter;
+- (id)initContentOpendLayoutWithStatusModel:(StatusModel *)stautsModel index:(NSInteger)index dateFormatter:(NSDateFormatter *)dateFormatter;
 
 
 @end

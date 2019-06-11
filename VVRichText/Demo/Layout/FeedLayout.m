@@ -5,9 +5,7 @@
 
 @implementation FeedLayout
 
-- (id)initWithStatusModel:(StatusModel *)statusModel
-                    index:(NSInteger)index
-            dateFormatter:(NSDateFormatter *)dateFormatter {
+- (id)initWithStatusModel:(StatusModel *)statusModel index:(NSInteger)index dateFormatter:(NSDateFormatter *)dateFormatter {
     self = [super init];
     if (self) {
 
@@ -174,9 +172,8 @@
                         60.0f);
 
                 detailTextStorage.linespacing = 0.5f;
-                [detailTextStorage vv_addLinkForWholeTextStorageWithData:@"https://github.com/waynezxcv/LWAlchemy"
+                [detailTextStorage vv_addLinkForWholeTextStorageWithData:@"https://github.com/chinaxxren/VVRichText"
                                                           highLightColor:RGB(0, 0, 0, 0.15)];
-                [detailTextStorage creatLayout];
                 [self addStorage:detailTextStorage];
             }
 
@@ -395,6 +392,7 @@
             self.menuPosition = menuPosition;//右下角菜单按钮的位置
             self.commentBgPosition = commentBgPosition;//评论灰色背景位置
             self.imagePostions = imagePositionArray;//保存图片位置的数组
+
             //如果是使用在UITableViewCell上面，可以通过以下方法快速的得到Cell的高度
             self.cellHeight = [self suggestHeightWithBottomMargin:15.0f];
         }
@@ -402,14 +400,13 @@
     return self;
 }
 
-- (id)initContentOpendLayoutWithStatusModel:(StatusModel *)statusModel
-                                      index:(NSInteger)index
-                              dateFormatter:(NSDateFormatter *)dateFormatter {
+- (id)initContentOpendLayoutWithStatusModel:(StatusModel *)statusModel index:(NSInteger)index dateFormatter:(NSDateFormatter *)dateFormatter {
     self = [super init];
     if (self) {
         @autoreleasepool {
 
             self.statusModel = statusModel;
+
             //头像模型 avatarImageStorage
             VVImageStorage *avatarStorage = [[VVImageStorage alloc] initWithIdentifier:AVATAR_IDENTIFIER];
             avatarStorage.contents = statusModel.avatar;
@@ -430,6 +427,7 @@
                                           range:NSMakeRange(0, statusModel.name.length)
                                       linkColor:RGB(113, 129, 161, 1)
                                  highLightColor:RGB(0, 0, 0, 0.15)];
+            [nameTextStorage creatLayout];
 
             //正文内容模型 contentTextStorage
             VVTextStorage *contentTextStorage = [[VVTextStorage alloc] init];
@@ -440,6 +438,7 @@
                     nameTextStorage.bottom + 10.0f,
                     SCREEN_WIDTH - 80.0f,
                     CGFLOAT_MAX);
+            [contentTextStorage creatLayout];
 
             //折叠文字
             VVTextStorage *closeStorage = [[VVTextStorage alloc] init];
@@ -470,7 +469,7 @@
             //添加长按复制
             [contentTextStorage vv_addLongPressActionWithData:contentTextStorage.text
                                                highLightColor:RGB(0, 0, 0, 0.25f)];
-
+            [contentTextStorage creatLayout];
 
             //发布的图片模型 imgsStorage
             CGFloat imageWidth = (SCREEN_WIDTH - 110.0f) / 3.0f;
@@ -486,8 +485,8 @@
                 if (imageCount == 1) {
                     CGRect imageRect = CGRectMake(nameTextStorage.left,
                             contentBottom + 5.0f + (row * (imageWidth + 5.0f)),
-                            imageWidth * 1.7,
-                            imageWidth * 1.7);
+                            imageWidth * 1.7f,
+                            imageWidth * 1.7f);
                     NSString *imagePositionString = NSStringFromCGRect(imageRect);
                     [imagePositionArray addObject:imagePositionString];
                     VVImageStorage *imageStorage = [[VVImageStorage alloc] initWithIdentifier:IMAGE_IDENTIFIER];
@@ -496,7 +495,7 @@
                     imageStorage.contentMode = UIViewContentModeScaleAspectFill;
                     imageStorage.frame = imageRect;
                     imageStorage.backgroundColor = RGB(240, 240, 240, 1);
-                    NSString *URLString = [statusModel.imgs objectAtIndex:0];
+                    NSString *URLString = statusModel.imgs[0];
                     imageStorage.contents = [NSURL URLWithString:URLString];
                     [imageStorageArray addObject:imageStorage];
                 } else {
@@ -514,7 +513,7 @@
                         imageStorage.tag = i;
                         imageStorage.frame = imageRect;
                         imageStorage.backgroundColor = RGB(240, 240, 240, 1);
-                        NSString *URLString = [statusModel.imgs objectAtIndex:i];
+                        NSString *URLString = statusModel.imgs[i];
                         imageStorage.contents = [NSURL URLWithString:URLString];
                         [imageStorageArray addObject:imageStorage];
                         column = column + 1;
@@ -557,7 +556,7 @@
                         60.0f);
 
                 detailTextStorage.linespacing = 0.5f;
-                [detailTextStorage vv_addLinkForWholeTextStorageWithData:@"https://github.com/waynezxcv/LWAlchemy"
+                [detailTextStorage vv_addLinkForWholeTextStorageWithData:@"https://github.com/chinaxxren/VVRichText"
                                                           highLightColor:RGB(0, 0, 0, 0.15)];
                 [self addStorage:detailTextStorage];
             }
@@ -600,6 +599,7 @@
                             CGFLOAT_MAX);
                 }
             }
+            [dateTextStorage creatLayout];
 
             //生成评论背景Storage
             VVImageStorage *commentBgStorage = [[VVImageStorage alloc] init];
@@ -655,6 +655,7 @@
                                               linkColor:RGB(113, 129, 161, 1)
                                          highLightColor:RGB(0, 0, 0, 0.15)];
                 }
+                [likeTextStorage creatLayout];
                 offsetY += likeTextStorage.height + 5.0f;
             }
             if (statusModel.commentList.count != 0 &&
@@ -708,7 +709,7 @@
                                                         linkColor:RGB(113, 129, 161, 1)
                                                    highlightColor:RGB(0, 0, 0, 0.15)];
                         [VVTextParser parseEmojiWithTextStorage:commentTextStorage];
-
+                        [commentTextStorage creatLayout];
                         [tmp addObject:commentTextStorage];
                         offsetY += commentTextStorage.height;
                     } else {
@@ -743,6 +744,7 @@
                                                         linkColor:RGB(113, 129, 161, 1)
                                                    highlightColor:RGB(0, 0, 0, 0.15)];
                         [VVTextParser parseEmojiWithTextStorage:commentTextStorage];
+                        [commentTextStorage creatLayout];
                         [tmp addObject:commentTextStorage];
                         offsetY += commentTextStorage.height;
                     }
