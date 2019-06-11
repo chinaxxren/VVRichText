@@ -182,7 +182,6 @@
     }
 
     reuseImageView.backgroundColor = imageStorage.backgroundColor;
-    reuseImageView.displayAsynchronously = self.displaysAsynchronously;
     reuseImageView.contentMode = imageStorage.contentMode;
     reuseImageView.frame = imageStorage.frame;
     reuseImageView.hidden = NO;

@@ -1,7 +1,3 @@
-//
-// Created by Jiangmingz on 2019-06-05.
-// Copyright (c) 2019 Jiangmingz. All rights reserved.
-//
 
 #import "VVAsyncImageView.h"
 
@@ -9,7 +5,9 @@
 #import <SDWebImage/SDImageLoader.h>
 #import <SDWebImage/SDWebImageManager.h>
 
+
 @class SDWebImageTransition;
+@class VVImageStorage;
 @protocol SDWebImageIndicator;
 
 FOUNDATION_EXPORT const int64_t SDWebImageProgressUnitCountUnknown; /* 1LL */

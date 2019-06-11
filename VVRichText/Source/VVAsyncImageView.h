@@ -3,8 +3,6 @@
 #import <YYImage/YYAnimatedImageView.h>
 
 
-@class VVImageStorage;
-
 @interface VVAsyncImageView : YYAnimatedImageView
 
 /**
@@ -13,13 +11,5 @@
  *  需要用到时，通过这个identifier为key去reusePool中取
  */
 @property(nonatomic, copy) NSString *identifier;
-
-
-/**
- *  是否启动异步绘制
- *  YES时，会把对layer.conents，setFrame等赋值任务加入到VVTransactionGroup队列中
- *  然后通过观察主线程RunLoop的状态为 kCFRunLoopBeforeWaiting | kCFRunLoopExit 时才执行
- */
-@property(nonatomic, assign) BOOL displayAsynchronously;
 
 @end

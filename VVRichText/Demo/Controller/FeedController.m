@@ -264,9 +264,7 @@ const CGFloat kRefreshBoundary = 170.0f;
 
     FeedLayout *layout = self.dataSource[model.index];
     NSMutableArray *newCommentLists = [[NSMutableArray alloc] initWithArray:layout.statusModel.commentList];
-    NSDictionary *newComment = @{@"from": model.from,
-            @"to": model.to,
-            @"content": model.content};
+    NSDictionary *newComment = @{@"from": model.from, @"to": model.to,@"content": model.content};
     [newCommentLists addObject:newComment];
     StatusModel *statusModel = layout.statusModel;
     statusModel.commentList = newCommentLists;

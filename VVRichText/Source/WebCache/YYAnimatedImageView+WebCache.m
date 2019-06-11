@@ -1,7 +1,3 @@
-//
-// Created by Jiangmingz on 2019-06-07.
-// Copyright (c) 2019 Jiangmingz. All rights reserved.
-//
 
 #import "YYAnimatedImageView+WebCache.h"
 

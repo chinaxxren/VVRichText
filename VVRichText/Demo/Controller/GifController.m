@@ -19,20 +19,32 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
 
+
+    /*//1)
     NSString *bundlePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"EmoticonQQ.bundle"];
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
     bundlePath = [bundle pathForResource:@"001" ofType:@"gif"];
     VVImage *image = (VVImage *) [VVImage imageWithContentsOfFile:bundlePath];
+
     VVImageStorage *imageStorage = [[VVImageStorage alloc] init];
     imageStorage.contents = image;
-    imageStorage.frame = CGRectMake(0.0, 0.0, 32, 32);
+    imageStorage.frame = CGRectMake((200.0f - 32.0f) * 0.5f,(200.0f - 32.0f) * 0.5f, 32, 32);
+    imageStorage.localImageType = VVLocalImageTypeDrawInVVAsyncImageView;
+    imageStorage.contentMode = UIViewContentModeScaleAspectFill;
+     */
+
+    //2)
+    VVImage *image = (VVImage *) [VVImage imageNamed:@"football.gif"];
+    VVImageStorage *imageStorage = [[VVImageStorage alloc] init];
+    imageStorage.contents = image;
+    imageStorage.frame = CGRectMake((200.0f - 96.0f) * 0.5f, (200.0f - 64.0f) * 0.5f, 96, 64);
     imageStorage.localImageType = VVLocalImageTypeDrawInVVAsyncImageView;
     imageStorage.contentMode = UIViewContentModeScaleAspectFill;
 
     self.layout = [[VVLayout alloc] init];
     [self.layout addStorage:imageStorage];
 
-    self.displayView = [[VVAsyncDisplayView alloc] initWithFrame:CGRectMake((self.view.bounds.size.width - 100) * 0.5f, 200, 100, 100)];
+    self.displayView = [[VVAsyncDisplayView alloc] initWithFrame:CGRectMake((self.view.bounds.size.width - 200.0f) * 0.5f, (self.view.bounds.size.height - 200) * 0.5f, 200.0f, 200.0f)];
     self.displayView.layout = self.layout;
     [self.view addSubview:self.displayView];
 

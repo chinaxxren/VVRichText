@@ -1,10 +1,3 @@
-//
-//  TextViewCell.m
-//  VVAsyncDisplayViewDemo
-//
-//  Created by Jiangmingz on 2018/7/26.
-//  Copyright © 2018年 WayneInc. All rights reserved.
-//
 
 #import "TextViewCell.h"
 
