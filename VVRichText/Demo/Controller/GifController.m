@@ -4,6 +4,7 @@
 #import "VVLayout.h"
 #import "VVAsyncDisplayView.h"
 #import "VVImage.h"
+#import "VVTextParser.h"
 
 @interface GifController ()
 
@@ -31,10 +32,14 @@
     imageStorage.frame = CGRectMake((200.0f - 32.0f) * 0.5f,(200.0f - 32.0f) * 0.5f, 32, 32);
     imageStorage.localImageType = VVLocalImageTypeDrawInVVAsyncImageView;
     imageStorage.contentMode = UIViewContentModeScaleAspectFill;
+
+     self.layout = [[VVLayout alloc] init];
+    [self.layout addStorage:imageStorage];
      */
 
     //2)
-    VVImage *image = (VVImage *) [VVImage imageNamed:@"football.gif"];
+    /*
+     VVImage *image = (VVImage *) [VVImage imageNamed:@"football.gif"];
     VVImageStorage *imageStorage = [[VVImageStorage alloc] init];
     imageStorage.contents = image;
     imageStorage.frame = CGRectMake((200.0f - 96.0f) * 0.5f, (200.0f - 64.0f) * 0.5f, 96, 64);
@@ -43,6 +48,17 @@
 
     self.layout = [[VVLayout alloc] init];
     [self.layout addStorage:imageStorage];
+     */
+
+    VVTextStorage *textStorage = [VVTextStorage new];
+    textStorage.text = @"显示测试[001]显示测试[003]";
+    textStorage.font = [UIFont systemFontOfSize:14.0f];
+    textStorage.frame = CGRectMake(0.0f, 0.0f, 200.0f, CGFLOAT_MAX);
+    // 解析表情
+    [VVTextParser parseGifEmojiWithTextStorage:textStorage];
+
+    self.layout = [[VVLayout alloc] init];
+    [self.layout addStorage:textStorage];
 
     self.displayView = [[VVAsyncDisplayView alloc] initWithFrame:CGRectMake((self.view.bounds.size.width - 200.0f) * 0.5f, (self.view.bounds.size.height - 200) * 0.5f, 200.0f, 200.0f)];
     self.displayView.layout = self.layout;

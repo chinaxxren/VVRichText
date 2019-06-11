@@ -1,12 +1,13 @@
 
 #import "VVTextParser.h"
+#import "VVImage.h"
+#import "VVAsyncImageView.h"
 
-#define EmojiRegular @"\\[[a-zA-Z0-9\\u4e00-\\u9fa5]+\\]"
-#define AccountRegular @"@[\u4e00-\u9fa5a-zA-Z0-9_-]{2,30}"
-#define TopicRegular @"#[^#]+#"
-#define TELRegular @"1[3|4|5|7|8][0-9]\\d{8}"
-#define URLRegular @"[a-zA-z]+://[^\\s]*"
-
+#define EMOJI_REGULAR @"\\[[a-zA-Z0-9\\u4e00-\\u9fa5]+\\]"
+#define ACCOUNT_REGULAR @"@[\u4e00-\u9fa5a-zA-Z0-9_-]{2,30}"
+#define TOPIC_REGULAR @"#[^#]+#"
+#define TEL_REGULAR @"\\d{11}"
+#define URL_REGULAR @"[a-zA-z]+://[^\\s]*"
 
 static inline NSRegularExpression *EmojiRegularExpression();
 
@@ -18,10 +19,11 @@ static inline NSRegularExpression *TopicRegularExpression();
 
 static inline NSRegularExpression *TelRegularExpression();
 
+static inline NSBundle *MotionQQBundle();
 
 @implementation VVTextParser
 
-+ (void)parseEmojiWithTextStorage:(VVTextStorage *)textStorage {
++ (void)parseGeneralEmojiWithTextStorage:(VVTextStorage *)textStorage {
     NSString *text = textStorage.text;
     if (!text) {
         return;
@@ -34,13 +36,40 @@ static inline NSRegularExpression *TelRegularExpression();
                                   usingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
                                       NSTextCheckingResult *match = resultArray[idx];
                                       NSRange range = [match range];
-                                      NSString *content = [text substringWithRange:range];
+                                      NSString *content = [text substringWithRange:NSMakeRange(range.location + 1, range.length - 2)];
                                       if (textStorage.text.length >= range.location + range.length) {
-                                          [textStorage vv_replaceTextWithImage:[UIImage imageNamed:content]
+                                          [textStorage vv_replaceTextWithImage:[VVImage imageNamed:content]
                                                                    contentMode:UIViewContentModeScaleAspectFill
                                                                      imageSize:CGSizeMake(14, 14)
                                                                      alignment:VVTextAttachAlignmentTop
                                                                          range:range];
+                                      }
+                                  }];
+}
+
++ (void)parseGifEmojiWithTextStorage:(VVTextStorage *)textStorage {
+    NSString *text = textStorage.text;
+    if (!text) {
+        return;
+    }
+
+    NSArray *resultArray = [EmojiRegularExpression() matchesInString:text
+                                                             options:0
+                                                               range:NSMakeRange(0, text.length)];
+    [resultArray enumerateObjectsWithOptions:NSEnumerationReverse
+                                  usingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
+                                      NSTextCheckingResult *match = resultArray[idx];
+                                      NSRange range = [match range];
+                                      NSString *content = [text substringWithRange:NSMakeRange(range.location + 1, range.length - 2)];
+                                      if (textStorage.text.length >= range.location + range.length) {
+                                          NSString *motionPath = [MotionQQBundle() pathForResource:content ofType:@"gif"];
+                                          VVAsyncImageView *asyncImageView = [[VVAsyncImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
+                                          asyncImageView.image = [VVImage imageWithContentsOfFile:motionPath];
+                                          [textStorage vv_replaceTextWithView:asyncImageView
+                                                                  contentMode:UIViewContentModeScaleAspectFill
+                                                                         size:asyncImageView.frame.size
+                                                                    alignment:VVTextAttachAlignmentTop
+                                                                        range:range];
                                       }
                                   }];
 }
@@ -77,7 +106,7 @@ static inline NSRegularExpression *TelRegularExpression();
     if (!text) {
         return;
     }
-    
+
     NSArray *resultArray = [AccountRegularExpression() matchesInString:text
                                                                options:0
                                                                  range:NSMakeRange(0, text.length)];
@@ -101,7 +130,7 @@ static inline NSRegularExpression *TelRegularExpression();
     if (!text) {
         return;
     }
-    
+
     NSArray *resultArray = [TopicRegularExpression() matchesInString:text
                                                              options:0
                                                                range:NSMakeRange(0, text.length)];
@@ -125,7 +154,7 @@ static inline NSRegularExpression *TelRegularExpression();
     if (!text) {
         return;
     }
-    
+
     NSArray *resultArray = [TelRegularExpression() matchesInString:text
                                                            options:0
                                                              range:NSMakeRange(0, text.length)];
@@ -149,7 +178,7 @@ static inline NSRegularExpression *EmojiRegularExpression() {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _EmojiRegularExpression = [[NSRegularExpression alloc]
-                initWithPattern:EmojiRegular
+                initWithPattern:EMOJI_REGULAR
                         options:NSRegularExpressionAnchorsMatchLines
                           error:nil];
     });
@@ -161,7 +190,7 @@ static inline NSRegularExpression *URLRegularExpression() {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _URLRegularExpression = [[NSRegularExpression alloc]
-                initWithPattern:URLRegular
+                initWithPattern:URL_REGULAR
                         options:NSRegularExpressionAnchorsMatchLines
                           error:nil];
     });
@@ -173,7 +202,7 @@ static inline NSRegularExpression *AccountRegularExpression() {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _AccountRegularExpression = [[NSRegularExpression alloc]
-                initWithPattern:AccountRegular
+                initWithPattern:ACCOUNT_REGULAR
                         options:NSRegularExpressionAnchorsMatchLines
                           error:nil];
     });
@@ -185,7 +214,7 @@ static inline NSRegularExpression *TopicRegularExpression() {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _TopicRegularExpression = [[NSRegularExpression alloc]
-                initWithPattern:TopicRegular
+                initWithPattern:TOPIC_REGULAR
                         options:NSRegularExpressionCaseInsensitive
                           error:nil];
     });
@@ -197,10 +226,20 @@ static inline NSRegularExpression *TelRegularExpression() {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _TelRegularExpression = [[NSRegularExpression alloc]
-                initWithPattern:TELRegular
+                initWithPattern:TEL_REGULAR
                         options:NSRegularExpressionCaseInsensitive
                           error:nil];
     });
     return _TelRegularExpression;
+}
+
+static inline NSBundle *MotionQQBundle() {
+    static NSBundle *_Bundle = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSString *bundlePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"EmoticonQQ.bundle"];
+        _Bundle = [NSBundle bundleWithPath:bundlePath];
+    });
+    return _Bundle;
 }
 

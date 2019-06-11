@@ -76,7 +76,7 @@
             }
 
             //解析表情、主题、网址
-            [VVTextParser parseEmojiWithTextStorage:contentTextStorage];
+            [VVTextParser parseGeneralEmojiWithTextStorage:contentTextStorage];
             [VVTextParser parseTopicWithVVTextStorage:contentTextStorage
                                             linkColor:RGB(113, 129, 161, 1)
                                        highlightColor:RGB(0, 0, 0, 0.15)];
@@ -317,7 +317,7 @@
                         [VVTextParser parseTopicWithVVTextStorage:commentTextStorage
                                                         linkColor:RGB(113, 129, 161, 1)
                                                    highlightColor:RGB(0, 0, 0, 0.15)];
-                        [VVTextParser parseEmojiWithTextStorage:commentTextStorage];
+                        [VVTextParser parseGeneralEmojiWithTextStorage:commentTextStorage];
                         [commentTextStorage creatLayout];
                         [tmp addObject:commentTextStorage];
                         offsetY += commentTextStorage.height;
@@ -351,7 +351,7 @@
                         [VVTextParser parseTopicWithVVTextStorage:commentTextStorage
                                                         linkColor:RGB(113, 129, 161, 1)
                                                    highlightColor:RGB(0, 0, 0, 0.15)];
-                        [VVTextParser parseEmojiWithTextStorage:commentTextStorage];
+                        [VVTextParser parseGeneralEmojiWithTextStorage:commentTextStorage];
                         [commentTextStorage creatLayout];
                         [tmp addObject:commentTextStorage];
                         offsetY += commentTextStorage.height;
@@ -449,7 +449,7 @@
             CGFloat contentBottom = closeStorage.bottom + 10.0f;
 
             //解析表情、主题、网址
-            [VVTextParser parseEmojiWithTextStorage:contentTextStorage];
+            [VVTextParser parseGeneralEmojiWithTextStorage:contentTextStorage];
             [VVTextParser parseTopicWithVVTextStorage:contentTextStorage
                                             linkColor:RGB(113, 129, 161, 1)
                                        highlightColor:RGB(0, 0, 0, 0.15)];
@@ -700,7 +700,7 @@
                         [VVTextParser parseTopicWithVVTextStorage:commentTextStorage
                                                         linkColor:RGB(113, 129, 161, 1)
                                                    highlightColor:RGB(0, 0, 0, 0.15)];
-                        [VVTextParser parseEmojiWithTextStorage:commentTextStorage];
+                        [VVTextParser parseGeneralEmojiWithTextStorage:commentTextStorage];
                         [commentTextStorage creatLayout];
                         [tmp addObject:commentTextStorage];
                         offsetY += commentTextStorage.height;
@@ -735,7 +735,7 @@
                         [VVTextParser parseTopicWithVVTextStorage:commentTextStorage
                                                         linkColor:RGB(113, 129, 161, 1)
                                                    highlightColor:RGB(0, 0, 0, 0.15)];
-                        [VVTextParser parseEmojiWithTextStorage:commentTextStorage];
+                        [VVTextParser parseGeneralEmojiWithTextStorage:commentTextStorage];
                         [commentTextStorage creatLayout];
                         [tmp addObject:commentTextStorage];
                         offsetY += commentTextStorage.height;

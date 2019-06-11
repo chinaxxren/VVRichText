@@ -4,13 +4,19 @@
 
 @interface VVTextParser : NSObject
 
-
 /**
-*  解析表情替代为相应的图片
-*  格式：text：@“hello,world~![微笑]”  ----> @"hello，world~！（[UIImage imageNamed：@“[微笑]”]）"
+*  解析表情替代为相应的普通图片
+*  格式：text：@“hello,world~![微笑]”  ----> @"hello，world~！（[UIImage imageNamed:@“微笑”]）"
 *  @param textStorage 需要解析的VVTextStorage对象
 */
-+ (void)parseEmojiWithTextStorage:(VVTextStorage *)textStorage;
++ (void)parseGeneralEmojiWithTextStorage:(VVTextStorage *)textStorage;
+
+/**
+*  解析表情替代为相应的Gif图片
+*  格式：text：@“hello,world~![微笑]”  ----> @"hello，world~！（[UIImage imageNamed:@“微笑”]）"
+*  @param textStorage 需要解析的VVTextStorage对象
+*/
++ (void)parseGifEmojiWithTextStorage:(VVTextStorage *)textStorage;
 
 
 /**
