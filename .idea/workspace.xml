@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c56719a5-153c-494b-9d01-ccb5a7defed7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VVRichText.xcworkspace/xcuserdata/jiangmingz.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/VVRichText.xcworkspace/xcuserdata/jiangmingz.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVAsyncDisplayView.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="539">
-              <caret line="67" column="51" selection-start-line="67" selection-start-column="51" selection-end-line="67" selection-end-column="51" />
+            <state relative-caret-position="420">
+              <caret line="60" column="36" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -217,7 +217,7 @@
       <workItem from="1560085462696" duration="3235000" />
       <workItem from="1560089359746" duration="2859000" />
       <workItem from="1560133773810" duration="4308000" />
-      <workItem from="1560151125591" duration="16106000" />
+      <workItem from="1560151125591" duration="16316000" />
     </task>
     <task id="LOCAL-00001" summary="增加注释">
       <created>1560164132910</created>
@@ -230,10 +230,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53967000" />
+    <option name="totallyTimeSpent" value="54177000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="Designer" order="1" />
@@ -633,8 +634,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/VVRichText/Source/VVAsyncDisplayView.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="67" column="51" selection-start-line="67" selection-start-column="51" selection-end-line="67" selection-end-column="51" />
+        <state relative-caret-position="420">
+          <caret line="60" column="36" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
         </state>
       </provider>
     </entry>
