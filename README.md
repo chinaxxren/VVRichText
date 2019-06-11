@@ -1,12 +1,18 @@
-# VVRichText
-修改和优化 https://github.com/waynezxcv/Gallop 库
 
+# VVRichText 
 
-VVRichText is a powerful rich text framework that support Asynchronous display.It encapsulates CoreText's rich text functions and commonly used image processing capabilities.
-just need use VVTextStorage object instead of UILabel object and use VVImageStorage object instead of UIImageView object,VVRichText will make sure your app scroll smoothly
+## 关于 
 
+VVRichText 是一个富文本显示,编辑组件，支持异步文本渲染。
+可以在文本中插入本地图片，网络图片或UIView对象。
+支持WebP、GIF等格式
+支持添加单击和长按事件到文本。
+绘制文本框架，绘制空心字，设置文本垂直对齐属性等
+易于解析文本中的表达式，如http（s）链接，@user，＃theme＃，电话号码。
+快速设置图像角半径属性和模糊处理。
 
-Features
+## 感谢
 
-use VVRichText Building complex rich text interface application, can get a great experience.you can easy to insert local images,web images or UIView object in the text.easily add click and long press events to the text.easily draw text frame bouding, drawing the hollow words, sets the text vertical Alignment property, etceasy to parse the expression in the text, like http(s) link, @ user, # theme #, phone number.fast to sets the image corner radius property and blur processing, can be processed directly after the image to provide a cache, without repeated processing, improve performance.support GIF.
-
+https://github.com/ibireme/YYText
+https://github.com/SDWebImage/SDWebImageYYPlugin
+https://github.com/waynezxcv/Gallop
