@@ -143,11 +143,11 @@
                 continue;
             }
             NSDictionary *attributes = (id) CTRunGetAttributes(run);
-            VVTextHighlight *highlight = attributes[VVTextLinkAttributedName];
-            if (!highlight) {
+            VVTextHighlight *linkHighlight = attributes[VVTextLinkAttributedName];
+            if (!linkHighlight) {
                 continue;
             }
-            NSRange existLinkRange = highlight.range;
+            NSRange existLinkRange = linkHighlight.range;
             NSValue *rValue = [NSValue valueWithRange:existLinkRange];
             if (![existLinkRanges containsObject:rValue]) {
                 [existLinkRanges addObject:rValue];
@@ -175,7 +175,7 @@
             }
         }
     } else {
-        NSRange range = NSMakeRange(0, self.length);
+        range = NSMakeRange(0, self.length);
         [self setAttribute:VVTextLinkAttributedName value:highlight range:range];
         if (linkColor) {
             [self setAttribute:NSForegroundColorAttributeName value:linkColor range:range];

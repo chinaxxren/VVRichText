@@ -39,8 +39,8 @@
                               size:(CGSize)size
                        isCancelled:(VVAsyncDisplayIsCanclledBlock)isCancelled {
     if (!isCancelled()) {
-        CGContextMoveToPoint(context, 0.0f,size.height);
-        CGContextAddLineToPoint(context,size.width,size.height);
+        CGContextMoveToPoint(context, 0.0f, size.height);
+        CGContextAddLineToPoint(context, size.width, size.height);
         CGContextSetLineWidth(context, 0.2f);
         CGContextSetStrokeColorWithColor(context, RGB(220.0f, 220.0f, 220.0f, 1).CGColor);
         CGContextStrokePath(context);
@@ -53,9 +53,7 @@
 }
 
 //点击VVImageStorage
-- (void)vvAsyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView
-   didCilickedImageStorage:(VVImageStorage *)imageStorage
-                     touch:(UITouch *)touch {
+- (void)vvAsyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didCilickedImageStorage:(VVImageStorage *)imageStorage touch:(UITouch *)touch {
     NSInteger tag = imageStorage.tag;
     //tag 0~8 是图片，9是头像
     switch (tag) {
@@ -83,9 +81,7 @@
 }
 
 //点击VVTextStorage
-- (void)vvAsyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView
-    didCilickedTextStorage:(VVTextStorage *)textStorage
-                  linkdata:(id)data {
+- (void)vvAsyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didCilickedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
     //回复评论
     if ([data isKindOfClass:[CommentModel class]]) {
         if (self.clickedReCommentCallback) {
@@ -106,7 +102,7 @@
         }
             //其他
         else {
-            
+
         }
     }
 }
@@ -177,23 +173,21 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
+
     self.asyncDisplayView.frame = CGRectMake(0, 0, SCREEN_WIDTH, self.cellLayout.cellHeight);
 
     //主线程runloop空闲时执行
     VVTransaction *layerAsyncTransaction = self.layer.vv_asyncTransaction;
-    [layerAsyncTransaction
-            addAsyncOperationWithTarget:self
-                               selector:@selector(_layouSubViews)
-                                 object:nil
-                             completion:^(BOOL canceled) {
-                             }];
+    [layerAsyncTransaction addAsyncOperationWithTarget:self
+                                              selector:@selector(_layouSubViews)
+                                                object:nil
+                                            completion:^(BOOL canceled) {
+                                            }];
 }
 
 - (void)_layouSubViews {
     self.menuButton.frame = self.cellLayout.menuPosition;
-    self.menu.frame = CGRectMake(self.cellLayout.menuPosition.origin.x - 5.0f,
-            self.cellLayout.menuPosition.origin.y - 9.0f + 14.5f, 0.0f, 34.0f);
+    self.menu.frame = CGRectMake(self.cellLayout.menuPosition.origin.x - 5.0f, self.cellLayout.menuPosition.origin.y - 9.0f + 14.5f, 0.0f, 34.0f);
     self.line.frame = self.cellLayout.lineRect;
 }
 
