@@ -6,8 +6,10 @@ Pod::Spec.new do |spec|
   spec.homepage     = "https://github.com/chinaxxren/VVRichText"
   spec.license      = "MIT"
   spec.author       = { "chinaxxren" => "182421693@qq.com" }
-  spec.platform     = :ios, "8.0"
-  spec.source       = { :git => "https://github.com/chinaxxren/VVRichText", :tag => "#{spec.version}" }
+  spec.platform     = :ios, "9.0"
+  spec.source       = { :git => "https://github.com/chinaxxren/VVRichText.git", :tag => "#{spec.version}" }
   spec.source_files  = "VVRichText/Source", "VVRichText/Source/**/*.{h,m}"
-  spec.frameworks = "YYImage/WebP", "SDWebImage"
+  spec.frameworks  = "UIKit"
+  spec.dependency  "YYImage/WebP"
+  spec.dependency  "SDWebImage"
 end

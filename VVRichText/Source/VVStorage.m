@@ -20,7 +20,7 @@
 
 #pragma mark - Init
 
-- (id)initWithIdentifier:(NSString *)identifier {
+- (_Nonnull id)initWithIdentifier:(NSString *_Nullable)identifier {
     self = [super init];
     if (self) {
         self.identifier = identifier;

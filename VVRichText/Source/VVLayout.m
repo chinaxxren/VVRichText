@@ -54,7 +54,7 @@
     return self;
 }
 
-- (void)addStorage:(VVStorage *)storage {
+- (void)addStorage:(nullable VVStorage *)storage {
     if (!storage) {
         return;
     }
@@ -70,7 +70,7 @@
     [self.totalStorages addObject:storage];
 }
 
-- (void)addStorages:(NSArray <VVStorage *> *)storages {
+- (void)addStorages:(nullable NSArray <VVStorage *> *)storages {
     if (!storages) {
         return;
     }
@@ -83,7 +83,7 @@
 }
 
 
-- (void)removeStorage:(VVStorage *)storage {
+- (void)removeStorage:(nullable VVStorage *)storage {
     if (!storage) {
         return;
     }
@@ -101,7 +101,7 @@
     }
 }
 
-- (void)removeStorages:(NSArray <VVStorage *> *)storages {
+- (void)removeStorages:(nullable NSArray <VVStorage *> *)storages {
     if (!storages) {
         return;
     }
@@ -122,7 +122,7 @@
 
 #pragma mark - Getter
 
-- (NSMutableArray *)textStorages {
+- (nullable NSMutableArray *)textStorages {
     if (_textStorages) {
         return _textStorages;
     }
@@ -130,7 +130,7 @@
     return _textStorages;
 }
 
-- (NSMutableArray *)imageStorages {
+- (nullable NSMutableArray *)imageStorages {
     if (_imageStorages) {
         return _imageStorages;
     }
@@ -138,7 +138,7 @@
     return _imageStorages;
 }
 
-- (NSMutableArray *)totalStorages {
+- (nullable NSMutableArray *)totalStorages {
     if (_totalStorages) {
         return _totalStorages;
     }

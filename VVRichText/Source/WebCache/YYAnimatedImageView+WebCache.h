@@ -29,12 +29,12 @@ typedef void(^SDSetImageBlock)(UIImage *_Nullable image, NSData *_Nullable image
 
 - (void)sd_setImageWithURL:(nullable NSURL *)url
           placeholderImage:(nullable UIImage *)placeholder
-              imageStorage:(VVImageStorage *)imageStorage
+              imageStorage:(nullable VVImageStorage *)imageStorage
                  completed:(nullable SDExternalCompletionBlock)completedBlock;
 
 - (void)sd_internalSetImageWithURL:(nullable NSURL *)url
                   placeholderImage:(nullable UIImage *)placeholder
-                      imageStorage:(VVImageStorage *)imageStorage
+                      imageStorage:(nullable VVImageStorage *)imageStorage
                            options:(SDWebImageOptions)options
                            context:(nullable SDWebImageContext *)context
                      setImageBlock:(nullable SDSetImageBlock)setImageBlock

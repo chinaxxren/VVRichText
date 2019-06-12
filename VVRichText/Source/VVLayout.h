@@ -12,28 +12,28 @@
  *
  *  @param storage 一个VVStorage对象
  */
-- (void)addStorage:(VVStorage *)storage;
+- (void)addStorage:(nullable VVStorage *)storage;
 
 /**
  *  添加一个包含VVStorage对象的数组的所有元素到VVLayout
  *
  *  @param storages 一个包含VVStorage对象的数组
  */
-- (void)addStorages:(NSArray <VVStorage *> *)storages;
+- (void)addStorages:(nullable NSArray <VVStorage *> *)storages;
 
 /**
  *  移除一个VVStorage对象
  *
  *  @param storage 一个VVStorage对象
  */
-- (void)removeStorage:(VVStorage *)storage;
+- (void)removeStorage:(nullable VVStorage *)storage;
 
 /**
  *  移除一个包含VVStorage对象的数组的所有元素
  *
  *  @param storages 一个包含VVStorage对象的数组
  */
-- (void)removeStorages:(NSArray <VVStorage *> *)storages;
+- (void)removeStorages:(nullable NSArray <VVStorage *> *)storages;
 
 /**
  *  获取到一个建议的高度，主要用于UITabelViewCell的高度设定。
@@ -49,18 +49,18 @@
 /**
  *  获取包含VVTextStorage的数组
  */
-- (NSMutableArray<VVTextStorage *> *)textStorages;
+- (nullable NSMutableArray<VVTextStorage *> *)textStorages;
 
 /**
  *  获取包含VVImageStorage的数组
  */
-- (NSMutableArray<VVImageStorage *> *)imageStorages;
+- (nullable NSMutableArray<VVImageStorage *> *)imageStorages;
 
 
 /**
  *  获取包含所有的VVStorage的数组
  */
-- (NSMutableArray<VVStorage *> *)totalStorages;
+- (nullable NSMutableArray<VVStorage *> *)totalStorages;
 
 
 @end

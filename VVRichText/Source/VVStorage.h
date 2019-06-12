@@ -7,7 +7,7 @@
  */
 @interface VVStorage : NSObject
 
-@property(nullable, nonatomic, copy) NSString *identifier;//一个标示字符串，可以用于复用时取到属性相同的UIView对象
+@property(nonatomic, copy, nonnull) NSString *identifier;//一个标示字符串，可以用于复用时取到属性相同的UIView对象
 @property(nonatomic, assign) NSInteger tag;//一个标示符，跟UIView对象的tag属性作用一样
 @property(nonatomic, assign) BOOL clipsToBounds;//是否在边缘剪切，跟UIView对象的clipsToBounds属性作用一样
 @property(nonatomic, getter = isOpaque) BOOL opaque;//跟UIView对象的同名属性作用一样
