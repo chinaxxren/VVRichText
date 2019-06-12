@@ -34,7 +34,7 @@
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     UIBezierPath* beizerPath = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:5.0f];
-    [RGB(76, 81, 84, 0.95) setFill];
+    [VV_COLOR(76, 81, 84, 0.95) setFill];
     [beizerPath fill];
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextMoveToPoint(context, rect.size.width/2, 5.0f);

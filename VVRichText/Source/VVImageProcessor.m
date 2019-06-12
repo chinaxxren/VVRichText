@@ -26,7 +26,7 @@
     UIImage *processedImg = [img vv_processedImageWithContentMode:contentMode size:CGSizeMake(width, height)];
     if (blur) {
         processedImg = [processedImg vv_applyBlurWithRadius:20
-                                                  tintColor:RGB(0, 0, 0, 0.15f)
+                                                  tintColor:VV_COLOR(0, 0, 0, 0.15f)
                                       saturationDeltaFactor:1.4
                                                   maskImage:nil];
     }

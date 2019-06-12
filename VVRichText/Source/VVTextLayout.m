@@ -463,7 +463,7 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
 
 
     CGContextAddRect(context, CGRectOffset(textLayout.textBoundingRect, point.x, point.y));
-    CGContextSetFillColorWithColor(context, RGB(44.0f, 189.0f, 230.0f, 0.1f).CGColor);
+    CGContextSetFillColorWithColor(context, VV_COLOR(44.0f, 189.0f, 230.0f, 0.1f).CGColor);
     CGContextFillPath(context);
 
     [textLayout.linesArray enumerateObjectsUsingBlock:^(VVTextLine *_Nonnull line,
@@ -511,7 +511,7 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
             CGRect adjustRect = CGRectOffset(rect, point.x, point.y);
             UIBezierPath *beizerPath = [UIBezierPath bezierPathWithRoundedRect:adjustRect
                                                                   cornerRadius:2.0f];
-            [RGB(133.0f, 116.0f, 89.0f, 0.25f) setFill];
+            [VV_COLOR(133.0f, 116.0f, 89.0f, 0.25f) setFill];
             [beizerPath fill];
         }
     }];

@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "VVRichText"
-  spec.version      = "0.0.3"
+  spec.version      = "0.0.4"
   spec.summary      = "VVRichText 是一个支持异步文本渲染的富文本显示,编辑组件"
   spec.homepage     = "https://github.com/chinaxxren/VVRichText"
   spec.license      = "MIT"

@@ -298,11 +298,11 @@ const CGFloat kRefreshBoundary = 170.0f;
     NSDictionary *userInfo = [notifications userInfo];
     CGSize keyboardSize = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     CGFloat keyboardHeight = keyboardSize.height;
-    self.commentView.frame = CGRectMake(0.0f, SCREEN_HEIGHT - 44.0f - keyboardHeight, SCREEN_WIDTH, 44.0f);
+    self.commentView.frame = CGRectMake(0.0f, VV_SCREEN_HEIGHT - 44.0f - keyboardHeight, VV_SCREEN_WIDTH, 44.0f);
 }
 
 - (void)keyboardDidHidenNotifications:(NSNotification *)notifications {
-    self.commentView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 44.0f);
+    self.commentView.frame = CGRectMake(0, VV_SCREEN_HEIGHT, VV_SCREEN_WIDTH, 44.0f);
 }
 
 #pragma mark - Data
@@ -390,7 +390,7 @@ const CGFloat kRefreshBoundary = 170.0f;
 
     __weak typeof(self) wself = self;
     _commentView = [[CommentView alloc]
-            initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 54.0f)
+            initWithFrame:CGRectMake(0, VV_SCREEN_HEIGHT, VV_SCREEN_WIDTH, 54.0f)
                 sendBlock:^(NSString *content) {
                     __strong  typeof(wself) swself = wself;
                     swself.postComment.content = content;
@@ -403,7 +403,7 @@ const CGFloat kRefreshBoundary = 170.0f;
     if (_tableView) {
         return _tableView;
     }
-    _tableView = [[UITableView alloc] initWithFrame:SCREEN_BOUNDS style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -415,7 +415,7 @@ const CGFloat kRefreshBoundary = 170.0f;
     if (_tableViewHeader) {
         return _tableViewHeader;
     }
-    _tableViewHeader = [[TableViewHeader alloc] initWithFrame:CGRectMake(0.0f, 0.0f, SCREEN_WIDTH, 300.0f)];
+    _tableViewHeader = [[TableViewHeader alloc] initWithFrame:CGRectMake(0.0f, 0.0f, VV_SCREEN_WIDTH, 300.0f)];
     return _tableViewHeader;
 }
 

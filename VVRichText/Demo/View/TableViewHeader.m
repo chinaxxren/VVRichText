@@ -17,20 +17,20 @@
         self.backgroundColor = [UIColor whiteColor];
 
         VVAsyncDisplayView *displayView =
-                [[VVAsyncDisplayView alloc] initWithFrame:CGRectMake(0.0f, -100.0f, SCREEN_WIDTH, 350.0f)];
+                [[VVAsyncDisplayView alloc] initWithFrame:CGRectMake(0.0f, -100.0f, VV_SCREEN_WIDTH, 350.0f)];
         [self addSubview:displayView];
         [self addSubview:self.loadingView];
 
         VVLayout *layout = [[VVLayout alloc] init];
         VVImageStorage *bg = [[VVImageStorage alloc] init];
         bg.contents = [NSURL URLWithString:@"https://avatars0.githubusercontent.com/u/8408918?v=3&s=460"];
-        bg.frame = CGRectMake(0.0f, 0.0f, SCREEN_WIDTH, displayView.bounds.size.height);
+        bg.frame = CGRectMake(0.0f, 0.0f, VV_SCREEN_WIDTH, displayView.bounds.size.height);
         bg.clipsToBounds = YES;
         [layout addStorage:bg];
 
         VVImageStorage *avtar = [[VVImageStorage alloc] init];
         avtar.contents = [NSURL URLWithString:@"https://avatars0.githubusercontent.com/u/8408918?v=3&s=460"];
-        avtar.frame = CGRectMake(SCREEN_WIDTH - 90.0f, displayView.bounds.size.height - 40.0f, 80.0f, 80.0f);
+        avtar.frame = CGRectMake(VV_SCREEN_WIDTH - 90.0f, displayView.bounds.size.height - 40.0f, 80.0f, 80.0f);
         avtar.cornerRadius = 0.01f;
         avtar.cornerBorderColor = [UIColor whiteColor];
         avtar.cornerBorderWidth = 5.0f;

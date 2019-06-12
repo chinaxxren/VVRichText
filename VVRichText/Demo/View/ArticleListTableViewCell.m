@@ -29,7 +29,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.coverImageView.frame = CGRectMake(10, 10, 50, 50);
-    self.textLabel.frame = CGRectMake(70.0f, 10.0f, SCREEN_WIDTH - 80.0f, 50.0f);
+    self.textLabel.frame = CGRectMake(70.0f, 10.0f, VV_SCREEN_WIDTH - 80.0f, 50.0f);
 }
 
 - (void)setModel:(ArticleListModel *)model {

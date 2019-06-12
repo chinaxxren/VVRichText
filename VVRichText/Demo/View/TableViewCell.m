@@ -42,11 +42,11 @@
         CGContextMoveToPoint(context, 0.0f, size.height);
         CGContextAddLineToPoint(context, size.width, size.height);
         CGContextSetLineWidth(context, 0.2f);
-        CGContextSetStrokeColorWithColor(context, RGB(220.0f, 220.0f, 220.0f, 1).CGColor);
+        CGContextSetStrokeColorWithColor(context, VV_COLOR(220.0f, 220.0f, 220.0f, 1).CGColor);
         CGContextStrokePath(context);
         if ([self.cellLayout.statusModel.type isEqualToString:MESSAGE_TYPE_WEBSITE]) {
             CGContextAddRect(context, self.cellLayout.websitePosition);
-            CGContextSetFillColorWithColor(context, RGB(240, 240, 240, 1).CGColor);
+            CGContextSetFillColorWithColor(context, VV_COLOR(240, 240, 240, 1).CGColor);
             CGContextFillPath(context);
         }
     }
@@ -174,7 +174,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    self.asyncDisplayView.frame = CGRectMake(0, 0, SCREEN_WIDTH, self.cellLayout.cellHeight);
+    self.asyncDisplayView.frame = CGRectMake(0, 0, VV_SCREEN_WIDTH, self.cellLayout.cellHeight);
 
     //主线程runloop空闲时执行
     VVTransaction *layerAsyncTransaction = self.layer.vv_asyncTransaction;
@@ -262,7 +262,7 @@
         return _line;
     }
     _line = [[UIView alloc] initWithFrame:CGRectZero];
-    _line.backgroundColor = RGB(220.0f, 220.0f, 220.0f, 1.0f);
+    _line.backgroundColor = VV_COLOR(220.0f, 220.0f, 220.0f, 1.0f);
     return _line;
 }
 

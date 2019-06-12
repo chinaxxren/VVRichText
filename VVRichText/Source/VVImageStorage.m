@@ -111,7 +111,7 @@
 
         if (self.isBlur) {
             image = [image vv_applyBlurWithRadius:20
-                                        tintColor:RGB(0, 0, 0, 0.15f)
+                                        tintColor:VV_COLOR(0, 0, 0, 0.15f)
                             saturationDeltaFactor:1.4
                                         maskImage:nil];
         }

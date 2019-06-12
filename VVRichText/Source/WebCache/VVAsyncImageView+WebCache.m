@@ -57,7 +57,7 @@ static void _croppedImageBackingSizeAndDrawRectInBounds(CGSize sourceImageSize, 
 
     @autoreleasepool {
         if (imageStorage.isBlur) {
-            image = [image vv_applyBlurWithRadius:20.0f tintColor:RGB(0, 0, 0, 0.15f) saturationDeltaFactor:1.4 maskImage:nil];
+            image = [image vv_applyBlurWithRadius:20.0f tintColor:VV_COLOR(0, 0, 0, 0.15f) saturationDeltaFactor:1.4 maskImage:nil];
         }
 
         BOOL forceUpscaling = NO;
