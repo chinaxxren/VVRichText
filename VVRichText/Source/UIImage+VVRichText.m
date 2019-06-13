@@ -3,8 +3,7 @@
 #import <Accelerate/Accelerate.h>
 
 #import "VVCGRectTransform.h"
-
-#define kDegreesToRadian(x) (M_PI * (x) / 180.0)
+#import "VVRichTextDefine.h"
 
 @implementation UIImage (VVRichText)
 
@@ -21,7 +20,7 @@
             colorSpace,
             kCGImageAlphaPremultipliedFirst);
     CGRect contentModeRect = [VVCGRectTransform vv_CGRectFitWithContentMode:contentMode
-                                                                       rect:CGRectMake(0, 0, width, height)
+                                                                       rect:CGRectMake(0.0f, 0.0f, width, height)
                                                                        size:self.size];
     CGContextSaveGState(context);
     CGContextAddRect(context, contentModeRect);
@@ -39,7 +38,7 @@
 
 - (void)vv_drawInRect:(CGRect)rect contentMode:(UIViewContentMode)contentMode clipsToBounds:(BOOL)clips {
     CGRect drawRect = [VVCGRectTransform vv_CGRectFitWithContentMode:contentMode rect:rect size:self.size];
-    if (drawRect.size.width == 0 || drawRect.size.height == 0) return;
+    if (drawRect.size.width == 0.0f || drawRect.size.height == 0.0f) return;
     if (clips) {
         CGContextRef context = UIGraphicsGetCurrentContext();
         if (context) {
@@ -400,7 +399,7 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
 }
 
 - (UIImage *)vv_imageRotatedByDegrees:(CGFloat)degrees {
-    return [self vv_imageRotatedByRadians:kDegreesToRadian(degrees)];
+    return [self vv_imageRotatedByRadians:VV_DEGREES_TO_RADIAN(degrees)];
 }
 
 static CGRect swapWidthAndHeight(CGRect rect) {

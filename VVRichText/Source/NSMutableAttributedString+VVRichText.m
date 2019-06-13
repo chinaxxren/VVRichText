@@ -57,7 +57,7 @@
 - (void)setLineSpacing:(CGFloat)lineSpacing range:(NSRange)range {
     [self enumerateAttribute:NSParagraphStyleAttributeName
                      inRange:range
-                     options:kNilOptions
+                     options:NSAttributedStringEnumerationLongestEffectiveRangeNotRequired
                   usingBlock:^(NSParagraphStyle *value, NSRange subRange, BOOL *stop) {
                       if (value) {
                           NSMutableParagraphStyle *style = value.mutableCopy;
@@ -74,7 +74,7 @@
 - (void)setTextAlignment:(NSTextAlignment)textAlignment range:(NSRange)range {
     [self enumerateAttribute:NSParagraphStyleAttributeName
                      inRange:range
-                     options:kNilOptions
+                     options:NSAttributedStringEnumerationLongestEffectiveRangeNotRequired
                   usingBlock:^(NSParagraphStyle *value, NSRange subRange, BOOL *stop) {
                       if (value) {
                           NSMutableParagraphStyle *style = value.mutableCopy;
@@ -91,7 +91,7 @@
 - (void)setLineBreakMode:(NSLineBreakMode)lineBreakMode range:(NSRange)range {
     [self enumerateAttribute:NSParagraphStyleAttributeName
                      inRange:range
-                     options:kNilOptions
+                     options:NSAttributedStringEnumerationLongestEffectiveRangeNotRequired
                   usingBlock:^(NSParagraphStyle *value, NSRange subRange, BOOL *stop) {
                       if (value) {
                           NSMutableParagraphStyle *style = value.mutableCopy;

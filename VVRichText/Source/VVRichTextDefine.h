@@ -17,6 +17,10 @@
 #define VV_COLOR(R, G, B, A) [UIColor colorWithRed:R/255.0f green:G/255.0f blue:B/255.0f alpha:A]
 #endif
 
+#ifndef VV_DEGREES_TO_RADIAN
+#define VV_DEGREES_TO_RADIAN(x) (M_PI * (x) / 180.0)
+#endif
+
 /******************************************************************************/
 
 @class VVImageStorage;
