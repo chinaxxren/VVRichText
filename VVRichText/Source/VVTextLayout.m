@@ -559,7 +559,7 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
 - (void)_drawGlyphsInContext:(CGContextRef)context
                          run:(CTRunRef)run {
     CFDictionaryRef runAttrs = CTRunGetAttributes(run);
-    VVTextStroke *textStroke = CFDictionaryGetValue(runAttrs, VVTextStrokeAttributedName);
+    VVTextStroke *textStroke = (VVTextStroke *) CFDictionaryGetValue(runAttrs, [VVTextStrokeAttributedName UTF8String]);
     if (!textStroke) {
         return;
     }

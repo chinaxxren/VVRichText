@@ -30,7 +30,6 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.identifier = [[NSUUID UUID] UUIDString];
         [self _setup];
     }
 
@@ -102,27 +101,6 @@
 - (CGPoint)center {
     return CGPointMake(self.frame.origin.x + self.frame.size.width * 0.5f,
             self.frame.origin.y + self.frame.size.height * 0.5f);
-}
-
-- (BOOL)isEqual:(id)other {
-    if (other == self)
-        return YES;
-    if (!other || ![[other class] isEqual:[self class]])
-        return NO;
-
-    return [self isEqualToStorage:other];
-}
-
-- (BOOL)isEqualToStorage:(VVStorage *)storage {
-    if (self == storage)
-        return YES;
-    if (storage == nil)
-        return NO;
-    return !(self.identifier != storage.identifier && ![self.identifier isEqualToString:storage.identifier]);
-}
-
-- (NSUInteger)hash {
-    return [self.identifier hash];
 }
 
 @end

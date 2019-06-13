@@ -7,7 +7,6 @@
  *  对UIImage的扩展
  *
  */
-
 @interface UIImage (VVRichText)
 
 /**

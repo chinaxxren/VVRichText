@@ -1,13 +1,13 @@
 
 #import <UIKit/UIKit.h>
+#import "VVIdentifier.h"
 
 /**
  *  包含各种布局数据和其他数据的抽象模型，本身并不能直接拿来使用。
  *  它的子类VVTextStorage、VVImageStorage、VVVideoStorage可以分别用于存储文字、图片。
  */
-@interface VVStorage : NSObject
+@interface VVStorage : VVIdentifier
 
-@property(nonatomic, copy, nonnull) NSString *identifier;//一个标示字符串，可以用于复用时取到属性相同的UIView对象
 @property(nonatomic, assign) NSInteger tag;//一个标示符，跟UIView对象的tag属性作用一样
 @property(nonatomic, assign) BOOL clipsToBounds;//是否在边缘剪切，跟UIView对象的clipsToBounds属性作用一样
 @property(nonatomic, getter = isOpaque) BOOL opaque;//跟UIView对象的同名属性作用一样
@@ -47,11 +47,5 @@
  *  @return 一个VVStorage对象
  */
 - (_Nonnull id)initWithIdentifier:(NSString *_Nullable)identifier;
-
-- (BOOL)isEqual:(id)other;
-
-- (BOOL)isEqualToStorage:(VVStorage *)storage;
-
-- (NSUInteger)hash;
 
 @end

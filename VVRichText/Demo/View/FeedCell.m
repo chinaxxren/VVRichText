@@ -1,12 +1,11 @@
 
-#import "TableViewCell.h"
+#import "FeedCell.h"
 
 #import "VVImageStorage.h"
 #import "MenuView.h"
 
 
-@interface TableViewCell () <VVAsyncDisplayViewDelegate>
-
+@interface FeedCell () <VVAsyncDisplayViewDelegate>
 
 @property(nonatomic, strong) VVAsyncDisplayView *asyncDisplayView;
 @property(nonatomic, strong) UIButton *menuButton;
@@ -16,7 +15,7 @@
 
 @end
 
-@implementation TableViewCell
+@implementation FeedCell
 
 #pragma mark - Init
 
@@ -44,8 +43,8 @@
         CGContextSetLineWidth(context, 0.2f);
         CGContextSetStrokeColorWithColor(context, VV_COLOR(220.0f, 220.0f, 220.0f, 1).CGColor);
         CGContextStrokePath(context);
-        if ([self.cellLayout.statusModel.type isEqualToString:MESSAGE_TYPE_WEBSITE]) {
-            CGContextAddRect(context, self.cellLayout.websitePosition);
+        if ([self.feedLayout.statusModel.type isEqualToString:MESSAGE_TYPE_WEBSITE]) {
+            CGContextAddRect(context, self.feedLayout.websitePosition);
             CGContextSetFillColorWithColor(context, VV_COLOR(240, 240, 240, 1).CGColor);
             CGContextFillPath(context);
         }
@@ -158,13 +157,13 @@
 }
 
 //点赞
-- (void)didclickedLikeButton:(LikeButton *)likeButton {
+- (void)didClickedLikeButton:(LikeButton *)likeButton {
     __weak typeof(self) weakSelf = self;
     [likeButton likeButtonAnimationCompletion:^(BOOL isSelectd) {
         __strong typeof(weakSelf) sself = weakSelf;
         [sself.menu menuHide];
         if (sself.clickedLikeButtonCallback) {
-            sself.clickedLikeButtonCallback(sself, !sself.cellLayout.statusModel.isLike);
+            sself.clickedLikeButtonCallback(sself, !sself.feedLayout.statusModel.isLike);
         }
     }];
 }
@@ -174,43 +173,24 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    self.asyncDisplayView.frame = CGRectMake(0, 0, VV_SCREEN_WIDTH, self.cellLayout.cellHeight);
+    self.asyncDisplayView.frame = CGRectMake(0, 0, VV_SCREEN_WIDTH, self.feedLayout.cellHeight);
 
-    //主线程runloop空闲时执行
-    VVTransaction *layerAsyncTransaction = self.layer.vv_asyncTransaction;
-    [layerAsyncTransaction addAsyncOperationWithTarget:self
-                                              selector:@selector(_layouSubViews)
-                                                object:nil
-                                            completion:^(BOOL canceled) {
-                                            }];
+    self.menuButton.frame = self.feedLayout.menuPosition;
+    self.menu.frame = CGRectMake(self.feedLayout.menuPosition.origin.x - 5.0f, self.feedLayout.menuPosition.origin.y - 9.0f + 14.5f, 0.0f, 34.0f);
+    self.line.frame = self.feedLayout.lineRect;
 }
 
-- (void)_layouSubViews {
-    self.menuButton.frame = self.cellLayout.menuPosition;
-    self.menu.frame = CGRectMake(self.cellLayout.menuPosition.origin.x - 5.0f, self.cellLayout.menuPosition.origin.y - 9.0f + 14.5f, 0.0f, 34.0f);
-    self.line.frame = self.cellLayout.lineRect;
-}
-
-- (void)setCellLayout:(FeedLayout *)cellLayout {
+- (void)setFeedLayout:(FeedLayout *)feedLayout {
 
     [self.menu menuHide];
 
-    if (_cellLayout != cellLayout) {
-        _cellLayout = cellLayout;
-        self.asyncDisplayView.layout = self.cellLayout;
-
-        //主线程runloop空闲时执行
-        VVTransaction *layerAsyncTransaction = self.layer.vv_asyncTransaction;
-        [layerAsyncTransaction addAsyncOperationWithTarget:self
-                                                  selector:@selector(_setCellLayout)
-                                                    object:nil
-                                                completion:^(BOOL canceled) {
-                                                }];
+    if (_feedLayout && [feedLayout isEqual:_feedLayout]) {
+        return;
     }
-}
 
-- (void)_setCellLayout {
-    self.menu.statusModel = self.cellLayout.statusModel;
+    _feedLayout = feedLayout;
+    self.asyncDisplayView.layout = self.feedLayout;
+    self.menu.statusModel = self.feedLayout.statusModel;
 }
 
 - (void)setDisplaysAsynchronously:(BOOL)displaysAsynchronously {
@@ -238,8 +218,7 @@
     _menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_menuButton setImage:[UIImage imageNamed:@"[menu]"] forState:UIControlStateNormal];
     _menuButton.imageEdgeInsets = UIEdgeInsetsMake(14.5f, 12.0f, 14.5f, 12.0f);
-    [_menuButton addTarget:self action:@selector(didClickedMenuButton)
-          forControlEvents:UIControlEventTouchUpInside];
+    [_menuButton addTarget:self action:@selector(didClickedMenuButton) forControlEvents:UIControlEventTouchUpInside];
     return _menuButton;
 }
 
@@ -252,8 +231,7 @@
     _menu.opaque = YES;
     [_menu.commentButton addTarget:self action:@selector(didClickedCommentButton)
                   forControlEvents:UIControlEventTouchUpInside];
-    [_menu.likeButton addTarget:self action:@selector(didclickedLikeButton:)
-               forControlEvents:UIControlEventTouchUpInside];
+    [_menu.likeButton addTarget:self action:@selector(didClickedLikeButton:) forControlEvents:UIControlEventTouchUpInside];
     return _menu;
 }
 

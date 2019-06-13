@@ -23,7 +23,7 @@ static CGFloat gifSize = 30;
     self.title = @"本地加载多个Gif使用示例";
     [self.view addSubview:self.tableView];
 
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Test"
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Reload"
                                                                               style:UIBarButtonItemStylePlain
                                                                              target:self
                                                                              action:@selector(test)];
@@ -46,14 +46,7 @@ static CGFloat gifSize = 30;
 }
 
 - (void)test {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Test"
-                                                                             message:@"当 present 出 UIAlertController时, 界面上显示的图片全部不显示了"
-                                                                      preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-
-    }];
-    [alertController addAction:alertAction];
-    [self presentViewController:alertController animated:YES completion:NULL];
+    [self.tableView reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

@@ -14,24 +14,6 @@
 
 @implementation VVLayout
 
-#pragma mark - NSCoding
-
-- (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:self.textStorages forKey:@"textStorages"];
-    [aCoder encodeObject:self.imageStorages forKey:@"imageStorages"];
-    [aCoder encodeObject:self.totalStorages forKey:@"totalStorages"];
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super init];
-    if (self) {
-        self.textStorages = [aDecoder decodeObjectForKey:@"textStorages"];
-        self.imageStorages = [aDecoder decodeObjectForKey:@"imageStorages"];
-        self.totalStorages = [aDecoder decodeObjectForKey:@"totalStorages"];
-    }
-    return self;
-}
-
 - (void)addStorage:(nullable VVStorage *)storage {
     if (!storage) {
         return;

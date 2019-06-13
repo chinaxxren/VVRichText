@@ -65,11 +65,10 @@
 
 @end
 
-
 /**
  *  VVRichText的布局模型。其中包含了VVStorage及其子类的对象。
  */
-@interface VVLayout : NSObject <VVLayoutProtocol, NSCoding>
+@interface VVLayout : VVIdentifier <VVLayoutProtocol>
 
 - (BOOL)isEqual:(nullable id)other;
 

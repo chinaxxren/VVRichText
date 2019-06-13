@@ -11,7 +11,6 @@ NSString *const VVTextBackgroundColorAttributedName = @"VVTextBackgroundColorAtt
 NSString *const VVTextStrokeAttributedName = @"VVTextStrokeAttributedName";
 NSString *const VVTextBoundingStrokeAttributedName = @"VVTextBoundingStrokeAttributedName";
 
-
 @implementation VVTextAttachment
 
 + (id)vv_textAttachmentWithContent:(id)content {
@@ -21,7 +20,6 @@ NSString *const VVTextBoundingStrokeAttributedName = @"VVTextBoundingStrokeAttri
     attachment.contentEdgeInsets = UIEdgeInsetsZero;
     return attachment;
 }
-
 
 - (id)init {
     self = [super init];

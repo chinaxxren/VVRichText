@@ -32,7 +32,6 @@
 @property(nonatomic, copy) NSArray<NSValue *> *attachmentRects;
 @property(nonatomic, assign) CGFloat firstGlyphPosition;
 
-
 @end
 
 

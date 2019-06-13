@@ -16,11 +16,9 @@
 
 - (void)callAndReleaseCompletionBlock:(BOOL)canceled;
 
-
 @end
 
 @implementation VVAsyncDisplayTransactionOperation
-
 
 - (id)initWithCompletion:(VVAsyncTransactionOperationCompletionBlock)completion {
     self = [super init];
