@@ -71,5 +71,11 @@
  */
 @interface VVLayout : NSObject <VVLayoutProtocol, NSCoding>
 
+- (BOOL)isEqual:(nullable id)other;
+
+- (BOOL)isEqualToLayout:(nullable VVLayout *)layout;
+
+- (NSUInteger)hash;
+
 
 @end

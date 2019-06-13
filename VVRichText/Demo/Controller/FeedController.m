@@ -324,7 +324,7 @@ const CGFloat kRefreshBoundary = 170.0f;
 - (void)fakeDownload {
     if (self.needRefresh) {
         [self.dataSource removeAllObjects];
-        for (NSInteger i = 0; i < 1; i++) {//让数据更多
+        for (NSInteger i = 0; i < 100; i++) {//让数据更多
             for (NSInteger i = 0; i < self.feedDatas.count; i++) {
                 VVLayout *layout = [self layoutWithStatusModel:[[StatusModel alloc] initWithDict:self.feedDatas[i]] index:i];
                 [self.dataSource addObject:layout];

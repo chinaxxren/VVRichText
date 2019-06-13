@@ -48,4 +48,10 @@
  */
 - (_Nonnull id)initWithIdentifier:(NSString *_Nullable)identifier;
 
+- (BOOL)isEqual:(id)other;
+
+- (BOOL)isEqualToStorage:(VVStorage *)storage;
+
+- (NSUInteger)hash;
+
 @end

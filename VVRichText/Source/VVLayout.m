@@ -14,28 +14,6 @@
 
 @implementation VVLayout
 
-
-#pragma mark - Override Hash & isEqual
-
-- (BOOL)isEqual:(id)object {
-    if (self == object) {
-        return YES;
-    }
-
-    if (!object || ![object isKindOfClass:[VVLayout class]]) {
-        return NO;
-    }
-    VVLayout *layout = (VVLayout *) object;
-    return ([layout.textStorages isEqual:self.textStorages] && [layout.imageStorages isEqual:self.imageStorages]);
-}
-
-- (NSUInteger)hash {
-    long v1 = (long) ((__bridge void *) self.textStorages);
-    long v2 = (long) ((__bridge void *) self.imageStorages);
-    return v1 ^ v2;
-}
-
-
 #pragma mark - NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
@@ -144,6 +122,31 @@
     }
     _totalStorages = [NSMutableArray new];
     return _totalStorages;
+}
+
+- (BOOL)isEqual:(nullable id)other {
+    if (other == self)
+        return YES;
+    if (!other || ![[other class] isEqual:[self class]])
+        return NO;
+
+    return [self isEqualToLayout:other];
+}
+
+- (BOOL)isEqualToLayout:(nullable VVLayout *)layout {
+    if (self == layout)
+        return YES;
+    if (layout == nil)
+        return NO;
+    if (self.textStorages != layout.textStorages && ![self.textStorages isEqualToArray:layout.textStorages])
+        return NO;
+    return !(self.imageStorages != layout.imageStorages && ![self.imageStorages isEqualToArray:layout.imageStorages]);
+}
+
+- (NSUInteger)hash {
+    NSUInteger hash = [self.textStorages hash];
+    hash = hash * 31u + [self.imageStorages hash];
+    return hash;
 }
 
 
