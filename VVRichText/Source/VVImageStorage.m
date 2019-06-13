@@ -67,9 +67,9 @@
 
 #pragma mark - Methods
 
-- (void)stretchableImageWithLeftCapWidth:(CGFloat)leftCapWidth topCapHeight:(NSInteger)topCapHeight {
+- (void)vv_stretchableImageWithLeftCapWidth:(CGFloat)leftCapWidth topCapHeight:(NSInteger)topCapHeight {
     if ([self.contents isKindOfClass:[UIImage class]] && self.localImageType == VVLocalImageDrawInVVAsyncDisplayView) {
-        self.contents = [(UIImage *) self.contents stretchableImageWithLeftCapWidth:leftCapWidth topCapHeight:topCapHeight];
+        self.contents = [(UIImage *) self.contents resizableImageWithCapInsets:UIEdgeInsetsMake(topCapHeight, leftCapWidth, 0.0f, 0.0f) resizingMode:UIImageResizingModeStretch];
     }
 }
 

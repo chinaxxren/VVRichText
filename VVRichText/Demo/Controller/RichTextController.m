@@ -115,7 +115,7 @@
 }
 
 //给文字添加点击事件后，若触发事件，会在这个代理方法中收到回调
-- (void)vvAsyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didCilickedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
+- (void)vv_asyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didCilickedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
     NSLog(@"点击:%@", data);
     if ([data isKindOfClass:[NSString class]]) {
 
@@ -123,7 +123,7 @@
 }
 
 //给文字添加长按事件后，触发后，会在这个代理方法中收到回调
-- (void)vvAsyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didLongpressedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
+- (void)vv_asyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didLongpressedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
     [self becomeFirstResponder];
     UIMenuItem *copyLink = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copyText)];
     [[UIMenuController sharedMenuController] setMenuItems:@[copyLink]];
@@ -140,7 +140,7 @@
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = self.preCopyText;
     [self resignFirstResponder];
-    [self.asyncView removeHighlightIfNeed];
+    [self.asyncView vv_removeHighlightIfNeed];
 
 }
 

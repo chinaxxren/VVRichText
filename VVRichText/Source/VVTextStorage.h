@@ -186,6 +186,10 @@ __deprecated_msg("Please use 'vv_addLinkForWholeTextStorageWithData:highLightCol
  */
 - (void)vv_appendTextStorage:(VVTextStorage *)aTextStorage;
 
-- (void)creatLayout;
+
+/**
+ *  建立布局
+ */
+- (void)vv_Layout;
 
 @end

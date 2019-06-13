@@ -22,7 +22,7 @@
  *  @param textStorage      点击的那个VVTextStorage对象
  *  @param data             添加点击链接时所附带的信息。
  */
-- (void)vvAsyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didCilickedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data;
+- (void)vv_asyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didCilickedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data;
 
 /**
  *  通过VVTextStorage添加的文字长按事件，长按时可以在这个代理方法里收到回调。
@@ -31,7 +31,7 @@
  *  @param textStorage      点击的那个VVTextStorage对象
  *  @param data             添加点击链接时所附带的信息。
  */
-- (void)vvAsyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didLongpressedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data;
+- (void)vv_asyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didLongpressedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data;
 
 
 /**
@@ -41,7 +41,7 @@
  *  @param imageStorage     点击的那个VVImageStorage对象
  *  @param touch            点击事件的UITouch对象
  */
-- (void)vvAsyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didCilickedImageStorage:(VVImageStorage *)imageStorage touch:(UITouch *)touch;
+- (void)vv_asyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didCilickedImageStorage:(VVImageStorage *)imageStorage touch:(UITouch *)touch;
 
 /**
  *  可以在这个代理方法里完成额外的绘制任务，相当于UIView的“drawRect:”方法。但是在这里绘制任务的都是在子线程完成的。
@@ -50,7 +50,7 @@
  *  @param size        绘制空间的大小，需要在这个size的范围内绘制
  *  @param isCancelled 是否取消
  */
-- (void)extraAsyncDisplayIncontext:(CGContextRef)context size:(CGSize)size isCancelled:(VVAsyncDisplayIsCanclledBlock)isCancelled;
+- (void)vv_extraAsyncDisplayIncontext:(CGContextRef)context size:(CGSize)size isCancelled:(VVAsyncDisplayIsCanclledBlock)isCancelled;
 
 @end
 
@@ -75,6 +75,6 @@ typedef void(^VVAsyncDisplayViewAutoLayoutCallback)(VVImageStorage *imageStorage
  *  移除高亮显示
  *
  */
-- (void)removeHighlightIfNeed;
+- (void)vv_removeHighlightIfNeed;
 
 @end

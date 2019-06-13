@@ -54,7 +54,7 @@
 
 #pragma mark - ParagraphStyle
 
-- (void)setLineSpacing:(CGFloat)lineSpacing range:(NSRange)range {
+- (void)vv_setLineSpacing:(CGFloat)lineSpacing range:(NSRange)range {
     [self enumerateAttribute:NSParagraphStyleAttributeName
                      inRange:range
                      options:NSAttributedStringEnumerationLongestEffectiveRangeNotRequired
@@ -71,7 +71,7 @@
                   }];
 }
 
-- (void)setTextAlignment:(NSTextAlignment)textAlignment range:(NSRange)range {
+- (void)vv_setTextAlignment:(NSTextAlignment)textAlignment range:(NSRange)range {
     [self enumerateAttribute:NSParagraphStyleAttributeName
                      inRange:range
                      options:NSAttributedStringEnumerationLongestEffectiveRangeNotRequired
@@ -88,7 +88,7 @@
                   }];
 }
 
-- (void)setLineBreakMode:(NSLineBreakMode)lineBreakMode range:(NSRange)range {
+- (void)vv_setLineBreakMode:(NSLineBreakMode)lineBreakMode range:(NSRange)range {
     [self enumerateAttribute:NSParagraphStyleAttributeName
                      inRange:range
                      options:NSAttributedStringEnumerationLongestEffectiveRangeNotRequired
@@ -112,7 +112,7 @@
 
 #pragma mark - Link & Attachment
 
-- (void)addLinkForWholeTextWithData:(id)data linkColor:(UIColor *)linkColor highLightColor:(UIColor *)highLightColor {
+- (void)vv_addLinkForWholeTextWithData:(id)data linkColor:(UIColor *)linkColor highLightColor:(UIColor *)highLightColor {
     VVTextHighlight *highlight = [[VVTextHighlight alloc] init];
     highlight.hightlightColor = highLightColor;
     highlight.linkColor = linkColor;
@@ -186,7 +186,7 @@
     }
 }
 
-- (void)addLongPressActionWithData:(id)data highLightColor:(UIColor *)highLightColor {
+- (void)vv_addLongPressActionWithData:(id)data highLightColor:(UIColor *)highLightColor {
     VVTextHighlight *highlight = [[VVTextHighlight alloc] init];
     highlight.hightlightColor = highLightColor;
     highlight.content = data;
@@ -195,7 +195,7 @@
     [self setAttribute:VVTextLongPressAttributedName value:highlight range:NSMakeRange(0, self.length)];
 }
 
-- (void)addLinkWithData:(id)data range:(NSRange)range linkColor:(UIColor *)linkColor highLightColor:(UIColor *)highLightColor {
+- (void)vv_addLinkWithData:(id)data range:(NSRange)range linkColor:(UIColor *)linkColor highLightColor:(UIColor *)highLightColor {
     VVTextHighlight *highlight = [[VVTextHighlight alloc] init];
     highlight.hightlightColor = highLightColor;
     highlight.linkColor = linkColor;

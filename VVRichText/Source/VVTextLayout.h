@@ -61,17 +61,17 @@
  *  @param isCancelld     是否取消绘制
  */
 
-- (void)drawIncontext:(CGContextRef)context
-                 size:(CGSize)size
-                point:(CGPoint)point
-        containerView:(UIView *)containerView
-       containerLayer:(CALayer *)containerLayer
-          isCancelled:(VVAsyncDisplayIsCanclledBlock)isCancelld;
+- (void)vv_drawIncontext:(CGContextRef)context
+                    size:(CGSize)size
+                   point:(CGPoint)point
+           containerView:(UIView *)containerView
+          containerLayer:(CALayer *)containerLayer
+             isCancelled:(VVAsyncDisplayIsCanclledBlock)isCancelld;
 
 
 /**
  *  将文本附件从UIView或CALayer上移除，在即将开始绘制时调用
  */
-- (void)removeAttachmentFromSuperViewOrLayer;
+- (void)vv_removeAttachmentFromSuperViewOrLayer;
 
 @end

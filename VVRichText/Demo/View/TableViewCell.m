@@ -35,9 +35,9 @@
 #pragma mark - VVAsyncDisplayViewDelegate
 
 //额外的绘制
-- (void)extraAsyncDisplayIncontext:(CGContextRef)context
-                              size:(CGSize)size
-                       isCancelled:(VVAsyncDisplayIsCanclledBlock)isCancelled {
+- (void)vv_extraAsyncDisplayIncontext:(CGContextRef)context
+                                 size:(CGSize)size
+                          isCancelled:(VVAsyncDisplayIsCanclledBlock)isCancelled {
     if (!isCancelled()) {
         CGContextMoveToPoint(context, 0.0f, size.height);
         CGContextAddLineToPoint(context, size.width, size.height);
@@ -53,7 +53,7 @@
 }
 
 //点击VVImageStorage
-- (void)vvAsyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didCilickedImageStorage:(VVImageStorage *)imageStorage touch:(UITouch *)touch {
+- (void)vv_asyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didCilickedImageStorage:(VVImageStorage *)imageStorage touch:(UITouch *)touch {
     NSInteger tag = imageStorage.tag;
     //tag 0~8 是图片，9是头像
     switch (tag) {
@@ -81,7 +81,7 @@
 }
 
 //点击VVTextStorage
-- (void)vvAsyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didCilickedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
+- (void)vv_asyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didCilickedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
     //回复评论
     if ([data isKindOfClass:[CommentModel class]]) {
         if (self.clickedReCommentCallback) {
@@ -109,7 +109,7 @@
 
 
 //长按内容文字
-- (void)vvAsyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didLongpressedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
+- (void)vv_asyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didLongpressedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
     [self becomeFirstResponder];
     UIMenuItem *copyLink = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copyText)];
     [[UIMenuController sharedMenuController] setMenuItems:@[copyLink]];
@@ -127,7 +127,7 @@
     pasteboard.string = self.preCopyText;
 
     [self resignFirstResponder];
-    [self.asyncDisplayView removeHighlightIfNeed];
+    [self.asyncDisplayView vv_removeHighlightIfNeed];
 
 }
 

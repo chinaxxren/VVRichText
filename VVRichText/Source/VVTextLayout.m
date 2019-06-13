@@ -345,12 +345,12 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
 
 #pragma mark - Draw & Remove
 
-- (void)drawIncontext:(CGContextRef)context
-                 size:(CGSize)size
-                point:(CGPoint)point
-        containerView:(UIView *)containerView
-       containerLayer:(CALayer *)containerLayer
-          isCancelled:(VVAsyncDisplayIsCanclledBlock)isCancelld {
+- (void)vv_drawIncontext:(CGContextRef)context
+                    size:(CGSize)size
+                   point:(CGPoint)point
+           containerView:(UIView *)containerView
+          containerLayer:(CALayer *)containerLayer
+             isCancelled:(VVAsyncDisplayIsCanclledBlock)isCancelld {
 
     if (self.isNeedTextBackgroundColorDraw) {
         [self _drawTextBackgroundColorInContext:context
@@ -681,7 +681,7 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
     }
 }
 
-- (void)removeAttachmentFromSuperViewOrLayer {
+- (void)vv_removeAttachmentFromSuperViewOrLayer {
     for (VVTextAttachment *attachment in self.attachments) {
         @autoreleasepool {
             if ([attachment.content isKindOfClass:[UIView class]]) {

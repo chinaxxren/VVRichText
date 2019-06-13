@@ -79,7 +79,7 @@
  *  @param lineSpacing 行间距
  *  @param range       范围
  */
-- (void)setLineSpacing:(CGFloat)lineSpacing range:(NSRange)range;
+- (void)vv_setLineSpacing:(CGFloat)lineSpacing range:(NSRange)range;
 
 /**
  *  设置文本水平对齐方式
@@ -87,7 +87,7 @@
  *  @param textAlignment 文本对齐方式
  *  @param range         范围
  */
-- (void)setTextAlignment:(NSTextAlignment)textAlignment range:(NSRange)range;
+- (void)vv_setTextAlignment:(NSTextAlignment)textAlignment range:(NSRange)range;
 
 /**
  *  设置文本换行方式
@@ -95,7 +95,7 @@
  *  @param lineBreakMode 换行方式
  *  @param range         范围
  */
-- (void)setLineBreakMode:(NSLineBreakMode)lineBreakMode range:(NSRange)range;
+- (void)vv_setLineBreakMode:(NSLineBreakMode)lineBreakMode range:(NSRange)range;
 
 
 #pragma mark - Link & Attachment
@@ -108,10 +108,10 @@
  *  @param linkColor      链接颜色
  *  @param highLightColor 链接点击时的高亮颜色
  */
-- (void)addLinkWithData:(id)data
-                  range:(NSRange)range
-              linkColor:(UIColor *)linkColor
-         highLightColor:(UIColor *)highLightColor;
+- (void)vv_addLinkWithData:(id)data
+                     range:(NSRange)range
+                 linkColor:(UIColor *)linkColor
+            highLightColor:(UIColor *)highLightColor;
 
 /**
  *  为整个文本添加一个点击链接事件
@@ -120,9 +120,9 @@
  *  @param linkColor      链接颜色
  *  @param highLightColor 链接点击时的高亮颜色
  */
-- (void)addLinkForWholeTextWithData:(id)data
-                          linkColor:(UIColor *)linkColor
-                     highLightColor:(UIColor *)highLightColor;
+- (void)vv_addLinkForWholeTextWithData:(id)data
+                             linkColor:(UIColor *)linkColor
+                        highLightColor:(UIColor *)highLightColor;
 
 
 /**
@@ -131,8 +131,8 @@
  *  @param data           链接包含的数据
  *  @param highLightColor 链接点击时的高亮颜色
  */
-- (void)addLongPressActionWithData:(id)data
-                    highLightColor:(UIColor *)highLightColor;
+- (void)vv_addLongPressActionWithData:(id)data
+                       highLightColor:(UIColor *)highLightColor;
 
 /**
  *

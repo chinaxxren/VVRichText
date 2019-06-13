@@ -210,7 +210,7 @@
     transaction.willDisplayBlock = ^(CALayer *layer) {
         //先移除之前的附件Views
         for (VVTextStorage *textStorage in self.layout.textStorages) {
-            [textStorage.textLayout removeAttachmentFromSuperViewOrLayer];
+            [textStorage.textLayout vv_removeAttachmentFromSuperViewOrLayer];
         }
     };
 
@@ -224,7 +224,7 @@
         if (!finished) {
             // 先移除之前的附件Views
             for (VVTextStorage *textStorage in self.layout.textStorages) {
-                [textStorage.textLayout removeAttachmentFromSuperViewOrLayer];
+                [textStorage.textLayout vv_removeAttachmentFromSuperViewOrLayer];
             }
         }
     };
@@ -233,13 +233,13 @@
 }
 
 - (void)_drawStoragesInContext:(CGContextRef)context inCancelled:(VVAsyncDisplayIsCanclledBlock)isCancelledBlock layer:(CALayer *)layer size:(CGSize)size {
-    if ([self.delegate respondsToSelector:@selector(extraAsyncDisplayIncontext:size:isCancelled:)]) {
+    if ([self.delegate respondsToSelector:@selector(vv_extraAsyncDisplayIncontext:size:isCancelled:)]) {
         if (isCancelledBlock()) {
             return;
         }
 
         // 这个代理方法调用需要用户额外绘制的内容
-        [self.delegate extraAsyncDisplayIncontext:context size:size isCancelled:isCancelledBlock];
+        [self.delegate vv_extraAsyncDisplayIncontext:context size:size isCancelled:isCancelledBlock];
     }
 
     // 直接绘制在VVAsyncDisplayView上
@@ -253,12 +253,12 @@
 
     // 绘制文字内容
     for (VVTextStorage *textStorage in self.layout.textStorages) {
-        [textStorage.textLayout drawIncontext:context
-                                         size:CGSizeZero
-                                        point:textStorage.frame.origin
-                                containerView:self
-                               containerLayer:layer
-                                  isCancelled:isCancelledBlock];
+        [textStorage.textLayout vv_drawIncontext:context
+                                            size:CGSizeZero
+                                           point:textStorage.frame.origin
+                                   containerView:self
+                                  containerLayer:layer
+                                     isCancelled:isCancelledBlock];
     }
 
     //绘制高亮内容
@@ -349,9 +349,9 @@
     for (VVImageStorage *imageStorage in self.layout.imageStorages) {
         if (CGRectContainsPoint(imageStorage.frame, touchPoint)) {
             if (self.delegate &&
-                    [self.delegate respondsToSelector:@selector(vvAsyncDisplayView:didCilickedImageStorage:touch:)] &&
+                    [self.delegate respondsToSelector:@selector(vv_asyncDisplayView:didCilickedImageStorage:touch:)] &&
                     [self.delegate conformsToProtocol:@protocol(VVAsyncDisplayViewDelegate)]) {
-                [self.delegate vvAsyncDisplayView:self didCilickedImageStorage:imageStorage touch:touch];
+                [self.delegate vv_asyncDisplayView:self didCilickedImageStorage:imageStorage touch:touch];
             }
             found = YES;
             break;
@@ -367,9 +367,9 @@
         VVTextHighlight *hightlight = [self _searchTextHighlightWithType:NO textStorage:textStorage touchPoint:touchPoint];
         if (hightlight == _highlight) {
             if (self.delegate &&
-                    [self.delegate respondsToSelector:@selector(vvAsyncDisplayView:didCilickedTextStorage:linkdata:)] &&
+                    [self.delegate respondsToSelector:@selector(vv_asyncDisplayView:didCilickedTextStorage:linkdata:)] &&
                     [self.delegate conformsToProtocol:@protocol(VVAsyncDisplayViewDelegate)]) {
-                [self.delegate vvAsyncDisplayView:self didCilickedTextStorage:textStorage linkdata:_highlight.content];
+                [self.delegate vv_asyncDisplayView:self didCilickedTextStorage:textStorage linkdata:_highlight.content];
             }
             found = YES;
             break;
@@ -416,9 +416,9 @@
                 VVTextHighlight *hightlight = [self _searchTextHighlightWithType:YES textStorage:textStorage touchPoint:_touchBeganPoint];
                 if (_highlight && hightlight == _highlight) {
                     if (self.delegate &&
-                            [self.delegate respondsToSelector:@selector(vvAsyncDisplayView:didLongpressedTextStorage:linkdata:)] &&
+                            [self.delegate respondsToSelector:@selector(vv_asyncDisplayView:didLongpressedTextStorage:linkdata:)] &&
                             [self.delegate conformsToProtocol:@protocol(VVAsyncDisplayViewDelegate)]) {
-                        [self.delegate vvAsyncDisplayView:self didLongpressedTextStorage:textStorage linkdata:_highlight.content];
+                        [self.delegate vv_asyncDisplayView:self didLongpressedTextStorage:textStorage linkdata:_highlight.content];
                     }
                 }
             }
@@ -475,7 +475,7 @@
 }
 
 
-- (void)removeHighlightIfNeed {
+- (void)vv_removeHighlightIfNeed {
     if (!_highlight) {
         return;
     }

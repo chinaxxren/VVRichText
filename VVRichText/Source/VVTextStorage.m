@@ -102,31 +102,31 @@
 - (void)vv_addLinkForWholeTextStorageWithData:(id)data
                                     linkColor:(UIColor *)linkColor
                                highLightColor:(UIColor *)highLightColor {
-    [self.attributedText addLinkForWholeTextWithData:data
-                                           linkColor:linkColor
-                                      highLightColor:highLightColor];
+    [self.attributedText vv_addLinkForWholeTextWithData:data
+                                              linkColor:linkColor
+                                         highLightColor:highLightColor];
 }
 
 - (void)vv_addLinkForWholeTextStorageWithData:(id)data
                                highLightColor:(UIColor *)highLightColor {
-    [self.attributedText addLinkForWholeTextWithData:data
-                                           linkColor:nil
-                                      highLightColor:highLightColor];
+    [self.attributedText vv_addLinkForWholeTextWithData:data
+                                              linkColor:nil
+                                         highLightColor:highLightColor];
 }
 
 
 - (void)vv_addLinkWithData:(id)data range:(NSRange)range
                  linkColor:(UIColor *)linkColor
             highLightColor:(UIColor *)highLightColor {
-    [self.attributedText addLinkWithData:data
-                                   range:range
-                               linkColor:linkColor
-                          highLightColor:highLightColor];
+    [self.attributedText vv_addLinkWithData:data
+                                      range:range
+                                  linkColor:linkColor
+                             highLightColor:highLightColor];
 }
 
 
 - (void)vv_addLongPressActionWithData:(id)data highLightColor:(UIColor *)highLightColor {
-    [self.attributedText addLongPressActionWithData:data highLightColor:highLightColor];
+    [self.attributedText vv_addLongPressActionWithData:data highLightColor:highLightColor];
 }
 
 - (void)vv_replaceTextWithImage:(UIImage *)image
@@ -272,9 +272,9 @@
     [_attributedText setFont:self.font range:range];
     [_attributedText setCharacterSpacing:self.characterSpacing range:range];
     [_attributedText setUnderlineStyle:self.underlineStyle underlineColor:self.underlineColor range:range];
-    [_attributedText setTextAlignment:self.textAlignment range:range];
-    [_attributedText setLineSpacing:self.linespacing range:range];
-    [_attributedText setLineBreakMode:self.lineBreakMode range:range];
+    [_attributedText vv_setTextAlignment:self.textAlignment range:range];
+    [_attributedText vv_setLineSpacing:self.linespacing range:range];
+    [_attributedText vv_setLineBreakMode:self.lineBreakMode range:range];
 }
 
 - (void)setTextDrawMode:(VVTextDrawMode)textDrawMode {
@@ -360,7 +360,7 @@
 - (void)setTextAlignment:(NSTextAlignment)textAlignment {
     _textAlignment = textAlignment;
     NSRange range = NSMakeRange(0, self.attributedText.length);
-    [self.attributedText setTextAlignment:self.textAlignment range:range];
+    [self.attributedText vv_setTextAlignment:self.textAlignment range:range];
 }
 
 - (void)setLinespacing:(CGFloat)linespacing {
@@ -368,7 +368,7 @@
         _linespacing = linespacing;
     }
     NSRange range = NSMakeRange(0, self.attributedText.length);
-    [self.attributedText setLineSpacing:self.linespacing range:range];
+    [self.attributedText vv_setLineSpacing:self.linespacing range:range];
 }
 
 - (void)setLineBreakMode:(NSLineBreakMode)lineBreakMode {
@@ -376,7 +376,7 @@
         _lineBreakMode = lineBreakMode;
     }
     NSRange range = NSMakeRange(0, self.attributedText.length);
-    [self.attributedText setLineBreakMode:self.lineBreakMode range:range];
+    [self.attributedText vv_setLineBreakMode:self.lineBreakMode range:range];
 }
 
 - (void)setFrame:(CGRect)frame {
@@ -396,7 +396,7 @@
     _vericalAlignment = vericalAlignment;
 }
 
-- (void)creatLayout {
+- (void)vv_Layout {
     if (!self.attributedText) {
         return;
     }

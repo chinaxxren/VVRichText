@@ -48,7 +48,7 @@ typedef NS_ENUM(NSUInteger, VVTextVericalAlignment) {
  *
  *  @return 路径的行宽
  */
-- (CGFloat)pathLineWidth;
+- (CGFloat)vv_pathLineWidth;
 
 
 @end

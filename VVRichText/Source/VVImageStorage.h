@@ -40,7 +40,7 @@ typedef NS_ENUM(NSUInteger, VVLocalImageType) {
  *  @param leftCapWidth 图片左边伸缩点
  *  @param topCapHeight 图片的上边伸缩点
  */
-- (void)stretchableImageWithLeftCapWidth:(CGFloat)leftCapWidth topCapHeight:(NSInteger)topCapHeight;
+- (void)vv_stretchableImageWithLeftCapWidth:(CGFloat)leftCapWidth topCapHeight:(NSInteger)topCapHeight;
 
 @end
 

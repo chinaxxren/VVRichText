@@ -92,7 +92,7 @@
 
 #pragma mark - Getter
 
-- (CGFloat)pathLineWidth {
+- (CGFloat)vv_pathLineWidth {
     dispatch_semaphore_wait(_lock, DISPATCH_TIME_FOREVER);
     CGFloat width = _pathLineWidth;
     dispatch_semaphore_signal(_lock);

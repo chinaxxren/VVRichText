@@ -37,7 +37,7 @@
                                           range:NSMakeRange(0, statusModel.name.length)
                                       linkColor:VV_COLOR(113, 129, 161, 1)
                                  highLightColor:VV_COLOR(0, 0, 0, 0.15)];
-            [nameTextStorage creatLayout];
+            [nameTextStorage vv_Layout];
 
             //正文内容模型 contentTextStorage
             VVTextStorage *contentTextStorage = [[VVTextStorage alloc] init];
@@ -49,7 +49,7 @@
                     nameTextStorage.bottom + 10.0f,
                     VV_SCREEN_WIDTH - 80.0f,
                     CGFLOAT_MAX);
-            [contentTextStorage creatLayout];
+            [contentTextStorage vv_Layout];
 
             CGFloat contentBottom = contentTextStorage.bottom;
             //折叠的条件
@@ -87,7 +87,7 @@
             [contentTextStorage vv_addLongPressActionWithData:contentTextStorage.text
                                                highLightColor:VV_COLOR(0, 0, 0, 0.25f)];
 
-            [contentTextStorage creatLayout];
+            [contentTextStorage vv_Layout];
 
             //发布的图片模型 imgsStorage
             CGFloat imageWidth = (VV_SCREEN_WIDTH - 110.0f) / 3.0f;
@@ -207,7 +207,7 @@
                             CGFLOAT_MAX);
                 }
             }
-            [dateTextStorage creatLayout];
+            [dateTextStorage vv_Layout];
 
             //生成评论背景Storage
             VVImageStorage *commentBgStorage = [[VVImageStorage alloc] init];
@@ -264,7 +264,7 @@
                                               linkColor:VV_COLOR(113, 129, 161, 1)
                                          highLightColor:VV_COLOR(0, 0, 0, 0.15)];
                 }
-                [likeTextStorage creatLayout];
+                [likeTextStorage vv_Layout];
                 offsetY += likeTextStorage.height + 5.0f;
             }
 
@@ -318,7 +318,7 @@
                                                         linkColor:VV_COLOR(113, 129, 161, 1)
                                                    highlightColor:VV_COLOR(0, 0, 0, 0.15)];
                         [VVTextParser parseGeneralEmojiWithTextStorage:commentTextStorage];
-                        [commentTextStorage creatLayout];
+                        [commentTextStorage vv_Layout];
                         [tmp addObject:commentTextStorage];
                         offsetY += commentTextStorage.height;
                     } else {
@@ -352,7 +352,7 @@
                                                         linkColor:VV_COLOR(113, 129, 161, 1)
                                                    highlightColor:VV_COLOR(0, 0, 0, 0.15)];
                         [VVTextParser parseGeneralEmojiWithTextStorage:commentTextStorage];
-                        [commentTextStorage creatLayout];
+                        [commentTextStorage vv_Layout];
                         [tmp addObject:commentTextStorage];
                         offsetY += commentTextStorage.height;
                     }
@@ -366,7 +366,7 @@
 
                 commentBgStorage.frame = commentBgPosition;
                 commentBgStorage.contents = [UIImage imageNamed:@"comment"];
-                [commentBgStorage stretchableImageWithLeftCapWidth:40 topCapHeight:15];
+                [commentBgStorage vv_stretchableImageWithLeftCapWidth:40 topCapHeight:15];
             }
 
             [self addStorage:nameTextStorage];//将Storage添加到遵循VVLayoutProtocol协议的类
@@ -419,7 +419,7 @@
                                           range:NSMakeRange(0, statusModel.name.length)
                                       linkColor:VV_COLOR(113, 129, 161, 1)
                                  highLightColor:VV_COLOR(0, 0, 0, 0.15)];
-            [nameTextStorage creatLayout];
+            [nameTextStorage vv_Layout];
 
             //正文内容模型 contentTextStorage
             VVTextStorage *contentTextStorage = [[VVTextStorage alloc] init];
@@ -430,7 +430,7 @@
                     nameTextStorage.bottom + 10.0f,
                     VV_SCREEN_WIDTH - 80.0f,
                     CGFLOAT_MAX);
-            [contentTextStorage creatLayout];
+            [contentTextStorage vv_Layout];
 
             //折叠文字
             VVTextStorage *closeStorage = [[VVTextStorage alloc] init];
@@ -461,7 +461,7 @@
             //添加长按复制
             [contentTextStorage vv_addLongPressActionWithData:contentTextStorage.text
                                                highLightColor:VV_COLOR(0, 0, 0, 0.25f)];
-            [contentTextStorage creatLayout];
+            [contentTextStorage vv_Layout];
 
             //发布的图片模型 imgsStorage
             CGFloat imageWidth = (VV_SCREEN_WIDTH - 110.0f) / 3.0f;
@@ -591,7 +591,7 @@
                             CGFLOAT_MAX);
                 }
             }
-            [dateTextStorage creatLayout];
+            [dateTextStorage vv_Layout];
 
             //生成评论背景Storage
             VVImageStorage *commentBgStorage = [[VVImageStorage alloc] init];
@@ -647,7 +647,7 @@
                                               linkColor:VV_COLOR(113, 129, 161, 1)
                                          highLightColor:VV_COLOR(0, 0, 0, 0.15)];
                 }
-                [likeTextStorage creatLayout];
+                [likeTextStorage vv_Layout];
                 offsetY += likeTextStorage.height + 5.0f;
             }
             if (statusModel.commentList.count != 0 &&
@@ -701,7 +701,7 @@
                                                         linkColor:VV_COLOR(113, 129, 161, 1)
                                                    highlightColor:VV_COLOR(0, 0, 0, 0.15)];
                         [VVTextParser parseGeneralEmojiWithTextStorage:commentTextStorage];
-                        [commentTextStorage creatLayout];
+                        [commentTextStorage vv_Layout];
                         [tmp addObject:commentTextStorage];
                         offsetY += commentTextStorage.height;
                     } else {
@@ -736,7 +736,7 @@
                                                         linkColor:VV_COLOR(113, 129, 161, 1)
                                                    highlightColor:VV_COLOR(0, 0, 0, 0.15)];
                         [VVTextParser parseGeneralEmojiWithTextStorage:commentTextStorage];
-                        [commentTextStorage creatLayout];
+                        [commentTextStorage vv_Layout];
                         [tmp addObject:commentTextStorage];
                         offsetY += commentTextStorage.height;
                     }
@@ -750,8 +750,8 @@
 
                 commentBgStorage.frame = commentBgPosition;
                 commentBgStorage.contents = [UIImage imageNamed:@"comment"];
-                [commentBgStorage stretchableImageWithLeftCapWidth:40
-                                                      topCapHeight:15];
+                [commentBgStorage vv_stretchableImageWithLeftCapWidth:40
+                                                         topCapHeight:15];
             }
 
             [self addStorage:nameTextStorage];//将Storage添加到遵循VVLayoutProtocol协议的类
