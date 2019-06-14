@@ -139,7 +139,7 @@
 
     CGSize size = self.bounds.size;
 
-    //把内容尽可能多的绘制在同一个CALayer上，然后赋值给contents
+    // 把内容尽可能多的绘制在同一个CALayer上，然后赋值给contents
     if (asynchronously) {
         if (transaction.willDisplayBlock) {
             transaction.willDisplayBlock(self);

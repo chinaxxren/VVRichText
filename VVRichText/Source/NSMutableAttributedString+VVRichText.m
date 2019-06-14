@@ -121,12 +121,18 @@
 
     NSRange range;
     NSMutableArray *existLinkRanges = [[NSMutableArray alloc] init];
+
+    // CTFramesetterRef一个生产CTFrame的工厂
     CTFramesetterRef ctFrameSetter = CTFramesetterCreateWithAttributedString((__bridge CFTypeRef) self);
     CGMutablePathRef cgPath = CGPathCreateMutable();
     CGPathAddRect(cgPath, NULL, CGRectMake(0, 0, CGFLOAT_MAX, CGFLOAT_MAX));
+
+    // CTFrame可以看做一个段 每个CTFrame由多个CTLine组成
     CTFrameRef ctFrame = CTFramesetterCreateFrame(ctFrameSetter, CFRangeMake(0, self.length), cgPath, NULL);
     CFRelease(cgPath);
     CFRelease(ctFrameSetter);
+
+    // 文字中可能有多个CTLine组成，单每一个CTLine一定在同一行内。
     CFArrayRef ctLines = CTFrameGetLines(ctFrame);
     CFIndex lineCount = CFArrayGetCount(ctLines);
     for (NSUInteger i = 0; i < lineCount; i++) {
@@ -136,6 +142,8 @@
         if (!ctRuns || runCount == 0) {
             continue;
         }
+
+        // 一个CTLine有多个CTRun组成
         for (NSUInteger i = 0; i < runCount; i++) {
             CTRunRef run = CFArrayGetValueAtIndex(ctRuns, i);
             CFIndex glyphCount = CTRunGetGlyphCount(run);
@@ -154,6 +162,7 @@
             }
         }
     }
+
     if (existLinkRanges.count != 0) {
         for (NSInteger i = 0; i < existLinkRanges.count; i++) {
             NSValue *value = existLinkRanges[i];
@@ -181,6 +190,7 @@
             [self setAttribute:NSForegroundColorAttributeName value:linkColor range:range];
         }
     }
+
     if (ctFrame) {
         CFRelease(ctFrame);
     }
