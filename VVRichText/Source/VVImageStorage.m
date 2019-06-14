@@ -57,7 +57,7 @@
 }
 
 - (BOOL)needRerendering {
-    //这个图片设置了圆角的相关属性，需要对原图进行处理
+    // 这个图片设置了圆角的相关属性，需要对原图进行处理
     if (self.cornerBorderWidth != 0 || self.cornerRadius != 0) {
         return YES;
     } else {
@@ -102,7 +102,7 @@
 
         CGRect imgRect = {
                 {rect.origin.x + cornerBorderWidth, rect.origin.y + cornerBorderWidth},
-                {rect.size.width - 2 * cornerBorderWidth, rect.size.height - 2 * cornerBorderWidth}
+                {rect.size.width - 2.0f * cornerBorderWidth, rect.size.height - 2.0f * cornerBorderWidth}
         };
 
         if (!image) {
@@ -110,9 +110,9 @@
         }
 
         if (self.isBlur) {
-            image = [image vv_applyBlurWithRadius:20
+            image = [image vv_applyBlurWithRadius:20.0f
                                         tintColor:VV_COLOR(0, 0, 0, 0.15f)
-                            saturationDeltaFactor:1.4
+                            saturationDeltaFactor:1.4f
                                         maskImage:nil];
         }
 

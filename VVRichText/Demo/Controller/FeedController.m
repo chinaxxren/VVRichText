@@ -83,7 +83,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     FeedLayout *feedLayout = self.feedVM.datas[indexPath.row];
     CGFloat height = feedLayout.height;
-    NSLog(@"%f     %zd", height, indexPath.row);
     return height;
 }
 
@@ -92,6 +91,7 @@
     cell.indexPath = indexPath;
     FeedLayout *feedLayout = self.feedVM.datas[indexPath.row];
     cell.feedLayout = feedLayout;
+    NSLog(@"cell index %zd", indexPath.row);
     [self callbackWithCell:cell];
 }
 

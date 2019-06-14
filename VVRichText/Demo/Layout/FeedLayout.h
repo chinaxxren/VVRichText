@@ -22,12 +22,7 @@
 @property(nonatomic, assign) CGRect websitePosition;
 @property(nonatomic, copy) NSArray *imagePostions;
 
-//文字过长时，折叠状态的布局模型
 - (id)initWithStatusModel:(StatusModel *)stautsModel index:(NSInteger)index dateFormatter:(NSDateFormatter *)dateFormatter;
-
-
-//文字过长时，打开状态的布局模型
-- (id)initContentOpendLayoutWithStatusModel:(StatusModel *)stautsModel index:(NSInteger)index dateFormatter:(NSDateFormatter *)dateFormatter;
 
 
 @end

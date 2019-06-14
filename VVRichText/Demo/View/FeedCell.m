@@ -69,13 +69,15 @@
             if (self.clickedImageCallback) {
                 self.clickedImageCallback(self, tag);
             }
-        }
             break;
+        }
         case 9: {
             if (self.clickedAvatarCallback) {
                 self.clickedAvatarCallback(self);
             }
+            break;
         }
+        default:
             break;
     }
 }
@@ -128,7 +130,6 @@
 
     [self resignFirstResponder];
     [self.asyncDisplayView vv_removeHighlightIfNeed];
-
 }
 
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
@@ -182,7 +183,6 @@
 }
 
 - (void)setFeedLayout:(FeedLayout *)feedLayout {
-
     [self.menu menuHide];
 
     if (_feedLayout && [feedLayout isEqual:_feedLayout]) {
@@ -207,6 +207,7 @@
     if (_asyncDisplayView) {
         return _asyncDisplayView;
     }
+
     _asyncDisplayView = [[VVAsyncDisplayView alloc] initWithFrame:CGRectZero];
     _asyncDisplayView.delegate = self;
     return _asyncDisplayView;
@@ -216,6 +217,7 @@
     if (_menuButton) {
         return _menuButton;
     }
+
     _menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_menuButton setImage:[UIImage imageNamed:@"[menu]"] forState:UIControlStateNormal];
     _menuButton.imageEdgeInsets = UIEdgeInsetsMake(14.5f, 12.0f, 14.5f, 12.0f);
@@ -227,6 +229,7 @@
     if (_menu) {
         return _menu;
     }
+
     _menu = [[MenuView alloc] initWithFrame:CGRectZero];
     _menu.backgroundColor = [UIColor whiteColor];
     _menu.opaque = YES;
@@ -240,6 +243,7 @@
     if (_line) {
         return _line;
     }
+
     _line = [[UIView alloc] initWithFrame:CGRectZero];
     _line.backgroundColor = VV_COLOR(220.0f, 220.0f, 220.0f, 1.0f);
     return _line;

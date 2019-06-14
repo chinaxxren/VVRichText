@@ -45,15 +45,17 @@
 - (void)openData:(NSInteger)index {
     FeedLayout *layout = self.datas[index];
     StatusModel *model = layout.statusModel;
-    FeedLayout *newLayout = [[FeedLayout alloc] initContentOpendLayoutWithStatusModel:model
-                                                                                index:index
-                                                                        dateFormatter:self.dateFormatter];
+    model.isExpend = YES;
+    FeedLayout *newLayout = [[FeedLayout alloc] initWithStatusModel:model
+                                                              index:index
+                                                      dateFormatter:self.dateFormatter];
     self.datas[index] = newLayout;
 }
 
 - (void)closeData:(NSInteger)index {
     FeedLayout *layout = self.datas[index];
     StatusModel *model = layout.statusModel;
+    model.isExpend = NO;
     FeedLayout *newLayout = [[FeedLayout alloc] initWithStatusModel:model
                                                               index:index
                                                       dateFormatter:self.dateFormatter];

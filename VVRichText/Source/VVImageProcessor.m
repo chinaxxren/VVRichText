@@ -18,6 +18,7 @@
     if (size.width < 0 || size.height < 0) {
         return nil;
     }
+    
     CGFloat width = size.width * [VVRichTextUtils contentsScale];
     CGFloat height = size.height * [VVRichTextUtils contentsScale];
     cornerRadius = cornerRadius * [VVRichTextUtils contentsScale];

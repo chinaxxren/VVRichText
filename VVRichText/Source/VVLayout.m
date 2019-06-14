@@ -21,7 +21,7 @@
 
     if ([storage isMemberOfClass:[VVTextStorage class]]) {
         VVTextStorage *textStorage = (VVTextStorage *) storage;
-        [textStorage vv_Layout];
+        [textStorage vv_layout];
         [self.textStorages addObject:textStorage];
     } else if ([storage isMemberOfClass:[VVImageStorage class]]) {
         [self.imageStorages addObject:(VVImageStorage *) storage];

@@ -190,6 +190,6 @@ __deprecated_msg("Please use 'vv_addLinkForWholeTextStorageWithData:highLightCol
 /**
  *  建立布局
  */
-- (void)vv_Layout;
+- (void)vv_layout;
 
 @end

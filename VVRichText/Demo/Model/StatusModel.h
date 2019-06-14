@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSArray* likeList;
 @property (nonatomic,assign) BOOL isLike;
 @property (nonatomic,copy) NSArray* thumbnail;
+@property (nonatomic,assign) BOOL isExpend;
 
 - (StatusModel *)initWithDict:(NSDictionary *)dict;
 

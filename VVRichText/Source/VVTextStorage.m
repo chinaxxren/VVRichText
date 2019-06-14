@@ -13,7 +13,6 @@
 
 @end
 
-
 @implementation VVTextStorage
 
 @synthesize frame = _frame;
@@ -396,7 +395,7 @@
     _vericalAlignment = vericalAlignment;
 }
 
-- (void)vv_Layout {
+- (void)vv_layout {
     if (!self.attributedText) {
         return;
     }
