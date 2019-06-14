@@ -220,11 +220,9 @@
 }
 
 - (void)reloadCell:(NSInteger)row {
-    [UIView setAnimationsEnabled:NO];
     [self.tableView beginUpdates];
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView endUpdates];
-    [UIView setAnimationsEnabled:YES];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
