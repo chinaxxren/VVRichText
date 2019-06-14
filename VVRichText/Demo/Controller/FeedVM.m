@@ -42,26 +42,15 @@
     return layout;
 }
 
-- (void)openData:(NSInteger)index {
+- (void)expendData:(NSInteger)index {
     FeedLayout *layout = self.datas[index];
     StatusModel *model = layout.statusModel;
-    model.isExpend = YES;
+    model.isExpend = !model.isExpend;
     FeedLayout *newLayout = [[FeedLayout alloc] initWithStatusModel:model
                                                               index:index
                                                       dateFormatter:self.dateFormatter];
     self.datas[index] = newLayout;
 }
-
-- (void)closeData:(NSInteger)index {
-    FeedLayout *layout = self.datas[index];
-    StatusModel *model = layout.statusModel;
-    model.isExpend = NO;
-    FeedLayout *newLayout = [[FeedLayout alloc] initWithStatusModel:model
-                                                              index:index
-                                                      dateFormatter:self.dateFormatter];
-    self.datas[index] = newLayout;
-}
-
 
 - (NSDateFormatter *)dateFormatter {
     static NSDateFormatter *dateFormatter;

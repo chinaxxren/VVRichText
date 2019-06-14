@@ -17,8 +17,6 @@
 
 - (FeedLayout *)layoutWithStatusModel:(StatusModel *)statusModel index:(NSInteger)index;
 
-- (void)openData:(NSInteger)index;
-
-- (void)closeData:(NSInteger)index;
+- (void)expendData:(NSInteger)index;
 
 @end

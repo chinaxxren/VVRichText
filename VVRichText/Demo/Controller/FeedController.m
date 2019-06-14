@@ -193,14 +193,14 @@
 //展开Cell
 - (void)openTableViewCell:(FeedCell *)cell {
     NSInteger row = cell.indexPath.row;
-    [self.feedVM openData:row];
+    [self.feedVM expendData:row];
     [self reloadCell:row];
 }
 
 //折叠Cell
 - (void)closeTableViewCell:(FeedCell *)cell {
     NSInteger row = cell.indexPath.row;
-    [self.feedVM closeData:row];
+    [self.feedVM expendData:row];
     [self reloadCell:row];
 }
 
