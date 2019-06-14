@@ -22,9 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.extendedLayoutIncludesOpaqueBars = NO;
-    self.automaticallyAdjustsScrollViewInsets = NO;
 
     self.feedVM = [FeedVM new];
     [self setupUI];
@@ -39,6 +36,12 @@
 
 - (void)test {
     [self.tableView reloadData];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+
+    self.tableView.frame = self.view.bounds;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -68,7 +71,7 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.feedVM.dataSource count];
+    return [self.feedVM.datas count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -78,21 +81,17 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    FeedLayout *feedLayout = self.feedVM.dataSource[indexPath.row];
-    CGFloat height = feedLayout.cellHeight;
-    NSLog(@"height %d--%f", indexPath.row, height);
+    FeedLayout *feedLayout = self.feedVM.datas[indexPath.row];
+    CGFloat height = feedLayout.height;
+    NSLog(@"%f  %zd", height, indexPath.row);
     return height;
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"table height-->%f,%f", scrollView.contentSize.height, scrollView.contentOffset.y);
 }
 
 - (void)confirgueCell:(FeedCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     cell.displaysAsynchronously = self.displaysAsynchronously;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.indexPath = indexPath;
-    FeedLayout *feedLayout = self.feedVM.dataSource[indexPath.row];
+    FeedLayout *feedLayout = self.feedVM.datas[indexPath.row];
     cell.feedLayout = feedLayout;
     [self callbackWithCell:cell];
 }
@@ -174,7 +173,7 @@
 
 //点赞
 - (void)tableViewCell:(FeedCell *)cell didClickedLikeButtonWithIsLike:(BOOL)isLike {
-    FeedLayout *feedLayout = self.feedVM.dataSource[cell.indexPath.row];
+    FeedLayout *feedLayout = self.feedVM.datas[cell.indexPath.row];
     NSMutableArray *newLikeList = [[NSMutableArray alloc] initWithArray:feedLayout.statusModel.likeList];
     if (isLike) {
         [newLikeList addObject:@"chinaxxren的粉丝"];
@@ -187,7 +186,7 @@
     statusModel.isLike = isLike;
     feedLayout = [self.feedVM layoutWithStatusModel:statusModel index:cell.indexPath.row];
 
-    self.feedVM.dataSource[cell.indexPath.row] = feedLayout;
+    self.feedVM.datas[cell.indexPath.row] = feedLayout;
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:cell.indexPath.row inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
@@ -208,7 +207,7 @@
 //发表评论
 - (void)postCommentWithCommentModel:(CommentModel *)commentModel {
 
-    FeedLayout *feedLayout = self.feedVM.dataSource[commentModel.index];
+    FeedLayout *feedLayout = self.feedVM.datas[commentModel.index];
     NSMutableArray *newCommentLists = [[NSMutableArray alloc] initWithArray:feedLayout.statusModel.commentList];
     NSDictionary *newComment = @{@"from": commentModel.from, @"to": commentModel.to, @"content": commentModel.content};
     [newCommentLists addObject:newComment];
@@ -216,7 +215,7 @@
     statusModel.commentList = newCommentLists;
     FeedLayout *newLayout = [self.feedVM layoutWithStatusModel:statusModel index:commentModel.index];
 
-    self.feedVM.dataSource[commentModel.index] = newLayout;
+    self.feedVM.datas[commentModel.index] = newLayout;
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:commentModel.index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
@@ -292,12 +291,15 @@
         return _tableView;
     }
 
-    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     [_tableView registerClass:[FeedCell class] forCellReuseIdentifier:Feed_Cell];
+    _tableView.estimatedRowHeight = 0;
+    _tableView.estimatedSectionHeaderHeight = 0;
+    _tableView.estimatedSectionFooterHeight = 0;
 
     return _tableView;
 }

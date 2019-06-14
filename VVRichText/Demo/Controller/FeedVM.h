@@ -11,7 +11,7 @@
 
 @interface FeedVM : NSObject
 
-@property(nonatomic, strong) NSMutableArray *dataSource;
+@property(nonatomic, strong) NSMutableArray *datas;
 
 - (void)loadData;
 

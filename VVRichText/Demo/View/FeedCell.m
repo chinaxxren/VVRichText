@@ -4,7 +4,6 @@
 #import "VVImageStorage.h"
 #import "MenuView.h"
 
-
 @interface FeedCell () <VVAsyncDisplayViewDelegate>
 
 @property(nonatomic, strong) VVAsyncDisplayView *asyncDisplayView;
@@ -173,7 +172,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    self.asyncDisplayView.frame = CGRectMake(0, 0, VV_SCREEN_WIDTH, self.feedLayout.cellHeight);
+    self.asyncDisplayView.frame = CGRectMake(0, 0, VV_SCREEN_WIDTH, self.feedLayout.height);
 
     self.menuButton.frame = self.feedLayout.menuPosition;
     self.menu.frame = CGRectMake(self.feedLayout.menuPosition.origin.x - 5.0f, self.feedLayout.menuPosition.origin.y - 9.0f + 14.5f, 0.0f, 34.0f);

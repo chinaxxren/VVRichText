@@ -4,6 +4,7 @@
 //
 
 #import "FeedVM.h"
+
 #import "StatusModel.h"
 #import "VVLayout.h"
 #import "FeedLayout.h"
@@ -16,20 +17,22 @@
 
 @implementation FeedVM
 
-- (NSMutableArray *)dataSource {
-    if (_dataSource) {
-        return _dataSource;
+- (NSMutableArray *)datas {
+    if (_datas) {
+        return _datas;
     }
-    _dataSource = [[NSMutableArray alloc] init];
-    return _dataSource;
+    _datas = [[NSMutableArray alloc] init];
+    return _datas;
 }
 
 - (void)loadData {
-    [self.dataSource removeAllObjects];
-    for (NSInteger i = 0; i < 1; i++) {//让数据更多
+    [self.datas removeAllObjects];
+
+    //让数据更多
+    for (NSInteger i = 0; i < 1; i++) {
         for (NSInteger i = 0; i < self.feedDatas.count; i++) {
             VVLayout *layout = [self layoutWithStatusModel:[[StatusModel alloc] initWithDict:self.feedDatas[i]] index:i];
-            [self.dataSource addObject:layout];
+            [self.datas addObject:layout];
         }
     }
 }
@@ -40,24 +43,24 @@
 }
 
 - (void)openData:(NSInteger)index {
-    FeedLayout *layout = self.dataSource[index];
+    FeedLayout *layout = self.datas[index];
     StatusModel *model = layout.statusModel;
     FeedLayout *newLayout = [[FeedLayout alloc] initContentOpendLayoutWithStatusModel:model
                                                                                 index:index
                                                                         dateFormatter:self.dateFormatter];
 
 
-    self.dataSource[index] = newLayout;
+    self.datas[index] = newLayout;
 }
 
 - (void)closeData:(NSInteger)index {
-    FeedLayout *layout = self.dataSource[index];
+    FeedLayout *layout = self.datas[index];
     StatusModel *model = layout.statusModel;
     FeedLayout *newLayout = [[FeedLayout alloc] initWithStatusModel:model
                                                               index:index
                                                       dateFormatter:self.dateFormatter];
 
-    self.dataSource[index] = newLayout;
+    self.datas[index] = newLayout;
 }
 
 

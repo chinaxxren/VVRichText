@@ -70,6 +70,8 @@
  */
 @interface VVLayout : VVIdentifier <VVLayoutProtocol>
 
+@property(nonatomic, assign) CGFloat height;
+
 - (BOOL)isEqual:(nullable id)other;
 
 - (BOOL)isEqualToLayout:(nullable VVLayout *)layout;

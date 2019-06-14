@@ -15,7 +15,6 @@
 @interface FeedLayout : VVLayout
 
 @property(nonatomic, strong) StatusModel *statusModel;
-@property(nonatomic, assign) CGFloat cellHeight;
 @property(nonatomic, assign) CGRect lineRect;
 @property(nonatomic, assign) CGRect menuPosition;
 @property(nonatomic, assign) CGRect commentBgPosition;

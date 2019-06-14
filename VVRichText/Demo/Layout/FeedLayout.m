@@ -386,7 +386,7 @@
             self.imagePostions = imagePositionArray;//保存图片位置的数组
 
             //如果是使用在UITableViewCell上面，可以通过以下方法快速的得到Cell的高度
-            self.cellHeight = [self suggestHeightWithBottomMargin:15.0f];
+            self.height = [self suggestHeightWithBottomMargin:15.0f];
         }
     }
     return self;
@@ -772,7 +772,7 @@
             self.imagePostions = imagePositionArray;//保存图片位置的数组
 
             //如果是使用在UITableViewCell上面，可以通过以下方法快速的得到Cell的高度
-            self.cellHeight = [self suggestHeightWithBottomMargin:15.0f];
+            self.height = [self suggestHeightWithBottomMargin:15.0f];
         }
     }
 
