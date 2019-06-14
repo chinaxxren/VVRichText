@@ -27,7 +27,7 @@
     [self setupUI];
 
 
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Reload"
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Test"
                                                                               style:UIBarButtonItemStylePlain
                                                                              target:self
                                                                              action:@selector(test)];
@@ -83,13 +83,12 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     FeedLayout *feedLayout = self.feedVM.datas[indexPath.row];
     CGFloat height = feedLayout.height;
-    NSLog(@"%f  %zd", height, indexPath.row);
+    NSLog(@"%f     %zd", height, indexPath.row);
     return height;
 }
 
 - (void)confirgueCell:(FeedCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     cell.displaysAsynchronously = self.displaysAsynchronously;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.indexPath = indexPath;
     FeedLayout *feedLayout = self.feedVM.datas[indexPath.row];
     cell.feedLayout = feedLayout;
@@ -173,7 +172,8 @@
 
 //点赞
 - (void)tableViewCell:(FeedCell *)cell didClickedLikeButtonWithIsLike:(BOOL)isLike {
-    FeedLayout *feedLayout = self.feedVM.datas[cell.indexPath.row];
+    NSInteger row = cell.indexPath.row;
+    FeedLayout *feedLayout = self.feedVM.datas[row];
     NSMutableArray *newLikeList = [[NSMutableArray alloc] initWithArray:feedLayout.statusModel.likeList];
     if (isLike) {
         [newLikeList addObject:@"chinaxxren的粉丝"];
@@ -184,24 +184,24 @@
     StatusModel *statusModel = feedLayout.statusModel;
     statusModel.likeList = newLikeList;
     statusModel.isLike = isLike;
-    feedLayout = [self.feedVM layoutWithStatusModel:statusModel index:cell.indexPath.row];
+    feedLayout = [self.feedVM layoutWithStatusModel:statusModel index:row];
 
-    self.feedVM.datas[cell.indexPath.row] = feedLayout;
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:cell.indexPath.row inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    self.feedVM.datas[row] = feedLayout;
+    [self reloadCell:row];
 }
 
 //展开Cell
 - (void)openTableViewCell:(FeedCell *)cell {
-    NSInteger index = cell.indexPath.row;
-    [self.feedVM openData:index];
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    NSInteger row = cell.indexPath.row;
+    [self.feedVM openData:row];
+    [self reloadCell:row];
 }
 
 //折叠Cell
 - (void)closeTableViewCell:(FeedCell *)cell {
-    NSInteger index = cell.indexPath.row;
-    [self.feedVM closeData:index];
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    NSInteger row = cell.indexPath.row;
+    [self.feedVM closeData:row];
+    [self reloadCell:row];
 }
 
 //发表评论
@@ -216,7 +216,19 @@
     FeedLayout *newLayout = [self.feedVM layoutWithStatusModel:statusModel index:commentModel.index];
 
     self.feedVM.datas[commentModel.index] = newLayout;
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:commentModel.index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    [self reloadCell:commentModel.index];
+}
+
+- (void)reloadCell:(NSInteger)row {
+    [UIView setAnimationsEnabled:NO];
+    [self.tableView beginUpdates];
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView endUpdates];
+    [UIView setAnimationsEnabled:YES];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+
 }
 
 #pragma mark - Keyboard

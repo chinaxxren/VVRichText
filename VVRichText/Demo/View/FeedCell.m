@@ -21,7 +21,9 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.backgroundColor = [UIColor whiteColor];
+
         [self.contentView addSubview:self.asyncDisplayView];
         [self.contentView addSubview:self.menuButton];
         [self.contentView addSubview:self.menu];

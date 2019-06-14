@@ -156,7 +156,7 @@
         CGFloat scale = self.contentsScale;
         CGColorRef backgroundColor = (opaque && self.backgroundColor) ? CGColorRetain(self.backgroundColor) : NULL;
 
-        if (size.width < 1 || size.height < 1) {
+        if (size.width < 1.0f || size.height < 1.0f) {
             CGImageRef image = (__bridge_retained CGImageRef) (self.contents);
             self.contents = nil;
             if (image) {
@@ -176,6 +176,7 @@
                 CGColorRelease(backgroundColor);
                 return;
             }
+
             UIGraphicsBeginImageContextWithOptions(size, opaque, scale);
             CGContextRef context = UIGraphicsGetCurrentContext();
             if (opaque) {
@@ -225,14 +226,8 @@
                                                             object:(__bridge id) (image.CGImage)
                                                         completion:^(BOOL canceled) {
                                                             __strong typeof(weakSelf) swself = weakSelf;
-                                                            if (canceled) {
-                                                                if (transaction.didDisplayBlock) {
-                                                                    transaction.didDisplayBlock(swself, NO);
-                                                                }
-                                                            } else {
-                                                                if (transaction.didDisplayBlock) {
-                                                                    transaction.didDisplayBlock(swself, YES);
-                                                                }
+                                                            if (transaction.didDisplayBlock) {
+                                                                transaction.didDisplayBlock(swself, !canceled);
                                                             }
                                                         }];
             });
@@ -263,10 +258,10 @@
             CGContextRestoreGState(context);
         }
 
-
         transaction.displayBlock(self, context, size, ^{
             return NO;
         });
+
         UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         self.contents = (__bridge id) (image.CGImage);

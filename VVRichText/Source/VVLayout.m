@@ -86,6 +86,7 @@
     if (_textStorages) {
         return _textStorages;
     }
+
     _textStorages = [NSMutableArray new];
     return _textStorages;
 }
@@ -94,6 +95,7 @@
     if (_imageStorages) {
         return _imageStorages;
     }
+
     _imageStorages = [NSMutableArray new];
     return _imageStorages;
 }
@@ -102,6 +104,7 @@
     if (_totalStorages) {
         return _totalStorages;
     }
+
     _totalStorages = [NSMutableArray new];
     return _totalStorages;
 }

@@ -48,8 +48,6 @@
     FeedLayout *newLayout = [[FeedLayout alloc] initContentOpendLayoutWithStatusModel:model
                                                                                 index:index
                                                                         dateFormatter:self.dateFormatter];
-
-
     self.datas[index] = newLayout;
 }
 
@@ -59,7 +57,6 @@
     FeedLayout *newLayout = [[FeedLayout alloc] initWithStatusModel:model
                                                               index:index
                                                       dateFormatter:self.dateFormatter];
-
     self.datas[index] = newLayout;
 }
 
@@ -322,7 +319,6 @@
                             @"content": @"外媒 AndroidAuthority 日前曝光诺基亚首款回归作品 NOKIA A1 的渲染图，手机的外形很 N 记，边框控制的不错。这是一款纯正的 Android 机型，传闻手机将采用 5.5 英寸 1080P 屏幕，搭载骁龙 652，Android 6.0 系统，并使用了诺基亚自家的 Z 启动器，不过具体发表的时间还是未知。尾巴们你会期待吗？",
                             @"date": @"1459668442",
                             @"imgs": @[@"http://ww3.sinaimg.cn/bmiddle/66e8f898gw1f2jck6jnckj20go0fwdhb.jpg"],
-
                             @"thumbnail": @[@"http://ww3.sinaimg.cn/thumbnail/66e8f898gw1f2jck6jnckj20go0fwdhb.jpg"],
 
                             @"statusID": @"9",
