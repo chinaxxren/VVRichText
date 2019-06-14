@@ -91,7 +91,6 @@
     cell.indexPath = indexPath;
     FeedLayout *feedLayout = self.feedVM.datas[indexPath.row];
     cell.feedLayout = feedLayout;
-    NSLog(@"cell index %zd", indexPath.row);
     [self callbackWithCell:cell];
 }
 
@@ -207,16 +206,17 @@
 //发表评论
 - (void)postCommentWithCommentModel:(CommentModel *)commentModel {
 
-    FeedLayout *feedLayout = self.feedVM.datas[commentModel.index];
+    NSInteger index = commentModel.index;
+    FeedLayout *feedLayout = self.feedVM.datas[index];
     NSMutableArray *newCommentLists = [[NSMutableArray alloc] initWithArray:feedLayout.statusModel.commentList];
     NSDictionary *newComment = @{@"from": commentModel.from, @"to": commentModel.to, @"content": commentModel.content};
     [newCommentLists addObject:newComment];
     StatusModel *statusModel = feedLayout.statusModel;
     statusModel.commentList = newCommentLists;
-    FeedLayout *newLayout = [self.feedVM layoutWithStatusModel:statusModel index:commentModel.index];
+    FeedLayout *newLayout = [self.feedVM layoutWithStatusModel:statusModel index:index];
 
-    self.feedVM.datas[commentModel.index] = newLayout;
-    [self reloadCell:commentModel.index];
+    self.feedVM.datas[index] = newLayout;
+    [self reloadCell:index];
 }
 
 - (void)reloadCell:(NSInteger)row {
