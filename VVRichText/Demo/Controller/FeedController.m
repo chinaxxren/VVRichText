@@ -193,22 +193,14 @@
 - (void)openTableViewCell:(FeedCell *)cell {
     NSInteger row = cell.indexPath.row;
     [self.feedVM expendData:row];
-
-    // 异步线程渲染会闪,切换为主线程渲染
-    self.displaysAsynchronously = NO;
     [self reloadCell:row];
-    self.displaysAsynchronously = YES;
 }
 
 //折叠Cell
 - (void)closeTableViewCell:(FeedCell *)cell {
     NSInteger row = cell.indexPath.row;
     [self.feedVM expendData:row];
-
-    // 异步线程渲染会闪,切换为主线程渲染
-    self.displaysAsynchronously = NO;
     [self reloadCell:row];
-    self.displaysAsynchronously = YES;
 }
 
 //发表评论
@@ -228,9 +220,12 @@
 }
 
 - (void)reloadCell:(NSInteger)row {
+    // 异步线程渲染会闪,切换为主线程渲染
+    self.displaysAsynchronously = NO;
     [self.tableView beginUpdates];
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView endUpdates];
+    self.displaysAsynchronously = YES;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
