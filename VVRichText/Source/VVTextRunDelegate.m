@@ -1,17 +1,20 @@
 
 #import "VVTextRunDelegate.h"
+
 #import <objc/runtime.h>
 #import "VVRichTextUtils.h"
 
-
+// 销毁函数指针
 static void VVTextDeallocCallback(void *ref);
 
+// 返回字形Ascent
 static CGFloat VVTextAscentCallback(void *ref);
 
+// 返回字形Descent
 static CGFloat VVTextDescentCallback(void *ref);
 
+// 返回字形Width
 static CGFloat VVTextWidthCallback(void *ref);
-
 
 @implementation VVTextRunDelegate
 

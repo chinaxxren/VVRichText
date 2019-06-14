@@ -2,7 +2,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreText/CoreText.h>
 
-
+// 字形
 @interface VVTextGlyph : NSObject <NSCopying, NSMutableCopying, NSCoding>
 
 @property(nonatomic, assign) CGGlyph glyph;
