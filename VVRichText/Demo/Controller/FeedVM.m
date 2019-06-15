@@ -29,7 +29,7 @@
     [self.datas removeAllObjects];
 
     //让数据更多
-    for (NSInteger i = 0; i < 1; i++) {
+    for (NSInteger i = 0; i < 10; i++) {
         for (NSInteger i = 0; i < self.feedDatas.count; i++) {
             VVLayout *layout = [self layoutWithStatusModel:[[StatusModel alloc] initWithDict:self.feedDatas[i]] index:i];
             [self.datas addObject:layout];

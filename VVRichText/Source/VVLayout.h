@@ -72,11 +72,4 @@
 
 @property(nonatomic, assign) CGFloat height;
 
-- (BOOL)isEqual:(nullable id)other;
-
-- (BOOL)isEqualToLayout:(nullable VVLayout *)layout;
-
-- (NSUInteger)hash;
-
-
 @end

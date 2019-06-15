@@ -16,7 +16,7 @@
 @implementation GifController
 
 - (void)dealloc {
-    
+
 }
 
 - (void)viewDidLoad {
@@ -58,6 +58,7 @@
     textStorage.text = @"显示测试[001]显示测试[003]";
     textStorage.font = [UIFont systemFontOfSize:14.0f];
     textStorage.frame = CGRectMake(0.0f, 0.0f, 200.0f, CGFLOAT_MAX);
+
     // 解析表情
     [VVTextParser parseGifEmojiWithTextStorage:textStorage];
 
@@ -76,14 +77,6 @@
 }
 
 - (void)test {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Test"
-                                                                             message:@"当 present 出 UIAlertController时, 界面上显示的图片全部不显示了"
-                                                                      preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-
-    }];
-    [alertController addAction:alertAction];
-    [self presentViewController:alertController animated:YES completion:NULL];
 }
 
 

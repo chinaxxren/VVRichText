@@ -25,14 +25,6 @@
 }
 
 - (void)test {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Test"
-                                                                             message:@"当 present 出 UIAlertController时, 界面上显示的图片全部不显示了"
-                                                                      preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-
-    }];
-    [alertController addAction:alertAction];
-    [self presentViewController:alertController animated:YES completion:NULL];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -154,7 +146,7 @@
         [_dataSource addObject:layout];
     }
 
-    /* {
+    {
          VVTextStorage *textStorage = [[VVTextStorage alloc] init];
          textStorage.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
          textStorage.text = @"加载网络图片";
@@ -194,7 +186,7 @@
          [layout addStorage:textStorage];
          [_dataSource addObject:layout];
      }
- */
+
     {
         VVTextStorage *textStorage = [[VVTextStorage alloc] init];
         textStorage.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);

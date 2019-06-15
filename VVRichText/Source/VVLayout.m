@@ -109,30 +109,4 @@
     return _totalStorages;
 }
 
-- (BOOL)isEqual:(nullable id)other {
-    if (other == self)
-        return YES;
-    if (!other || ![[other class] isEqual:[self class]])
-        return NO;
-
-    return [self isEqualToLayout:other];
-}
-
-- (BOOL)isEqualToLayout:(nullable VVLayout *)layout {
-    if (self == layout)
-        return YES;
-    if (layout == nil)
-        return NO;
-    if (self.textStorages != layout.textStorages && ![self.textStorages isEqualToArray:layout.textStorages])
-        return NO;
-    return !(self.imageStorages != layout.imageStorages && ![self.imageStorages isEqualToArray:layout.imageStorages]);
-}
-
-- (NSUInteger)hash {
-    NSUInteger hash = [self.textStorages hash];
-    hash = hash * 31u + [self.imageStorages hash];
-    return hash;
-}
-
-
 @end
