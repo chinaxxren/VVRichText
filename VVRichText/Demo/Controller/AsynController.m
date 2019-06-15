@@ -1,11 +1,11 @@
 
 
-#import "OtherController.h"
+#import "AsynController.h"
 #import "TextViewCell.h"
 
 static NSString *cellIdentifier = @"cellIdentifier";
 
-@interface OtherController () <UITableViewDelegate, UITableViewDataSource>
+@interface AsynController () <UITableViewDelegate, UITableViewDataSource>
 
 
 @property(nonatomic, strong) UITableView *tableView;
@@ -13,7 +13,7 @@ static NSString *cellIdentifier = @"cellIdentifier";
 
 @end
 
-@implementation OtherController
+@implementation AsynController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,13 +25,8 @@ static NSString *cellIdentifier = @"cellIdentifier";
                                                                               style:UIBarButtonItemStylePlain
                                                                              target:self
                                                                              action:@selector(test)];
-
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self dataSource];
-//        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView reloadData];
-//        });
-//    });
+    [self dataSource];
+    [self.tableView reloadData];
 }
 
 - (void)test {

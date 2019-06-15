@@ -6,7 +6,7 @@
 #import "ArticleListController.h"
 #import "ImageController.h"
 #import "GifController.h"
-#import "OtherController.h"
+#import "AsynController.h"
 #import "GifListController.h"
 
 @interface RootViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -109,7 +109,7 @@
             break;
         }
         case 6: {
-            OtherController *vc = [OtherController new];
+            AsynController *vc = [AsynController new];
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }

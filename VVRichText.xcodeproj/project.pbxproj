@@ -207,7 +207,7 @@
 		EC7CE6FBAB654FE9BC2E078357535296 /* 137.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F17BD7469A2A67D5CE6912983A7B208 /* 137.png */; };
 		ED0B922778050FAE3914166FB467F7F7 /* Pods_VVRichText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 449C42C1662CBFD0F801A89504CFB795 /* Pods_VVRichText.framework */; };
 		EFEA977B1950694B348988D59DA33737 /* ArticleListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EABB3D1DA5FA2A1FA0EACABEB025474 /* ArticleListTableViewCell.m */; };
-		F0D3BEBEFCA240D5DE7A12D001008439 /* OtherController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74491F42D8DD1B452657C5726866C0C3 /* OtherController.m */; };
+		F0D3BEBEFCA240D5DE7A12D001008439 /* AsynController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74491F42D8DD1B452657C5726866C0C3 /* AsynController.m */; };
 		F27AFA088BCC062007AD7E8CB9FEA4B4 /* 047.png in Resources */ = {isa = PBXBuildFile; fileRef = E05E95FCAB0D6D1182D1DBD69DCACBAA /* 047.png */; };
 		F3925467BF8BA6F44813DF037BF24B26 /* CALayer+VVTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A3936E249ECF4B5E2CC2CC5333B599 /* CALayer+VVTransaction.m */; };
 		F45AB9C07E7C66E640D1B07203B46A8E /* 085.png in Resources */ = {isa = PBXBuildFile; fileRef = 1430B85447629247ED0704E451906629 /* 085.png */; };
@@ -228,7 +228,7 @@
 		0DAF041AB5FEE7E9F15DF8D5072581A7 /* VVAsyncDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVAsyncDisplayView.h; sourceTree = "<group>"; };
 		0F7E584E7838C0CCCFCF6DEDF79C7415 /* StatusModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusModel.m; sourceTree = "<group>"; };
 		0FD269DD6827B83D38E310660EB6D475 /* 016.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 016.png; sourceTree = "<group>"; };
-		10FF87CAD1BCF98EE44219A89845F38F /* OtherController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherController.h; sourceTree = "<group>"; };
+		10FF87CAD1BCF98EE44219A89845F38F /* AsynController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsynController.h; sourceTree = "<group>"; };
 		11BCD8C67255B60E051FE2CD3C071A56 /* VVImageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVImageProcessor.m; sourceTree = "<group>"; };
 		12831343AF9D6F991C29BCD237F5C395 /* VVTextParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVTextParser.h; sourceTree = "<group>"; };
 		1430B85447629247ED0704E451906629 /* 085.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 085.png; sourceTree = "<group>"; };
@@ -334,7 +334,7 @@
 		7135975B19C38B40535383DB0CA8A0F4 /* 025.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 025.png; sourceTree = "<group>"; };
 		718C5F825912F74E06F509618F227108 /* VVRichTextUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVRichTextUtils.h; sourceTree = "<group>"; };
 		71F3D77AD8F6F074D0079E7CAF4D5EA8 /* VVImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVImage.h; sourceTree = "<group>"; };
-		74491F42D8DD1B452657C5726866C0C3 /* OtherController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherController.m; sourceTree = "<group>"; };
+		74491F42D8DD1B452657C5726866C0C3 /* AsynController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsynController.m; sourceTree = "<group>"; };
 		749F82C26784A1A73F37E229A23ABB0F /* 098.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 098.png; sourceTree = "<group>"; };
 		74E5D61AB0D8FFD5823F772576B58652 /* 102.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 102.png; sourceTree = "<group>"; };
 		758570891C83C14A716E5BB2B123EE80 /* 088.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 088.png; sourceTree = "<group>"; };
@@ -551,8 +551,8 @@
 				EBD9A3529D076E868A6F5AC59D608215 /* RichTextController.m */,
 				85CBF59F16F69D5524B9BB96A9974260 /* RootViewController.h */,
 				C402EAF368C91AB314E9CE4BF26FB603 /* RootViewController.m */,
-				10FF87CAD1BCF98EE44219A89845F38F /* OtherController.h */,
-				74491F42D8DD1B452657C5726866C0C3 /* OtherController.m */,
+				10FF87CAD1BCF98EE44219A89845F38F /* AsynController.h */,
+				74491F42D8DD1B452657C5726866C0C3 /* AsynController.m */,
 				C3AE635ED340B950AD502AC7 /* FeedVM.m */,
 				C3AE6BE0A243F98F3F625C7C /* FeedVM.h */,
 			);
@@ -1195,7 +1195,7 @@
 				7828AC025B36A9A9748965396C68537E /* SDImageYYCoder.m in Sources */,
 				5C08FB9D9058F725ECDAC3CD514FEE5A /* StatusModel.m in Sources */,
 				803376A781A46AEB8F2BE5B298049353 /* FeedCell.m in Sources */,
-				F0D3BEBEFCA240D5DE7A12D001008439 /* OtherController.m in Sources */,
+				F0D3BEBEFCA240D5DE7A12D001008439 /* AsynController.m in Sources */,
 				291320AAAEF0736E21D6C5F5D33BC518 /* UIImage+VVRichText.m in Sources */,
 				958CC2ABC830A86CB46FBA5825220B12 /* VVAsyncDisplayLayer.m in Sources */,
 				6D18FC182A5AB8A55BFA9B384616A6EB /* VVAsyncDisplayView.m in Sources */,
