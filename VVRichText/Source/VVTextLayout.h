@@ -27,7 +27,7 @@
 @property(nonatomic, strong, readonly) NSArray<VVTextLine *> *linesArray; //包含VVTextLine的数组
 @property(nonatomic, strong, readonly) NSArray<VVTextAttachment *> *attachments; //包含文本附件的数组
 @property(nonatomic, strong, readonly) NSArray<NSValue *> *attachmentRanges; //包含文本附件在文本中位置信息的数组
-@property(nonatomic, strong, readonly) NSArray<NSValue *> *attachmentRects; //包含文本附件在VVAsyncDisplayView上位置CGRect信息的数组
+@property(nonatomic, strong, readonly) NSArray<NSValue *> *attachmentRects; //包含文本附件在VVAsyncView上位置CGRect信息的数组
 @property(nonatomic, strong, readonly) NSSet<id> *attachmentContentsSet; //附件内容的集合
 @property(nonatomic, strong, readonly) NSArray<VVTextHighlight *> *textHighlights; //一个包含文本链接的信息的数组
 @property(nonatomic, strong, readonly) NSArray<VVTextBackgroundColor *> *backgroundColors; //一个包含文本背景颜色的信息的数组
@@ -55,7 +55,7 @@
  *
  *  @param context        CGContextRef对象，绘制上下文
  *  @param size           绘制范围的大小
- *  @param point          在VVAsyncDisplayView中的绘制起始点CGPoint
+ *  @param point          在VVAsyncView中的绘制起始点CGPoint
  *  @param containerView  绘制文本的容器UIView对象
  *  @param containerLayer 绘制文本的容器UIView对象的CALayer对象(.layer)
  *  @param isCancelld     是否取消绘制
@@ -66,7 +66,7 @@
                    point:(CGPoint)point
            containerView:(UIView *)containerView
           containerLayer:(CALayer *)containerLayer
-             isCancelled:(VVAsyncDisplayIsCanclledBlock)isCancelld;
+             isCancelled:(VVAsyncIsCanclledBlock)isCancelld;
 
 
 /**

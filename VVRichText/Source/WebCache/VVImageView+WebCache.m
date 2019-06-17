@@ -14,7 +14,7 @@ static void _croppedImageBackingSizeAndDrawRectInBounds(CGSize sourceImageSize, 
 
 @implementation VVImageView (WebCache)
 
-- (void)vv_setImageWihtImageStorage:(VVImageStorage *)imageStorage resize:(VVHTMLImageResizeBlock)resizeBlock completion:(VVAsyncCompleteBlock)completion {
+- (void)vv_setImageWihtImageStorage:(VVImageStorage *)imageStorage resize:(VVHTMLImageResizeBlock)resizeBlock completion:(VVAsynCompleteBlock)completion {
     if ([imageStorage.contents isKindOfClass:[UIImage class]]) {
         [self _setLocalImageWithImageStorage:imageStorage resize:resizeBlock completion:completion];
     } else {
@@ -22,7 +22,7 @@ static void _croppedImageBackingSizeAndDrawRectInBounds(CGSize sourceImageSize, 
     }
 }
 
-- (void)_setLocalImageWithImageStorage:(VVImageStorage *)imageStorage resize:(VVHTMLImageResizeBlock)resizeBlock completion:(VVAsyncCompleteBlock)completion {
+- (void)_setLocalImageWithImageStorage:(VVImageStorage *)imageStorage resize:(VVHTMLImageResizeBlock)resizeBlock completion:(VVAsynCompleteBlock)completion {
     if (imageStorage.needRerendering) {
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             UIImage *processedImage = [self _reRenderingImageWitImageStorage:imageStorage];
@@ -142,7 +142,7 @@ static void _croppedImageBackingSizeAndDrawRectInBounds(CGSize sourceImageSize, 
     }
 }
 
-- (void)_setWebImageWithImageStorage:(VVImageStorage *)imageStorage resize:(VVHTMLImageResizeBlock)resizeBlock completion:(VVAsyncCompleteBlock)completion {
+- (void)_setWebImageWithImageStorage:(VVImageStorage *)imageStorage resize:(VVHTMLImageResizeBlock)resizeBlock completion:(VVAsynCompleteBlock)completion {
     NSURL *url;
     id placeholder = imageStorage.placeholder;
     BOOL needResize = imageStorage.needResize;

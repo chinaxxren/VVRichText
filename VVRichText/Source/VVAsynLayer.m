@@ -103,7 +103,7 @@
 
 
 - (void)display:(BOOL)asynchronously {
-    __strong id <VVAsyncDisplayLayerDelegate> delegate = (id) self.delegate;
+    __strong id <VVAsynDisplayLayerDelegate> delegate = (id) self.delegate;
     VVAsyncDisplayTransaction *transaction = [delegate asyncDisplayTransaction];
     if (!transaction.displayBlock) {
         if (transaction.willDisplayBlock) {
@@ -148,7 +148,7 @@
         VVFlag *displayFlag = _displayFlag;
         int32_t value = displayFlag.value;
 
-        VVAsyncDisplayIsCanclledBlock isCancelledBlock = ^BOOL() {
+        VVAsyncIsCanclledBlock isCancelledBlock = ^BOOL() {
             return value != displayFlag.value;
         };
 

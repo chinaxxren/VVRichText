@@ -11,7 +11,7 @@
 @property(nonatomic, strong) FeedVM *feedVM;
 @property(nonatomic, strong) CommentView *commentView;
 @property(nonatomic, strong) CommentModel *postComment;
-@property(nonatomic, assign) BOOL displaysAsynchronously;//是否异步绘制
+@property(nonatomic, assign) BOOL asynDisplay;//是否异步绘制
 
 @end
 
@@ -87,7 +87,7 @@
 }
 
 - (void)confirgueCell:(FeedCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    cell.displaysAsynchronously = self.displaysAsynchronously;
+    cell.displaysAsynchronously = self.asynDisplay;
     cell.indexPath = indexPath;
     FeedLayout *feedLayout = self.feedVM.datas[indexPath.row];
     cell.feedLayout = feedLayout;
@@ -221,11 +221,11 @@
 
 - (void)reloadCell:(NSInteger)row {
     // 异步线程渲染会闪,切换为主线程渲染
-    self.displaysAsynchronously = NO;
+    self.asynDisplay = NO;
     [self.tableView beginUpdates];
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView endUpdates];
-    self.displaysAsynchronously = YES;
+    self.asynDisplay = YES;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -257,10 +257,10 @@
     NSInteger idx = segmentedControl.selectedSegmentIndex;
     switch (idx) {
         case 0:
-            self.displaysAsynchronously = YES;
+            self.asynDisplay = YES;
             break;
         case 1:
-            self.displaysAsynchronously = NO;
+            self.asynDisplay = NO;
             break;
         default:
             break;
@@ -271,7 +271,7 @@
 
 - (void)setupUI {
     self.view.backgroundColor = [UIColor whiteColor];
-    self.displaysAsynchronously = YES;
+    self.asynDisplay = YES;
 
     UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"异步绘制开", @"异步绘制关"]];
     segmentedControl.selectedSegmentIndex = 0;

@@ -108,7 +108,7 @@ static CGFloat gifSize = 30;
             VVImageStorage *imageStorage = [[VVImageStorage alloc] init];
             imageStorage.frame = CGRectMake((j + 1) * gifSize, 0, gifSize, gifSize);
             imageStorage.contents = image;
-            imageStorage.localImageType = VVLocalImageTypeDrawInVVAsyncImageView;
+            imageStorage.localImageType = VVLocalImageTypeDrawInVVImageView;
             imageStorage.contentMode = UIViewContentModeScaleAspectFill;
             [layout addStorage:imageStorage];
         }

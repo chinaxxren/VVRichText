@@ -4,7 +4,7 @@
 
 
 @class VVFlag;
-@protocol VVAsyncDisplayLayerDelegate;
+@protocol VVAsynDisplayLayerDelegate;
 
 
 @interface VVAsynLayer : CALayer
@@ -37,14 +37,14 @@
  */
 @interface VVAsyncDisplayTransaction : NSObject
 
-@property(nonatomic, copy) VVAsyncDisplayWillDisplayBlock willDisplayBlock;//即将要开始绘制
-@property(nonatomic, copy) VVAsyncDisplayBlock displayBlock;//绘制的具体实现
-@property(nonatomic, copy) VVAsyncDisplayDidDisplayBlock didDisplayBlock;//绘制已经完成
+@property(nonatomic, copy) VVAsynDisplayWillDisplayBlock willDisplayBlock;//即将要开始绘制
+@property(nonatomic, copy) VVAsynDisplayBlock displayBlock;//绘制的具体实现
+@property(nonatomic, copy) VVAsynDisplayDidDisplayBlock didDisplayBlock;//绘制已经完成
 
 @end
 
 
-@protocol VVAsyncDisplayLayerDelegate <NSObject>
+@protocol VVAsynDisplayLayerDelegate <NSObject>
 
 /**
  *  异步绘制协议的协议方法

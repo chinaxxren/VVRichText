@@ -16,7 +16,7 @@
         self.backgroundColor = [UIColor whiteColor];
         self.displayView = [[VVAsynView alloc] initWithFrame:CGRectZero];
         self.displayView.backgroundColor = [UIColor yellowColor];
-        self.displayView.displaysAsynchronously = YES;
+        self.displayView.asynDisplay = YES;
         [self.contentView addSubview:self.displayView];
     }
     return self;

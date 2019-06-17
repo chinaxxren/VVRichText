@@ -8,7 +8,7 @@
 
 @interface GifController ()
 
-@property(nonatomic, strong) VVAsynView *displayView;
+@property(nonatomic, strong) VVAsynView *asynView;
 @property(nonatomic, strong) VVLayout *layout;
 
 @end
@@ -65,9 +65,9 @@
     self.layout = [[VVLayout alloc] init];
     [self.layout addStorage:textStorage];
 
-    self.displayView = [[VVAsynView alloc] initWithFrame:CGRectMake((self.view.bounds.size.width - 200.0f) * 0.5f, (self.view.bounds.size.height - 200) * 0.5f, 200.0f, 200.0f)];
-    self.displayView.layout = self.layout;
-    [self.view addSubview:self.displayView];
+    self.asynView = [[VVAsynView alloc] initWithFrame:CGRectMake((self.view.bounds.size.width - 200.0f) * 0.5f, (self.view.bounds.size.height - 200) * 0.5f, 200.0f, 200.0f)];
+    self.asynView.layout = self.layout;
+    [self.view addSubview:self.asynView];
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Test"
                                                                               style:UIBarButtonItemStylePlain

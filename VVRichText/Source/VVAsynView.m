@@ -8,7 +8,7 @@
 #import "VVFlag.h"
 #import "VVImage.h"
 
-@interface VVAsynView () <VVAsyncDisplayLayerDelegate>
+@interface VVAsynView () <VVAsynDisplayLayerDelegate>
 
 @property(nonatomic, strong) NSMutableArray *reusePool; //这个数组用来存放暂时不使用的VVAsyncImageView
 @property(nonatomic, strong) NSMutableArray *imageContainers; //这个数组用来存放正在使用的VVAsyncImageView
@@ -53,7 +53,7 @@
     self.layer.contentsScale = [VVRichTextUtils contentsScale];
     [self addGestureRecognizer:self.longPressGesture];
     self.layer.opaque = YES;
-    self.displaysAsynchronously = YES;
+    self.asynDisplay = YES;
 
     _showingHighlight = NO;
     _imageLevel = NO;
@@ -138,7 +138,7 @@
     VVFlag *displayFlag = _displayFlag;
     int32_t value = displayFlag.value;
 
-    VVAsyncDisplayIsCanclledBlock isCancelledBlock = ^BOOL() {
+    VVAsyncIsCanclledBlock isCancelledBlock = ^BOOL() {
         return value != _displayFlag.value;
     };
 
@@ -161,7 +161,7 @@
                 }
             }
 
-            if ([imageStorage.contents isKindOfClass:[UIImage class]] && imageStorage.localImageType == VVLocalImageDrawInVVAsyncDisplayView) {
+            if ([imageStorage.contents isKindOfClass:[UIImage class]] && imageStorage.localImageType == VVLocalImageDrawInVVAsyncView) {
                 continue;
             }
 
@@ -227,7 +227,7 @@
     };
 
     //正在显示内容
-    transaction.displayBlock = ^(CALayer *layer, CGContextRef context, CGSize size, VVAsyncDisplayIsCanclledBlock isCancelledBlock) {
+    transaction.displayBlock = ^(CALayer *layer, CGContextRef context, CGSize size, VVAsyncIsCanclledBlock isCancelledBlock) {
         [self _drawStoragesInContext:context inCancelled:isCancelledBlock layer:layer size:size];
     };
 
@@ -244,17 +244,17 @@
     return transaction;
 }
 
-- (void)_drawStoragesInContext:(CGContextRef)context inCancelled:(VVAsyncDisplayIsCanclledBlock)isCancelledBlock layer:(CALayer *)layer size:(CGSize)size {
-    if ([self.delegate respondsToSelector:@selector(vv_extraAsyncDisplayIncontext:size:isCancelled:)]) {
+- (void)_drawStoragesInContext:(CGContextRef)context inCancelled:(VVAsyncIsCanclledBlock)isCancelledBlock layer:(CALayer *)layer size:(CGSize)size {
+    if ([self.delegate respondsToSelector:@selector(vv_extraAsyncIncontext:size:isCancelled:)]) {
         if (isCancelledBlock()) {
             return;
         }
 
         // 这个代理方法调用需要用户额外绘制的内容
-        [self.delegate vv_extraAsyncDisplayIncontext:context size:size isCancelled:isCancelledBlock];
+        [self.delegate vv_extraAsyncIncontext:context size:size isCancelled:isCancelledBlock];
     }
 
-    // 直接绘制在VVAsyncDisplayView上
+    // 直接绘制在VVAsyncView上
     for (VVImageStorage *imageStorage in self.layout.imageStorages) {
         if (isCancelledBlock()) {
             return;
@@ -361,9 +361,9 @@
     for (VVImageStorage *imageStorage in self.layout.imageStorages) {
         if (CGRectContainsPoint(imageStorage.frame, touchPoint)) {
             if (self.delegate &&
-                    [self.delegate respondsToSelector:@selector(vv_asyncDisplayView:didCilickedImageStorage:touch:)] &&
-                    [self.delegate conformsToProtocol:@protocol(VVAsyncDisplayViewDelegate)]) {
-                [self.delegate vv_asyncDisplayView:self didCilickedImageStorage:imageStorage touch:touch];
+                    [self.delegate respondsToSelector:@selector(vv_asynView:didCilickedImageStorage:touch:)] &&
+                    [self.delegate conformsToProtocol:@protocol(VVAsyncViewDelegate)]) {
+                [self.delegate vv_asynView:self didCilickedImageStorage:imageStorage touch:touch];
             }
             found = YES;
             break;
@@ -379,9 +379,9 @@
         VVTextHighlight *hightlight = [self _searchTextHighlightWithType:NO textStorage:textStorage touchPoint:touchPoint];
         if (hightlight == _highlight) {
             if (self.delegate &&
-                    [self.delegate respondsToSelector:@selector(vv_asyncDisplayView:didCilickedTextStorage:linkdata:)] &&
-                    [self.delegate conformsToProtocol:@protocol(VVAsyncDisplayViewDelegate)]) {
-                [self.delegate vv_asyncDisplayView:self didCilickedTextStorage:textStorage linkdata:_highlight.content];
+                    [self.delegate respondsToSelector:@selector(vv_asynView:didCilickedTextStorage:linkdata:)] &&
+                    [self.delegate conformsToProtocol:@protocol(VVAsyncViewDelegate)]) {
+                [self.delegate vv_asynView:self didCilickedTextStorage:textStorage linkdata:_highlight.content];
             }
             found = YES;
             break;
@@ -428,9 +428,9 @@
                 VVTextHighlight *hightlight = [self _searchTextHighlightWithType:YES textStorage:textStorage touchPoint:_touchBeganPoint];
                 if (_highlight && hightlight == _highlight) {
                     if (self.delegate &&
-                            [self.delegate respondsToSelector:@selector(vv_asyncDisplayView:didLongpressedTextStorage:linkdata:)] &&
-                            [self.delegate conformsToProtocol:@protocol(VVAsyncDisplayViewDelegate)]) {
-                        [self.delegate vv_asyncDisplayView:self didLongpressedTextStorage:textStorage linkdata:_highlight.content];
+                            [self.delegate respondsToSelector:@selector(vv_asynView:didLongpressedTextStorage:linkdata:)] &&
+                            [self.delegate conformsToProtocol:@protocol(VVAsyncViewDelegate)]) {
+                        [self.delegate vv_asynView:self didLongpressedTextStorage:textStorage linkdata:_highlight.content];
                     }
                 }
             }
@@ -531,10 +531,10 @@
 
 #pragma mark - Setter
 
-- (void)setDisplaysAsynchronously:(BOOL)displaysAsynchronously {
-    if (_displaysAsynchronously != displaysAsynchronously) {
-        _displaysAsynchronously = displaysAsynchronously;
-        [(VVAsynLayer *) self.layer setDisplaysAsynchronously:_displaysAsynchronously];
+- (void)setAsynDisplay:(BOOL)asynDisplay {
+    if (_asynDisplay != asynDisplay) {
+        _asynDisplay = asynDisplay;
+        [(VVAsynLayer *) self.layer setDisplaysAsynchronously:_asynDisplay];
     }
 }
 

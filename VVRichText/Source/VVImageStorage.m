@@ -50,7 +50,7 @@
         self.contentsScale = [VVRichTextUtils contentsScale];
         self.needRerendering = NO;
         self.needResize = NO;
-        self.localImageType = VVLocalImageDrawInVVAsyncDisplayView;
+        self.localImageType = VVLocalImageDrawInVVAsyncView;
         self.isBlur = NO;
     }
     return self;
@@ -68,12 +68,12 @@
 #pragma mark - Methods
 
 - (void)vv_stretchableImageWithLeftCapWidth:(CGFloat)leftCapWidth topCapHeight:(NSInteger)topCapHeight {
-    if ([self.contents isKindOfClass:[UIImage class]] && self.localImageType == VVLocalImageDrawInVVAsyncDisplayView) {
+    if ([self.contents isKindOfClass:[UIImage class]] && self.localImageType == VVLocalImageDrawInVVAsyncView) {
         self.contents = [(UIImage *) self.contents resizableImageWithCapInsets:UIEdgeInsetsMake(topCapHeight, leftCapWidth, 0.0f, 0.0f) resizingMode:UIImageResizingModeStretch];
     }
 }
 
-- (void)vv_drawInContext:(CGContextRef)context isCancelled:(VVAsyncDisplayIsCanclledBlock)isCancelld {
+- (void)vv_drawInContext:(CGContextRef)context isCancelled:(VVAsyncIsCanclledBlock)isCancelld {
     if (isCancelld()) {
         return;
     }
@@ -82,7 +82,7 @@
         return;
     }
 
-    if ([self.contents isKindOfClass:[UIImage class]] && self.localImageType == VVLocalImageDrawInVVAsyncDisplayView) {
+    if ([self.contents isKindOfClass:[UIImage class]] && self.localImageType == VVLocalImageDrawInVVAsyncView) {
         if ([self.contents isKindOfClass:[VVImage class]]) {
             VVImage *image = (VVImage *) self.contents;
             if (image.animatedImageType == YYImageTypeGIF) {

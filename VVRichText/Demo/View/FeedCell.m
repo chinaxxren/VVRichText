@@ -4,9 +4,9 @@
 #import "VVImageStorage.h"
 #import "MenuView.h"
 
-@interface FeedCell () <VVAsyncDisplayViewDelegate>
+@interface FeedCell () <VVAsyncViewDelegate>
 
-@property(nonatomic, strong) VVAsynView *asyncDisplayView;
+@property(nonatomic, strong) VVAsynView *asyncView;
 @property(nonatomic, strong) UIButton *menuButton;
 @property(nonatomic, strong) MenuView *menu;
 @property(nonatomic, strong) UIView *line;
@@ -24,7 +24,7 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.backgroundColor = [UIColor whiteColor];
 
-        [self.contentView addSubview:self.asyncDisplayView];
+        [self.contentView addSubview:self.asyncView];
         [self.contentView addSubview:self.menuButton];
         [self.contentView addSubview:self.menu];
         [self.contentView addSubview:self.line];
@@ -32,12 +32,12 @@
     return self;
 }
 
-#pragma mark - VVAsyncDisplayViewDelegate
+#pragma mark - VVAsyncViewDelegate
 
 //额外的绘制
-- (void)vv_extraAsyncDisplayIncontext:(CGContextRef)context
-                                 size:(CGSize)size
-                          isCancelled:(VVAsyncDisplayIsCanclledBlock)isCancelled {
+- (void)vv_extraAsyncIncontext:(CGContextRef)context
+                          size:(CGSize)size
+                   isCancelled:(VVAsyncIsCanclledBlock)isCancelled {
     if (!isCancelled()) {
         CGContextMoveToPoint(context, 0.0f, size.height);
         CGContextAddLineToPoint(context, size.width, size.height);
@@ -53,7 +53,7 @@
 }
 
 //点击VVImageStorage
-- (void)vv_asyncDisplayView:(VVAsynView *)asyncDisplayView didCilickedImageStorage:(VVImageStorage *)imageStorage touch:(UITouch *)touch {
+- (void)vv_asynView:(VVAsynView *)asynView didCilickedImageStorage:(VVImageStorage *)imageStorage touch:(UITouch *)touch {
     NSInteger tag = imageStorage.tag;
     //tag 0~8 是图片，9是头像
     switch (tag) {
@@ -83,7 +83,7 @@
 }
 
 //点击VVTextStorage
-- (void)vv_asyncDisplayView:(VVAsynView *)asyncDisplayView didCilickedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
+- (void)vv_asynView:(VVAsynView *)asynView didCilickedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
     //回复评论
     if ([data isKindOfClass:[CommentModel class]]) {
         if (self.clickedReCommentCallback) {
@@ -111,7 +111,7 @@
 
 
 //长按内容文字
-- (void)vv_asyncDisplayView:(VVAsynView *)asyncDisplayView didLongpressedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
+- (void)vv_asynView:(VVAsynView *)asynView didLongpressedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
     [self becomeFirstResponder];
     UIMenuItem *copyLink = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copyText)];
     [[UIMenuController sharedMenuController] setMenuItems:@[copyLink]];
@@ -129,7 +129,7 @@
     pasteboard.string = self.preCopyText;
 
     [self resignFirstResponder];
-    [self.asyncDisplayView vv_removeHighlightIfNeed];
+    [self.asyncView vv_removeHighlightIfNeed];
 }
 
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
@@ -175,7 +175,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    self.asyncDisplayView.frame = CGRectMake(0, 0, VV_SCREEN_WIDTH, self.feedLayout.height);
+    self.asyncView.frame = CGRectMake(0, 0, VV_SCREEN_WIDTH, self.feedLayout.height);
 
     self.menuButton.frame = self.feedLayout.menuPosition;
     self.menu.frame = CGRectMake(self.feedLayout.menuPosition.origin.x - 5.0f, self.feedLayout.menuPosition.origin.y - 9.0f + 14.5f, 0.0f, 34.0f);
@@ -190,7 +190,7 @@
     }
 
     _feedLayout = feedLayout;
-    self.asyncDisplayView.layout = self.feedLayout;
+    self.asyncView.layout = self.feedLayout;
     self.menu.statusModel = self.feedLayout.statusModel;
 }
 
@@ -198,20 +198,20 @@
     if (_displaysAsynchronously != displaysAsynchronously) {
         _displaysAsynchronously = displaysAsynchronously;
     }
-    self.asyncDisplayView.displaysAsynchronously = self.displaysAsynchronously;
+    self.asyncView.asynDisplay = self.displaysAsynchronously;
 }
 
 #pragma mark - Getter
 
-- (VVAsynView *)asyncDisplayView {
-    if (_asyncDisplayView) {
-        return _asyncDisplayView;
+- (VVAsynView *)asyncView {
+    if (_asyncView) {
+        return _asyncView;
     }
 
-    _asyncDisplayView = [[VVAsynView alloc] initWithFrame:CGRectZero];
-    _asyncDisplayView.delegate = self;
-    _asyncDisplayView.imageLevel = YES;
-    return _asyncDisplayView;
+    _asyncView = [[VVAsynView alloc] initWithFrame:CGRectZero];
+    _asyncView.delegate = self;
+    _asyncView.imageLevel = YES;
+    return _asyncView;
 }
 
 - (UIButton *)menuButton {

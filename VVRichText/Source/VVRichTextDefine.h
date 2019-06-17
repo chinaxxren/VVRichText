@@ -25,17 +25,17 @@
 
 @class VVImageStorage;
 
-typedef BOOL(^VVAsyncDisplayIsCanclledBlock)(void);
+typedef BOOL(^VVAsyncIsCanclledBlock)(void);
 
-typedef void(^VVAsyncDisplayWillDisplayBlock)(CALayer *layer);
+typedef void(^VVAsynDisplayWillDisplayBlock)(CALayer *layer);
 
-typedef void(^VVAsyncDisplayBlock)(CALayer *layer, CGContextRef context, CGSize size, VVAsyncDisplayIsCanclledBlock isCancelledBlock);
+typedef void(^VVAsynDisplayBlock)(CALayer *layer, CGContextRef context, CGSize size, VVAsyncIsCanclledBlock isCancelledBlock);
 
-typedef void(^VVAsyncDisplayDidDisplayBlock)(CALayer *layer, BOOL finished);
+typedef void(^VVAsynDisplayDidDisplayBlock)(CALayer *layer, BOOL finished);
 
 typedef void(^VVHTMLImageResizeBlock)(VVImageStorage *imageStorage, CGFloat delta);
 
-typedef void(^VVAsyncCompleteBlock)(void);
+typedef void(^VVAsynCompleteBlock)(void);
 
 /******************************************************************************/
 

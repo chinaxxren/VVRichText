@@ -66,7 +66,7 @@
     {
         VVTextStorage *textStorage = [[VVTextStorage alloc] init];
         textStorage.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
-        textStorage.text = @"加载本地图片,默认图片会直接绘制在VVAsyncDisplayView上，减少View的层级。";
+        textStorage.text = @"加载本地图片,默认图片会直接绘制在VVAsyncView上，减少View的层级。";
         textStorage.vericalAlignment = VVTextVericalAlignmentCenter;
 
 

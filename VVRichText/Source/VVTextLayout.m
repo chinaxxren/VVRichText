@@ -350,7 +350,7 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
                    point:(CGPoint)point
            containerView:(UIView *)containerView
           containerLayer:(CALayer *)containerLayer
-             isCancelled:(VVAsyncDisplayIsCanclledBlock)isCancelld {
+             isCancelled:(VVAsyncIsCanclledBlock)isCancelld {
 
     if (self.isNeedTextBackgroundColorDraw) {
         [self _drawTextBackgroundColorInContext:context
@@ -397,7 +397,7 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
                                textLayout:(VVTextLayout *)textLayout
                                      size:(CGSize)size
                                     point:(CGPoint)point
-                              isCancelled:(VVAsyncDisplayIsCanclledBlock)isCancelld {
+                              isCancelled:(VVAsyncIsCanclledBlock)isCancelld {
 
     [textLayout.backgroundColors enumerateObjectsUsingBlock:^(VVTextBackgroundColor *
     _Nonnull background,
@@ -423,7 +423,7 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
                              textLayout:(VVTextLayout *)textLayout
                                    size:(CGSize)size
                                   point:(CGPoint)point
-                            isCancelled:(VVAsyncDisplayIsCanclledBlock)isCancelld {
+                            isCancelled:(VVAsyncIsCanclledBlock)isCancelld {
 
     [textLayout.boudingStrokes enumerateObjectsUsingBlock:^(VVTextBoundingStroke *_Nonnull boundingStroke,
             NSUInteger idx,
@@ -450,7 +450,7 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
                  textLayout:(VVTextLayout *)textLayout
                        size:(CGSize)size
                       point:(CGPoint)point
-                isCancelled:(VVAsyncDisplayIsCanclledBlock)isCancelld {
+                isCancelled:(VVAsyncIsCanclledBlock)isCancelld {
 
     CGRect r = CGRectOffset(textLayout.cgPathBox, point.x, point.y);
     CGContextAddRect(context, CGRectMake(r.origin.x - 0.2f,
@@ -521,7 +521,7 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
                 textLayout:(VVTextLayout *)textLayout
                       size:(CGSize)size
                      point:(CGPoint)point
-               isCancelled:(VVAsyncDisplayIsCanclledBlock)isCancelld {
+               isCancelled:(VVAsyncIsCanclledBlock)isCancelld {
 
     CGContextSaveGState(context);
     CGContextTranslateCTM(context, point.x, point.y);
@@ -598,7 +598,7 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
                             point:(CGPoint)point
                     containerView:(UIView *)containerView
                    containerLayer:(CALayer *)containerLayer
-                      isCancelled:(VVAsyncDisplayIsCanclledBlock)isCancelld {
+                      isCancelled:(VVAsyncIsCanclledBlock)isCancelld {
 
     for (NSUInteger i = 0; i < textLayout.attachments.count; i++) {
         if (isCancelld()) {

@@ -9,6 +9,6 @@
  */
 - (void)vv_setImageWihtImageStorage:(VVImageStorage *)imageStorage
                              resize:(VVHTMLImageResizeBlock)resizeBlock
-                         completion:(VVAsyncCompleteBlock)completion;
+                         completion:(VVAsynCompleteBlock)completion;
 
 @end
