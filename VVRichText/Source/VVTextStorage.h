@@ -188,7 +188,7 @@ __deprecated_msg("Please use 'vv_addLinkForWholeTextStorageWithData:highLightCol
 
 
 /**
- *  建立布局
+ *  建立布局,并且能获得当前的VVTextStorage的frame和bounds
  */
 - (void)vv_layout;
 
