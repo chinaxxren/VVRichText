@@ -3,7 +3,7 @@
 #import "VVStorage.h"
 
 #import "VVTextLayout.h"
-#import "VVAsyncDisplayLayer.h"
+#import "VVAsynLayer.h"
 
 /***  附件的对齐方式  ***/
 typedef NS_ENUM(NSUInteger, VVTextAttachAlignment) {

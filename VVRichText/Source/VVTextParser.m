@@ -1,7 +1,7 @@
 
 #import "VVTextParser.h"
 #import "VVImage.h"
-#import "VVAsyncImageView.h"
+#import "VVImageView.h"
 
 #define EMOJI_REGULAR @"\\[[a-zA-Z0-9\\u4e00-\\u9fa5]+\\]"
 #define ACCOUNT_REGULAR @"@[\u4e00-\u9fa5a-zA-Z0-9_-]{2,30}"
@@ -63,7 +63,7 @@ static inline NSBundle *MotionQQBundle();
                                       NSString *content = [text substringWithRange:NSMakeRange(range.location + 1, range.length - 2)];
                                       if (textStorage.text.length >= range.location + range.length) {
                                           NSString *motionPath = [MotionQQBundle() pathForResource:content ofType:@"gif"];
-                                          VVAsyncImageView *asyncImageView = [[VVAsyncImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
+                                          VVImageView *asyncImageView = [[VVImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
                                           asyncImageView.image = [VVImage imageWithContentsOfFile:motionPath];
                                           [textStorage vv_replaceTextWithView:asyncImageView
                                                                   contentMode:UIViewContentModeScaleAspectFill

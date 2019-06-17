@@ -1,7 +1,7 @@
 
 #import "VVTextStorage.h"
 
-#import "VVAsyncImageView.h"
+#import "VVImageView.h"
 #import "VVRichText.h"
 
 @interface VVTextStorage ()
@@ -197,7 +197,7 @@
         userInfo = @{@"URL": URL};
     }
 
-    NSMutableAttributedString *attachString = [NSMutableAttributedString vv_textAttachmentStringWithContent:[[VVAsyncImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)]
+    NSMutableAttributedString *attachString = [NSMutableAttributedString vv_textAttachmentStringWithContent:[[VVImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)]
                                                                                                    userInfo:userInfo
                                                                                                 contentMode:contentMode
                                                                                                      ascent:ascent

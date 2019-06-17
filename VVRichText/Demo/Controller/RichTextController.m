@@ -5,7 +5,7 @@
 
 @interface RichTextController () <VVAsyncDisplayViewDelegate>
 
-@property(nonatomic, strong) VVAsyncDisplayView *asyncView;
+@property(nonatomic, strong) VVAsynView *asyncView;
 @property(nonatomic, copy) NSString *preCopyText;
 
 @end
@@ -20,7 +20,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     //创建VVAsyncDisplayView对象
-    self.asyncView = [[VVAsyncDisplayView alloc] initWithFrame:CGRectMake(0.0f,
+    self.asyncView = [[VVAsynView alloc] initWithFrame:CGRectMake(0.0f,
             64.0,
             VV_SCREEN_WIDTH,
             VV_SCREEN_HEIGHT - 64.0f)];
@@ -115,7 +115,7 @@
 }
 
 //给文字添加点击事件后，若触发事件，会在这个代理方法中收到回调
-- (void)vv_asyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didCilickedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
+- (void)vv_asyncDisplayView:(VVAsynView *)asyncDisplayView didCilickedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
     NSLog(@"点击:%@", data);
     if ([data isKindOfClass:[NSString class]]) {
 
@@ -123,7 +123,7 @@
 }
 
 //给文字添加长按事件后，触发后，会在这个代理方法中收到回调
-- (void)vv_asyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didLongpressedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
+- (void)vv_asyncDisplayView:(VVAsynView *)asyncDisplayView didLongpressedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
     [self becomeFirstResponder];
     UIMenuItem *copyLink = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copyText)];
     [[UIMenuController sharedMenuController] setMenuItems:@[copyLink]];

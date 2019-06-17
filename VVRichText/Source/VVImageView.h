@@ -3,7 +3,7 @@
 #import <YYImage/YYAnimatedImageView.h>
 
 
-@interface VVAsyncImageView : YYAnimatedImageView
+@interface VVImageView : YYAnimatedImageView
 
 /**
  *  一个标示符字符串，跟VVImageStorage中的同名属性对应.

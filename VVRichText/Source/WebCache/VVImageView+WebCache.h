@@ -1,8 +1,8 @@
 
-#import "VVAsyncImageView.h"
+#import "VVImageView.h"
 #import "VVImageStorage.h"
 
-@interface VVAsyncImageView (WebCache)
+@interface VVImageView (WebCache)
 
 /**
  *  设置VVAsyncImageView的图片内容

@@ -4,7 +4,7 @@
 
 @interface TextViewCell ()
 
-@property(nonatomic, strong) VVAsyncDisplayView *displayView;
+@property(nonatomic, strong) VVAsynView *displayView;
 
 @end
 
@@ -14,7 +14,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
-        self.displayView = [[VVAsyncDisplayView alloc] initWithFrame:CGRectZero];
+        self.displayView = [[VVAsynView alloc] initWithFrame:CGRectZero];
         self.displayView.backgroundColor = [UIColor yellowColor];
         self.displayView.displaysAsynchronously = YES;
         [self.contentView addSubview:self.displayView];

@@ -1,7 +1,7 @@
 
 
 
-#import "VVAsyncImageView+WebCache.h"
+#import "VVImageView+WebCache.h"
 
 #import "UIImage+VVRichText.h"
 #import "YYAnimatedImageView+WebCache.h"
@@ -12,7 +12,7 @@ static CGSize _sizeFillWithAspectRatio(CGFloat sizeToScaleAspectRatio, CGSize de
 
 static void _croppedImageBackingSizeAndDrawRectInBounds(CGSize sourceImageSize, CGSize boundsSize, UIViewContentMode contentMode, CGRect cropRect, BOOL forceUpscaling, CGSize *outBackingSize, CGRect *outDrawRect);
 
-@implementation VVAsyncImageView (WebCache)
+@implementation VVImageView (WebCache)
 
 - (void)vv_setImageWihtImageStorage:(VVImageStorage *)imageStorage resize:(VVHTMLImageResizeBlock)resizeBlock completion:(VVAsyncCompleteBlock)completion {
     if ([imageStorage.contents isKindOfClass:[UIImage class]]) {

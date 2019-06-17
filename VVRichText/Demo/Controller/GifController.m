@@ -2,13 +2,13 @@
 #import "GifController.h"
 
 #import "VVLayout.h"
-#import "VVAsyncDisplayView.h"
+#import "VVAsynView.h"
 #import "VVImage.h"
 #import "VVTextParser.h"
 
 @interface GifController ()
 
-@property(nonatomic, strong) VVAsyncDisplayView *displayView;
+@property(nonatomic, strong) VVAsynView *displayView;
 @property(nonatomic, strong) VVLayout *layout;
 
 @end
@@ -65,7 +65,7 @@
     self.layout = [[VVLayout alloc] init];
     [self.layout addStorage:textStorage];
 
-    self.displayView = [[VVAsyncDisplayView alloc] initWithFrame:CGRectMake((self.view.bounds.size.width - 200.0f) * 0.5f, (self.view.bounds.size.height - 200) * 0.5f, 200.0f, 200.0f)];
+    self.displayView = [[VVAsynView alloc] initWithFrame:CGRectMake((self.view.bounds.size.width - 200.0f) * 0.5f, (self.view.bounds.size.height - 200) * 0.5f, 200.0f, 200.0f)];
     self.displayView.layout = self.layout;
     [self.view addSubview:self.displayView];
 

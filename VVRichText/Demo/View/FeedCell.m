@@ -6,7 +6,7 @@
 
 @interface FeedCell () <VVAsyncDisplayViewDelegate>
 
-@property(nonatomic, strong) VVAsyncDisplayView *asyncDisplayView;
+@property(nonatomic, strong) VVAsynView *asyncDisplayView;
 @property(nonatomic, strong) UIButton *menuButton;
 @property(nonatomic, strong) MenuView *menu;
 @property(nonatomic, strong) UIView *line;
@@ -53,7 +53,7 @@
 }
 
 //点击VVImageStorage
-- (void)vv_asyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didCilickedImageStorage:(VVImageStorage *)imageStorage touch:(UITouch *)touch {
+- (void)vv_asyncDisplayView:(VVAsynView *)asyncDisplayView didCilickedImageStorage:(VVImageStorage *)imageStorage touch:(UITouch *)touch {
     NSInteger tag = imageStorage.tag;
     //tag 0~8 是图片，9是头像
     switch (tag) {
@@ -83,7 +83,7 @@
 }
 
 //点击VVTextStorage
-- (void)vv_asyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didCilickedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
+- (void)vv_asyncDisplayView:(VVAsynView *)asyncDisplayView didCilickedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
     //回复评论
     if ([data isKindOfClass:[CommentModel class]]) {
         if (self.clickedReCommentCallback) {
@@ -111,7 +111,7 @@
 
 
 //长按内容文字
-- (void)vv_asyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didLongpressedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
+- (void)vv_asyncDisplayView:(VVAsynView *)asyncDisplayView didLongpressedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
     [self becomeFirstResponder];
     UIMenuItem *copyLink = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copyText)];
     [[UIMenuController sharedMenuController] setMenuItems:@[copyLink]];
@@ -203,13 +203,14 @@
 
 #pragma mark - Getter
 
-- (VVAsyncDisplayView *)asyncDisplayView {
+- (VVAsynView *)asyncDisplayView {
     if (_asyncDisplayView) {
         return _asyncDisplayView;
     }
 
-    _asyncDisplayView = [[VVAsyncDisplayView alloc] initWithFrame:CGRectZero];
+    _asyncDisplayView = [[VVAsynView alloc] initWithFrame:CGRectZero];
     _asyncDisplayView.delegate = self;
+    _asyncDisplayView.imageLevel = YES;
     return _asyncDisplayView;
 }
 

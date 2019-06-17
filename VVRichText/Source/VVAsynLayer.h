@@ -7,7 +7,7 @@
 @protocol VVAsyncDisplayLayerDelegate;
 
 
-@interface VVAsyncDisplayLayer : CALayer
+@interface VVAsynLayer : CALayer
 
 @property(nonatomic, assign) BOOL displaysAsynchronously;//是否异步绘制，默认是YES
 @property(nonatomic, strong, readonly) VVFlag *displayFlag;//一个自增的标识类，用于取消绘制。

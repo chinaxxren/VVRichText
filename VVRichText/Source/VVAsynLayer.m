@@ -1,5 +1,5 @@
 
-#import "VVAsyncDisplayLayer.h"
+#import "VVAsynLayer.h"
 
 #import <libkern/OSAtomic.h>
 
@@ -7,14 +7,14 @@
 #import "CALayer+VVTransaction.h"
 #import "VVFlag.h"
 
-@interface VVAsyncDisplayLayer ()
+@interface VVAsynLayer ()
 
 @property(nonatomic, strong) VVFlag *displayFlag;
 
 @end
 
 
-@implementation VVAsyncDisplayLayer
+@implementation VVAsynLayer
 
 
 #pragma mark -
@@ -30,7 +30,7 @@
         queueCount = queueCount < 1 ? 1 : queueCount > MAX_QUEUE_COUNT ? MAX_QUEUE_COUNT : queueCount;
         for (NSUInteger i = 0; i < queueCount; i++) {
             dispatch_queue_attr_t attr = dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, QOS_CLASS_USER_INITIATED, 0);
-            queues[i] = dispatch_queue_create("com.VVRichText.VVAsyncDisplayLayer.displayQueue", attr);
+            queues[i] = dispatch_queue_create("com.VVRichText.VVAsynLayer.displayQueue", attr);
         }
     });
 #pragma clang diagnostic push
@@ -114,7 +114,7 @@
         id contents = self.contents;
         self.contents = nil;
         if (imageRef) {
-            dispatch_async([VVAsyncDisplayLayer releaseQueue], ^{
+            dispatch_async([VVAsynLayer releaseQueue], ^{
                 [contents class];
                 CFRelease(imageRef);
             });
@@ -131,7 +131,7 @@
     id contents = self.contents;
     self.contents = nil;
     if (imageRef) {
-        dispatch_async([VVAsyncDisplayLayer releaseQueue], ^{
+        dispatch_async([VVAsynLayer releaseQueue], ^{
             [contents class];
             CFRelease(imageRef);
         });
@@ -160,7 +160,7 @@
             CGImageRef image = (__bridge_retained CGImageRef) (self.contents);
             self.contents = nil;
             if (image) {
-                dispatch_async([VVAsyncDisplayLayer displayQueue], ^{
+                dispatch_async([VVAsynLayer displayQueue], ^{
                     CFRelease(image);
                 });
             }
@@ -171,7 +171,7 @@
             return;
         }
 
-        dispatch_async([VVAsyncDisplayLayer displayQueue], ^{
+        dispatch_async([VVAsynLayer displayQueue], ^{
             if (isCancelledBlock()) {
                 CGColorRelease(backgroundColor);
                 return;

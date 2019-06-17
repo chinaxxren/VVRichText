@@ -4,7 +4,7 @@
 
 @interface ImageDemoTableViewCell ()
 
-@property (nonatomic,strong) VVAsyncDisplayView* displayView;
+@property (nonatomic,strong) VVAsynView* displayView;
 
 @end
 
@@ -18,7 +18,7 @@
     if (self) {
         
         self.backgroundColor = [UIColor whiteColor];
-        self.displayView = [[VVAsyncDisplayView alloc] initWithFrame:CGRectZero];
+        self.displayView = [[VVAsynView alloc] initWithFrame:CGRectZero];
         [self.contentView addSubview:self.displayView];
         
     }

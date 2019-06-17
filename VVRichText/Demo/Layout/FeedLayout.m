@@ -13,7 +13,7 @@
 
             self.statusModel = statusModel;
 
-            //头像模型 avatarImageStorage
+            // 头像模型 avatarImageStorage
             VVImageStorage *avatarStorage = [[VVImageStorage alloc] initWithIdentifier:AVATAR_IDENTIFIER];
             if (statusModel.avatar) {
                 avatarStorage.contents = statusModel.avatar;
@@ -27,8 +27,9 @@
             avatarStorage.tag = 9;
             avatarStorage.cornerBorderWidth = 1.0f;
             avatarStorage.cornerBorderColor = [UIColor grayColor];
+            [self addStorage:avatarStorage];
 
-            //名字模型 nameTextStorage
+            // 名字模型 nameTextStorage
             VVTextStorage *nameTextStorage = [[VVTextStorage alloc] init];
             nameTextStorage.text = statusModel.name;
             nameTextStorage.font = [UIFont fontWithName:@"Heiti SC" size:15.0f];
@@ -37,7 +38,7 @@
                                           range:NSMakeRange(0, statusModel.name.length)
                                       linkColor:VV_COLOR(113, 129, 161, 1)
                                  highLightColor:VV_COLOR(0, 0, 0, 0.15)];
-            [nameTextStorage vv_layout];
+            [self addStorage:nameTextStorage];
 
             // 正文内容模型 contentTextStorage
             VVTextStorage *contentTextStorage = [[VVTextStorage alloc] init];
@@ -46,27 +47,30 @@
             } else {
                 contentTextStorage.maxNumberOfLines = 5;//设置最大行数，超过则折叠
             }
-
             contentTextStorage.text = statusModel.content;
             contentTextStorage.font = [UIFont fontWithName:@"Heiti SC" size:15.0f];
             contentTextStorage.textColor = VV_COLOR(40, 40, 40, 1);
-            contentTextStorage.frame = CGRectMake(nameTextStorage.left,
-                    nameTextStorage.bottom + 10.0f,
-                    VV_SCREEN_WIDTH - 80.0f,
-                    CGFLOAT_MAX);
-            [contentTextStorage vv_layout];
+            contentTextStorage.frame = CGRectMake(nameTextStorage.left, nameTextStorage.bottom + 10.0f, VV_SCREEN_WIDTH - 80.0f, CGFLOAT_MAX);
+            // 添加长按复制
+            [contentTextStorage vv_addLongPressActionWithData:contentTextStorage.text
+                                               highLightColor:VV_COLOR(0, 0, 0, 0.25f)];
+            // 解析表情、主题、网址
+            [VVTextParser parseGeneralEmojiWithTextStorage:contentTextStorage];
+            [VVTextParser parseTopicWithVVTextStorage:contentTextStorage
+                                            linkColor:VV_COLOR(113, 129, 161, 1)
+                                       highlightColor:VV_COLOR(0, 0, 0, 0.15)];
+            [VVTextParser parseHttpURLWithTextStorage:contentTextStorage
+                                            linkColor:VV_COLOR(113, 129, 161, 1)
+                                       highlightColor:VV_COLOR(0, 0, 0, 0.15f)];
+            [self addStorage:contentTextStorage];
 
             CGFloat contentBottom = contentTextStorage.bottom;
 
+            // 折叠文字
             VVTextStorage *expendStorage = [[VVTextStorage alloc] init];
             expendStorage.font = [UIFont fontWithName:@"Heiti SC" size:15.0f];
             expendStorage.textColor = VV_COLOR(40, 40, 40, 1);
-            expendStorage.frame = CGRectMake(nameTextStorage.left,
-                    contentTextStorage.bottom + 5.0f,
-                    200.0f,
-                    30.0f);
-
-            // 折叠文字
+            expendStorage.frame = CGRectMake(nameTextStorage.left, contentTextStorage.bottom + 5.0f, 200.0f, 30.0f);
             if (contentTextStorage.isTruncation && !statusModel.isExpend) {
                 expendStorage.text = @"展开全文";
                 [expendStorage vv_addLinkWithData:@"open"
@@ -84,20 +88,6 @@
                 [self addStorage:expendStorage];
                 contentBottom = expendStorage.bottom + 10.0f;
             }
-
-            //解析表情、主题、网址
-            [VVTextParser parseGeneralEmojiWithTextStorage:contentTextStorage];
-            [VVTextParser parseTopicWithVVTextStorage:contentTextStorage
-                                            linkColor:VV_COLOR(113, 129, 161, 1)
-                                       highlightColor:VV_COLOR(0, 0, 0, 0.15)];
-            [VVTextParser parseHttpURLWithTextStorage:contentTextStorage
-                                            linkColor:VV_COLOR(113, 129, 161, 1)
-                                       highlightColor:VV_COLOR(0, 0, 0, 0.15f)];
-            //添加长按复制
-            [contentTextStorage vv_addLongPressActionWithData:contentTextStorage.text
-                                               highLightColor:VV_COLOR(0, 0, 0, 0.25f)];
-
-            [contentTextStorage vv_layout];
 
             //发布的图片模型 imgsStorage
             CGFloat imageWidth = (VV_SCREEN_WIDTH - 110.0f) / 3.0f;
@@ -150,10 +140,7 @@
                 }
             } else if ([statusModel.type isEqualToString:MESSAGE_TYPE_WEBSITE]) { //网页链接类型
                 //这个CGRect用来绘制背景颜色
-                self.websitePosition = CGRectMake(nameTextStorage.left,
-                        contentBottom + 5.0f,
-                        VV_SCREEN_WIDTH - 80.0f,
-                        60.0f);
+                self.websitePosition = CGRectMake(nameTextStorage.left, contentBottom + 5.0f, VV_SCREEN_WIDTH - 80.0f, 60.0f);
 
                 //左边的图片
                 VVImageStorage *imageStorage = [[VVImageStorage alloc] initWithIdentifier:WEBSITE_COVER_IDENTIFIER];
@@ -161,10 +148,7 @@
                 imageStorage.contents = [NSURL URLWithString:URLString];
                 imageStorage.clipsToBounds = YES;
                 imageStorage.contentMode = UIViewContentModeScaleAspectFill;
-                imageStorage.frame = CGRectMake(nameTextStorage.left + 5.0f,
-                        contentBottom + 10.0f,
-                        50.0f,
-                        50.0f);
+                imageStorage.frame = CGRectMake(nameTextStorage.left + 5.0f, contentBottom + 10.0f, 50.0f, 50.0f);
                 [imageStorageArray addObject:imageStorage];
 
                 //右边的文字
@@ -172,11 +156,7 @@
                 detailTextStorage.text = statusModel.detail;
                 detailTextStorage.font = [UIFont fontWithName:@"Heiti SC" size:12.0f];
                 detailTextStorage.textColor = VV_COLOR(40, 40, 40, 1);
-                detailTextStorage.frame = CGRectMake(imageStorage.right + 10.0f,
-                        contentBottom + 10.0f,
-                        VV_SCREEN_WIDTH - 150.0f,
-                        60.0f);
-
+                detailTextStorage.frame = CGRectMake(imageStorage.right + 10.0f, contentBottom + 10.0f, VV_SCREEN_WIDTH - 150.0f, 60.0f);
                 detailTextStorage.linespacing = 0.5f;
                 [detailTextStorage vv_addLinkForWholeTextStorageWithData:@"https://github.com/chinaxxren/VVRichText"
                                                           highLightColor:VV_COLOR(0, 0, 0, 0.15)];
@@ -184,6 +164,7 @@
             } else if ([statusModel.type isEqualToString:MESSAGE_TYPE_VIDEO]) { //视频类型
 
             }
+            [self addStorages:imageStorageArray];
 
             //获取最后一张图片的模型
             VVImageStorage *lastImageStorage = (VVImageStorage *) [imageStorageArray lastObject];
@@ -196,50 +177,28 @@
             //菜单按钮
             CGRect menuPosition = CGRectZero;
             if (![statusModel.type isEqualToString:MESSAGE_TYPE_VIDEO]) {
-                menuPosition = CGRectMake(VV_SCREEN_WIDTH - 54.0f,
-                        10.0f + contentTextStorage.bottom - 14.5f,
-                        44.0f,
-                        44.0f);
-
-                dateTextStorage.frame = CGRectMake(nameTextStorage.left,
-                        contentTextStorage.bottom + 10.0f,
-                        VV_SCREEN_WIDTH - 80.0f,
-                        CGFLOAT_MAX);
+                menuPosition = CGRectMake(VV_SCREEN_WIDTH - 54.0f, 10.0f + contentTextStorage.bottom - 14.5f, 44.0f, 44.0f);
+                dateTextStorage.frame = CGRectMake(nameTextStorage.left, contentTextStorage.bottom + 10.0f, VV_SCREEN_WIDTH - 80.0f, CGFLOAT_MAX);
                 if (lastImageStorage) {
-                    menuPosition = CGRectMake(VV_SCREEN_WIDTH - 54.0f,
-                            10.0f + lastImageStorage.bottom - 14.5f,
-                            44.0f,
-                            44.0f);
-
-                    dateTextStorage.frame = CGRectMake(nameTextStorage.left,
-                            lastImageStorage.bottom + 10.0f,
-                            VV_SCREEN_WIDTH - 80.0f,
-                            CGFLOAT_MAX);
+                    menuPosition = CGRectMake(VV_SCREEN_WIDTH - 54.0f, 10.0f + lastImageStorage.bottom - 14.5f, 44.0f, 44.0f);
+                    dateTextStorage.frame = CGRectMake(nameTextStorage.left, lastImageStorage.bottom + 10.0f, VV_SCREEN_WIDTH - 80.0f, CGFLOAT_MAX);
                 }
             }
-            [dateTextStorage vv_layout];
+            [self addStorage:dateTextStorage];
 
-            //生成评论背景Storage
-            VVImageStorage *commentBgStorage = [[VVImageStorage alloc] init];
-            NSArray *commentTextStorages = @[];
+            //生成评论背景
             CGRect commentBgPosition = CGRectZero;
-            CGRect rect = CGRectMake(60.0f,
-                    dateTextStorage.bottom + 5.0f,
-                    VV_SCREEN_WIDTH - 80,
-                    20);
+            CGRect rect = CGRectMake(60.0f, dateTextStorage.bottom + 5.0f, VV_SCREEN_WIDTH - 80, 20);
 
             CGFloat offsetY = 0.0f;
 
             //点赞
-            VVImageStorage *likeImageSotrage = [[VVImageStorage alloc] init];
+            VVImageStorage *likeImageStorage = [[VVImageStorage alloc] init];
             VVTextStorage *likeTextStorage = [[VVTextStorage alloc] init];
             if (statusModel.likeList.count != 0) {
-                likeImageSotrage.contents = [UIImage imageNamed:@"Like"];
-                likeImageSotrage.frame = CGRectMake(rect.origin.x + 10.0f,
-                        rect.origin.y + 10.0f + offsetY,
-                        16.0f,
-                        16.0f);
-
+                likeImageStorage.contents = [UIImage imageNamed:@"Like"];
+                likeImageStorage.frame = CGRectMake(rect.origin.x + 10.0f, rect.origin.y + 10.0f + offsetY, 16.0f, 16.0f);
+                [self addStorage:likeImageStorage];
                 NSMutableString *mutableString = [[NSMutableString alloc] init];
                 NSMutableArray *composeArray = [[NSMutableArray alloc] init];
 
@@ -259,10 +218,7 @@
 
                 likeTextStorage.text = mutableString;
                 likeTextStorage.font = [UIFont fontWithName:@"Heiti SC" size:14.0f];
-                likeTextStorage.frame = CGRectMake(likeImageSotrage.right + 5.0f,
-                        rect.origin.y + 7.0f,
-                        VV_SCREEN_WIDTH - 110.0f,
-                        CGFLOAT_MAX);
+                likeTextStorage.frame = CGRectMake(likeImageStorage.right + 5.0f, rect.origin.y + 7.0f, VV_SCREEN_WIDTH - 110.0f, CGFLOAT_MAX);
 
                 for (NSValue *rangeValue in composeArray) {
                     NSRange range = [rangeValue rangeValue];
@@ -274,19 +230,15 @@
                                               linkColor:VV_COLOR(113, 129, 161, 1)
                                          highLightColor:VV_COLOR(0, 0, 0, 0.15)];
                 }
-                [likeTextStorage vv_layout];
+                [self addStorage:likeTextStorage];
                 offsetY += likeTextStorage.height + 5.0f;
             }
 
             if (statusModel.commentList.count != 0 && statusModel.commentList != nil) {
                 if (self.statusModel.likeList.count != 0) {
-                    self.lineRect = CGRectMake(nameTextStorage.left,
-                            likeTextStorage.bottom + 2.5f,
-                            VV_SCREEN_WIDTH - 80,
-                            0.1f);
+                    self.lineRect = CGRectMake(nameTextStorage.left, likeTextStorage.bottom + 2.5f, VV_SCREEN_WIDTH - 80, 0.1f);
                 }
 
-                NSMutableArray *tmp = [[NSMutableArray alloc] initWithCapacity:statusModel.commentList.count];
                 for (NSDictionary *commentDict in statusModel.commentList) {
                     NSString *to = commentDict[@"to"];
                     if (to.length != 0) {
@@ -299,10 +251,7 @@
                         commentTextStorage.text = commentString;
                         commentTextStorage.font = [UIFont fontWithName:@"Heiti SC" size:14.0f];
                         commentTextStorage.textColor = VV_COLOR(40, 40, 40, 1);
-                        commentTextStorage.frame = CGRectMake(rect.origin.x + 10.0f,
-                                rect.origin.y + 10.0f + offsetY,
-                                VV_SCREEN_WIDTH - 95.0f,
-                                CGFLOAT_MAX);
+                        commentTextStorage.frame = CGRectMake(rect.origin.x + 10.0f, rect.origin.y + 10.0f + offsetY, VV_SCREEN_WIDTH - 95.0f, CGFLOAT_MAX);
 
                         CommentModel *commentModel1 = [[CommentModel alloc] init];
                         commentModel1.to = commentDict[@"from"];
@@ -328,8 +277,7 @@
                                                         linkColor:VV_COLOR(113, 129, 161, 1)
                                                    highlightColor:VV_COLOR(0, 0, 0, 0.15)];
                         [VVTextParser parseGeneralEmojiWithTextStorage:commentTextStorage];
-                        [commentTextStorage vv_layout];
-                        [tmp addObject:commentTextStorage];
+                        [self addStorage:commentTextStorage];
                         offsetY += commentTextStorage.height;
                     } else {
                         NSString *commentString = [NSString stringWithFormat:@"%@:%@",
@@ -342,17 +290,13 @@
                         commentTextStorage.textAlignment = NSTextAlignmentLeft;
                         commentTextStorage.linespacing = 2.0f;
                         commentTextStorage.textColor = VV_COLOR(40, 40, 40, 1);
-                        commentTextStorage.frame = CGRectMake(rect.origin.x + 10.0f,
-                                rect.origin.y + 10.0f + offsetY,
-                                VV_SCREEN_WIDTH - 95.0f,
-                                CGFLOAT_MAX);
+                        commentTextStorage.frame = CGRectMake(rect.origin.x + 10.0f, rect.origin.y + 10.0f + offsetY, VV_SCREEN_WIDTH - 95.0f, CGFLOAT_MAX);
 
                         CommentModel *commentModel = [[CommentModel alloc] init];
                         commentModel.to = commentDict[@"from"];
                         commentModel.index = index;
                         [commentTextStorage vv_addLinkForWholeTextStorageWithData:commentModel
                                                                    highLightColor:VV_COLOR(0, 0, 0, 0.15)];
-
                         [commentTextStorage vv_addLinkWithData:commentModel
                                                          range:NSMakeRange(0, [(NSString *) commentDict[@"from"] length])
                                                      linkColor:VV_COLOR(113, 129, 161, 1)
@@ -362,34 +306,19 @@
                                                         linkColor:VV_COLOR(113, 129, 161, 1)
                                                    highlightColor:VV_COLOR(0, 0, 0, 0.15)];
                         [VVTextParser parseGeneralEmojiWithTextStorage:commentTextStorage];
-                        [commentTextStorage vv_layout];
-                        [tmp addObject:commentTextStorage];
+                        [self addStorage:commentTextStorage];
                         offsetY += commentTextStorage.height;
                     }
                 }
-                //如果有评论，设置评论背景Storage
-                commentTextStorages = tmp;
-                commentBgPosition = CGRectMake(60.0f,
-                        dateTextStorage.bottom + 5.0f,
-                        VV_SCREEN_WIDTH - 80,
-                        offsetY + 15.0f);
-
+                commentBgPosition = CGRectMake(60.0f, dateTextStorage.bottom + 5.0f, VV_SCREEN_WIDTH - 80, offsetY + 15.0f);
+                VVImageStorage *commentBgStorage = [[VVImageStorage alloc] init];
                 commentBgStorage.frame = commentBgPosition;
                 commentBgStorage.contents = [UIImage imageNamed:@"comment"];
                 [commentBgStorage vv_stretchableImageWithLeftCapWidth:40 topCapHeight:15];
+                commentBgStorage.level = -1;
+                [self addStorage:commentBgStorage];
             }
 
-            [self addStorage:nameTextStorage];//将Storage添加到遵循VVLayoutProtocol协议的类
-            [self addStorage:contentTextStorage];
-            [self addStorage:dateTextStorage];
-            [self addStorages:commentTextStorages];//通过一个数组来添加storage，使用这个方法
-            [self addStorage:avatarStorage];
-            [self addStorage:commentBgStorage];
-            [self addStorage:likeImageSotrage];
-            [self addStorages:imageStorageArray];//通过一个数组来添加storage，使用这个方法
-            if (likeTextStorage) {
-                [self addStorage:likeTextStorage];
-            }
             self.avatarPosition = CGRectMake(10, 20, 40, 40);//头像的位置
             self.menuPosition = menuPosition;//右下角菜单按钮的位置
             self.commentBgPosition = commentBgPosition;//评论灰色背景位置

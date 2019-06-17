@@ -232,8 +232,8 @@ const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
     SDSetImageBlock finalSetImageBlock;
     if (setImageBlock) {
         finalSetImageBlock = setImageBlock;
-    } else if ([view isKindOfClass:[VVAsyncImageView class]]) {
-        VVAsyncImageView *imageView = (VVAsyncImageView *) view;
+    } else if ([view isKindOfClass:[VVImageView class]]) {
+        VVImageView *imageView = (VVImageView *) view;
         finalSetImageBlock = ^(UIImage *setImage, NSData *setImageData, SDImageCacheType setCacheType, NSURL *setImageURL) {
             imageView.image = setImage;
         };

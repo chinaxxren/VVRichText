@@ -1,14 +1,14 @@
 
 
-#import "VVAsyncDisplayView.h"
+#import "VVAsynView.h"
 
-#import "VVAsyncImageView.h"
+#import "VVImageView.h"
 #import "CALayer+VVTransaction.h"
-#import "VVAsyncImageView+WebCache.h"
+#import "VVImageView+WebCache.h"
 #import "VVFlag.h"
 #import "VVImage.h"
 
-@interface VVAsyncDisplayView () <VVAsyncDisplayLayerDelegate>
+@interface VVAsynView () <VVAsyncDisplayLayerDelegate>
 
 @property(nonatomic, strong) NSMutableArray *reusePool; //这个数组用来存放暂时不使用的VVAsyncImageView
 @property(nonatomic, strong) NSMutableArray *imageContainers; //这个数组用来存放正在使用的VVAsyncImageView
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation VVAsyncDisplayView
+@implementation VVAsynView
 
 #pragma mark - LifeCycle
 
@@ -56,6 +56,7 @@
     self.displaysAsynchronously = YES;
 
     _showingHighlight = NO;
+    _imageLevel = NO;
     _highlight = nil;
     _touchBeganPoint = CGPointZero;
     _highlightAdjustPoint = CGPointZero;
@@ -72,6 +73,17 @@
     [self _cleanupAndReleaseModelOnSubThread];
 
     _layout = layout;
+
+    if (self.imageLevel) {
+        [self.layout.imageStorages sortUsingComparator:^NSComparisonResult(VVImageStorage *imageStorage1, VVImageStorage *imageStorage2) {
+            if (imageStorage1.level < imageStorage2.level) {
+                return NSOrderedAscending;
+            } else if (imageStorage1.level > imageStorage2.level) {
+                return NSOrderedDescending;
+            }
+            return NSOrderedSame;
+        }];
+    }
 
     [self.layer setNeedsDisplay];
 
@@ -110,7 +122,7 @@
     [self.displayFlag increment];
 
     for (NSInteger i = 0; i < self.imageContainers.count; i++) {
-        VVAsyncImageView *container = self.imageContainers[i];
+        VVImageView *container = self.imageContainers[i];
         container.image = nil;
         container.hidden = YES;
         [self.reusePool addObject:container];
@@ -130,7 +142,7 @@
         return value != _displayFlag.value;
     };
 
-    for (NSInteger i = 0; i < self.layout.imageStorages.count; i++) {
+    for (NSInteger i = 0; i < [self.layout.imageStorages count]; i++) {
 
         @autoreleasepool {
 
@@ -138,7 +150,7 @@
                 return;
             }
 
-            VVAsyncImageView *reuseImageView;
+            VVImageView *reuseImageView;
             VVImageStorage *imageStorage = self.layout.imageStorages[i];
             if ([imageStorage.contents isKindOfClass:[VVImage class]]) {
                 VVImage *image = (VVImage *) imageStorage.contents;
@@ -173,10 +185,10 @@
     }
 }
 
-- (VVAsyncImageView *)createPoolAsyncImageView:(VVImageStorage *)imageStorage {
-    VVAsyncImageView *reuseImageView = [self _dequeueReusableImageContainerWithIdentifier:imageStorage.identifier];
+- (VVImageView *)createPoolAsyncImageView:(VVImageStorage *)imageStorage {
+    VVImageView *reuseImageView = [self _dequeueReusableImageContainerWithIdentifier:imageStorage.identifier];
     if (!reuseImageView) {
-        reuseImageView = [[VVAsyncImageView alloc] initWithFrame:CGRectZero];
+        reuseImageView = [[VVImageView alloc] initWithFrame:CGRectZero];
         reuseImageView.identifier = imageStorage.identifier;
         [self addSubview:reuseImageView];
     }
@@ -189,8 +201,8 @@
     return reuseImageView;
 }
 
-- (VVAsyncImageView *)_dequeueReusableImageContainerWithIdentifier:(NSString *)identifier {
-    for (VVAsyncImageView *asyncImageView in self.reusePool) {
+- (VVImageView *)_dequeueReusableImageContainerWithIdentifier:(NSString *)identifier {
+    for (VVImageView *asyncImageView in self.reusePool) {
         if ([asyncImageView.identifier isEqualToString:identifier]) {
             [self.reusePool removeObject:asyncImageView];
             return asyncImageView;
@@ -466,12 +478,12 @@
 
 - (void)_showHighligt {
     _showingHighlight = YES;
-    [(VVAsyncDisplayLayer *) self.layer displayImmediately];
+    [(VVAsynLayer *) self.layer displayImmediately];
 }
 
 - (void)_hideHighlight {
     _showingHighlight = NO;
-    [(VVAsyncDisplayLayer *) self.layer displayImmediately];
+    [(VVAsynLayer *) self.layer displayImmediately];
 }
 
 
@@ -483,13 +495,13 @@
     _touchBeganPoint = CGPointZero;
     _showingHighlight = NO;
     _highlight = nil;
-    [(VVAsyncDisplayLayer *) self.layer displayImmediately];
+    [(VVAsynLayer *) self.layer displayImmediately];
 }
 
 #pragma mark - Getter
 
 + (Class)layerClass {
-    return [VVAsyncDisplayLayer class];
+    return [VVAsynLayer class];
 }
 
 - (NSMutableArray *)imageContainers {
@@ -522,7 +534,7 @@
 - (void)setDisplaysAsynchronously:(BOOL)displaysAsynchronously {
     if (_displaysAsynchronously != displaysAsynchronously) {
         _displaysAsynchronously = displaysAsynchronously;
-        [(VVAsyncDisplayLayer *) self.layer setDisplaysAsynchronously:_displaysAsynchronously];
+        [(VVAsynLayer *) self.layer setDisplaysAsynchronously:_displaysAsynchronously];
     }
 }
 

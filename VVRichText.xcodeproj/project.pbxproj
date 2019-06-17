@@ -91,7 +91,7 @@
 		69C03B8C967B7E982C6D56FA99722459 /* VVTextContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = A17BDD4C82AE0F380CA816834C1A34A3 /* VVTextContainer.m */; };
 		6A0FDC2FB1E9BBADCAB620C9B02AC7F9 /* 037.png in Resources */ = {isa = PBXBuildFile; fileRef = CBB239B4893A532B4E75D5103942E6D9 /* 037.png */; };
 		6C724402A820258599D2C281AB2A266F /* 054.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC627FA8C6D50E89B32E8D245AE77A3 /* 054.png */; };
-		6D18FC182A5AB8A55BFA9B384616A6EB /* VVAsyncDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F953D2DC06CB24B2C38E7FC9A32521 /* VVAsyncDisplayView.m */; };
+		6D18FC182A5AB8A55BFA9B384616A6EB /* VVAsynView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F953D2DC06CB24B2C38E7FC9A32521 /* VVAsynView.m */; };
 		6DA8DD65C9854DE116E8F7A51B8FD62C /* 005.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F103DA7C7D9CD85B52838F1AF26E46F /* 005.png */; };
 		6FA60F1CC870BF43F7B7AB84930A1C94 /* VVRichTextUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F0197613F96DCF5BCC0627CF5C080F /* VVRichTextUtils.m */; };
 		6FCE737CE1102ACFD51AD14750D99488 /* 070.png in Resources */ = {isa = PBXBuildFile; fileRef = A367080E1272D7A7E9B90396EE236936 /* 070.png */; };
@@ -135,7 +135,7 @@
 		91130124AFC48ECA379059002C585D0A /* 056.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E1272283D3F66E57651EC418370D42B /* 056.png */; };
 		92DD8E93CD5C308E11AA66709C3A5411 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E523F9DD99DEFE91A43F993C58E39DC /* MobileCoreServices.framework */; };
 		94D0ECC6B1541BEAA60FC96D4BF8CF06 /* FeedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6165F4DADDAE2C0A03B0BE64950B4568 /* FeedController.m */; };
-		958CC2ABC830A86CB46FBA5825220B12 /* VVAsyncDisplayLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 635E6BCEDAD0DBFB073213E1B5A1D65B /* VVAsyncDisplayLayer.m */; };
+		958CC2ABC830A86CB46FBA5825220B12 /* VVAsynLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 635E6BCEDAD0DBFB073213E1B5A1D65B /* VVAsynLayer.m */; };
 		9843E24FF1B1A05EEBA1A9EF75B958D2 /* 109.png in Resources */ = {isa = PBXBuildFile; fileRef = 41C73AF997AB1B0B180CD56E7AD8200C /* 109.png */; };
 		9893709F83D5181C5217ECF3314726A0 /* 039.png in Resources */ = {isa = PBXBuildFile; fileRef = 98345022C53E0F29425978383E82B676 /* 039.png */; };
 		99EB4D37CB754DC77C23517A017F436B /* 127.png in Resources */ = {isa = PBXBuildFile; fileRef = FE293F99CC7E3B1AF9E36A98041F0DDC /* 127.png */; };
@@ -152,7 +152,7 @@
 		A48A3E538072D5D9EED30BB1A85E5719 /* 066.png in Resources */ = {isa = PBXBuildFile; fileRef = 37BB3DA14B5E4851987B667DC2C736AE /* 066.png */; };
 		A53F99082020CF914915D370D506B995 /* 059.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D8222C82F6E226EA221968022ED8C0A /* 059.png */; };
 		A639C897CE477B72C3FDB2063445D51D /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC1967C4266D4D74F684EA833AC8B20 /* CommentModel.m */; };
-		A84D769178334FBF2012BCB8F8A1DE38 /* VVAsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D7639F50613DBB7B713B91D1F9CD2A /* VVAsyncImageView.m */; };
+		A84D769178334FBF2012BCB8F8A1DE38 /* VVImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D7639F50613DBB7B713B91D1F9CD2A /* VVImageView.m */; };
 		A9154C149B3BAB3F38AF76BDE5E31445 /* 113.png in Resources */ = {isa = PBXBuildFile; fileRef = 437AA1FA6508FA5AD9E127E927222312 /* 113.png */; };
 		A9456F81FDDF6FB9423E0051B5A45463 /* 091.png in Resources */ = {isa = PBXBuildFile; fileRef = 48D78E64BB5185E60DE2FA05DB6FE1E9 /* 091.png */; };
 		ACEDB1D193DEB2C79CCAC338C809F210 /* 072.png in Resources */ = {isa = PBXBuildFile; fileRef = E3A7E3F5EBC71CA391E3510A8FA09B10 /* 072.png */; };
@@ -194,7 +194,7 @@
 		D7A6F3DD24B1628BBAF29DDEFE93C492 /* 061.png in Resources */ = {isa = PBXBuildFile; fileRef = CED9F68D3D71497E80A1B9E9F9CBDCF4 /* 061.png */; };
 		DBA540A2DC48C8EBA20C8DB03CA0EEE9 /* 116.png in Resources */ = {isa = PBXBuildFile; fileRef = CBDBEE2204958AF848B5549FBE41B579 /* 116.png */; };
 		DCD8A2069DA34D286C39D8946B1564B4 /* NSMutableAttributedString+VVRichText.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1FF60C1ACA35F995D62ABC12A23A7E /* NSMutableAttributedString+VVRichText.m */; };
-		DE820074AF6F1ED1EA5609E06B0CD471 /* VVAsyncImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D51FC197FAE82A3B7D52F120FF6A5B7B /* VVAsyncImageView+WebCache.m */; };
+		DE820074AF6F1ED1EA5609E06B0CD471 /* VVImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D51FC197FAE82A3B7D52F120FF6A5B7B /* VVImageView+WebCache.m */; };
 		DF6FF03DB0A3DCE0C070F52D9DEAF877 /* 003.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CB8A884DABACE86113AD4DFCA6992A4 /* 003.png */; };
 		E07004CBE6E44D0A594DDD7F82B1C05C /* 017.png in Resources */ = {isa = PBXBuildFile; fileRef = 99A35DF007FF837193F2B78A0FC66EA6 /* 017.png */; };
 		E0FC9757758AB7708F16E7EBC19FD538 /* 130.png in Resources */ = {isa = PBXBuildFile; fileRef = 50918492CB2E23FD18DE467809FD60EA /* 130.png */; };
@@ -225,7 +225,7 @@
 		0842EDCC1C557459FEB4D72592C3E07E /* 026.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 026.png; sourceTree = "<group>"; };
 		0990D645042B84A2BFCC3CA50949BB72 /* 034.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 034.png; sourceTree = "<group>"; };
 		0BAFF415D762B195D2FF31B5A8450458 /* UIImage+VVRichText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+VVRichText.m"; sourceTree = "<group>"; };
-		0DAF041AB5FEE7E9F15DF8D5072581A7 /* VVAsyncDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVAsyncDisplayView.h; sourceTree = "<group>"; };
+		0DAF041AB5FEE7E9F15DF8D5072581A7 /* VVAsynView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVAsynView.h; sourceTree = "<group>"; };
 		0F7E584E7838C0CCCFCF6DEDF79C7415 /* StatusModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusModel.m; sourceTree = "<group>"; };
 		0FD269DD6827B83D38E310660EB6D475 /* 016.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 016.png; sourceTree = "<group>"; };
 		10FF87CAD1BCF98EE44219A89845F38F /* AsynController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsynController.h; sourceTree = "<group>"; };
@@ -316,9 +316,9 @@
 		6165F4DADDAE2C0A03B0BE64950B4568 /* FeedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedController.m; sourceTree = "<group>"; };
 		61BD1C5F62A22C459E42C9063AC221A6 /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		62E18E0E7F657493919BB1699A30EA5F /* 092.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 092.png; sourceTree = "<group>"; };
-		635E6BCEDAD0DBFB073213E1B5A1D65B /* VVAsyncDisplayLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVAsyncDisplayLayer.m; sourceTree = "<group>"; };
+		635E6BCEDAD0DBFB073213E1B5A1D65B /* VVAsynLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVAsynLayer.m; sourceTree = "<group>"; };
 		641DC8AD0AA84ED56328D621DEC9B3DF /* 060.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 060.png; sourceTree = "<group>"; };
-		64F953D2DC06CB24B2C38E7FC9A32521 /* VVAsyncDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVAsyncDisplayView.m; sourceTree = "<group>"; };
+		64F953D2DC06CB24B2C38E7FC9A32521 /* VVAsynView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVAsynView.m; sourceTree = "<group>"; };
 		65ADA7A35FE9DA5C7F2436EABA8E1344 /* VVRichTextDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVRichTextDefine.h; sourceTree = "<group>"; };
 		65CC354989897D980A7DD64232D2395C /* 024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 024.png; sourceTree = "<group>"; };
 		65CD5DC96288BF123D8164DE000CBF44 /* VVFlag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVFlag.h; sourceTree = "<group>"; };
@@ -373,7 +373,7 @@
 		91EDF593A6BB93C76C96B2895906FA6D /* MenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuView.h; sourceTree = "<group>"; };
 		922AEF91D625E4EB4B91A2D93861E77F /* 090.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 090.png; sourceTree = "<group>"; };
 		9265A08DB52D26D4C163EF63BD35A231 /* 043.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 043.png; sourceTree = "<group>"; };
-		9272FAE985E8BFB400E6FDD6ED1B5D06 /* VVAsyncDisplayLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVAsyncDisplayLayer.h; sourceTree = "<group>"; };
+		9272FAE985E8BFB400E6FDD6ED1B5D06 /* VVAsynLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVAsynLayer.h; sourceTree = "<group>"; };
 		93C02E8131E9BD5D5A87A917078E98DA /* 077.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 077.png; sourceTree = "<group>"; };
 		942CF5CA997729E8F3AFFDEBAB6F0CB5 /* VVTextRunDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVTextRunDelegate.m; sourceTree = "<group>"; };
 		95873D92DA00E4309BFCF361CB29B2E2 /* 015.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 015.png; sourceTree = "<group>"; };
@@ -402,7 +402,7 @@
 		AE085834E4AA757F5D37DCF0404B60E9 /* VVTextParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVTextParser.m; sourceTree = "<group>"; };
 		AE68E9B12DCA3AF88F36F3C0F103330F /* 036.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 036.png; sourceTree = "<group>"; };
 		B089CE1B515FA730F145EF68727160F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B0A4C8411B213727D2A90A266B47957F /* VVAsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVAsyncImageView.h; sourceTree = "<group>"; };
+		B0A4C8411B213727D2A90A266B47957F /* VVImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVImageView.h; sourceTree = "<group>"; };
 		B12E439BE74009750020270F862100C8 /* 018.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 018.png; sourceTree = "<group>"; };
 		B18CDDFE6F4924D0BB0A7750F25E14A8 /* VVTextLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVTextLayout.h; sourceTree = "<group>"; };
 		B1C2357911E0087E1CD52D1DB6466B1C /* 010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 010.png; sourceTree = "<group>"; };
@@ -452,7 +452,7 @@
 		D2C437D776F6088FF9539AA228503072 /* VVLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVLayout.h; sourceTree = "<group>"; };
 		D3813500CED5B933F524C6318038015F /* 019.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 019.png; sourceTree = "<group>"; };
 		D4D93A7A1BDB65FE7CA31F45B3BA845C /* 083.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 083.png; sourceTree = "<group>"; };
-		D51FC197FAE82A3B7D52F120FF6A5B7B /* VVAsyncImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VVAsyncImageView+WebCache.m"; sourceTree = "<group>"; };
+		D51FC197FAE82A3B7D52F120FF6A5B7B /* VVImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VVImageView+WebCache.m"; sourceTree = "<group>"; };
 		D5EDAB79E61FB6E07420957C97D00A7E /* CALayer+VVTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+VVTransaction.h"; sourceTree = "<group>"; };
 		D5FEA706E66AD1318EF768A10696A5C3 /* 035.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 035.png; sourceTree = "<group>"; };
 		D77F072E1A5C88319EBAC2FE78DDB5AD /* 079.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 079.png; sourceTree = "<group>"; };
@@ -477,14 +477,14 @@
 		EC77FC8F720871BCDFEB111E5CF13DFA /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		EEA7499A0E9B7A73813CD18FC01EA041 /* 063.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 063.png; sourceTree = "<group>"; };
 		EEE7A0534037CDDDAC974916F887E18C /* 101.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 101.png; sourceTree = "<group>"; };
-		EF84F3C51B22B8A53C58E93DA3078977 /* VVAsyncImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VVAsyncImageView+WebCache.h"; sourceTree = "<group>"; };
+		EF84F3C51B22B8A53C58E93DA3078977 /* VVImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VVImageView+WebCache.h"; sourceTree = "<group>"; };
 		F042ACE49E57855067516A8EA0587442 /* 006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 006.png; sourceTree = "<group>"; };
 		F0D27A38E6DD613FE5DC174B0BDB71F6 /* LikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeButton.m; sourceTree = "<group>"; };
 		F21ECF18034E68FF2A6BC3BF040FB92D /* 105.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 105.png; sourceTree = "<group>"; };
 		F2DDE0A4FBD14D541DA671A4FA9641D3 /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3278CF37298B6FE6DD24B69B0D257DB /* 029.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 029.png; sourceTree = "<group>"; };
 		F39EC50838F107768D9215869D97FA98 /* 044.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 044.png; sourceTree = "<group>"; };
-		F6D7639F50613DBB7B713B91D1F9CD2A /* VVAsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVAsyncImageView.m; sourceTree = "<group>"; };
+		F6D7639F50613DBB7B713B91D1F9CD2A /* VVImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVImageView.m; sourceTree = "<group>"; };
 		F749EB8E82C53B4EECE9B3C19DF068B9 /* SDImageYYCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDImageYYCoder.m; sourceTree = "<group>"; };
 		F8D661FB17BF21FFF25BF4240A904EE2 /* 004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 004.png; sourceTree = "<group>"; };
 		FC0323C6B60E38DA1026C0D142EDFCC6 /* Pods-VVRichText.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VVRichText.release.xcconfig"; path = "Pods/Target Support Files/Pods-VVRichText/Pods-VVRichText.release.xcconfig"; sourceTree = "<group>"; };
@@ -602,8 +602,8 @@
 				C850F7F3A3A4A222DDAF15124BA794E8 /* SDAnimatedImage+YYAdditions.m */,
 				76E9CA4A16533C195D8F49800DEB9CB7 /* SDImageYYCoder.h */,
 				F749EB8E82C53B4EECE9B3C19DF068B9 /* SDImageYYCoder.m */,
-				EF84F3C51B22B8A53C58E93DA3078977 /* VVAsyncImageView+WebCache.h */,
-				D51FC197FAE82A3B7D52F120FF6A5B7B /* VVAsyncImageView+WebCache.m */,
+				EF84F3C51B22B8A53C58E93DA3078977 /* VVImageView+WebCache.h */,
+				D51FC197FAE82A3B7D52F120FF6A5B7B /* VVImageView+WebCache.m */,
 				27E1C798D10B9F9CA65BB9463CD1AE96 /* YYAnimatedImageView+WebCache.h */,
 				80FD9E004813C74955271EF520DDEF18 /* YYAnimatedImageView+WebCache.m */,
 				6F6CA712CEB2BBFBB5575E85D94F86E5 /* YYImage+SDAdditions.h */,
@@ -660,12 +660,12 @@
 				BB1FF60C1ACA35F995D62ABC12A23A7E /* NSMutableAttributedString+VVRichText.m */,
 				0771B8FECC3DC5E84D0003083945EB97 /* UIImage+VVRichText.h */,
 				0BAFF415D762B195D2FF31B5A8450458 /* UIImage+VVRichText.m */,
-				9272FAE985E8BFB400E6FDD6ED1B5D06 /* VVAsyncDisplayLayer.h */,
-				635E6BCEDAD0DBFB073213E1B5A1D65B /* VVAsyncDisplayLayer.m */,
-				0DAF041AB5FEE7E9F15DF8D5072581A7 /* VVAsyncDisplayView.h */,
-				64F953D2DC06CB24B2C38E7FC9A32521 /* VVAsyncDisplayView.m */,
-				B0A4C8411B213727D2A90A266B47957F /* VVAsyncImageView.h */,
-				F6D7639F50613DBB7B713B91D1F9CD2A /* VVAsyncImageView.m */,
+				9272FAE985E8BFB400E6FDD6ED1B5D06 /* VVAsynLayer.h */,
+				635E6BCEDAD0DBFB073213E1B5A1D65B /* VVAsynLayer.m */,
+				0DAF041AB5FEE7E9F15DF8D5072581A7 /* VVAsynView.h */,
+				64F953D2DC06CB24B2C38E7FC9A32521 /* VVAsynView.m */,
+				B0A4C8411B213727D2A90A266B47957F /* VVImageView.h */,
+				F6D7639F50613DBB7B713B91D1F9CD2A /* VVImageView.m */,
 				18DC8ED3F64B4AED826E702FAD30C098 /* VVCGRectTransform.h */,
 				AD9302F9CAA02E5C74856C4047B3EB07 /* VVCGRectTransform.m */,
 				65CD5DC96288BF123D8164DE000CBF44 /* VVFlag.h */,
@@ -1197,10 +1197,10 @@
 				803376A781A46AEB8F2BE5B298049353 /* FeedCell.m in Sources */,
 				F0D3BEBEFCA240D5DE7A12D001008439 /* AsynController.m in Sources */,
 				291320AAAEF0736E21D6C5F5D33BC518 /* UIImage+VVRichText.m in Sources */,
-				958CC2ABC830A86CB46FBA5825220B12 /* VVAsyncDisplayLayer.m in Sources */,
-				6D18FC182A5AB8A55BFA9B384616A6EB /* VVAsyncDisplayView.m in Sources */,
-				DE820074AF6F1ED1EA5609E06B0CD471 /* VVAsyncImageView+WebCache.m in Sources */,
-				A84D769178334FBF2012BCB8F8A1DE38 /* VVAsyncImageView.m in Sources */,
+				958CC2ABC830A86CB46FBA5825220B12 /* VVAsynLayer.m in Sources */,
+				6D18FC182A5AB8A55BFA9B384616A6EB /* VVAsynView.m in Sources */,
+				DE820074AF6F1ED1EA5609E06B0CD471 /* VVImageView+WebCache.m in Sources */,
+				A84D769178334FBF2012BCB8F8A1DE38 /* VVImageView.m in Sources */,
 				0EFCE923FECEC41940DCF39043858F1C /* VVCGRectTransform.m in Sources */,
 				745A7583E7322CEAD5A5B7A43E1F441D /* VVFlag.m in Sources */,
 				8083182EE9B184EE46459847ED4639B9 /* VVImage.m in Sources */,

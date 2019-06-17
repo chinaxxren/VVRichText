@@ -5,7 +5,7 @@
 
 #import "NSMutableAttributedString+VVRichText.h"
 #import "CALayer+VVTransaction.h"
-#import "VVAsyncDisplayView.h"
+#import "VVAsynView.h"
 #import "VVTextLayout.h"
 #import "VVTextParser.h"
 #import "VVRichTextDefine.h"

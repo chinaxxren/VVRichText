@@ -8,7 +8,7 @@
 #import "CALayer+WebCache.h"
 #import "VVCGRectTransform.h"
 #import "CALayer+VVTransaction.h"
-#import "VVAsyncImageView.h"
+#import "VVImageView.h"
 #import "YYAnimatedImageView+WebCache.h"
 
 static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
@@ -657,7 +657,7 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
                 [containerView addSubview:view];
 
                 if (attachment.userInfo && attachment.userInfo[@"URL"]) {
-                    VVAsyncImageView *asyncImageView = (VVAsyncImageView *) view;
+                    VVImageView *asyncImageView = (VVImageView *) view;
                     [asyncImageView sd_setImageWithURL:attachment.userInfo[@"URL"] placeholderImage:nil];
                 }
             });

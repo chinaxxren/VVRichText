@@ -1,5 +1,5 @@
 
-#import "VVAsyncImageView.h"
+#import "VVImageView.h"
 
 #import <SDWebImage/SDImageCacheDefine.h>
 #import <SDWebImage/SDImageLoader.h>

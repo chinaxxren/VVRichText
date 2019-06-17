@@ -5,11 +5,11 @@
 #import "VVLayout.h"
 #import "VVRichTextDefine.h"
 
-@class VVAsyncDisplayLayer;
-@class VVAsyncDisplayView;
+@class VVAsynLayer;
+@class VVAsynView;
 @class VVTextStorage;
 @class VVImageStorage;
-@class VVAsyncImageView;
+@class VVImageView;
 
 @protocol VVAsyncDisplayViewDelegate <NSObject>
 
@@ -22,7 +22,7 @@
  *  @param textStorage      点击的那个VVTextStorage对象
  *  @param data             添加点击链接时所附带的信息。
  */
-- (void)vv_asyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didCilickedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data;
+- (void)vv_asyncDisplayView:(VVAsynView *)asyncDisplayView didCilickedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data;
 
 /**
  *  通过VVTextStorage添加的文字长按事件，长按时可以在这个代理方法里收到回调。
@@ -31,7 +31,7 @@
  *  @param textStorage      点击的那个VVTextStorage对象
  *  @param data             添加点击链接时所附带的信息。
  */
-- (void)vv_asyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didLongpressedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data;
+- (void)vv_asyncDisplayView:(VVAsynView *)asyncDisplayView didLongpressedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data;
 
 
 /**
@@ -41,7 +41,7 @@
  *  @param imageStorage     点击的那个VVImageStorage对象
  *  @param touch            点击事件的UITouch对象
  */
-- (void)vv_asyncDisplayView:(VVAsyncDisplayView *)asyncDisplayView didCilickedImageStorage:(VVImageStorage *)imageStorage touch:(UITouch *)touch;
+- (void)vv_asyncDisplayView:(VVAsynView *)asyncDisplayView didCilickedImageStorage:(VVImageStorage *)imageStorage touch:(UITouch *)touch;
 
 /**
  *  可以在这个代理方法里完成额外的绘制任务，相当于UIView的“drawRect:”方法。但是在这里绘制任务的都是在子线程完成的。
@@ -63,11 +63,12 @@
 typedef void(^VVAsyncDisplayViewAutoLayoutCallback)(VVImageStorage *imageStorage, CGFloat delta);
 
 
-@interface VVAsyncDisplayView : UIView
+@interface VVAsynView : UIView
 
 @property(nonatomic, strong) id <VVLayoutProtocol> layout; //布局模型,需要遵循VVLayoutProtocol协议
 @property(nonatomic, weak) id <VVAsyncDisplayViewDelegate> delegate; //代理对象
 @property(nonatomic, assign) BOOL displaysAsynchronously; //是否异步绘制，默认是YES
+@property(nonatomic, assign) BOOL imageLevel; //是否支持图片层级显示
 @property(nonatomic, copy) VVAsyncDisplayViewAutoLayoutCallback auotoLayoutCallback; //自动布局回调Block
 @property(nonatomic, strong, readonly) UILongPressGestureRecognizer *longPressGesture; //长按手势
 
