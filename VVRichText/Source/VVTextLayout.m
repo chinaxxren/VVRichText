@@ -629,10 +629,17 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
             continue;
         }
 
-        //TODO 开启主线程检测通不通过，且渲染变慢。
-        CGSize asize = image ? image.size : view ? view.bounds.size : layer.bounds.size;
+        
         CGRect rect = textLayout.attachmentRects[i].CGRectValue;
         rect = UIEdgeInsetsInsetRect(rect, attachment.contentEdgeInsets);
+
+//        CGSize asize = image ? image.size : view ? view.bounds.size : layer.bounds.size;
+        CGSize asize;
+        if(image) {
+            asize = image.size;
+        } else {
+            asize = rect.size;
+        }
         rect = [VVCGRectTransform vv_CGRectFitWithContentMode:attachment.contentMode
                                                          rect:rect
                                                          size:asize];
