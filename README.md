@@ -11,6 +11,10 @@
 * 易于解析文本中的表达式，如http（s）链接，@user，＃theme＃，电话号码。
 * 快速设置图像角半径属性和模糊处理。
 
+## 集成
+
+1. 通过`pod 'VVRichText'`集成到项目中 
+
 ## 感谢
 
 * https://github.com/ibireme/YYText
