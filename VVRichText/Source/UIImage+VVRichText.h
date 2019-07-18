@@ -48,21 +48,6 @@
  */
 - (UIImage *)vv_convertToGrayImage;
 
-
-/**
- *  用一个Gif生成UIImage
- *
- *  @param theData 传入一个GIFData对象
- */
-+ (UIImage *)vv_animatedImageWithAnimatedGIFData:(NSData *)theData;
-
-/**
- *  用一个Gif生成UIImage
- *
- *  @param theURL 传入一个GIF路径
- */
-+ (UIImage *)vv_animatedImageWithAnimatedGIFURL:(NSURL *)theURL;
-
 /**
  *  按给定的方向旋转图片
  *
