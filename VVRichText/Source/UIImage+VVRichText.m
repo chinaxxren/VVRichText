@@ -29,7 +29,6 @@
     CGContextRestoreGState(context);
     CGImageRef cgImage = CGBitmapContextCreateImage(context);
     processedImg = [UIImage imageWithCGImage:cgImage];
-
     CFRelease(context);
     CFRelease(cgImage);
     CGColorSpaceRelease(colorSpace);

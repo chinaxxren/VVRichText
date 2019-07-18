@@ -11,16 +11,6 @@
  */
 + (CGFloat)contentsScale;
 
-
-/**
- *  获取UIView的截图
- *
- *  @param aView 一个UIView对象
- *
- *  @return 截图的UIImage
- */
-+ (UIImage *)screenshotFromView:(UIView *)aView;
-
 /**
  *  求两个数的最大公约数
  *

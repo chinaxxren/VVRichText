@@ -3,7 +3,7 @@
 #import "AsynController.h"
 #import "TextViewCell.h"
 
-static NSString *cellIdentifier = @"cellIdentifier";
+static const NSString *cellIdentifier = @"cellIdentifier";
 
 @interface AsynController () <UITableViewDelegate, UITableViewDataSource>
 

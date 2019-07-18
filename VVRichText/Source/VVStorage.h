@@ -46,6 +46,6 @@
  *
  *  @return 一个VVStorage对象
  */
-- (_Nonnull id)initWithIdentifier:(NSString *_Nullable)identifier;
+- (_Nonnull instancetype)initWithIdentifier:(NSString *_Nullable)identifier;
 
 @end

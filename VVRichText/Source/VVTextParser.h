@@ -4,6 +4,18 @@
 
 @interface VVTextParser : NSObject
 
+//改变默认正则值
+
++ (void)emojiRegular:(NSString *)str;
+
++ (void)accountRegular:(NSString *)str;
+
++ (void)topicRegular:(NSString *)str;
+
++ (void)telRegular:(NSString *)str;
+
++ (void)urlRegular:(NSString *)str;
+
 /**
 *  解析表情替代为相应的普通图片
 *  格式：text：@“hello,world~![微笑]”  ----> @"hello，world~！（[UIImage imageNamed:@“微笑”]）"

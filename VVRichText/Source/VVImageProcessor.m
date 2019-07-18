@@ -15,10 +15,10 @@
                         blur:(BOOL)blur
                  contentMode:(UIViewContentMode)contentMode
                 cornerRadius:(CGFloat)cornerRadius {
-    if (size.width < 0 || size.height < 0) {
+    if (size.width < 0.0f || size.height < 0.0f) {
         return nil;
     }
-    
+
     CGFloat width = size.width * [VVRichTextUtils contentsScale];
     CGFloat height = size.height * [VVRichTextUtils contentsScale];
     cornerRadius = cornerRadius * [VVRichTextUtils contentsScale];

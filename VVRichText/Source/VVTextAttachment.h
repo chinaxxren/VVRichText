@@ -36,7 +36,7 @@ typedef NS_ENUM(NSUInteger, VVTextHighLightType) {
  *
  *  @return VVTextAttachment实例对象
  */
-+ (id)vv_textAttachmentWithContent:(id)content;
++ (instancetype)vv_textAttachmentWithContent:(id)content;
 
 @end
 

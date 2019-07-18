@@ -35,9 +35,7 @@
 #pragma mark - VVAsyncViewDelegate
 
 //额外的绘制
-- (void)vv_extraAsyncIncontext:(CGContextRef)context
-                          size:(CGSize)size
-                   isCancelled:(VVAsyncIsCanclledBlock)isCancelled {
+- (void)vv_extraAsyncIncontext:(CGContextRef)context size:(CGSize)size isCancelled:(VVAsyncIsCanclledBlock)isCancelled {
     if (!isCancelled()) {
         CGContextMoveToPoint(context, 0.0f, size.height);
         CGContextAddLineToPoint(context, size.width, size.height);
@@ -84,26 +82,24 @@
 
 //点击VVTextStorage
 - (void)vv_asynView:(VVAsynView *)asynView didCilickedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
+
     //回复评论
     if ([data isKindOfClass:[CommentModel class]]) {
         if (self.clickedReCommentCallback) {
             self.clickedReCommentCallback(self, data);
         }
     } else if ([data isKindOfClass:[NSString class]]) {
+
         //折叠Cell
         if ([data isEqualToString:@"close"]) {
             if (self.clickedCloseCellCallback) {
                 self.clickedCloseCellCallback(self);
             }
-        }
-            //展开Cell
-        else if ([data isEqualToString:@"open"]) {
+        } else if ([data isEqualToString:@"open"]) { //展开Cell
             if (self.clickedOpenCellCallback) {
                 self.clickedOpenCellCallback(self);
             }
-        }
-            //其他
-        else {
+        } else { //其他
 
         }
     }
@@ -194,11 +190,12 @@
     self.menu.statusModel = self.feedLayout.statusModel;
 }
 
-- (void)setDisplaysAsynchronously:(BOOL)displaysAsynchronously {
-    if (_displaysAsynchronously != displaysAsynchronously) {
-        _displaysAsynchronously = displaysAsynchronously;
+- (void)setAsynDisplay:(BOOL)asynDisplay {
+    if (_asynDisplay != asynDisplay) {
+        _asynDisplay = asynDisplay;
     }
-    self.asyncView.asynDisplay = self.displaysAsynchronously;
+
+    self.asyncView.asynDisplay = self.asynDisplay;
 }
 
 #pragma mark - Getter
@@ -234,8 +231,7 @@
     _menu = [[MenuView alloc] initWithFrame:CGRectZero];
     _menu.backgroundColor = [UIColor whiteColor];
     _menu.opaque = YES;
-    [_menu.commentButton addTarget:self action:@selector(didClickedCommentButton)
-                  forControlEvents:UIControlEventTouchUpInside];
+    [_menu.commentButton addTarget:self action:@selector(didClickedCommentButton) forControlEvents:UIControlEventTouchUpInside];
     [_menu.likeButton addTarget:self action:@selector(didClickedLikeButton:) forControlEvents:UIControlEventTouchUpInside];
     return _menu;
 }

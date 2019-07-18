@@ -19,6 +19,7 @@
 
 #ifndef VV_DEGREES_TO_RADIAN
 #define VV_DEGREES_TO_RADIAN(x) (M_PI * (x) / 180.0)
+
 #endif
 
 /******************************************************************************/

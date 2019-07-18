@@ -147,45 +147,45 @@
     }
 
     {
-         VVTextStorage *textStorage = [[VVTextStorage alloc] init];
-         textStorage.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
-         textStorage.text = @"加载网络图片";
-         textStorage.vericalAlignment = VVTextVericalAlignmentCenter;
+        VVTextStorage *textStorage = [[VVTextStorage alloc] init];
+        textStorage.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
+        textStorage.text = @"加载网络图片";
+        textStorage.vericalAlignment = VVTextVericalAlignmentCenter;
 
-         VVImageStorage *imageStorage = [[VVImageStorage alloc] init];
-         imageStorage.contentMode = UIViewContentModeScaleAspectFill;
-         imageStorage.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
-         imageStorage.contents = [NSURL URLWithString:@"http://img4.bitautoimg.com/autoalbum/files/20101220/862/13374086240035_1469891_15.JPG"];
-         imageStorage.clipsToBounds = YES;
-
-
-         VVLayout *layout = [[VVLayout alloc] init];
-         [layout addStorage:imageStorage];
-         [layout addStorage:textStorage];
-         [_dataSource addObject:layout];
-     }
-
-     {
-         VVTextStorage *textStorage = [[VVTextStorage alloc] init];
-         textStorage.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
-         textStorage.text = @"加载网络图片,并设置圆角半径，处理后的图片将直接缓存，下次加载时就无需再次处理而是直接读取缓存了。";
-         textStorage.vericalAlignment = VVTextVericalAlignmentCenter;
+        VVImageStorage *imageStorage = [[VVImageStorage alloc] init];
+        imageStorage.contentMode = UIViewContentModeScaleAspectFill;
+        imageStorage.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
+        imageStorage.contents = [NSURL URLWithString:@"http://img4.bitautoimg.com/autoalbum/files/20101220/862/13374086240035_1469891_15.JPG"];
+        imageStorage.clipsToBounds = YES;
 
 
-         VVImageStorage *imageStorage = [[VVImageStorage alloc] init];
-         imageStorage.contentMode = UIViewContentModeScaleAspectFill;
-         imageStorage.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
-         imageStorage.contents = [NSURL URLWithString:@"http://img4.bitautoimg.com/autoalbum/files/20101220/862/13374086240035_1469891_15.JPG"];
-         imageStorage.clipsToBounds = YES;
-         imageStorage.cornerRadius = 50.0f;
-         imageStorage.cornerBorderColor = [UIColor orangeColor];
-         imageStorage.cornerBorderWidth = 5.0f;
+        VVLayout *layout = [[VVLayout alloc] init];
+        [layout addStorage:imageStorage];
+        [layout addStorage:textStorage];
+        [_dataSource addObject:layout];
+    }
 
-         VVLayout *layout = [[VVLayout alloc] init];
-         [layout addStorage:imageStorage];
-         [layout addStorage:textStorage];
-         [_dataSource addObject:layout];
-     }
+    {
+        VVTextStorage *textStorage = [[VVTextStorage alloc] init];
+        textStorage.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
+        textStorage.text = @"加载网络图片,并设置圆角半径，处理后的图片将直接缓存，下次加载时就无需再次处理而是直接读取缓存了。";
+        textStorage.vericalAlignment = VVTextVericalAlignmentCenter;
+
+
+        VVImageStorage *imageStorage = [[VVImageStorage alloc] init];
+        imageStorage.contentMode = UIViewContentModeScaleAspectFill;
+        imageStorage.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
+        imageStorage.contents = [NSURL URLWithString:@"http://img4.bitautoimg.com/autoalbum/files/20101220/862/13374086240035_1469891_15.JPG"];
+        imageStorage.clipsToBounds = YES;
+        imageStorage.cornerRadius = 50.0f;
+        imageStorage.cornerBorderColor = [UIColor orangeColor];
+        imageStorage.cornerBorderWidth = 5.0f;
+
+        VVLayout *layout = [[VVLayout alloc] init];
+        [layout addStorage:imageStorage];
+        [layout addStorage:textStorage];
+        [_dataSource addObject:layout];
+    }
 
     {
         VVTextStorage *textStorage = [[VVTextStorage alloc] init];

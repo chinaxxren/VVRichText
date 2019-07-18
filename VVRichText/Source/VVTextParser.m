@@ -3,12 +3,6 @@
 #import "VVImage.h"
 #import "VVImageView.h"
 
-#define EMOJI_REGULAR @"\\[[a-zA-Z0-9\\u4e00-\\u9fa5]+\\]"
-#define ACCOUNT_REGULAR @"@[\u4e00-\u9fa5a-zA-Z0-9_-]{2,30}"
-#define TOPIC_REGULAR @"#[^#]+#"
-#define TEL_REGULAR @"\\d{11}"
-#define URL_REGULAR @"[a-zA-z]+://[^\\s]*"
-
 static inline NSRegularExpression *EmojiRegularExpression();
 
 static inline NSRegularExpression *URLRegularExpression();
@@ -21,7 +15,53 @@ static inline NSRegularExpression *TelRegularExpression();
 
 static inline NSBundle *MotionQQBundle();
 
+static NSString *EMOJI_REGULAR = @"\\[[a-zA-Z0-9\\u4e00-\\u9fa5]+\\]";
+static NSString *ACCOUNT_REGULAR = @"@[\u4e00-\u9fa5a-zA-Z0-9_-]{2,30}";
+static NSString *TOPIC_REGULAR = @"#[^#]+#";
+static NSString *TEL_REGULAR = @"\\d{11}";
+static NSString *URL_REGULAR = @"[a-zA-z]+://[^\\s]*";
+
 @implementation VVTextParser
+
++ (void)emojiRegular:(NSString *)str {
+    if (!str) {
+        return;
+    }
+
+    EMOJI_REGULAR = str;
+}
+
++ (void)accountRegular:(NSString *)str {
+    if (!str) {
+        return;
+    }
+
+    ACCOUNT_REGULAR = str;
+}
+
++ (void)topicRegular:(NSString *)str {
+    if (!str) {
+        return;
+    }
+
+    TOPIC_REGULAR = str;
+}
+
++ (void)telRegular:(NSString *)str {
+    if (!str) {
+        return;
+    }
+
+    TEL_REGULAR = str;
+}
+
++ (void)urlRegular:(NSString *)str {
+    if (!str) {
+        return;
+    }
+
+    URL_REGULAR = str;
+}
 
 + (void)parseGeneralEmojiWithTextStorage:(VVTextStorage *)textStorage {
     NSString *text = textStorage.text;

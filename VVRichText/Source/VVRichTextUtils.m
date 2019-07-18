@@ -12,15 +12,6 @@
     return contentsScale;
 }
 
-
-+ (UIImage *)screenshotFromView:(UIView *)aView {
-    UIGraphicsBeginImageContextWithOptions(aView.bounds.size, NO, [UIScreen mainScreen].scale);
-    [aView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *screenshotImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return screenshotImage;
-}
-
 /**
  *  求两个数的最大公约数
  *
@@ -34,8 +25,8 @@
     } else if (a == b) {
         return b;
     }
-    
-    while (true) {
+
+    while (YES) {
         NSUInteger remainder = a % b;
         if (remainder == 0) {
             return b;

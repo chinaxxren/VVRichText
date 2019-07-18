@@ -13,7 +13,7 @@ NSString *const VVTextBoundingStrokeAttributedName = @"VVTextBoundingStrokeAttri
 
 @implementation VVTextAttachment
 
-+ (id)vv_textAttachmentWithContent:(id)content {
++ (instancetype)vv_textAttachmentWithContent:(id)content {
     VVTextAttachment *attachment = [[VVTextAttachment alloc] init];
     attachment.content = content;
     attachment.contentMode = UIViewContentModeScaleAspectFill;
@@ -21,7 +21,7 @@ NSString *const VVTextBoundingStrokeAttributedName = @"VVTextBoundingStrokeAttri
     return attachment;
 }
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.contentMode = UIViewContentModeScaleAspectFill;
@@ -59,7 +59,7 @@ NSString *const VVTextBoundingStrokeAttributedName = @"VVTextBoundingStrokeAttri
 
 #pragma mark - NSCopying
 
-- (id)copyWithZone:(NSZone *)zone {
+- (instancetype)copyWithZone:(NSZone *)zone {
     VVTextAttachment *attachment = [[VVTextAttachment alloc] init];
     if ([self.content conformsToProtocol:@protocol(NSCopying)]) {
         attachment.content = [self.content copy];
@@ -75,7 +75,7 @@ NSString *const VVTextBoundingStrokeAttributedName = @"VVTextBoundingStrokeAttri
     return attachment;
 }
 
-- (id)mutableCopyWithZone:(NSZone *)zone {
+- (instancetype)mutableCopyWithZone:(NSZone *)zone {
     return [self copyWithZone:zone];
 }
 
@@ -84,7 +84,7 @@ NSString *const VVTextBoundingStrokeAttributedName = @"VVTextBoundingStrokeAttri
 
 @implementation VVTextHighlight
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.content = nil;
@@ -111,7 +111,7 @@ NSString *const VVTextBoundingStrokeAttributedName = @"VVTextBoundingStrokeAttri
     [aCoder encodeInteger:self.type forKey:@"type"];
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self) {
         self.content = [aDecoder decodeObjectForKey:@"content"];
@@ -128,7 +128,7 @@ NSString *const VVTextBoundingStrokeAttributedName = @"VVTextBoundingStrokeAttri
 
 #pragma mark - NSCopying
 
-- (id)copyWithZone:(NSZone *)zone {
+- (instancetype)copyWithZone:(NSZone *)zone {
     VVTextHighlight *highlight = [[VVTextHighlight alloc] init];
     if ([self.content conformsToProtocol:@protocol(NSCopying)]) {
         highlight.content = [self.content copy];
@@ -144,7 +144,7 @@ NSString *const VVTextBoundingStrokeAttributedName = @"VVTextBoundingStrokeAttri
     return highlight;
 }
 
-- (id)mutableCopyWithZone:(NSZone *)zone {
+- (instancetype)mutableCopyWithZone:(NSZone *)zone {
     return [self copyWithZone:zone];
 }
 
@@ -174,7 +174,7 @@ NSString *const VVTextBoundingStrokeAttributedName = @"VVTextBoundingStrokeAttri
 
 @implementation VVTextBackgroundColor
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
@@ -195,7 +195,7 @@ NSString *const VVTextBoundingStrokeAttributedName = @"VVTextBoundingStrokeAttri
     [aCoder encodeObject:self.positions forKey:@"positions"];
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self) {
         self.backgroundColor = [aDecoder decodeObjectForKey:@"backgroundColor"];
@@ -208,7 +208,7 @@ NSString *const VVTextBoundingStrokeAttributedName = @"VVTextBoundingStrokeAttri
 
 #pragma mark - NSCopying
 
-- (id)copyWithZone:(NSZone *)zone {
+- (instancetype)copyWithZone:(NSZone *)zone {
     VVTextBackgroundColor *bgColor = [[VVTextBackgroundColor alloc] init];
     bgColor.backgroundColor = [self.backgroundColor copy];
     bgColor.range = self.range;
@@ -217,7 +217,7 @@ NSString *const VVTextBoundingStrokeAttributedName = @"VVTextBoundingStrokeAttri
     return bgColor;
 }
 
-- (id)mutableCopyWithZone:(NSZone *)zone {
+- (instancetype)mutableCopyWithZone:(NSZone *)zone {
     return [self copyWithZone:zone];
 }
 
@@ -228,7 +228,7 @@ NSString *const VVTextBoundingStrokeAttributedName = @"VVTextBoundingStrokeAttri
 
 @implementation VVTextStroke
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.range = NSMakeRange(0, 0);
@@ -241,7 +241,7 @@ NSString *const VVTextBoundingStrokeAttributedName = @"VVTextBoundingStrokeAttri
 
 #pragma mark - NSCopying
 
-- (id)copyWithZone:(NSZone *)zone {
+- (instancetype)copyWithZone:(NSZone *)zone {
     VVTextStroke *stroke = [[VVTextStroke alloc] init];
     stroke.strokeColor = [self.strokeColor copy];
     stroke.range = self.range;
@@ -250,7 +250,7 @@ NSString *const VVTextBoundingStrokeAttributedName = @"VVTextBoundingStrokeAttri
     return stroke;
 }
 
-- (id)mutableCopyWithZone:(NSZone *)zone {
+- (instancetype)mutableCopyWithZone:(NSZone *)zone {
     return [self copyWithZone:zone];
 }
 
@@ -264,7 +264,7 @@ NSString *const VVTextBoundingStrokeAttributedName = @"VVTextBoundingStrokeAttri
 
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self) {
         self.range = [[aDecoder decodeObjectForKey:@"range"] rangeValue];

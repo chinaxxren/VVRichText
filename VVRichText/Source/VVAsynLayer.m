@@ -46,7 +46,7 @@
 }
 
 + (id)defaultValueForKey:(NSString *)key {
-    if ([key isEqualToString:@"displaysAsynchronously"]) {
+    if ([key isEqualToString:@"asynDisplay"]) {
         return @YES;
     } else {
         return [super defaultValueForKey:key];

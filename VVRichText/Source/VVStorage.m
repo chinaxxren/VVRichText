@@ -18,7 +18,7 @@
 
 #pragma mark - Init
 
-- (_Nonnull id)initWithIdentifier:(NSString *_Nullable)identifier {
+- (_Nonnull instancetype)initWithIdentifier:(NSString *_Nullable)identifier {
     self = [super init];
     if (self) {
         self.identifier = identifier;
@@ -27,7 +27,7 @@
     return self;
 }
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         [self _setup];

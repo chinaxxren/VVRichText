@@ -9,7 +9,7 @@
 
 @interface FeedCell : UITableViewCell
 
-@property(nonatomic, assign) BOOL displaysAsynchronously;//是否异步绘制
+@property(nonatomic, assign) BOOL asynDisplay;//是否异步绘制
 @property(nonatomic, strong) FeedLayout *feedLayout;
 @property(nonatomic, strong) NSIndexPath *indexPath;
 @property(nonatomic, copy) void (^clickedImageCallback)(FeedCell *cell, NSInteger imageIndex);

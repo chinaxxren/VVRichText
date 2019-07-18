@@ -20,13 +20,8 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     //创建VVAsyncView对象
-    self.asyncView = [[VVAsynView alloc] initWithFrame:CGRectMake(0.0f,
-            64.0,
-            VV_SCREEN_WIDTH,
-            VV_SCREEN_HEIGHT - 64.0f)];
-
-    //设置代理
-    self.asyncView.delegate = self;
+    self.asyncView = [[VVAsynView alloc] initWithFrame:CGRectMake(0.0f, 64.0, VV_SCREEN_WIDTH, VV_SCREEN_HEIGHT - 64.0f)];
+    self.asyncView.delegate = self;//设置代理
     [self.view addSubview:self.asyncView];
 
 
@@ -141,7 +136,6 @@
     pasteboard.string = self.preCopyText;
     [self resignFirstResponder];
     [self.asyncView vv_removeHighlightIfNeed];
-
 }
 
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender {

@@ -87,7 +87,7 @@
 }
 
 - (void)confirgueCell:(FeedCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    cell.displaysAsynchronously = self.asynDisplay;
+    cell.asynDisplay = self.asynDisplay;
     cell.indexPath = indexPath;
     FeedLayout *feedLayout = self.feedVM.datas[indexPath.row];
     cell.feedLayout = feedLayout;
