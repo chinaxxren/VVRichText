@@ -8,7 +8,7 @@
  *  设置VVAsyncImageView的图片内容
  */
 - (void)vv_setImageWihtImageStorage:(VVImageStorage *)imageStorage
-                             resize:(VVHTMLImageResizeBlock)resizeBlock
+                             resize:(VVImageResizeBlock)resizeBlock
                          completion:(VVAsynCompleteBlock)completion;
 
 @end
