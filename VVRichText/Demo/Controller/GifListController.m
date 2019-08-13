@@ -58,7 +58,7 @@ static CGFloat gifSize = 30;
     if (!cell) {
         cell = [[TextViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    VVLayout *layout = self.dataSource[indexPath.row];
+    VVWidgetStore *layout = self.dataSource[indexPath.row];
     cell.layout = layout;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -88,14 +88,14 @@ static CGFloat gifSize = 30;
     for (int i = 0; i < 300; i++) {
         CGFloat width = [UIScreen mainScreen].bounds.size.width;
         NSInteger count = (NSInteger) (width / gifSize);
-        VVLayout *layout = [[VVLayout alloc] init];
+        VVWidgetStore *layout = [[VVWidgetStore alloc] init];
         for (int j = 0; j < count - 1; j++) {
-            VVTextStorage *textStorage = [[VVTextStorage alloc] init];
-            textStorage.frame = CGRectMake(0.0f, 0.0f, gifSize, gifSize);
-            textStorage.text = [NSString stringWithFormat:@"%d", i];
-            textStorage.textColor = [UIColor redColor];
-            textStorage.vericalAlignment = VVTextVericalAlignmentCenter;
-            [layout addStorage:textStorage];
+            VVTextWidget *textWidget = [[VVTextWidget alloc] init];
+            textWidget.frame = CGRectMake(0.0f, 0.0f, gifSize, gifSize);
+            textWidget.text = [NSString stringWithFormat:@"%d", i];
+            textWidget.textColor = [UIColor redColor];
+            textWidget.vericalAlignment = VVTextVericalAlignmentCenter;
+            [layout addWidget:textWidget];
 
             NSInteger index = arc4random() % 141;
             NSString *name = [self gifWithIndex:index];
@@ -105,12 +105,12 @@ static CGFloat gifSize = 30;
             bundlePath = [bundle pathForResource:name ofType:@"gif"];
             VVImage *image = (VVImage *) [VVImage imageWithContentsOfFile:bundlePath];
 
-            VVImageStorage *imageStorage = [[VVImageStorage alloc] init];
-            imageStorage.frame = CGRectMake((j + 1) * gifSize, 0, gifSize, gifSize);
-            imageStorage.contents = image;
-            imageStorage.localImageType = VVLocalImageTypeDrawInVVImageView;
-            imageStorage.contentMode = UIViewContentModeScaleAspectFill;
-            [layout addStorage:imageStorage];
+            VVImageWidget *imageWidget = [[VVImageWidget alloc] init];
+            imageWidget.frame = CGRectMake((j + 1) * gifSize, 0, gifSize, gifSize);
+            imageWidget.contents = image;
+            imageWidget.localImageType = VVLocalImageTypeDrawInVVImageView;
+            imageWidget.contentMode = UIViewContentModeScaleAspectFill;
+            [layout addWidget:imageWidget];
         }
 
         [_dataSource addObject:layout];

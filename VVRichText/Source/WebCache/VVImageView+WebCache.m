@@ -14,22 +14,22 @@ static void _croppedImageBackingSizeAndDrawRectInBounds(CGSize sourceImageSize, 
 
 @implementation VVImageView (WebCache)
 
-- (void)vv_setImageWihtImageStorage:(VVImageStorage *)imageStorage resize:(VVImageResizeBlock)resizeBlock completion:(VVAsynCompleteBlock)completion {
-    if ([imageStorage.contents isKindOfClass:[UIImage class]]) {
-        [self _setLocalImageWithImageStorage:imageStorage resize:resizeBlock completion:completion];
+- (void)vv_setImageWihtImageWidget:(VVImageWidget *)imageWidget resize:(VVImageResizeBlock)resizeBlock completion:(VVAsynCompleteBlock)completion {
+    if ([imageWidget.contents isKindOfClass:[UIImage class]]) {
+        [self _setLocalImageWithImageWidget:imageWidget resize:resizeBlock completion:completion];
     } else {
-        [self _setWebImageWithImageStorage:imageStorage resize:resizeBlock completion:completion];
+        [self _setWebImageWithImageWidget:imageWidget resize:resizeBlock completion:completion];
     }
 }
 
-- (void)_setLocalImageWithImageStorage:(VVImageStorage *)imageStorage resize:(VVImageResizeBlock)resizeBlock completion:(VVAsynCompleteBlock)completion {
-    if (imageStorage.needRerendering) {
+- (void)_setLocalImageWithImageWidget:(VVImageWidget *)imageWidget resize:(VVImageResizeBlock)resizeBlock completion:(VVAsynCompleteBlock)completion {
+    if (imageWidget.needRerendering) {
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            UIImage *processedImage = [self _reRenderingImageWitImageStorage:imageStorage];
+            UIImage *processedImage = [self _reRenderingImageWitImageWidget:imageWidget];
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.image = processedImage;
                 if (resizeBlock) {
-                    resizeBlock(imageStorage, 0);
+                    resizeBlock(imageWidget, 0);
                 }
                 if (completion) {
                     completion();
@@ -37,10 +37,10 @@ static void _croppedImageBackingSizeAndDrawRectInBounds(CGSize sourceImageSize, 
             });
         });
     } else {
-        UIImage *image = (UIImage *) imageStorage.contents;
+        UIImage *image = (UIImage *) imageWidget.contents;
         self.image = image;
         if (resizeBlock) {
-            resizeBlock(imageStorage, 0);
+            resizeBlock(imageWidget, 0);
         }
         if (completion) {
             completion();
@@ -48,28 +48,28 @@ static void _croppedImageBackingSizeAndDrawRectInBounds(CGSize sourceImageSize, 
     }
 }
 
-- (UIImage *)_reRenderingImageWitImageStorage:(VVImageStorage *)imageStorage {
+- (UIImage *)_reRenderingImageWitImageWidget:(VVImageWidget *)imageWidget {
 
-    UIImage *image = (UIImage *) imageStorage.contents;
+    UIImage *image = (UIImage *) imageWidget.contents;
     if (!image) {
         return nil;
     }
 
     @autoreleasepool {
-        if (imageStorage.isBlur) {
+        if (imageWidget.isBlur) {
             image = [image vv_applyBlurWithRadius:20.0f tintColor:VV_COLOR(0, 0, 0, 0.15f) saturationDeltaFactor:1.4 maskImage:nil];
         }
 
         BOOL forceUpscaling = NO;
         BOOL cropEnabled = YES;
-        BOOL isOpaque = imageStorage.opaque;
-        UIColor *backgroundColor = imageStorage.backgroundColor;
-        UIViewContentMode contentMode = imageStorage.contentMode;
-        CGFloat contentsScale = imageStorage.contentsScale;
+        BOOL isOpaque = imageWidget.opaque;
+        UIColor *backgroundColor = imageWidget.backgroundColor;
+        UIViewContentMode contentMode = imageWidget.contentMode;
+        CGFloat contentsScale = imageWidget.contentsScale;
         CGRect cropDisplayBounds = CGRectZero;
         CGRect cropRect = CGRectMake(0.5f, 0.5f, 0.0f, 0.0f);
         BOOL hasValidCropBounds = cropEnabled && !CGRectIsNull(cropDisplayBounds) && !CGRectIsEmpty(cropDisplayBounds);
-        CGRect bounds = (hasValidCropBounds ? cropDisplayBounds : imageStorage.bounds);
+        CGRect bounds = (hasValidCropBounds ? cropDisplayBounds : imageWidget.bounds);
         CGSize imageSize = image.size;
         CGSize imageSizeInPixels = CGSizeMake(imageSize.width * image.scale, imageSize.height * image.scale);
         CGSize boundsSizeInPixels = CGSizeMake(floorf(bounds.size.width * contentsScale), floorf(bounds.size.height * contentsScale));
@@ -79,10 +79,10 @@ static void _croppedImageBackingSizeAndDrawRectInBounds(CGSize sourceImageSize, 
         CGSize backingSize = CGSizeZero;
         CGRect imageDrawRect = CGRectZero;
 
-        CGFloat cornerRadius = imageStorage.cornerRadius;
-        UIColor *cornerBackgroundColor = imageStorage.cornerBackgroundColor;
-        UIColor *cornerBorderColor = imageStorage.cornerBorderColor;
-        CGFloat cornerBorderWidth = imageStorage.cornerBorderWidth;
+        CGFloat cornerRadius = imageWidget.cornerRadius;
+        UIColor *cornerBackgroundColor = imageWidget.cornerBackgroundColor;
+        UIColor *cornerBorderColor = imageWidget.cornerBorderColor;
+        CGFloat cornerBorderWidth = imageWidget.cornerBorderWidth;
 
         if (boundsSizeInPixels.width * contentsScale < 1.0f || boundsSizeInPixels.height * contentsScale < 1.0f ||
                 imageSizeInPixels.width < 1.0f || imageSizeInPixels.height < 1.0f) {
@@ -142,16 +142,16 @@ static void _croppedImageBackingSizeAndDrawRectInBounds(CGSize sourceImageSize, 
     }
 }
 
-- (void)_setWebImageWithImageStorage:(VVImageStorage *)imageStorage resize:(VVImageResizeBlock)resizeBlock completion:(VVAsynCompleteBlock)completion {
+- (void)_setWebImageWithImageWidget:(VVImageWidget *)imageWidget resize:(VVImageResizeBlock)resizeBlock completion:(VVAsynCompleteBlock)completion {
     NSURL *url;
-    id placeholder = imageStorage.placeholder;
-    BOOL needResize = imageStorage.needResize;
-    if ([imageStorage.contents isKindOfClass:[NSString class]]) {
-        url = [NSURL URLWithString:imageStorage.contents];
-    } else if ([imageStorage.contents isKindOfClass:[NSURL class]]) {
-        url = (NSURL *) imageStorage.contents;
+    id placeholder = imageWidget.placeholder;
+    BOOL needResize = imageWidget.needResize;
+    if ([imageWidget.contents isKindOfClass:[NSString class]]) {
+        url = [NSURL URLWithString:imageWidget.contents];
+    } else if ([imageWidget.contents isKindOfClass:[NSURL class]]) {
+        url = (NSURL *) imageWidget.contents;
     } else {
-        resizeBlock(imageStorage, 0);
+        resizeBlock(imageWidget, 0);
         if (completion) {
             completion();
         }
@@ -159,7 +159,7 @@ static void _croppedImageBackingSizeAndDrawRectInBounds(CGSize sourceImageSize, 
     }
 
     __weak typeof(self) weakSelf = self;
-    [self sd_setImageWithURL:url placeholderImage:placeholder imageStorage:imageStorage completed:^(UIImage *_Nullable image, NSError *_Nullable error, SDImageCacheType cacheType, NSURL *_Nullable imageURL) {
+    [self sd_setImageWithURL:url placeholderImage:placeholder imageWidget:imageWidget completed:^(UIImage *_Nullable image, NSError *_Nullable error, SDImageCacheType cacheType, NSURL *_Nullable imageURL) {
         if (!image) {
             if (completion) {
                 completion();
@@ -169,9 +169,9 @@ static void _croppedImageBackingSizeAndDrawRectInBounds(CGSize sourceImageSize, 
 
         __strong typeof(weakSelf) sself = weakSelf;
         if (needResize) {
-            CGFloat delta = [sself _resizeImageStorage:imageStorage image:image];
-            sself.frame = imageStorage.frame;
-            resizeBlock(imageStorage, delta);
+            CGFloat delta = [sself _resizeImageWidget:imageWidget image:image];
+            sself.frame = imageWidget.frame;
+            resizeBlock(imageWidget, delta);
         }
 
         if (completion) {
@@ -180,15 +180,15 @@ static void _croppedImageBackingSizeAndDrawRectInBounds(CGSize sourceImageSize, 
     }];
 }
 
-- (CGFloat)_resizeImageStorage:(VVImageStorage *)imageStorage image:(UIImage *)image {
+- (CGFloat)_resizeImageWidget:(VVImageWidget *)imageWidget image:(UIImage *)image {
     CGSize imageSize = image.size;
     CGFloat imageScale = imageSize.height / imageSize.width;
-    CGSize reSize = CGSizeMake(imageStorage.bounds.size.width, imageStorage.bounds.size.width * imageScale);
-    CGFloat delta = reSize.height - imageStorage.frame.size.height;
-    imageStorage.frame = CGRectMake(imageStorage.frame.origin.x,
-            imageStorage.frame.origin.y,
-            imageStorage.frame.size.width,
-            imageStorage.frame.size.height + delta);
+    CGSize reSize = CGSizeMake(imageWidget.bounds.size.width, imageWidget.bounds.size.width * imageScale);
+    CGFloat delta = reSize.height - imageWidget.frame.size.height;
+    imageWidget.frame = CGRectMake(imageWidget.frame.origin.x,
+            imageWidget.frame.origin.y,
+            imageWidget.frame.size.width,
+            imageWidget.frame.size.height + delta);
     return delta;
 }
 

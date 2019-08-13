@@ -16,7 +16,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = @"VVTextStorage示例";
+    self.title = @"VVTextWidget示例";
     self.view.backgroundColor = [UIColor whiteColor];
 
     //创建VVAsyncView对象
@@ -25,8 +25,8 @@
     [self.view addSubview:self.asyncView];
 
 
-    //创建VVTextStorage对象
-    VVTextStorage *ts = [[VVTextStorage alloc] init];
+    //创建VVTextWidget对象
+    VVTextWidget *ts = [[VVTextWidget alloc] init];
     ts.frame = CGRectMake(20, 30.0f, VV_SCREEN_WIDTH - 40.0f, CGFLOAT_MAX);
     ts.text = @"VVRichText支持图文混排,可以在文字中插入本地图片→网络图片→这UIView的子类→.给指定位置文字添加链接.快来试试吧。";
     ts.font = [UIFont fontWithName:@"Heiti SC" size:15.0f];
@@ -60,15 +60,15 @@
             highLightColor:VV_COLOR(0, 0, 0, 0.15)];
 
     //给整段文本添加点击事件
-    [ts vv_addLinkForWholeTextStorageWithData:@"第一段"
-                               highLightColor:VV_COLOR(0, 0, 0, 0.15f)];
+    [ts vv_addLinkForWholeTextWidgetWithData:@"第一段"
+                              highLightColor:VV_COLOR(0, 0, 0, 0.15f)];
 
     //给文本添加长按事件
     [ts vv_addLongPressActionWithData:ts.text
                        highLightColor:VV_COLOR(0, 0, 0, 0.25f)];
 
 
-    //用属性字符串创建VVTextStorage
+    //用属性字符串创建VVTextWidget
     NSMutableAttributedString *as1 = [[NSMutableAttributedString alloc] initWithString:@"世界对着它的爱人，把它浩翰的面具揭下了。它变小了，小如一首歌，小如一回永恒的接吻。"];
     [as1 setFont:[UIFont fontWithName:@"Heiti SC" size:13.0f] range:NSMakeRange(0, as1.length)];
     [as1 setTextBackgroundColor:[UIColor orangeColor] range:NSMakeRange(0, 9)];
@@ -80,15 +80,15 @@
     [as1 setTextBackgroundColor:VV_COLOR(43, 187, 228, 0.9f) range:NSMakeRange(as1.length - 10, 10)];
     [as1 setTextColor:[UIColor whiteColor] range:NSMakeRange(as1.length - 10, 10)];
 
-    VVTextStorage *ts1 = [VVTextStorage vv_textStorageWithText:as1
-                                                         frame:CGRectMake(20.0f,
-                                                                 ts.bottom + 20.0f,
-                                                                 VV_SCREEN_WIDTH - 40.0f,
-                                                                 CGFLOAT_MAX)];
+    VVTextWidget *ts1 = [VVTextWidget vv_textWidgetWithText:as1
+                                                      frame:CGRectMake(20.0f,
+                                                              ts.bottom + 20.0f,
+                                                              VV_SCREEN_WIDTH - 40.0f,
+                                                              CGFLOAT_MAX)];
     ts1.linespacing = 3.0f;
 
 
-    VVTextStorage *ts2 = [[VVTextStorage alloc] init];
+    VVTextWidget *ts2 = [[VVTextWidget alloc] init];
     ts2.text = @"世界对着它的爱人，把它浩翰的面具揭下了。它变小了，小如一首歌，小如一回永恒的接吻。The world puts off its mask of vastness to its lover.It becomes small as one song, as one kiss of the eternal.";
     ts2.font = [UIFont fontWithName:@"Heiti SC" size:15.0f];
     ts2.textAlignment = NSTextAlignmentCenter;//设置居中
@@ -102,15 +102,15 @@
 
 
     //创建VVLayout对象
-    VVLayout *layout = [[VVLayout alloc] init];
-    //将VVTextStorage对象添加到VVLayout对象中
-    [layout addStorages:@[ts]];
+    VVWidgetStore *layout = [[VVWidgetStore alloc] init];
+    //将VVTextWidget对象添加到VVLayout对象中
+    [layout addWidgets:@[ts]];
     //将VVLayout对象赋值给VVAsyncView对象
     self.asyncView.layout = layout;
 }
 
 //给文字添加点击事件后，若触发事件，会在这个代理方法中收到回调
-- (void)vv_asynView:(VVAsynView *)asynView didCilickedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
+- (void)vv_asynView:(VVAsynView *)asynView didCilickedTextWidget:(VVTextWidget *)textWidget linkdata:(id)data {
     NSLog(@"点击:%@", data);
     if ([data isKindOfClass:[NSString class]]) {
 
@@ -118,12 +118,12 @@
 }
 
 //给文字添加长按事件后，触发后，会在这个代理方法中收到回调
-- (void)vv_asynView:(VVAsynView *)asynView didLongpressedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
+- (void)vv_asynView:(VVAsynView *)asynView didLongpressedTextWidget:(VVTextWidget *)textWidget linkdata:(id)data {
     [self becomeFirstResponder];
     UIMenuItem *copyLink = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copyText)];
     [[UIMenuController sharedMenuController] setMenuItems:@[copyLink]];
 
-    CGRect rect = CGRectMake(textStorage.center.x - 50.0f, textStorage.top, 100.0f, 50.0f);
+    CGRect rect = CGRectMake(textWidget.center.x - 50.0f, textWidget.top, 100.0f, 50.0f);
     [UIMenuController sharedMenuController].arrowDirection = UIMenuControllerArrowDown;
     [[UIMenuController sharedMenuController] setTargetRect:rect inView:self.view];
     [[UIMenuController sharedMenuController] setMenuVisible:YES animated:YES];

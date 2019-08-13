@@ -6,8 +6,8 @@
 #import "FeedVM.h"
 
 #import "StatusModel.h"
-#import "VVLayout.h"
-#import "FeedLayout.h"
+#import "VVWidgetStore.h"
+#import "FeedWidgetStore.h"
 
 @interface FeedVM ()
 
@@ -31,22 +31,22 @@
     //让数据更多
     for (NSInteger i = 0; i < 10; i++) {
         for (NSInteger i = 0; i < self.feedDatas.count; i++) {
-            VVLayout *layout = [self layoutWithStatusModel:[[StatusModel alloc] initWithDict:self.feedDatas[i]] index:i];
+            VVWidgetStore *layout = [self layoutWithStatusModel:[[StatusModel alloc] initWithDict:self.feedDatas[i]] index:i];
             [self.datas addObject:layout];
         }
     }
 }
 
-- (FeedLayout *)layoutWithStatusModel:(StatusModel *)statusModel index:(NSInteger)index {
-    FeedLayout *layout = [[FeedLayout alloc] initWithStatusModel:statusModel index:index dateFormatter:self.dateFormatter];
+- (FeedWidgetStore *)layoutWithStatusModel:(StatusModel *)statusModel index:(NSInteger)index {
+    FeedWidgetStore *layout = [[FeedWidgetStore alloc] initWithStatusModel:statusModel index:index dateFormatter:self.dateFormatter];
     return layout;
 }
 
 - (void)expendData:(NSInteger)index {
-    FeedLayout *layout = self.datas[index];
+    FeedWidgetStore *layout = self.datas[index];
     StatusModel *model = layout.statusModel;
     model.isExpend = !model.isExpend;
-    FeedLayout *newLayout = [[FeedLayout alloc] initWithStatusModel:model
+    FeedWidgetStore *newLayout = [[FeedWidgetStore alloc] initWithStatusModel:model
                                                               index:index
                                                       dateFormatter:self.dateFormatter];
     self.datas[index] = newLayout;

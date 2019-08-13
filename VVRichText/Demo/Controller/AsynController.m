@@ -18,7 +18,7 @@ static const NSString *cellIdentifier = @"cellIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = @"VVImageStorage使用示例";
+    self.title = @"VVImageWidget使用示例";
     [self.view addSubview:self.tableView];
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Test"
@@ -49,7 +49,7 @@ static const NSString *cellIdentifier = @"cellIdentifier";
     if (!cell) {
         cell = [[TextViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    VVLayout *layout = self.dataSource[indexPath.row];
+    VVWidgetStore *layout = self.dataSource[indexPath.row];
     cell.layout = layout;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -78,26 +78,26 @@ static const NSString *cellIdentifier = @"cellIdentifier";
     _dataSource = [[NSMutableArray alloc] init];
     for (int i = 0; i < 500; i++) {
 
-        VVTextStorage *textStorage = [[VVTextStorage alloc] init];
-        textStorage.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 34.0f);
-        textStorage.maxNumberOfLines = 2;
-        textStorage.textColor = [UIColor redColor];
-        textStorage.font = [UIFont systemFontOfSize:8];
-        textStorage.vericalAlignment = VVTextVericalAlignmentCenter;
+        VVTextWidget *textWidget = [[VVTextWidget alloc] init];
+        textWidget.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 34.0f);
+        textWidget.maxNumberOfLines = 2;
+        textWidget.textColor = [UIColor redColor];
+        textWidget.font = [UIFont systemFontOfSize:8];
+        textWidget.vericalAlignment = VVTextVericalAlignmentCenter;
 
         NSString *text;
         if (i < 2) {
             text = @"Async Display Test ✺◟(∗❛ัᴗ❛ั∗)◞✺ ✺◟(∗❛ัᴗ❛ั∗)◞✺";
-            textStorage.textBackgroundColor = [UIColor greenColor];
+            textWidget.textBackgroundColor = [UIColor greenColor];
         } else {
             text = [NSString stringWithFormat:@"%d Async Display Test ✺◟(∗❛ัᴗ❛ั∗)◞✺ ✺◟(∗❛ัᴗ❛ั∗)◞✺ 😀😖😐😣😡🚖🚌🚋🎊💖💗💛💙🏨🏦🏫 Async Display Test ✺◟(∗❛ัᴗ❛ั∗)◞✺ ✺◟(∗❛ัᴗ❛ั∗)◞✺ 😀😖😐😣😡🚖🚌🚋🎊💖💗💛💙🏨🏦🏫", i];
-            textStorage.textBackgroundColor = [UIColor grayColor];
+            textWidget.textBackgroundColor = [UIColor grayColor];
         }
 
-        textStorage.text = text;
+        textWidget.text = text;
 
-        VVLayout *layout = [[VVLayout alloc] init];
-        [layout addStorage:textStorage];
+        VVWidgetStore *layout = [[VVWidgetStore alloc] init];
+        [layout addWidget:textWidget];
         [_dataSource addObject:layout];
     }
 

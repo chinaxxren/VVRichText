@@ -15,7 +15,7 @@
     [super viewDidLoad];
 
     [self.view addSubview:self.tableView];
-    self.title = @"VVImageStorage使用示例";
+    self.title = @"VVImageWidget使用示例";
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Test"
                                                                               style:UIBarButtonItemStylePlain
@@ -37,7 +37,7 @@
     if (!cell) {
         cell = [[ImageDemoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    VVLayout *layout = self.dataSource[indexPath.row];
+    VVWidgetStore *layout = self.dataSource[indexPath.row];
     cell.layout = layout;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -64,148 +64,148 @@
     _dataSource = [[NSMutableArray alloc] init];
 
     {
-        VVTextStorage *textStorage = [[VVTextStorage alloc] init];
-        textStorage.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
-        textStorage.text = @"加载本地图片,默认图片会直接绘制在VVAsyncView上，减少View的层级。";
-        textStorage.vericalAlignment = VVTextVericalAlignmentCenter;
+        VVTextWidget *textWidget = [[VVTextWidget alloc] init];
+        textWidget.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
+        textWidget.text = @"加载本地图片,默认图片会直接绘制在VVAsyncView上，减少View的层级。";
+        textWidget.vericalAlignment = VVTextVericalAlignmentCenter;
 
 
-        VVImageStorage *imageStorage = [[VVImageStorage alloc] init];
-        imageStorage.contents = [UIImage imageNamed:@"test"];
-        imageStorage.backgroundColor = [UIColor grayColor];
-        imageStorage.contentMode = UIViewContentModeScaleAspectFill;
-        imageStorage.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
+        VVImageWidget *imageWidget = [[VVImageWidget alloc] init];
+        imageWidget.contents = [UIImage imageNamed:@"test"];
+        imageWidget.backgroundColor = [UIColor grayColor];
+        imageWidget.contentMode = UIViewContentModeScaleAspectFill;
+        imageWidget.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
 
 
-        VVLayout *layout = [[VVLayout alloc] init];
-        [layout addStorage:imageStorage];
-        [layout addStorage:textStorage];
+        VVWidgetStore *layout = [[VVWidgetStore alloc] init];
+        [layout addWidget:imageWidget];
+        [layout addWidget:textWidget];
         [_dataSource addObject:layout];
     }
 
     {
-        VVTextStorage *textStorage = [[VVTextStorage alloc] init];
-        textStorage.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
-        textStorage.text = @"加载本地图片，并设置圆角半径";
-        textStorage.vericalAlignment = VVTextVericalAlignmentCenter;
+        VVTextWidget *textWidget = [[VVTextWidget alloc] init];
+        textWidget.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
+        textWidget.text = @"加载本地图片，并设置圆角半径";
+        textWidget.vericalAlignment = VVTextVericalAlignmentCenter;
 
-        VVImageStorage *imageStorage = [[VVImageStorage alloc] init];
-        imageStorage.contents = [UIImage imageNamed:@"test"];
-        imageStorage.backgroundColor = [UIColor grayColor];
-        imageStorage.cornerRadius = 50.0f;
-        imageStorage.cornerBackgroundColor = [UIColor whiteColor];
-        imageStorage.cornerBorderColor = [UIColor redColor];
-        imageStorage.cornerBorderWidth = 5.0f;
-        imageStorage.contentMode = UIViewContentModeScaleAspectFill;
-        imageStorage.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
+        VVImageWidget *imageWidget = [[VVImageWidget alloc] init];
+        imageWidget.contents = [UIImage imageNamed:@"test"];
+        imageWidget.backgroundColor = [UIColor grayColor];
+        imageWidget.cornerRadius = 50.0f;
+        imageWidget.cornerBackgroundColor = [UIColor whiteColor];
+        imageWidget.cornerBorderColor = [UIColor redColor];
+        imageWidget.cornerBorderWidth = 5.0f;
+        imageWidget.contentMode = UIViewContentModeScaleAspectFill;
+        imageWidget.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
 
 
-        VVLayout *layout = [[VVLayout alloc] init];
-        [layout addStorage:imageStorage];
-        [layout addStorage:textStorage];
+        VVWidgetStore *widgetManager = [[VVWidgetStore alloc] init];
+        [widgetManager addWidget:imageWidget];
+        [widgetManager addWidget:textWidget];
+        [_dataSource addObject:widgetManager];
+    }
+
+    {
+        VVTextWidget *textWidget = [[VVTextWidget alloc] init];
+        textWidget.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
+        textWidget.text = @"加载本地图片，并进行模糊处理";
+        textWidget.vericalAlignment = VVTextVericalAlignmentCenter;
+
+
+        VVImageWidget *imageWidget = [[VVImageWidget alloc] init];
+        imageWidget.contents = [UIImage imageNamed:@"test"];
+        imageWidget.backgroundColor = [UIColor grayColor];
+        imageWidget.isBlur = YES;
+        imageWidget.contentMode = UIViewContentModeScaleAspectFill;
+        imageWidget.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
+
+
+        VVWidgetStore *layout = [[VVWidgetStore alloc] init];
+        [layout addWidget:imageWidget];
+        [layout addWidget:textWidget];
         [_dataSource addObject:layout];
     }
 
     {
-        VVTextStorage *textStorage = [[VVTextStorage alloc] init];
-        textStorage.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
-        textStorage.text = @"加载本地图片，并进行模糊处理";
-        textStorage.vericalAlignment = VVTextVericalAlignmentCenter;
+        VVTextWidget *textWidget = [[VVTextWidget alloc] init];
+        textWidget.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
+        textWidget.text = @"加载网络图片,并进行模糊处理，处理后的图片将直接缓存，下次加载时就无需再次处理而是直接读取缓存了。";
+        textWidget.vericalAlignment = VVTextVericalAlignmentCenter;
+
+        VVImageWidget *imageWidget = [[VVImageWidget alloc] init];
+        imageWidget.contentMode = UIViewContentModeScaleAspectFill;
+        imageWidget.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
+        imageWidget.contents = [NSURL URLWithString:@"http://img4.bitautoimg.com/autoalbum/files/20101220/862/13374086240035_1469891_15.JPG"];
+        imageWidget.clipsToBounds = YES;
+        imageWidget.isBlur = YES;
+
+        VVWidgetStore *widgetManager = [[VVWidgetStore alloc] init];
+        [widgetManager addWidget:imageWidget];
+        [widgetManager addWidget:textWidget];
+        [_dataSource addObject:widgetManager];
+    }
+
+    {
+        VVTextWidget *textWidget = [[VVTextWidget alloc] init];
+        textWidget.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
+        textWidget.text = @"加载网络图片";
+        textWidget.vericalAlignment = VVTextVericalAlignmentCenter;
+
+        VVImageWidget *imageWidget = [[VVImageWidget alloc] init];
+        imageWidget.contentMode = UIViewContentModeScaleAspectFill;
+        imageWidget.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
+        imageWidget.contents = [NSURL URLWithString:@"http://img4.bitautoimg.com/autoalbum/files/20101220/862/13374086240035_1469891_15.JPG"];
+        imageWidget.clipsToBounds = YES;
 
 
-        VVImageStorage *imageStorage = [[VVImageStorage alloc] init];
-        imageStorage.contents = [UIImage imageNamed:@"test"];
-        imageStorage.backgroundColor = [UIColor grayColor];
-        imageStorage.isBlur = YES;
-        imageStorage.contentMode = UIViewContentModeScaleAspectFill;
-        imageStorage.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
+        VVWidgetStore *widgetManager = [[VVWidgetStore alloc] init];
+        [widgetManager addWidget:imageWidget];
+        [widgetManager addWidget:textWidget];
+        [_dataSource addObject:widgetManager];
+    }
+
+    {
+        VVTextWidget *textWidget = [[VVTextWidget alloc] init];
+        textWidget.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
+        textWidget.text = @"加载网络图片,并设置圆角半径，处理后的图片将直接缓存，下次加载时就无需再次处理而是直接读取缓存了。";
+        textWidget.vericalAlignment = VVTextVericalAlignmentCenter;
 
 
-        VVLayout *layout = [[VVLayout alloc] init];
-        [layout addStorage:imageStorage];
-        [layout addStorage:textStorage];
+        VVImageWidget *imageWidget = [[VVImageWidget alloc] init];
+        imageWidget.contentMode = UIViewContentModeScaleAspectFill;
+        imageWidget.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
+        imageWidget.contents = [NSURL URLWithString:@"http://img4.bitautoimg.com/autoalbum/files/20101220/862/13374086240035_1469891_15.JPG"];
+        imageWidget.clipsToBounds = YES;
+        imageWidget.cornerRadius = 50.0f;
+        imageWidget.cornerBorderColor = [UIColor orangeColor];
+        imageWidget.cornerBorderWidth = 5.0f;
+
+        VVWidgetStore *layout = [[VVWidgetStore alloc] init];
+        [layout addWidget:imageWidget];
+        [layout addWidget:textWidget];
         [_dataSource addObject:layout];
     }
 
     {
-        VVTextStorage *textStorage = [[VVTextStorage alloc] init];
-        textStorage.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
-        textStorage.text = @"加载网络图片,并进行模糊处理，处理后的图片将直接缓存，下次加载时就无需再次处理而是直接读取缓存了。";
-        textStorage.vericalAlignment = VVTextVericalAlignmentCenter;
+        VVTextWidget *textWidget = [[VVTextWidget alloc] init];
+        textWidget.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
+        textWidget.text = @"加载网络GIF图片";
+        textWidget.vericalAlignment = VVTextVericalAlignmentCenter;
 
-        VVImageStorage *imageStorage = [[VVImageStorage alloc] init];
-        imageStorage.contentMode = UIViewContentModeScaleAspectFill;
-        imageStorage.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
-        imageStorage.contents = [NSURL URLWithString:@"http://img4.bitautoimg.com/autoalbum/files/20101220/862/13374086240035_1469891_15.JPG"];
-        imageStorage.clipsToBounds = YES;
-        imageStorage.isBlur = YES;
-
-        VVLayout *layout = [[VVLayout alloc] init];
-        [layout addStorage:imageStorage];
-        [layout addStorage:textStorage];
-        [_dataSource addObject:layout];
-    }
-
-    {
-        VVTextStorage *textStorage = [[VVTextStorage alloc] init];
-        textStorage.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
-        textStorage.text = @"加载网络图片";
-        textStorage.vericalAlignment = VVTextVericalAlignmentCenter;
-
-        VVImageStorage *imageStorage = [[VVImageStorage alloc] init];
-        imageStorage.contentMode = UIViewContentModeScaleAspectFill;
-        imageStorage.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
-        imageStorage.contents = [NSURL URLWithString:@"http://img4.bitautoimg.com/autoalbum/files/20101220/862/13374086240035_1469891_15.JPG"];
-        imageStorage.clipsToBounds = YES;
-
-
-        VVLayout *layout = [[VVLayout alloc] init];
-        [layout addStorage:imageStorage];
-        [layout addStorage:textStorage];
-        [_dataSource addObject:layout];
-    }
-
-    {
-        VVTextStorage *textStorage = [[VVTextStorage alloc] init];
-        textStorage.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
-        textStorage.text = @"加载网络图片,并设置圆角半径，处理后的图片将直接缓存，下次加载时就无需再次处理而是直接读取缓存了。";
-        textStorage.vericalAlignment = VVTextVericalAlignmentCenter;
-
-
-        VVImageStorage *imageStorage = [[VVImageStorage alloc] init];
-        imageStorage.contentMode = UIViewContentModeScaleAspectFill;
-        imageStorage.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
-        imageStorage.contents = [NSURL URLWithString:@"http://img4.bitautoimg.com/autoalbum/files/20101220/862/13374086240035_1469891_15.JPG"];
-        imageStorage.clipsToBounds = YES;
-        imageStorage.cornerRadius = 50.0f;
-        imageStorage.cornerBorderColor = [UIColor orangeColor];
-        imageStorage.cornerBorderWidth = 5.0f;
-
-        VVLayout *layout = [[VVLayout alloc] init];
-        [layout addStorage:imageStorage];
-        [layout addStorage:textStorage];
-        [_dataSource addObject:layout];
-    }
-
-    {
-        VVTextStorage *textStorage = [[VVTextStorage alloc] init];
-        textStorage.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
-        textStorage.text = @"加载网络GIF图片";
-        textStorage.vericalAlignment = VVTextVericalAlignmentCenter;
-
-        VVImageStorage *imageStorage = [[VVImageStorage alloc] init];
-        imageStorage.contentMode = UIViewContentModeScaleAspectFill;
-        imageStorage.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
-        imageStorage.contents = [NSURL URLWithString:@"http://wx2.sinaimg.cn/bmiddle/784fda03gy1fcw8zl4zqrg209h04x7wi.gif"];
-        imageStorage.clipsToBounds = YES;
+        VVImageWidget *vvImageWidget = [[VVImageWidget alloc] init];
+        vvImageWidget.contentMode = UIViewContentModeScaleAspectFill;
+        vvImageWidget.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
+        vvImageWidget.contents = [NSURL URLWithString:@"http://wx2.sinaimg.cn/bmiddle/784fda03gy1fcw8zl4zqrg209h04x7wi.gif"];
+        vvImageWidget.clipsToBounds = YES;
         // gif thumbnail
-//        imageStorage.contents = [NSURL URLWithString:@"http://ww3.sinaimg.cn/thumbnail/006qdyzsly1fctmnzwqcwg307505pasc.gif"];
+//        imageWidget.contents = [NSURL URLWithString:@"http://ww3.sinaimg.cn/thumbnail/006qdyzsly1fctmnzwqcwg307505pasc.gif"];
         // real gif format
-//        imageStorage.contents = [NSURL URLWithString:@"http://ww3.sinaimg.cn/bmiddle/006qdyzsly1fctmnzwqcwg307505pasc.gif"];
+//        imageWidget.contents = [NSURL URLWithString:@"http://ww3.sinaimg.cn/bmiddle/006qdyzsly1fctmnzwqcwg307505pasc.gif"];
 
-        VVLayout *layout = [[VVLayout alloc] init];
-        [layout addStorage:imageStorage];
-        [layout addStorage:textStorage];
+        VVWidgetStore *layout = [[VVWidgetStore alloc] init];
+        [layout addWidget:vvImageWidget];
+        [layout addWidget:textWidget];
         [_dataSource addObject:layout];
     }
 

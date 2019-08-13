@@ -6,6 +6,6 @@
 @interface ImageDemoTableViewCell : UITableViewCell
 
 
-@property (nonatomic,strong) VVLayout* layout;
+@property (nonatomic,strong) VVWidgetStore* layout;
 
 @end

@@ -1,7 +1,7 @@
 
 #import "FeedCell.h"
 
-#import "VVImageStorage.h"
+#import "VVImageWidget.h"
 #import "MenuView.h"
 
 @interface FeedCell () <VVAsyncViewDelegate>
@@ -50,9 +50,9 @@
     }
 }
 
-//点击VVImageStorage
-- (void)vv_asynView:(VVAsynView *)asynView didCilickedImageStorage:(VVImageStorage *)imageStorage touch:(UITouch *)touch {
-    NSInteger tag = imageStorage.tag;
+//点击VVImageWidget
+- (void)vv_asynView:(VVAsynView *)asynView didCilickedImageWidget:(VVImageWidget *)imageWidget touch:(UITouch *)touch {
+    NSInteger tag = imageWidget.tag;
     //tag 0~8 是图片，9是头像
     switch (tag) {
         case 0:
@@ -80,8 +80,8 @@
     }
 }
 
-//点击VVTextStorage
-- (void)vv_asynView:(VVAsynView *)asynView didCilickedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
+//点击VVTextWidget
+- (void)vv_asynView:(VVAsynView *)asynView didCilickedTextWidget:(VVTextWidget *)textWidget linkdata:(id)data {
 
     //回复评论
     if ([data isKindOfClass:[CommentModel class]]) {
@@ -107,12 +107,12 @@
 
 
 //长按内容文字
-- (void)vv_asynView:(VVAsynView *)asynView didLongpressedTextStorage:(VVTextStorage *)textStorage linkdata:(id)data {
+- (void)vv_asynView:(VVAsynView *)asynView didLongpressedTextWidget:(VVTextWidget *)textWidget linkdata:(id)data {
     [self becomeFirstResponder];
     UIMenuItem *copyLink = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copyText)];
     [[UIMenuController sharedMenuController] setMenuItems:@[copyLink]];
 
-    CGRect rect = CGRectMake(textStorage.center.x - 50.0f, textStorage.top, 100.0f, 50.0f);
+    CGRect rect = CGRectMake(textWidget.center.x - 50.0f, textWidget.top, 100.0f, 50.0f);
     [UIMenuController sharedMenuController].arrowDirection = UIMenuControllerArrowDown;
     [[UIMenuController sharedMenuController] setTargetRect:rect inView:self];
     [[UIMenuController sharedMenuController] setMenuVisible:YES animated:YES];
@@ -178,7 +178,7 @@
     self.line.frame = self.feedLayout.lineRect;
 }
 
-- (void)setFeedLayout:(FeedLayout *)feedLayout {
+- (void)setFeedLayout:(FeedWidgetStore *)feedLayout {
     [self.menu menuHide];
 
     if (_feedLayout && [feedLayout isEqual:_feedLayout]) {

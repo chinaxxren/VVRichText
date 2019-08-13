@@ -10,11 +10,11 @@
 #import "VVTextParser.h"
 #import "VVRichTextDefine.h"
 #import "VVRichTextUtils.h"
-#import "VVTextStorage.h"
-#import "VVImageStorage.h"
-#import "VVStorage.h"
+#import "VVTextWidget.h"
+#import "VVImageWidget.h"
+#import "VVWidget.h"
 #import "UIImage+VVRichText.h"
 #import "CALayer+WebCache.h"
-#import "VVLayout.h"
+#import "VVWidgetStore.h"
 
 #endif /* VVRichText_h */

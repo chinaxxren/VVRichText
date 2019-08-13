@@ -4,9 +4,9 @@
 
 /**
  *  包含各种布局数据和其他数据的抽象模型，本身并不能直接拿来使用。
- *  它的子类VVTextStorage、VVImageStorage、VVVideoStorage可以分别用于存储文字、图片。
+ *  它的子类VVTextWidget、VVImageWidget、VVVideoWidget可以分别用于存储文字、图片。
  */
-@interface VVStorage : VVIdentifier
+@interface VVWidget : VVIdentifier
 
 @property(nonatomic, assign) NSInteger tag;//一个标示符，跟UIView对象的tag属性作用一样
 @property(nonatomic, assign) BOOL clipsToBounds;//是否在边缘剪切，跟UIView对象的clipsToBounds属性作用一样
@@ -40,11 +40,11 @@
 @property(nonatomic, assign) UIViewContentMode contentMode;//跟UIView对象的同名属性作用一样
 
 /**
- *  设置一个标示字符串并初始化一个VVStorage对象
+ *  设置一个标示字符串并初始化一个VVWidget对象
  *
  *  @param identifier 一个标示字符串
  *
- *  @return 一个VVStorage对象
+ *  @return 一个VVWidget对象
  */
 - (_Nonnull instancetype)initWithIdentifier:(NSString *_Nullable)identifier;
 

@@ -9,7 +9,7 @@
 
 #import "YYImage+SDAdditions.h"
 #import "VVImageProcessor.h"
-#import "VVImageStorage.h"
+#import "VVImageWidget.h"
 
 const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
 
@@ -46,22 +46,22 @@ const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
 
 - (void)sd_setImageWithURL:(nullable NSURL *)url
           placeholderImage:(nullable UIImage *)placeholder {
-    [self sd_setImageWithURL:url placeholderImage:placeholder imageStorage:nil completed:nil];
+    [self sd_setImageWithURL:url placeholderImage:placeholder imageWidget:nil completed:nil];
 }
 
 - (void)sd_setImageWithURL:(nullable NSURL *)url
           placeholderImage:(nullable UIImage *)placeholder
                  completed:(nullable SDExternalCompletionBlock)completedBlock {
-    [self sd_setImageWithURL:url placeholderImage:placeholder imageStorage:nil completed:completedBlock];
+    [self sd_setImageWithURL:url placeholderImage:placeholder imageWidget:nil completed:completedBlock];
 }
 
 - (void)sd_setImageWithURL:(nullable NSURL *)url
           placeholderImage:(nullable UIImage *)placeholder
-              imageStorage:(VVImageStorage *)imageStorage
+               imageWidget:(nullable VVImageWidget *)imageWidget
                  completed:(nullable SDExternalCompletionBlock)completedBlock {
     [self sd_internalSetImageWithURL:url
                     placeholderImage:placeholder
-                        imageStorage:imageStorage
+                         imageWidget:imageWidget
                              options:0
                              context:nil
                        setImageBlock:nil
@@ -76,7 +76,7 @@ const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
 
 - (void)sd_internalSetImageWithURL:(nullable NSURL *)url
                   placeholderImage:(nullable UIImage *)placeholder
-                      imageStorage:(VVImageStorage *)imageStorage
+                       imageWidget:(nullable VVImageWidget *)imageWidget
                            options:(SDWebImageOptions)options
                            context:(nullable SDWebImageContext *)context
                      setImageBlock:(nullable SDSetImageBlock)setImageBlock
@@ -178,17 +178,17 @@ const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
             if (image) {
                 // case 2a: we got an image and the SDWebImageAvoidAutoSetImage is not set
                 YYImage *yyImage = (YYImage *) image;
-                if (!imageStorage || yyImage.animatedImageType == YYImageTypeGIF) {
+                if (!imageWidget || yyImage.animatedImageType == YYImageTypeGIF) {
                     targetImage = image;
                 } else {
                     targetImage = [VVImageProcessor vv_processImage:image
-                                                               size:imageStorage.frame.size
-                                                        borderWidth:imageStorage.cornerBorderWidth
-                                              cornerBackgroundColor:imageStorage.cornerBackgroundColor
-                                                        borderColor:imageStorage.cornerBorderColor
-                                                               blur:imageStorage.isBlur
-                                                        contentMode:imageStorage.contentMode
-                                                       cornerRadius:imageStorage.cornerRadius];
+                                                               size:imageWidget.frame.size
+                                                        borderWidth:imageWidget.cornerBorderWidth
+                                              cornerBackgroundColor:imageWidget.cornerBackgroundColor
+                                                        borderColor:imageWidget.cornerBorderColor
+                                                               blur:imageWidget.isBlur
+                                                        contentMode:imageWidget.contentMode
+                                                       cornerRadius:imageWidget.cornerRadius];
                 }
                 targetData = data;
             } else if (options & SDWebImageDelayPlaceholder) {

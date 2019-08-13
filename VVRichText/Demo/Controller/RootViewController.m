@@ -47,10 +47,10 @@
     }
     switch (indexPath.row) {
         case 0:
-            cell.textLabel.text = @"VVTextStorage使用示例";
+            cell.textLabel.text = @"VVTextWidget使用示例";
             break;
         case 1:
-            cell.textLabel.text = @"VVImageStorage使用示例";
+            cell.textLabel.text = @"VVImageWidget使用示例";
             break;
         case 2:
             cell.textLabel.text = @"Feed List 示例";

@@ -81,7 +81,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    FeedLayout *feedLayout = self.feedVM.datas[indexPath.row];
+    FeedWidgetStore *feedLayout = self.feedVM.datas[indexPath.row];
     CGFloat height = feedLayout.height;
     return height;
 }
@@ -89,7 +89,7 @@
 - (void)confirgueCell:(FeedCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     cell.asynDisplay = self.asynDisplay;
     cell.indexPath = indexPath;
-    FeedLayout *feedLayout = self.feedVM.datas[indexPath.row];
+    FeedWidgetStore *feedLayout = self.feedVM.datas[indexPath.row];
     cell.feedLayout = feedLayout;
     [self callbackWithCell:cell];
 }
@@ -172,7 +172,7 @@
 //点赞
 - (void)tableViewCell:(FeedCell *)cell didClickedLikeButtonWithIsLike:(BOOL)isLike {
     NSInteger row = cell.indexPath.row;
-    FeedLayout *feedLayout = self.feedVM.datas[row];
+    FeedWidgetStore *feedLayout = self.feedVM.datas[row];
     NSMutableArray *newLikeList = [[NSMutableArray alloc] initWithArray:feedLayout.statusModel.likeList];
     if (isLike) {
         [newLikeList addObject:@"chinaxxren的粉丝"];
@@ -207,13 +207,13 @@
 - (void)postCommentWithCommentModel:(CommentModel *)commentModel {
 
     NSInteger index = commentModel.index;
-    FeedLayout *feedLayout = self.feedVM.datas[index];
+    FeedWidgetStore *feedLayout = self.feedVM.datas[index];
     NSMutableArray *newCommentLists = [[NSMutableArray alloc] initWithArray:feedLayout.statusModel.commentList];
     NSDictionary *newComment = @{@"from": commentModel.from, @"to": commentModel.to, @"content": commentModel.content};
     [newCommentLists addObject:newComment];
     StatusModel *statusModel = feedLayout.statusModel;
     statusModel.commentList = newCommentLists;
-    FeedLayout *newLayout = [self.feedVM layoutWithStatusModel:statusModel index:index];
+    FeedWidgetStore *newLayout = [self.feedVM layoutWithStatusModel:statusModel index:index];
 
     self.feedVM.datas[index] = newLayout;
     [self reloadCell:index];

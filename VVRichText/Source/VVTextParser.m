@@ -63,8 +63,8 @@ static NSString *URL_REGULAR = @"[a-zA-z]+://[^\\s]*";
     URL_REGULAR = str;
 }
 
-+ (void)parseGeneralEmojiWithTextStorage:(VVTextStorage *)textStorage {
-    NSString *text = textStorage.text;
++ (void)parseGeneralEmojiWithTextWidget:(VVTextWidget *)textWidget {
+    NSString *text = textWidget.text;
     if (!text) {
         return;
     }
@@ -77,8 +77,8 @@ static NSString *URL_REGULAR = @"[a-zA-z]+://[^\\s]*";
                                       NSTextCheckingResult *match = resultArray[idx];
                                       NSRange range = [match range];
                                       NSString *content = [text substringWithRange:NSMakeRange(range.location + 1, range.length - 2)];
-                                      if (textStorage.text.length >= range.location + range.length) {
-                                          [textStorage vv_replaceTextWithImage:[VVImage imageNamed:content]
+                                      if (textWidget.text.length >= range.location + range.length) {
+                                          [textWidget vv_replaceTextWithImage:[VVImage imageNamed:content]
                                                                    contentMode:UIViewContentModeScaleAspectFill
                                                                      imageSize:CGSizeMake(14, 14)
                                                                      alignment:VVTextAttachAlignmentTop
@@ -87,8 +87,8 @@ static NSString *URL_REGULAR = @"[a-zA-z]+://[^\\s]*";
                                   }];
 }
 
-+ (void)parseGifEmojiWithTextStorage:(VVTextStorage *)textStorage {
-    NSString *text = textStorage.text;
++ (void)parseGifEmojiWithTextWidget:(VVTextWidget *)textWidget {
+    NSString *text = textWidget.text;
     if (!text) {
         return;
     }
@@ -101,11 +101,11 @@ static NSString *URL_REGULAR = @"[a-zA-z]+://[^\\s]*";
                                       NSTextCheckingResult *match = resultArray[idx];
                                       NSRange range = [match range];
                                       NSString *content = [text substringWithRange:NSMakeRange(range.location + 1, range.length - 2)];
-                                      if (textStorage.text.length >= range.location + range.length) {
+                                      if (textWidget.text.length >= range.location + range.length) {
                                           NSString *motionPath = [MotionQQBundle() pathForResource:content ofType:@"gif"];
                                           VVImageView *asyncImageView = [[VVImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
                                           asyncImageView.image = [VVImage imageWithContentsOfFile:motionPath];
-                                          [textStorage vv_replaceTextWithView:asyncImageView
+                                          [textWidget vv_replaceTextWithView:asyncImageView
                                                                   contentMode:UIViewContentModeScaleAspectFill
                                                                          size:asyncImageView.frame.size
                                                                     alignment:VVTextAttachAlignmentTop
@@ -115,10 +115,10 @@ static NSString *URL_REGULAR = @"[a-zA-z]+://[^\\s]*";
 }
 
 
-+ (void)parseHttpURLWithTextStorage:(VVTextStorage *)textStorage
-                          linkColor:(UIColor *)linkColor
-                     highlightColor:(UIColor *)higlightColor {
-    NSString *text = textStorage.text;
++ (void)parseHttpURLWithTextWidget:(VVTextWidget *)textWidget
+                         linkColor:(UIColor *)linkColor
+                    highlightColor:(UIColor *)higlightColor {
+    NSString *text = textWidget.text;
     if (!text) {
         return;
     }
@@ -129,8 +129,8 @@ static NSString *URL_REGULAR = @"[a-zA-z]+://[^\\s]*";
     [resultArray enumerateObjectsUsingBlock:^(NSTextCheckingResult *_Nonnull match, NSUInteger idx, BOOL *_Nonnull stop) {
         NSRange range = [match range];
         NSString *content = [text substringWithRange:range];
-        if (textStorage.text.length >= range.location + range.length) {
-            [textStorage vv_addLinkWithData:[NSString stringWithFormat:@"href://%@", content]
+        if (textWidget.text.length >= range.location + range.length) {
+            [textWidget vv_addLinkWithData:[NSString stringWithFormat:@"href://%@", content]
                                       range:range
                                   linkColor:linkColor
                              highLightColor:higlightColor];
@@ -139,10 +139,10 @@ static NSString *URL_REGULAR = @"[a-zA-z]+://[^\\s]*";
 }
 
 
-+ (void)parseAccountWithTextStorage:(VVTextStorage *)textStorage
-                          linkColor:(UIColor *)linkColor
-                     highlightColor:(UIColor *)higlightColor {
-    NSString *text = textStorage.text;
++ (void)parseAccountWithTextWidget:(VVTextWidget *)textWidget
+                         linkColor:(UIColor *)linkColor
+                    highlightColor:(UIColor *)higlightColor {
+    NSString *text = textWidget.text;
     if (!text) {
         return;
     }
@@ -153,8 +153,8 @@ static NSString *URL_REGULAR = @"[a-zA-z]+://[^\\s]*";
     [resultArray enumerateObjectsUsingBlock:^(NSTextCheckingResult *_Nonnull match, NSUInteger idx, BOOL *_Nonnull stop) {
         NSRange range = [match range];
         NSString *content = [text substringWithRange:range];
-        if (textStorage.text.length >= range.location + range.length) {
-            [textStorage vv_addLinkWithData:[NSString stringWithFormat:@"user://%@", content]
+        if (textWidget.text.length >= range.location + range.length) {
+            [textWidget vv_addLinkWithData:[NSString stringWithFormat:@"user://%@", content]
                                       range:range
                                   linkColor:linkColor
                              highLightColor:higlightColor];
@@ -163,10 +163,10 @@ static NSString *URL_REGULAR = @"[a-zA-z]+://[^\\s]*";
 }
 
 
-+ (void)parseTopicWithVVTextStorage:(VVTextStorage *)textStorage
-                          linkColor:(UIColor *)linkColor
-                     highlightColor:(UIColor *)higlightColor {
-    NSString *text = textStorage.text;
++ (void)parseTopicWithVVTextWidget:(VVTextWidget *)textWidget
+                         linkColor:(UIColor *)linkColor
+                    highlightColor:(UIColor *)higlightColor {
+    NSString *text = textWidget.text;
     if (!text) {
         return;
     }
@@ -177,8 +177,8 @@ static NSString *URL_REGULAR = @"[a-zA-z]+://[^\\s]*";
     [resultArray enumerateObjectsUsingBlock:^(NSTextCheckingResult *_Nonnull match, NSUInteger idx, BOOL *_Nonnull stop) {
         NSRange range = [match range];
         NSString *content = [text substringWithRange:range];
-        if (textStorage.text.length >= range.location + range.length) {
-            [textStorage vv_addLinkWithData:[NSString stringWithFormat:@"topic://%@", content]
+        if (textWidget.text.length >= range.location + range.length) {
+            [textWidget vv_addLinkWithData:[NSString stringWithFormat:@"topic://%@", content]
                                       range:range
                                   linkColor:linkColor
                              highLightColor:higlightColor];
@@ -187,10 +187,10 @@ static NSString *URL_REGULAR = @"[a-zA-z]+://[^\\s]*";
 }
 
 
-+ (void)parseTelWithVVTextStorage:(VVTextStorage *)textStorage
-                        linkColor:(UIColor *)linkColor
-                   highlightColor:(UIColor *)higlightColor {
-    NSString *text = textStorage.text;
++ (void)parseTelWithVVTextWidget:(VVTextWidget *)textWidget
+                       linkColor:(UIColor *)linkColor
+                  highlightColor:(UIColor *)higlightColor {
+    NSString *text = textWidget.text;
     if (!text) {
         return;
     }
@@ -201,8 +201,8 @@ static NSString *URL_REGULAR = @"[a-zA-z]+://[^\\s]*";
     [resultArray enumerateObjectsUsingBlock:^(NSTextCheckingResult *_Nonnull match, NSUInteger idx, BOOL *_Nonnull stop) {
         NSRange range = [match range];
         NSString *content = [text substringWithRange:range];
-        if (textStorage.text.length >= range.location + range.length) {
-            [textStorage vv_addLinkWithData:[NSString stringWithFormat:@"tel://%@", content]
+        if (textWidget.text.length >= range.location + range.length) {
+            [textWidget vv_addLinkWithData:[NSString stringWithFormat:@"tel://%@", content]
                                       range:range
                                   linkColor:linkColor
                              highLightColor:higlightColor];

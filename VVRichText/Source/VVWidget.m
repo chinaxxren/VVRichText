@@ -1,9 +1,9 @@
 
-#import "VVStorage.h"
+#import "VVWidget.h"
 
 #import "VVRichTextUtils.h"
 
-@interface VVStorage ()
+@interface VVWidget ()
 
 @property(nonatomic, assign) CGFloat height;
 @property(nonatomic, assign) CGFloat width;
@@ -14,7 +14,7 @@
 
 @end
 
-@implementation VVStorage
+@implementation VVWidget
 
 #pragma mark - Init
 

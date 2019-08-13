@@ -1,7 +1,7 @@
 
 #import "GifController.h"
 
-#import "VVLayout.h"
+#import "VVWidgetStore.h"
 #import "VVAsynView.h"
 #import "VVImage.h"
 #import "VVTextParser.h"
@@ -9,7 +9,7 @@
 @interface GifController ()
 
 @property(nonatomic, strong) VVAsynView *asynView;
-@property(nonatomic, strong) VVLayout *layout;
+@property(nonatomic, strong) VVWidgetStore *layout;
 
 @end
 
@@ -31,39 +31,39 @@
     bundlePath = [bundle pathForResource:@"001" ofType:@"gif"];
     VVImage *image = (VVImage *) [VVImage imageWithContentsOfFile:bundlePath];
 
-    VVImageStorage *imageStorage = [[VVImageStorage alloc] init];
-    imageStorage.contents = image;
-    imageStorage.frame = CGRectMake((200.0f - 32.0f) * 0.5f,(200.0f - 32.0f) * 0.5f, 32, 32);
-    imageStorage.localImageType = VVLocalImageTypeDrawInVVAsyncImageView;
-    imageStorage.contentMode = UIViewContentModeScaleAspectFill;
+    VVImageWidget *imageWidget = [[VVImageWidget alloc] init];
+    imageWidget.contents = image;
+    imageWidget.frame = CGRectMake((200.0f - 32.0f) * 0.5f,(200.0f - 32.0f) * 0.5f, 32, 32);
+    imageWidget.localImageType = VVLocalImageTypeDrawInVVAsyncImageView;
+    imageWidget.contentMode = UIViewContentModeScaleAspectFill;
 
      self.layout = [[VVLayout alloc] init];
-    [self.layout addStorage:imageStorage];
+    [self.layout addWidget:imageWidget];
      */
 
     //2)
     /*
      VVImage *image = (VVImage *) [VVImage imageNamed:@"football.gif"];
-    VVImageStorage *imageStorage = [[VVImageStorage alloc] init];
-    imageStorage.contents = image;
-    imageStorage.frame = CGRectMake((200.0f - 96.0f) * 0.5f, (200.0f - 64.0f) * 0.5f, 96, 64);
-    imageStorage.localImageType = VVLocalImageTypeDrawInVVAsyncImageView;
-    imageStorage.contentMode = UIViewContentModeScaleAspectFill;
+    VVImageWidget *imageWidget = [[VVImageWidget alloc] init];
+    imageWidget.contents = image;
+    imageWidget.frame = CGRectMake((200.0f - 96.0f) * 0.5f, (200.0f - 64.0f) * 0.5f, 96, 64);
+    imageWidget.localImageType = VVLocalImageTypeDrawInVVAsyncImageView;
+    imageWidget.contentMode = UIViewContentModeScaleAspectFill;
 
     self.layout = [[VVLayout alloc] init];
-    [self.layout addStorage:imageStorage];
+    [self.layout addWidget:imageWidget];
      */
 
-    VVTextStorage *textStorage = [VVTextStorage new];
-    textStorage.text = @"显示测试[001]显示测试[003]";
-    textStorage.font = [UIFont systemFontOfSize:14.0f];
-    textStorage.frame = CGRectMake(0.0f, 0.0f, 200.0f, CGFLOAT_MAX);
+    VVTextWidget *textWidget = [VVTextWidget new];
+    textWidget.text = @"显示测试[001]显示测试[003]";
+    textWidget.font = [UIFont systemFontOfSize:14.0f];
+    textWidget.frame = CGRectMake(0.0f, 0.0f, 200.0f, CGFLOAT_MAX);
 
     // 解析表情
-    [VVTextParser parseGifEmojiWithTextStorage:textStorage];
+    [VVTextParser parseGifEmojiWithTextWidget:textWidget];
 
-    self.layout = [[VVLayout alloc] init];
-    [self.layout addStorage:textStorage];
+    self.layout = [[VVWidgetStore alloc] init];
+    [self.layout addWidget:textWidget];
 
     self.asynView = [[VVAsynView alloc] initWithFrame:CGRectMake((self.view.bounds.size.width - 200.0f) * 0.5f, (self.view.bounds.size.height - 200) * 0.5f, 200.0f, 200.0f)];
     self.asynView.layout = self.layout;

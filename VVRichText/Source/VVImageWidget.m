@@ -1,17 +1,17 @@
 
-#import "VVImageStorage.h"
+#import "VVImageWidget.h"
 
 #import "UIImage+VVRichText.h"
 #import "VVRichTextUtils.h"
 #import "VVImage.h"
 
-@interface VVImageStorage ()
+@interface VVImageWidget ()
 
 @property(nonatomic, assign) BOOL needRerendering;
 
 @end
 
-@implementation VVImageStorage
+@implementation VVImageWidget
 
 @synthesize cornerRadius = _cornerRadius;
 @synthesize cornerBorderWidth = _cornerBorderWidth;
@@ -20,15 +20,15 @@
 
 
 - (BOOL)isEqual:(id)object {
-    if (!object || ![object isMemberOfClass:[VVImageStorage class]]) {
+    if (!object || ![object isMemberOfClass:[VVImageWidget class]]) {
         return NO;
     }
     if (self == object) {
         return YES;
     }
 
-    VVImageStorage *imageStorage = (VVImageStorage *) object;
-    return [imageStorage.contents isEqual:self.contents] && CGRectEqualToRect(imageStorage.frame, self.frame);
+    VVImageWidget *imageWidget = (VVImageWidget *) object;
+    return [imageWidget.contents isEqual:self.contents] && CGRectEqualToRect(imageWidget.frame, self.frame);
 }
 
 

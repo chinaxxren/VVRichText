@@ -1,6 +1,6 @@
 
 
-#import "VVStorage.h"
+#import "VVWidget.h"
 
 #import "VVTextLayout.h"
 #import "VVAsynLayer.h"
@@ -21,7 +21,7 @@ typedef NS_ENUM(NSUInteger, VVTextDrawMode) {
 /**
  *  文本绘制的数据模型
  */
-@interface VVTextStorage : VVStorage
+@interface VVTextWidget : VVWidget
 
 @property(nonatomic, strong, readonly) VVTextLayout *textLayout;//文本布局模型
 @property(nonatomic, copy) NSString *text;//文本
@@ -52,7 +52,7 @@ typedef NS_ENUM(NSUInteger, VVTextDrawMode) {
  *
  *  @param frame 一个CGRect对象，包含位置信息
  *
- *  @return 一个 VVTextStorage对象
+ *  @return 一个 VVTextWidget对象
  */
 - (id)initWithFrame:(CGRect)frame;
 
@@ -62,9 +62,9 @@ typedef NS_ENUM(NSUInteger, VVTextDrawMode) {
  *  @param attributedText 一个属性字符创
  *  @param frame          一个CGRect对象，包含位置信息
  *
- *  @return 一个 VVTextStorage对象
+ *  @return 一个 VVTextWidget对象
  */
-+ (VVTextStorage *)vv_textStorageWithText:(NSAttributedString *)attributedText frame:(CGRect)frame;
++ (VVTextWidget *)vv_textWidgetWithText:(NSAttributedString *)attributedText frame:(CGRect)frame;
 
 /**
  *  构造方法
@@ -72,9 +72,9 @@ typedef NS_ENUM(NSUInteger, VVTextDrawMode) {
  *  @param textLayout 一个VVTextLayout对象
  *  @param frame      一个CGRect对象，包含位置信息
  *
- *  @return 一个 VVTextStorage对象
+ *  @return 一个 VVTextWidget对象
  */
-+ (VVTextStorage *)vv_textStorageWithTextLayout:(VVTextLayout *)textLayout frame:(CGRect)frame;
++ (VVTextWidget *)vv_textWidgetWithTextLayout:(VVTextLayout *)textLayout frame:(CGRect)frame;
 
 
 /**
@@ -89,10 +89,10 @@ typedef NS_ENUM(NSUInteger, VVTextDrawMode) {
  *  @param linkColor      链接的颜色
  *  @param highLightColor 点击连接时的高亮颜色
  */
-- (void)vv_addLinkForWholeTextStorageWithData:(id)data
-                                    linkColor:(UIColor *)linkColor
-                               highLightColor:(UIColor *)highLightColor
-__deprecated_msg("Please use 'vv_addLinkForWholeTextStorageWithData:highLightColor:' instead");
+- (void)vv_addLinkForWholeTextWidgetWithData:(id)data
+                                   linkColor:(UIColor *)linkColor
+                              highLightColor:(UIColor *)highLightColor
+__deprecated_msg("Please use 'vv_addLinkForWholeTextWidgetWithData:highLightColor:' instead");
 
 /**
  *  为整个文本添加点击事件
@@ -105,15 +105,15 @@ __deprecated_msg("Please use 'vv_addLinkForWholeTextStorageWithData:highLightCol
  *  @param data           为点击事件附带的用户信息
  *  @param highLightColor 点击连接时的高亮颜色
  */
-- (void)vv_addLinkForWholeTextStorageWithData:(id)data
-                               highLightColor:(UIColor *)highLightColor;
+- (void)vv_addLinkForWholeTextWidgetWithData:(id)data
+                              highLightColor:(UIColor *)highLightColor;
 
 
 /**
  *  为指定位置的文本添加点击事件
  *
  *  @param data           为点击事件附带的用户信息
- *  @param range          需要添加链接的文本在VVTextStorage对象的text中所处的位置，一个NSRange型的结构体对象
+ *  @param range          需要添加链接的文本在VVTextWidget对象的text中所处的位置，一个NSRange型的结构体对象
  *  @param linkColor      链接的颜色
  *  @param highLightColor 点击连接时的高亮颜色
  */
@@ -180,15 +180,15 @@ __deprecated_msg("Please use 'vv_addLinkForWholeTextStorageWithData:highLightCol
                          range:(NSRange)range;
 
 /**
- *  在这个VVTextStorage对象的尾部拼接一个VVTextStorage对象
+ *  在这个VVTextWidget对象的尾部拼接一个VVTextWidget对象
  *
- *  @param aTextStorage 一个VVTextStorage对象
+ *  @param textWidget 一个VVTextWidget对象
  */
-- (void)vv_appendTextStorage:(VVTextStorage *)aTextStorage;
+- (void)vv_appendTextWidget:(VVTextWidget *)textWidget;
 
 
 /**
- *  建立布局,并且能获得当前的VVTextStorage的frame和bounds
+ *  建立布局,并且能获得当前的VVTextWidget的frame和bounds
  */
 - (void)vv_layout;
 

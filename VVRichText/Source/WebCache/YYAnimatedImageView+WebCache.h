@@ -7,7 +7,7 @@
 
 
 @class SDWebImageTransition;
-@class VVImageStorage;
+@class VVImageWidget;
 @protocol SDWebImageIndicator;
 
 FOUNDATION_EXPORT const int64_t SDWebImageProgressUnitCountUnknown; /* 1LL */
@@ -29,12 +29,12 @@ typedef void(^SDSetImageBlock)(UIImage *_Nullable image, NSData *_Nullable image
 
 - (void)sd_setImageWithURL:(nullable NSURL *)url
           placeholderImage:(nullable UIImage *)placeholder
-              imageStorage:(nullable VVImageStorage *)imageStorage
+               imageWidget:(nullable VVImageWidget *)imageWidget
                  completed:(nullable SDExternalCompletionBlock)completedBlock;
 
 - (void)sd_internalSetImageWithURL:(nullable NSURL *)url
                   placeholderImage:(nullable UIImage *)placeholder
-                      imageStorage:(nullable VVImageStorage *)imageStorage
+                       imageWidget:(nullable VVImageWidget *)imageWidget
                            options:(SDWebImageOptions)options
                            context:(nullable SDWebImageContext *)context
                      setImageBlock:(nullable SDSetImageBlock)setImageBlock

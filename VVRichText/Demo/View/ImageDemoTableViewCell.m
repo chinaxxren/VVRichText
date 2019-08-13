@@ -31,7 +31,7 @@
     self.displayView.frame = self.bounds;
 }
 
-- (void)setLayout:(VVLayout *)layout {
+- (void)setLayout:(VVWidgetStore *)layout {
     if (_layout != layout) {
         _layout = layout;
         

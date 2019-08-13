@@ -63,7 +63,7 @@
     _displayFlag = [[VVFlag alloc] init];
 }
 
-- (void)setLayout:(VVLayout *)layout {
+- (void)setLayout:(VVWidgetStore *)layout {
     if ([_layout isEqual:layout]) {
         return;
     }
@@ -75,10 +75,10 @@
     _layout = layout;
 
     if (self.imageLevel) {
-        [self.layout.imageStorages sortUsingComparator:^NSComparisonResult(VVImageStorage *imageStorage1, VVImageStorage *imageStorage2) {
-            if (imageStorage1.level < imageStorage2.level) {
+        [self.layout.imageWidgets sortUsingComparator:^NSComparisonResult(VVImageWidget *imageWidget1, VVImageWidget *imageWidget2) {
+            if (imageWidget1.level < imageWidget2.level) {
                 return NSOrderedAscending;
-            } else if (imageStorage1.level > imageStorage2.level) {
+            } else if (imageWidget1.level > imageWidget2.level) {
                 return NSOrderedDescending;
             }
             return NSOrderedSame;
@@ -88,10 +88,10 @@
     [self.layer setNeedsDisplay];
 
     __weak typeof(self) weakSelf = self;
-    [self setImageStoragesResizeBlock:^(VVImageStorage *imageStorage, CGFloat delta) {
+    [self setImageWidgetsResizeBlock:^(VVImageWidget *imageWidget, CGFloat delta) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if (strongSelf.auotoLayoutCallback) {
-            strongSelf.auotoLayoutCallback(imageStorage, delta);
+            strongSelf.auotoLayoutCallback(imageWidget, delta);
         }
     }];
 }
@@ -105,7 +105,7 @@
 }
 
 - (void)_cleanupAndReleaseModelOnSubThread {
-    id <VVLayoutProtocol> oldLayout = _layout;
+    id <VVWidgetStoreProtocol> oldLayout = _layout;
     VVTextHighlight *oldHighlight = _highlight;
 
     _layout = nil;
@@ -133,7 +133,7 @@
 
 
 // 绘制在VVAsyncImageView上
-- (void)setImageStoragesResizeBlock:(void (^)(VVImageStorage *imageStorage, CGFloat delta))resizeBlock {
+- (void)setImageWidgetsResizeBlock:(void (^)(VVImageWidget *imageWidget, CGFloat delta))resizeBlock {
 
     VVFlag *displayFlag = _displayFlag;
     int32_t value = displayFlag.value;
@@ -142,7 +142,7 @@
         return value != _displayFlag.value;
     };
 
-    for (NSInteger i = 0; i < [self.layout.imageStorages count]; i++) {
+    for (NSInteger i = 0; i < [self.layout.imageWidgets count]; i++) {
 
         @autoreleasepool {
 
@@ -151,51 +151,51 @@
             }
 
             VVImageView *reuseImageView;
-            VVImageStorage *imageStorage = self.layout.imageStorages[i];
-            if ([imageStorage.contents isKindOfClass:[VVImage class]]) {
-                VVImage *image = (VVImage *) imageStorage.contents;
+            VVImageWidget *imageWidget = self.layout.imageWidgets[i];
+            if ([imageWidget.contents isKindOfClass:[VVImage class]]) {
+                VVImage *image = (VVImage *) imageWidget.contents;
                 if (image.animatedImageType == YYImageTypeGIF) {
-                    reuseImageView = [self createPoolAsyncImageView:imageStorage];
+                    reuseImageView = [self createPoolAsyncImageView:imageWidget];
                     reuseImageView.image = image;
                     continue;
                 }
             }
 
-            if ([imageStorage.contents isKindOfClass:[UIImage class]] && imageStorage.localImageType == VVLocalImageDrawInVVAsyncView) {
+            if ([imageWidget.contents isKindOfClass:[UIImage class]] && imageWidget.localImageType == VVLocalImageDrawInVVAsyncView) {
                 continue;
             }
 
-            reuseImageView = [self createPoolAsyncImageView:imageStorage];
-            if ([imageStorage.contents isKindOfClass:[VVImage class]]) {
-                VVImage *image = (VVImage *) imageStorage.contents;
+            reuseImageView = [self createPoolAsyncImageView:imageWidget];
+            if ([imageWidget.contents isKindOfClass:[VVImage class]]) {
+                VVImage *image = (VVImage *) imageWidget.contents;
                 if (image.animatedImageType == YYImageTypeGIF) {
                     reuseImageView.image = image;
                     continue;
                 }
             }
 
-            reuseImageView.clipsToBounds = imageStorage.clipsToBounds;
-            reuseImageView.layer.shadowColor = imageStorage.shadowColor.CGColor;
-            reuseImageView.layer.shadowOffset = imageStorage.shadowOffset;
-            reuseImageView.layer.shadowOpacity = imageStorage.shadowOpacity;
-            reuseImageView.layer.shadowRadius = imageStorage.shadowRadius;
+            reuseImageView.clipsToBounds = imageWidget.clipsToBounds;
+            reuseImageView.layer.shadowColor = imageWidget.shadowColor.CGColor;
+            reuseImageView.layer.shadowOffset = imageWidget.shadowOffset;
+            reuseImageView.layer.shadowOpacity = imageWidget.shadowOpacity;
+            reuseImageView.layer.shadowRadius = imageWidget.shadowRadius;
 
-            [reuseImageView vv_setImageWihtImageStorage:imageStorage resize:resizeBlock completion:nil];
+            [reuseImageView vv_setImageWihtImageWidget:imageWidget resize:resizeBlock completion:nil];
         }
     }
 }
 
-- (VVImageView *)createPoolAsyncImageView:(VVImageStorage *)imageStorage {
-    VVImageView *reuseImageView = [self _dequeueReusableImageContainerWithIdentifier:imageStorage.identifier];
+- (VVImageView *)createPoolAsyncImageView:(VVImageWidget *)imageWidget {
+    VVImageView *reuseImageView = [self _dequeueReusableImageContainerWithIdentifier:imageWidget.identifier];
     if (!reuseImageView) {
         reuseImageView = [[VVImageView alloc] initWithFrame:CGRectZero];
-        reuseImageView.identifier = imageStorage.identifier;
+        reuseImageView.identifier = imageWidget.identifier;
         [self addSubview:reuseImageView];
     }
 
-    reuseImageView.backgroundColor = imageStorage.backgroundColor;
-    reuseImageView.contentMode = imageStorage.contentMode;
-    reuseImageView.frame = imageStorage.frame;
+    reuseImageView.backgroundColor = imageWidget.backgroundColor;
+    reuseImageView.contentMode = imageWidget.contentMode;
+    reuseImageView.frame = imageWidget.frame;
     reuseImageView.hidden = NO;
     [self.imageContainers addObject:reuseImageView];
     return reuseImageView;
@@ -221,22 +221,22 @@
     //将要显示内容
     transaction.willDisplayBlock = ^(CALayer *layer) {
         //先移除之前的附件Views
-        for (VVTextStorage *textStorage in self.layout.textStorages) {
-            [textStorage.textLayout vv_removeAttachmentFromSuperViewOrLayer];
+        for (VVTextWidget *textWidget in self.layout.textWidgets) {
+            [textWidget.textLayout vv_removeAttachmentFromSuperViewOrLayer];
         }
     };
 
     //正在显示内容
     transaction.displayBlock = ^(CALayer *layer, CGContextRef context, CGSize size, VVAsyncIsCanclledBlock isCancelledBlock) {
-        [self _drawStoragesInContext:context inCancelled:isCancelledBlock layer:layer size:size];
+        [self _drawWidgetsInContext:context inCancelled:isCancelledBlock layer:layer size:size];
     };
 
     //结束显示内容
     transaction.didDisplayBlock = ^(CALayer *layer, BOOL finished) {
         if (!finished) {
             // 先移除之前的附件Views
-            for (VVTextStorage *textStorage in self.layout.textStorages) {
-                [textStorage.textLayout vv_removeAttachmentFromSuperViewOrLayer];
+            for (VVTextWidget *textWidget in self.layout.textWidgets) {
+                [textWidget.textLayout vv_removeAttachmentFromSuperViewOrLayer];
             }
         }
     };
@@ -244,7 +244,7 @@
     return transaction;
 }
 
-- (void)_drawStoragesInContext:(CGContextRef)context inCancelled:(VVAsyncIsCanclledBlock)isCancelledBlock layer:(CALayer *)layer size:(CGSize)size {
+- (void)_drawWidgetsInContext:(CGContextRef)context inCancelled:(VVAsyncIsCanclledBlock)isCancelledBlock layer:(CALayer *)layer size:(CGSize)size {
     if ([self.delegate respondsToSelector:@selector(vv_extraAsyncIncontext:size:isCancelled:)]) {
         if (isCancelledBlock()) {
             return;
@@ -255,19 +255,19 @@
     }
 
     // 直接绘制在VVAsyncView上
-    for (VVImageStorage *imageStorage in self.layout.imageStorages) {
+    for (VVImageWidget *imageWidget in self.layout.imageWidgets) {
         if (isCancelledBlock()) {
             return;
         }
 
-        [imageStorage vv_drawInContext:context isCancelled:isCancelledBlock];
+        [imageWidget vv_drawInContext:context isCancelled:isCancelledBlock];
     }
 
     // 绘制文字内容
-    for (VVTextStorage *textStorage in self.layout.textStorages) {
-        [textStorage.textLayout vv_drawIncontext:context
+    for (VVTextWidget *textWidget in self.layout.textWidgets) {
+        [textWidget.textLayout vv_drawIncontext:context
                                             size:CGSizeZero
-                                           point:textStorage.frame.origin
+                                           point:textWidget.frame.origin
                                    containerView:self
                                   containerLayer:layer
                                      isCancelled:isCancelledBlock];
@@ -304,12 +304,12 @@
         }
     }
 
-    for (VVTextStorage *textStorage in self.layout.textStorages) {
+    for (VVTextWidget *textWidget in self.layout.textWidgets) {
         if (!_highlight) {
-            VVTextHighlight *hightlight = [self _searchTextHighlightWithType:NO textStorage:textStorage touchPoint:touchPoint];
+            VVTextHighlight *hightlight = [self _searchTextHighlightWithType:NO textWidget:textWidget touchPoint:touchPoint];
             if (hightlight) {
                 _highlight = hightlight;
-                _highlightAdjustPoint = textStorage.frame.origin;
+                _highlightAdjustPoint = textWidget.frame.origin;
                 [self _showHighligt];
                 found = YES;
                 break;
@@ -332,8 +332,8 @@
         return;
     }
 
-    for (VVTextStorage *textStorage in self.layout.textStorages) {
-        VVTextHighlight *hightlight = [self _searchTextHighlightWithType:NO textStorage:textStorage touchPoint:touchPoint];
+    for (VVTextWidget *textWidget in self.layout.textWidgets) {
+        VVTextHighlight *hightlight = [self _searchTextHighlightWithType:NO textWidget:textWidget touchPoint:touchPoint];
         if (hightlight == _highlight) {
             if (!_showingHighlight) {
                 [self _showHighligt];
@@ -358,12 +358,12 @@
     CGPoint touchPoint = [touch locationInView:self];
 
     BOOL found = NO;
-    for (VVImageStorage *imageStorage in self.layout.imageStorages) {
-        if (CGRectContainsPoint(imageStorage.frame, touchPoint)) {
+    for (VVImageWidget *imageWidget in self.layout.imageWidgets) {
+        if (CGRectContainsPoint(imageWidget.frame, touchPoint)) {
             if (self.delegate &&
-                    [self.delegate respondsToSelector:@selector(vv_asynView:didCilickedImageStorage:touch:)] &&
+                    [self.delegate respondsToSelector:@selector(vv_asynView:didCilickedImageWidget:touch:)] &&
                     [self.delegate conformsToProtocol:@protocol(VVAsyncViewDelegate)]) {
-                [self.delegate vv_asynView:self didCilickedImageStorage:imageStorage touch:touch];
+                [self.delegate vv_asynView:self didCilickedImageWidget:imageWidget touch:touch];
             }
             found = YES;
             break;
@@ -375,13 +375,13 @@
         return;
     }
 
-    for (VVTextStorage *textStorage in self.layout.textStorages) {
-        VVTextHighlight *hightlight = [self _searchTextHighlightWithType:NO textStorage:textStorage touchPoint:touchPoint];
+    for (VVTextWidget *textWidget in self.layout.textWidgets) {
+        VVTextHighlight *hightlight = [self _searchTextHighlightWithType:NO textWidget:textWidget touchPoint:touchPoint];
         if (hightlight == _highlight) {
             if (self.delegate &&
-                    [self.delegate respondsToSelector:@selector(vv_asynView:didCilickedTextStorage:linkdata:)] &&
+                    [self.delegate respondsToSelector:@selector(vv_asynView:didCilickedTextWidget:linkdata:)] &&
                     [self.delegate conformsToProtocol:@protocol(VVAsyncViewDelegate)]) {
-                [self.delegate vv_asynView:self didCilickedTextStorage:textStorage linkdata:_highlight.content];
+                [self.delegate vv_asynView:self didCilickedTextWidget:textWidget linkdata:_highlight.content];
             }
             found = YES;
             break;
@@ -404,13 +404,13 @@
         case UIGestureRecognizerStateBegan: {
             CGPoint point = [longPressGestureRecognizer locationInView:self];
             _touchBeganPoint = point;
-            for (VVTextStorage *textStorage in self.layout.textStorages) {
-                VVTextHighlight *hightlight = [self _searchTextHighlightWithType:YES textStorage:textStorage touchPoint:_touchBeganPoint];
+            for (VVTextWidget *textWidget in self.layout.textWidgets) {
+                VVTextHighlight *hightlight = [self _searchTextHighlightWithType:YES textWidget:textWidget touchPoint:_touchBeganPoint];
 
                 if (hightlight.type == VVTextHighLightTypeLongPress) {
                     if (_highlight != hightlight) {
                         _highlight = hightlight;
-                        _highlightAdjustPoint = textStorage.frame.origin;
+                        _highlightAdjustPoint = textWidget.frame.origin;
                         [self _showHighligt];
                         break;
                     }
@@ -424,13 +424,13 @@
                 _highlight = nil;
                 [self _hideHighlight];
             }
-            for (VVTextStorage *textStorage in self.layout.textStorages) {
-                VVTextHighlight *hightlight = [self _searchTextHighlightWithType:YES textStorage:textStorage touchPoint:_touchBeganPoint];
+            for (VVTextWidget *textWidget in self.layout.textWidgets) {
+                VVTextHighlight *hightlight = [self _searchTextHighlightWithType:YES textWidget:textWidget touchPoint:_touchBeganPoint];
                 if (_highlight && hightlight == _highlight) {
                     if (self.delegate &&
-                            [self.delegate respondsToSelector:@selector(vv_asynView:didLongpressedTextStorage:linkdata:)] &&
+                            [self.delegate respondsToSelector:@selector(vv_asynView:didLongpressedTextWidget:linkdata:)] &&
                             [self.delegate conformsToProtocol:@protocol(VVAsyncViewDelegate)]) {
-                        [self.delegate vv_asynView:self didLongpressedTextStorage:textStorage linkdata:_highlight.content];
+                        [self.delegate vv_asynView:self didLongpressedTextWidget:textWidget linkdata:_highlight.content];
                     }
                 }
             }
@@ -443,16 +443,16 @@
 
 
 - (VVTextHighlight *)_searchTextHighlightWithType:(BOOL)isLongPress
-                                      textStorage:(VVTextStorage *)textStorage
+                                       textWidget:(VVTextWidget *)textWidget
                                        touchPoint:(CGPoint)touchPoint {
 
-    if (![textStorage isKindOfClass:[VVTextStorage class]]) {
+    if (![textWidget isKindOfClass:[VVTextWidget class]]) {
         return nil;
     }
 
-    CGPoint adjustPosition = textStorage.frame.origin;
+    CGPoint adjustPosition = textWidget.frame.origin;
     VVTextHighlight *needShow = nil;
-    for (VVTextHighlight *one in textStorage.textLayout.textHighlights) {
+    for (VVTextHighlight *one in textWidget.textLayout.textHighlights) {
         for (NSValue *value in one.positions) {
             CGRect rect = [value CGRectValue];
             CGRect adjustRect = CGRectMake(rect.origin.x + adjustPosition.x, rect.origin.y + adjustPosition.y, rect.size.width, rect.size.height);

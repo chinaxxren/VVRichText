@@ -1,7 +1,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "VVStorage.h"
+#import "VVWidget.h"
 #import "VVRichTextDefine.h"
 
 /**
@@ -16,7 +16,7 @@ typedef NS_ENUM(NSUInteger, VVLocalImageType) {
 /**
  *   图片绘制的数据模型
  */
-@interface VVImageStorage : VVStorage
+@interface VVImageWidget : VVWidget
 
 @property(nonatomic, strong) id contents;//内容（UIImage or NSURL）
 @property(nonatomic, assign) VVLocalImageType localImageType;//本地图片的种类，默认是VVLocalImageDrawInVVAsyncView

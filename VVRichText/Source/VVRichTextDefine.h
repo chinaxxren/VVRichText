@@ -24,7 +24,7 @@
 
 /******************************************************************************/
 
-@class VVImageStorage;
+@class VVImageWidget;
 
 typedef BOOL(^VVAsyncIsCanclledBlock)(void);
 
@@ -34,7 +34,7 @@ typedef void(^VVAsynDisplayBlock)(CALayer *layer, CGContextRef context, CGSize s
 
 typedef void(^VVAsynDisplayDidDisplayBlock)(CALayer *layer, BOOL finished);
 
-typedef void(^VVImageResizeBlock)(VVImageStorage *imageStorage, CGFloat delta);
+typedef void(^VVImageResizeBlock)(VVImageWidget *imageWidget, CGFloat delta);
 
 typedef void(^VVAsynCompleteBlock)(void);
 

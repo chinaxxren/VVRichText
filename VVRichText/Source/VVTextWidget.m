@@ -1,10 +1,10 @@
 
-#import "VVTextStorage.h"
+#import "VVTextWidget.h"
 
 #import "VVImageView.h"
 #import "VVRichText.h"
 
-@interface VVTextStorage ()
+@interface VVTextWidget ()
 
 @property(nonatomic, strong) VVTextLayout *textLayout;
 @property(nonatomic, assign) CGSize suggestSize;//建议的绘制大小
@@ -13,7 +13,7 @@
 
 @end
 
-@implementation VVTextStorage
+@implementation VVTextWidget
 
 @synthesize frame = _frame;
 @synthesize position = _position;
@@ -23,14 +23,14 @@
 #pragma mark - Override Hash & isEqual
 
 - (BOOL)isEqual:(id)object {
-    if (!object || ![object isMemberOfClass:[VVTextStorage class]]) {
+    if (!object || ![object isMemberOfClass:[VVTextWidget class]]) {
         return NO;
     }
     if (self == object) {
         return YES;
     }
-    VVTextStorage *textStorage = (VVTextStorage *) object;
-    return [textStorage.text isEqualToString:self.text] && CGRectEqualToRect(textStorage.frame, self.frame);
+    VVTextWidget *textWidget = (VVTextWidget *) object;
+    return [textWidget.text isEqualToString:self.text] && CGRectEqualToRect(textWidget.frame, self.frame);
 }
 
 - (NSUInteger)hash {
@@ -41,20 +41,20 @@
 
 #pragma mark - Init
 
-+ (VVTextStorage *)vv_textStorageWithTextLayout:(VVTextLayout *)textLayout
-                                          frame:(CGRect)frame {
-    VVTextStorage *textStorage = [[VVTextStorage alloc] initWithFrame:frame];
-    textStorage.textLayout = textLayout;
-    return textStorage;
++ (VVTextWidget *)vv_textWidgetWithTextLayout:(VVTextLayout *)textLayout
+                                        frame:(CGRect)frame {
+    VVTextWidget *textWidget = [[VVTextWidget alloc] initWithFrame:frame];
+    textWidget.textLayout = textLayout;
+    return textWidget;
 }
 
-+ (VVTextStorage *)vv_textStorageWithText:(NSAttributedString *)attributedText
-                                    frame:(CGRect)frame {
-    VVTextStorage *textStorage = [[VVTextStorage alloc] initWithFrame:frame];
++ (VVTextWidget *)vv_textWidgetWithText:(NSAttributedString *)attributedText
+                                  frame:(CGRect)frame {
+    VVTextWidget *textWidget = [[VVTextWidget alloc] initWithFrame:frame];
     VVTextContainer *textContainer = [VVTextContainer vv_textContainerWithSize:frame.size];
-    textStorage.textLayout = [VVTextLayout vv_layoutWithContainer:textContainer text:attributedText];
-    textStorage.attributedText = [attributedText mutableCopy];
-    return textStorage;
+    textWidget.textLayout = [VVTextLayout vv_layoutWithContainer:textContainer text:attributedText];
+    textWidget.attributedText = [attributedText mutableCopy];
+    return textWidget;
 }
 
 - (id)initWithFrame:(CGRect)frame {
@@ -98,16 +98,16 @@
 
 #pragma mark - Methods
 
-- (void)vv_addLinkForWholeTextStorageWithData:(id)data
-                                    linkColor:(UIColor *)linkColor
-                               highLightColor:(UIColor *)highLightColor {
+- (void)vv_addLinkForWholeTextWidgetWithData:(id)data
+                                   linkColor:(UIColor *)linkColor
+                              highLightColor:(UIColor *)highLightColor {
     [self.attributedText vv_addLinkForWholeTextWithData:data
                                               linkColor:linkColor
                                          highLightColor:highLightColor];
 }
 
-- (void)vv_addLinkForWholeTextStorageWithData:(id)data
-                               highLightColor:(UIColor *)highLightColor {
+- (void)vv_addLinkForWholeTextWidgetWithData:(id)data
+                              highLightColor:(UIColor *)highLightColor {
     [self.attributedText vv_addLinkForWholeTextWithData:data
                                               linkColor:nil
                                          highLightColor:highLightColor];
@@ -243,12 +243,12 @@
     [self.attributedText replaceCharactersInRange:range withAttributedString:attachString];
 }
 
-- (void)vv_appendTextStorage:(VVTextStorage *)aTextStorage {
-    if (!aTextStorage) {
+- (void)vv_appendTextWidget:(VVTextWidget *)textWidget {
+    if (!textWidget) {
         return;
     }
 
-    NSMutableAttributedString *attributedString = [aTextStorage attributedText];
+    NSMutableAttributedString *attributedString = [textWidget attributedText];
     if (!attributedString) {
         return;
     }

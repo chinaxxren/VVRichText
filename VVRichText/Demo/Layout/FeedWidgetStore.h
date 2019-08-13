@@ -1,6 +1,6 @@
 
 
-#import "VVLayout.h"
+#import "VVWidgetStore.h"
 #import "StatusModel.h"
 
 
@@ -12,7 +12,7 @@
 #define WEBSITE_COVER_IDENTIFIER @"cover"
 
 
-@interface FeedLayout : VVLayout
+@interface FeedWidgetStore : VVWidgetStore
 
 @property(nonatomic, strong) StatusModel *statusModel;
 @property(nonatomic, assign) CGRect lineRect;

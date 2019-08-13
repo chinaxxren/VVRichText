@@ -2,7 +2,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "FeedLayout.h"
+#import "FeedWidgetStore.h"
 #import "VVRichText.h"
 
 #define Feed_Cell @"FeedCell"
@@ -10,7 +10,7 @@
 @interface FeedCell : UITableViewCell
 
 @property(nonatomic, assign) BOOL asynDisplay;//是否异步绘制
-@property(nonatomic, strong) FeedLayout *feedLayout;
+@property(nonatomic, strong) FeedWidgetStore *feedLayout;
 @property(nonatomic, strong) NSIndexPath *indexPath;
 @property(nonatomic, copy) void (^clickedImageCallback)(FeedCell *cell, NSInteger imageIndex);
 @property(nonatomic, copy) void (^clickedLikeButtonCallback)(FeedCell *cell, BOOL isLike);
