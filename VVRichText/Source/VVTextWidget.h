@@ -190,6 +190,6 @@ __deprecated_msg("Please use 'vv_addLinkForWholeTextWidgetWithData:highLightColo
 /**
  *  建立布局,并且能获得当前的VVTextWidget的frame和bounds
  */
-- (void)vv_layout;
+- (void)createLayout;
 
 @end

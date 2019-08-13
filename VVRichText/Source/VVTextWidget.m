@@ -395,7 +395,7 @@
     _vericalAlignment = vericalAlignment;
 }
 
-- (void)vv_layout {
+- (void)createLayout {
     if (!self.attributedText) {
         return;
     }

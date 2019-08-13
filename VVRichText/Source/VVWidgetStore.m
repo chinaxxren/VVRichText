@@ -21,7 +21,7 @@
 
     if ([widget isMemberOfClass:[VVTextWidget class]]) {
         VVTextWidget *textWidget = (VVTextWidget *) widget;
-        [textWidget vv_layout];
+        [textWidget createLayout];
         [self.textWidgets addObject:textWidget];
     } else if ([widget isMemberOfClass:[VVImageWidget class]]) {
         [self.imageWidgets addObject:(VVImageWidget *) widget];
