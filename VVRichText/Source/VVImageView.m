@@ -4,10 +4,6 @@
 
 @implementation VVImageView
 
-- (void)dealloc {
-    
-}
-
 @end
 
 
