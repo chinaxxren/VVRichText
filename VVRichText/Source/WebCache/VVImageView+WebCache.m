@@ -14,22 +14,22 @@ static void _croppedImageBackingSizeAndDrawRectInBounds(CGSize sourceImageSize, 
 
 @implementation VVImageView (WebCache)
 
-- (void)vv_setImageWihtImageWidget:(VVImageWidget *)imageWidget resize:(VVImageResizeBlock)resizeBlock completion:(VVAsynCompleteBlock)completion {
+- (void)vv_setImageWihtImageWidget:(VVImageWidget *)imageWidget resize:(VVImageResizeBlock)resize completion:(VVAsynCompleteBlock)completion {
     if ([imageWidget.contents isKindOfClass:[UIImage class]]) {
-        [self _setLocalImageWithImageWidget:imageWidget resize:resizeBlock completion:completion];
+        [self _setLocalImageWithImageWidget:imageWidget resizeBlock:resize completion:completion];
     } else {
-        [self _setWebImageWithImageWidget:imageWidget resize:resizeBlock completion:completion];
+        [self _setWebImageWithImageWidget:imageWidget resize:resize completion:completion];
     }
 }
 
-- (void)_setLocalImageWithImageWidget:(VVImageWidget *)imageWidget resize:(VVImageResizeBlock)resizeBlock completion:(VVAsynCompleteBlock)completion {
+- (void)_setLocalImageWithImageWidget:(VVImageWidget *)imageWidget resizeBlock:(VVImageResizeBlock)resize completion:(VVAsynCompleteBlock)completion {
     if (imageWidget.needRerendering) {
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             UIImage *processedImage = [self _reRenderingImageWitImageWidget:imageWidget];
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.image = processedImage;
-                if (resizeBlock) {
-                    resizeBlock(imageWidget, 0);
+                if (resize) {
+                    resize(imageWidget, 0);
                 }
                 if (completion) {
                     completion();
@@ -39,8 +39,8 @@ static void _croppedImageBackingSizeAndDrawRectInBounds(CGSize sourceImageSize, 
     } else {
         UIImage *image = (UIImage *) imageWidget.contents;
         self.image = image;
-        if (resizeBlock) {
-            resizeBlock(imageWidget, 0);
+        if (resize) {
+            resize(imageWidget, 0);
         }
         if (completion) {
             completion();
@@ -142,7 +142,7 @@ static void _croppedImageBackingSizeAndDrawRectInBounds(CGSize sourceImageSize, 
     }
 }
 
-- (void)_setWebImageWithImageWidget:(VVImageWidget *)imageWidget resize:(VVImageResizeBlock)resizeBlock completion:(VVAsynCompleteBlock)completion {
+- (void)_setWebImageWithImageWidget:(VVImageWidget *)imageWidget resize:(VVImageResizeBlock)resize completion:(VVAsynCompleteBlock)completion {
     NSURL *url;
     id placeholder = imageWidget.placeholder;
     BOOL needResize = imageWidget.needResize;
@@ -151,7 +151,7 @@ static void _croppedImageBackingSizeAndDrawRectInBounds(CGSize sourceImageSize, 
     } else if ([imageWidget.contents isKindOfClass:[NSURL class]]) {
         url = (NSURL *) imageWidget.contents;
     } else {
-        resizeBlock(imageWidget, 0);
+        resize(imageWidget, 0);
         if (completion) {
             completion();
         }
@@ -171,7 +171,7 @@ static void _croppedImageBackingSizeAndDrawRectInBounds(CGSize sourceImageSize, 
         if (needResize) {
             CGFloat delta = [sself _resizeImageWidget:imageWidget image:image];
             sself.frame = imageWidget.frame;
-            resizeBlock(imageWidget, delta);
+            resize(imageWidget, delta);
         }
 
         if (completion) {

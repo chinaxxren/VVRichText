@@ -105,7 +105,7 @@
 - (void)display:(BOOL)asynchronously {
     __strong id <VVAsynDisplayLayerDelegate> delegate = (id) self.delegate;
     VVAsyncDisplayTransaction *transaction = [delegate asyncDisplayTransaction];
-    if (!transaction.displayBlock) {
+    if (!transaction.doDisplayBlock) {
         if (transaction.willDisplayBlock) {
             transaction.willDisplayBlock(self);
         }
@@ -196,7 +196,7 @@
                 CGContextRestoreGState(context);
                 CGColorRelease(backgroundColor);
             }
-            transaction.displayBlock(self, context, size, isCancelledBlock);
+            transaction.doDisplayBlock(self, context, size, isCancelledBlock);
             if (isCancelledBlock()) {
                 UIGraphicsEndImageContext();
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -258,7 +258,7 @@
             CGContextRestoreGState(context);
         }
 
-        transaction.displayBlock(self, context, size, ^{
+        transaction.doDisplayBlock(self, context, size, ^{
             return NO;
         });
 

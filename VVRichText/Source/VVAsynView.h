@@ -60,7 +60,7 @@
  *  @param imageWidget VVImageWidget对象
  *  @param delta        下载完的图片高度与预填充图片高度的差
  */
-typedef void(^VVAsyncViewAutoLayoutCallback)(VVImageWidget *imageWidget, CGFloat delta);
+typedef void(^VVAsyncViewLayoutCallback)(VVImageWidget *imageWidget, CGFloat delta);
 
 
 @interface VVAsynView : UIView
@@ -69,7 +69,7 @@ typedef void(^VVAsyncViewAutoLayoutCallback)(VVImageWidget *imageWidget, CGFloat
 @property(nonatomic, weak) id <VVAsyncViewDelegate> delegate; //代理对象
 @property(nonatomic, assign) BOOL asynDisplay; //是否异步绘制，默认是YES
 @property(nonatomic, assign) BOOL imageLevel; //是否支持图片层级显示
-@property(nonatomic, copy) VVAsyncViewAutoLayoutCallback auotoLayoutCallback; //自动布局回调Block
+@property(nonatomic, copy) VVAsyncViewLayoutCallback layoutCallback; //自动布局回调Block
 @property(nonatomic, strong, readonly) UILongPressGestureRecognizer *longPressGesture; //长按手势
 
 /**

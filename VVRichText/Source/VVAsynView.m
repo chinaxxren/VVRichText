@@ -90,8 +90,8 @@
     __weak typeof(self) weakSelf = self;
     [self setImageWidgetsResizeBlock:^(VVImageWidget *imageWidget, CGFloat delta) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        if (strongSelf.auotoLayoutCallback) {
-            strongSelf.auotoLayoutCallback(imageWidget, delta);
+        if (strongSelf.layoutCallback) {
+            strongSelf.layoutCallback(imageWidget, delta);
         }
     }];
 }
@@ -227,7 +227,7 @@
     };
 
     //正在显示内容
-    transaction.displayBlock = ^(CALayer *layer, CGContextRef context, CGSize size, VVAsyncIsCanclledBlock isCancelledBlock) {
+    transaction.doDisplayBlock = ^(CALayer *layer, CGContextRef context, CGSize size, VVAsyncIsCanclledBlock isCancelledBlock) {
         [self _drawWidgetsInContext:context inCancelled:isCancelledBlock layer:layer size:size];
     };
 

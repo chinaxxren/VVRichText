@@ -28,11 +28,11 @@
 
 typedef BOOL(^VVAsyncIsCanclledBlock)(void);
 
-typedef void(^VVAsynDisplayWillDisplayBlock)(CALayer *layer);
+typedef void(^VVAsynWillDisplayBlock)(CALayer *layer);
 
-typedef void(^VVAsynDisplayBlock)(CALayer *layer, CGContextRef context, CGSize size, VVAsyncIsCanclledBlock isCancelledBlock);
+typedef void(^VVAsynDoDisplayBlock)(CALayer *layer, CGContextRef context, CGSize size, VVAsyncIsCanclledBlock isCancelledBlock);
 
-typedef void(^VVAsynDisplayDidDisplayBlock)(CALayer *layer, BOOL finished);
+typedef void(^VVAsynDidDisplayBlock)(CALayer *layer, BOOL finished);
 
 typedef void(^VVImageResizeBlock)(VVImageWidget *imageWidget, CGFloat delta);
 

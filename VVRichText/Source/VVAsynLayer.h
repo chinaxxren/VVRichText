@@ -37,9 +37,9 @@
  */
 @interface VVAsyncDisplayTransaction : NSObject
 
-@property(nonatomic, copy) VVAsynDisplayWillDisplayBlock willDisplayBlock;//即将要开始绘制
-@property(nonatomic, copy) VVAsynDisplayBlock displayBlock;//绘制的具体实现
-@property(nonatomic, copy) VVAsynDisplayDidDisplayBlock didDisplayBlock;//绘制已经完成
+@property(nonatomic, copy) VVAsynWillDisplayBlock willDisplayBlock;//即将要开始绘制
+@property(nonatomic, copy) VVAsynDoDisplayBlock doDisplayBlock;//绘制的具体实现
+@property(nonatomic, copy) VVAsynDidDisplayBlock didDisplayBlock;//绘制已经完成
 
 @end
 
