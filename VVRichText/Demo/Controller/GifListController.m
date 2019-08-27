@@ -90,20 +90,19 @@ static CGFloat gifSize = 30;
         NSInteger count = (NSInteger) (width / gifSize);
         VVWidgetStore *layout = [[VVWidgetStore alloc] init];
         for (int j = 0; j < count - 1; j++) {
+            NSInteger index = arc4random() % 141;
+            NSString *name = [self gifWithIndex:index];
+            
+            NSString *bundlePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"EmoticonQQ.bundle"];
+            NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+            bundlePath = [bundle pathForResource:name ofType:@"gif"];
+            VVImage *image = (VVImage *) [VVImage imageWithContentsOfFile:bundlePath];
             VVTextWidget *textWidget = [[VVTextWidget alloc] init];
             textWidget.frame = CGRectMake(0.0f, 0.0f, gifSize, gifSize);
             textWidget.text = [NSString stringWithFormat:@"%d", i];
             textWidget.textColor = [UIColor redColor];
             textWidget.vericalAlignment = VVTextVericalAlignmentCenter;
             [layout addWidget:textWidget];
-
-            NSInteger index = arc4random() % 141;
-            NSString *name = [self gifWithIndex:index];
-
-            NSString *bundlePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"EmoticonQQ.bundle"];
-            NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-            bundlePath = [bundle pathForResource:name ofType:@"gif"];
-            VVImage *image = (VVImage *) [VVImage imageWithContentsOfFile:bundlePath];
 
             VVImageWidget *imageWidget = [[VVImageWidget alloc] init];
             imageWidget.frame = CGRectMake((j + 1) * gifSize, 0, gifSize, gifSize);
@@ -133,6 +132,11 @@ static CGFloat gifSize = 30;
         [name appendString:@"0"];
     }
     [name appendFormat:@"%zd", index];
+    
+    if([name isEqualToString:@"000"]) {
+        return @"001";
+    }
+    
     return name;
 }
 
