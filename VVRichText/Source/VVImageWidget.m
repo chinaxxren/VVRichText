@@ -111,7 +111,7 @@
 
         if (self.isBlur) {
             image = [image vv_applyBlurWithRadius:20.0f
-                                        tintColor:VV_COLOR(0, 0, 0, 0.15f)
+                                        tintColor:[UIColor colorWithWhite:0.0f alpha:0.15f]
                             saturationDeltaFactor:1.4f
                                         maskImage:nil];
         }

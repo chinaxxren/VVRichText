@@ -37,8 +37,8 @@
     if (!cell) {
         cell = [[ImageDemoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    VVWidgetStore *layout = self.dataSource[indexPath.row];
-    cell.layout = layout;
+    VVWidgetCollect *widgetCollect = self.dataSource[indexPath.row];
+    cell.widgetCollect = widgetCollect;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -77,10 +77,10 @@
         imageWidget.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
 
 
-        VVWidgetStore *layout = [[VVWidgetStore alloc] init];
-        [layout addWidget:imageWidget];
-        [layout addWidget:textWidget];
-        [_dataSource addObject:layout];
+        VVWidgetCollect *widgetCollect = [[VVWidgetCollect alloc] init];
+        [widgetCollect addWidget:imageWidget];
+        [widgetCollect addWidget:textWidget];
+        [_dataSource addObject:widgetCollect];
     }
 
     {
@@ -100,10 +100,10 @@
         imageWidget.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
 
 
-        VVWidgetStore *widgetManager = [[VVWidgetStore alloc] init];
-        [widgetManager addWidget:imageWidget];
-        [widgetManager addWidget:textWidget];
-        [_dataSource addObject:widgetManager];
+        VVWidgetCollect *widgetCollect = [[VVWidgetCollect alloc] init];
+        [widgetCollect addWidget:imageWidget];
+        [widgetCollect addWidget:textWidget];
+        [_dataSource addObject:widgetCollect];
     }
 
     {
@@ -121,10 +121,10 @@
         imageWidget.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
 
 
-        VVWidgetStore *layout = [[VVWidgetStore alloc] init];
-        [layout addWidget:imageWidget];
-        [layout addWidget:textWidget];
-        [_dataSource addObject:layout];
+        VVWidgetCollect *widgetCollect = [[VVWidgetCollect alloc] init];
+        [widgetCollect addWidget:imageWidget];
+        [widgetCollect addWidget:textWidget];
+        [_dataSource addObject:widgetCollect];
     }
 
     {
@@ -140,10 +140,10 @@
         imageWidget.clipsToBounds = YES;
         imageWidget.isBlur = YES;
 
-        VVWidgetStore *widgetManager = [[VVWidgetStore alloc] init];
-        [widgetManager addWidget:imageWidget];
-        [widgetManager addWidget:textWidget];
-        [_dataSource addObject:widgetManager];
+        VVWidgetCollect *widgetCollect = [[VVWidgetCollect alloc] init];
+        [widgetCollect addWidget:imageWidget];
+        [widgetCollect addWidget:textWidget];
+        [_dataSource addObject:widgetCollect];
     }
 
     {
@@ -159,7 +159,7 @@
         imageWidget.clipsToBounds = YES;
 
 
-        VVWidgetStore *widgetManager = [[VVWidgetStore alloc] init];
+        VVWidgetCollect *widgetManager = [[VVWidgetCollect alloc] init];
         [widgetManager addWidget:imageWidget];
         [widgetManager addWidget:textWidget];
         [_dataSource addObject:widgetManager];
@@ -181,10 +181,10 @@
         imageWidget.cornerBorderColor = [UIColor orangeColor];
         imageWidget.cornerBorderWidth = 5.0f;
 
-        VVWidgetStore *layout = [[VVWidgetStore alloc] init];
-        [layout addWidget:imageWidget];
-        [layout addWidget:textWidget];
-        [_dataSource addObject:layout];
+        VVWidgetCollect *widgetCollect = [[VVWidgetCollect alloc] init];
+        [widgetCollect addWidget:imageWidget];
+        [widgetCollect addWidget:textWidget];
+        [_dataSource addObject:widgetCollect];
     }
 
     {
@@ -203,10 +203,10 @@
         // real gif format
 //        imageWidget.contents = [NSURL URLWithString:@"http://ww3.sinaimg.cn/bmiddle/006qdyzsly1fctmnzwqcwg307505pasc.gif"];
 
-        VVWidgetStore *layout = [[VVWidgetStore alloc] init];
-        [layout addWidget:vvImageWidget];
-        [layout addWidget:textWidget];
-        [_dataSource addObject:layout];
+        VVWidgetCollect *widgetCollect = [VVWidgetCollect new];
+        [widgetCollect addWidget:vvImageWidget];
+        [widgetCollect addWidget:textWidget];
+        [_dataSource addObject:widgetCollect];
     }
 
     return _dataSource;

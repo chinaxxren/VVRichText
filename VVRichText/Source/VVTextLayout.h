@@ -32,12 +32,13 @@
 @property(nonatomic, strong, readonly) NSArray<VVTextHighlight *> *textHighlights; //一个包含文本链接的信息的数组
 @property(nonatomic, strong, readonly) NSArray<VVTextBackgroundColor *> *backgroundColors; //一个包含文本背景颜色的信息的数组
 @property(nonatomic, strong, readonly) NSArray<VVTextBoundingStroke *> *boudingStrokes; //一个包含文本边框描边信息的数组
-@property(nonatomic, assign, getter = isNeedDebugDraw) BOOL needDebugDraw; //是否开启调试绘制模式,默认是NO
 @property(nonatomic, assign, getter = isNeedAttachmentDraw) BOOL needAttachmentDraw; //是否需要绘制附件
 @property(nonatomic, assign, getter = isNeedTextBackgroundColorDraw) BOOL needTextBackgroundColorDraw; //是否需要绘制文本背景颜色
 @property(nonatomic, assign, getter = isNeedStrokeDraw) BOOL needStrokeDraw; //是否需要描边绘制
 @property(nonatomic, assign, getter = isNeedBoudingStrokeDraw) BOOL needBoudingStrokeDraw; //是否需要绘制文本边框描边
 @property(nonatomic, assign, readonly) BOOL needTruncation; //是否折叠
+
+@property(nonatomic, assign, getter = isNeedDebugDraw) BOOL needDebugDraw; //是否开启调试绘制模式,默认是NO
 
 /**
  *  构造方法

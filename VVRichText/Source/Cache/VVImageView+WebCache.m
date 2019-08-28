@@ -57,7 +57,7 @@ static void _croppedImageBackingSizeAndDrawRectInBounds(CGSize sourceImageSize, 
 
     @autoreleasepool {
         if (imageWidget.isBlur) {
-            image = [image vv_applyBlurWithRadius:20.0f tintColor:VV_COLOR(0, 0, 0, 0.15f) saturationDeltaFactor:1.4 maskImage:nil];
+            image = [image vv_applyBlurWithRadius:20.0f tintColor:[UIColor colorWithWhite:0.0f alpha:0.15f] saturationDeltaFactor:1.4f maskImage:nil];
         }
 
         BOOL forceUpscaling = NO;

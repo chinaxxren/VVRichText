@@ -43,7 +43,7 @@ typedef NS_ENUM(NSUInteger, VVTextDrawMode) {
 @property(nonatomic, assign, readonly) CGSize suggestSize;//建议的绘制大小
 @property(nonatomic, assign) NSInteger maxNumberOfLines;//最大行数限制
 @property(nonatomic, assign, readonly) NSInteger numberOfLines;//文本的实际行数
-@property(nonatomic, assign) BOOL needDebug;//是否开启调试模式
+@property(nonatomic, assign) BOOL needDebugDraw;//是否开启调试模式
 @property(nonatomic, assign, readonly) BOOL isTruncation;//是否折叠
 
 

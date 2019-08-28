@@ -1,12 +1,12 @@
 
 
 #import "AsynController.h"
+
 #import "TextViewCell.h"
 
 static const NSString *cellIdentifier = @"cellIdentifier";
 
 @interface AsynController () <UITableViewDelegate, UITableViewDataSource>
-
 
 @property(nonatomic, strong) UITableView *tableView;
 @property(nonatomic, strong) NSMutableArray *dataSource;
@@ -49,8 +49,8 @@ static const NSString *cellIdentifier = @"cellIdentifier";
     if (!cell) {
         cell = [[TextViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    VVWidgetStore *layout = self.dataSource[indexPath.row];
-    cell.layout = layout;
+    VVWidgetCollect *widgetCollect = self.dataSource[indexPath.row];
+    cell.widgetCollect = widgetCollect;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -96,9 +96,9 @@ static const NSString *cellIdentifier = @"cellIdentifier";
 
         textWidget.text = text;
 
-        VVWidgetStore *layout = [[VVWidgetStore alloc] init];
-        [layout addWidget:textWidget];
-        [_dataSource addObject:layout];
+        VVWidgetCollect *widgetCollect = [VVWidgetCollect new];
+        [widgetCollect addWidget:textWidget];
+        [_dataSource addObject:widgetCollect];
     }
 
     return _dataSource;

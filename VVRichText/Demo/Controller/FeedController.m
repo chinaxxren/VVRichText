@@ -81,16 +81,16 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    FeedWidgetStore *feedLayout = self.feedVM.datas[indexPath.row];
-    CGFloat height = feedLayout.height;
+    FeedWidgetCollect *widgetCollect = self.feedVM.datas[indexPath.row];
+    CGFloat height = widgetCollect.height;
     return height;
 }
 
 - (void)confirgueCell:(FeedCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     cell.asynDisplay = self.asynDisplay;
     cell.indexPath = indexPath;
-    FeedWidgetStore *feedLayout = self.feedVM.datas[indexPath.row];
-    cell.feedLayout = feedLayout;
+    FeedWidgetCollect *widgetCollect = self.feedVM.datas[indexPath.row];
+    cell.widgetCollect = widgetCollect;
     [self callbackWithCell:cell];
 }
 
@@ -159,33 +159,33 @@
 
 //点击查看大图
 - (void)tableViewCell:(FeedCell *)cell showImageBrowserWithImageIndex:(NSInteger)imageIndex {
-    NSString *imgURL = cell.feedLayout.statusModel.imgs[imageIndex];
+    NSString *imgURL = cell.widgetCollect.statusModel.imgs[imageIndex];
     NSLog(@"imgURL->%@", imgURL);
 }
 
 //查看头像
 - (void)showAvatarWithCell:(FeedCell *)cell {
-    NSURL *avatarURL = cell.feedLayout.statusModel.avatar;
+    NSURL *avatarURL = cell.widgetCollect.statusModel.avatar;
     NSLog(@"avatarURL->%@", avatarURL);
 }
 
 //点赞
 - (void)tableViewCell:(FeedCell *)cell didClickedLikeButtonWithIsLike:(BOOL)isLike {
     NSInteger row = cell.indexPath.row;
-    FeedWidgetStore *feedLayout = self.feedVM.datas[row];
-    NSMutableArray *newLikeList = [[NSMutableArray alloc] initWithArray:feedLayout.statusModel.likeList];
+    FeedWidgetCollect *widgetCollect = self.feedVM.datas[row];
+    NSMutableArray *newLikeList = [[NSMutableArray alloc] initWithArray:widgetCollect.statusModel.likeList];
     if (isLike) {
         [newLikeList addObject:@"chinaxxren的粉丝"];
     } else {
         [newLikeList removeObject:@"chinaxxren的粉丝"];
     }
 
-    StatusModel *statusModel = feedLayout.statusModel;
+    StatusModel *statusModel = widgetCollect.statusModel;
     statusModel.likeList = newLikeList;
     statusModel.isLike = isLike;
-    feedLayout = [self.feedVM layoutWithStatusModel:statusModel index:row];
+    widgetCollect = [self.feedVM viewDtoWithStatusModel:statusModel index:row];
 
-    self.feedVM.datas[row] = feedLayout;
+    self.feedVM.datas[row] = widgetCollect;
     [self reloadCell:row];
 }
 
@@ -207,15 +207,15 @@
 - (void)postCommentWithCommentModel:(CommentModel *)commentModel {
 
     NSInteger index = commentModel.index;
-    FeedWidgetStore *feedLayout = self.feedVM.datas[index];
-    NSMutableArray *newCommentLists = [[NSMutableArray alloc] initWithArray:feedLayout.statusModel.commentList];
+    FeedWidgetCollect *widgetCollect = self.feedVM.datas[index];
+    NSMutableArray *newCommentLists = [[NSMutableArray alloc] initWithArray:widgetCollect.statusModel.commentList];
     NSDictionary *newComment = @{@"from": commentModel.from, @"to": commentModel.to, @"content": commentModel.content};
     [newCommentLists addObject:newComment];
-    StatusModel *statusModel = feedLayout.statusModel;
+    StatusModel *statusModel = widgetCollect.statusModel;
     statusModel.commentList = newCommentLists;
-    FeedWidgetStore *newLayout = [self.feedVM layoutWithStatusModel:statusModel index:index];
+    FeedWidgetCollect *newViewDto = [self.feedVM viewDtoWithStatusModel:statusModel index:index];
 
-    self.feedVM.datas[index] = newLayout;
+    self.feedVM.datas[index] = newViewDto;
     [self reloadCell:index];
 }
 

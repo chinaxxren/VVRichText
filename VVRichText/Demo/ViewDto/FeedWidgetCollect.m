@@ -1,14 +1,13 @@
 
-#import "FeedWidgetStore.h"
+#import "FeedWidgetCollect.h"
 
 #import "VVTextParser.h"
 
-@implementation FeedWidgetStore
+@implementation FeedWidgetCollect
 
 - (id)initWithStatusModel:(StatusModel *)statusModel index:(NSInteger)index dateFormatter:(NSDateFormatter *)dateFormatter {
     self = [super init];
     if (self) {
-
         @autoreleasepool {
 
             self.statusModel = statusModel;
@@ -32,12 +31,12 @@
             // 名字模型 nameTextWidget
             VVTextWidget *nameTextWidget = [[VVTextWidget alloc] init];
             nameTextWidget.text = statusModel.name;
-            nameTextWidget.font = [UIFont fontWithName:@"Heiti SC" size:15.0f];
+            nameTextWidget.font = [UIFont systemFontOfSize:15.0f];
             nameTextWidget.frame = CGRectMake(60.0f, 20.0f, VV_SCREEN_WIDTH - 80.0f, CGFLOAT_MAX);
             [nameTextWidget vv_addLinkWithData:[NSString stringWithFormat:@"%@", statusModel.name]
-                                          range:NSMakeRange(0, statusModel.name.length)
-                                      linkColor:VV_COLOR(113, 129, 161, 1)
-                                 highLightColor:VV_COLOR(0, 0, 0, 0.15)];
+                                         range:NSMakeRange(0, statusModel.name.length)
+                                     linkColor:VV_COLOR(113, 129, 161, 1)
+                                highLightColor:VV_COLOR(0, 0, 0, 0.15)];
             [self addWidget:nameTextWidget];
 
             // 正文内容模型 contentTextWidget
@@ -48,12 +47,12 @@
                 contentTextWidget.maxNumberOfLines = 5;//设置最大行数，超过则折叠
             }
             contentTextWidget.text = statusModel.content;
-            contentTextWidget.font = [UIFont fontWithName:@"Heiti SC" size:15.0f];
+            contentTextWidget.font = [UIFont systemFontOfSize:15.0f];
             contentTextWidget.textColor = VV_COLOR(40, 40, 40, 1);
             contentTextWidget.frame = CGRectMake(nameTextWidget.left, nameTextWidget.bottom + 10.0f, VV_SCREEN_WIDTH - 80.0f, CGFLOAT_MAX);
             // 添加长按复制
             [contentTextWidget vv_addLongPressActionWithData:contentTextWidget.text
-                                               highLightColor:VV_COLOR(0, 0, 0, 0.25f)];
+                                              highLightColor:VV_COLOR(0, 0, 0, 0.25f)];
             // 解析表情、主题、网址
             [VVTextParser parseGeneralEmojiWithTextWidget:contentTextWidget];
             [VVTextParser parseTopicWithVVTextWidget:contentTextWidget
@@ -68,23 +67,23 @@
 
             // 折叠文字
             VVTextWidget *expendWidget = [[VVTextWidget alloc] init];
-            expendWidget.font = [UIFont fontWithName:@"Heiti SC" size:15.0f];
+            expendWidget.font = [UIFont systemFontOfSize:15.0f];
             expendWidget.textColor = VV_COLOR(40, 40, 40, 1);
             expendWidget.frame = CGRectMake(nameTextWidget.left, contentTextWidget.bottom + 5.0f, 200.0f, 30.0f);
             if (contentTextWidget.isTruncation && !statusModel.isExpend) {
                 expendWidget.text = @"展开全文";
                 [expendWidget vv_addLinkWithData:@"open"
-                                            range:NSMakeRange(0, 4)
-                                        linkColor:VV_COLOR(113, 129, 161, 1)
-                                   highLightColor:VV_COLOR(0, 0, 0, 0.15f)];
+                                           range:NSMakeRange(0, 4)
+                                       linkColor:VV_COLOR(113, 129, 161, 1)
+                                  highLightColor:VV_COLOR(0, 0, 0, 0.15f)];
                 [self addWidget:expendWidget];
                 contentBottom = expendWidget.bottom;
             } else if (statusModel.isExpend) {
                 expendWidget.text = @"收起全文";
                 [expendWidget vv_addLinkWithData:@"close"
-                                            range:NSMakeRange(0, 4)
-                                        linkColor:VV_COLOR(113, 129, 161, 1)
-                                   highLightColor:VV_COLOR(0, 0, 0, 0.15f)];
+                                           range:NSMakeRange(0, 4)
+                                       linkColor:VV_COLOR(113, 129, 161, 1)
+                                  highLightColor:VV_COLOR(0, 0, 0, 0.15f)];
                 [self addWidget:expendWidget];
                 contentBottom = expendWidget.bottom + 10.0f;
             }
@@ -154,12 +153,12 @@
                 //右边的文字
                 VVTextWidget *detailTextWidget = [[VVTextWidget alloc] init];
                 detailTextWidget.text = statusModel.detail;
-                detailTextWidget.font = [UIFont fontWithName:@"Heiti SC" size:12.0f];
+                detailTextWidget.font = [UIFont systemFontOfSize:12.0f];
                 detailTextWidget.textColor = VV_COLOR(40, 40, 40, 1);
                 detailTextWidget.frame = CGRectMake(imageWidget.right + 10.0f, contentBottom + 10.0f, VV_SCREEN_WIDTH - 150.0f, 60.0f);
                 detailTextWidget.linespacing = 0.5f;
                 [detailTextWidget vv_addLinkForWholeTextWidgetWithData:@"https://github.com/chinaxxren/VVRichText"
-                                                         highLightColor:VV_COLOR(0, 0, 0, 0.15)];
+                                                        highLightColor:VV_COLOR(0, 0, 0, 0.15)];
                 [self addWidget:detailTextWidget];
             } else if ([statusModel.type isEqualToString:MESSAGE_TYPE_VIDEO]) { //视频类型
 
@@ -217,7 +216,7 @@
                 }
 
                 likeTextWidget.text = mutableString;
-                likeTextWidget.font = [UIFont fontWithName:@"Heiti SC" size:14.0f];
+                likeTextWidget.font = [UIFont systemFontOfSize:14.0f];
                 likeTextWidget.frame = CGRectMake(likeImageWidget.right + 5.0f, rect.origin.y + 7.0f, VV_SCREEN_WIDTH - 110.0f, CGFLOAT_MAX);
 
                 for (NSValue *rangeValue in composeArray) {
@@ -226,9 +225,9 @@
                     commentModel.to = [likeTextWidget.text substringWithRange:range];
                     commentModel.index = index;
                     [likeTextWidget vv_addLinkWithData:commentModel
-                                                  range:range
-                                              linkColor:VV_COLOR(113, 129, 161, 1)
-                                         highLightColor:VV_COLOR(0, 0, 0, 0.15)];
+                                                 range:range
+                                             linkColor:VV_COLOR(113, 129, 161, 1)
+                                        highLightColor:VV_COLOR(0, 0, 0, 0.15)];
                 }
                 [self addWidget:likeTextWidget];
                 offsetY += likeTextWidget.height + 5.0f;
@@ -249,7 +248,7 @@
 
                         VVTextWidget *commentTextWidget = [[VVTextWidget alloc] init];
                         commentTextWidget.text = commentString;
-                        commentTextWidget.font = [UIFont fontWithName:@"Heiti SC" size:14.0f];
+                        commentTextWidget.font = [UIFont systemFontOfSize:14.0f];
                         commentTextWidget.textColor = VV_COLOR(40, 40, 40, 1);
                         commentTextWidget.frame = CGRectMake(rect.origin.x + 10.0f, rect.origin.y + 10.0f + offsetY, VV_SCREEN_WIDTH - 95.0f, CGFLOAT_MAX);
 
@@ -257,21 +256,21 @@
                         commentModel1.to = commentDict[@"from"];
                         commentModel1.index = index;
                         [commentTextWidget vv_addLinkForWholeTextWidgetWithData:commentModel1
-                                                                  highLightColor:VV_COLOR(0, 0, 0, 0.15)];
+                                                                 highLightColor:VV_COLOR(0, 0, 0, 0.15)];
 
                         [commentTextWidget vv_addLinkWithData:commentModel1
-                                                         range:NSMakeRange(0, [(NSString *) commentDict[@"from"] length])
-                                                     linkColor:VV_COLOR(113, 129, 161, 1)
-                                                highLightColor:VV_COLOR(0, 0, 0, 0.15)];
+                                                        range:NSMakeRange(0, [(NSString *) commentDict[@"from"] length])
+                                                    linkColor:VV_COLOR(113, 129, 161, 1)
+                                               highLightColor:VV_COLOR(0, 0, 0, 0.15)];
 
                         CommentModel *commentModel2 = [[CommentModel alloc] init];
                         commentModel2.to = [NSString stringWithFormat:@"%@", commentDict[@"to"]];
                         commentModel2.index = index;
                         [commentTextWidget vv_addLinkWithData:commentModel2
-                                                         range:NSMakeRange([(NSString *) commentDict[@"from"] length] + 2,
-                                                                 [(NSString *) commentDict[@"to"] length])
-                                                     linkColor:VV_COLOR(113, 129, 161, 1)
-                                                highLightColor:VV_COLOR(0, 0, 0, 0.15)];
+                                                        range:NSMakeRange([(NSString *) commentDict[@"from"] length] + 2,
+                                                                [(NSString *) commentDict[@"to"] length])
+                                                    linkColor:VV_COLOR(113, 129, 161, 1)
+                                               highLightColor:VV_COLOR(0, 0, 0, 0.15)];
 
                         [VVTextParser parseTopicWithVVTextWidget:commentTextWidget
                                                        linkColor:VV_COLOR(113, 129, 161, 1)
@@ -286,7 +285,7 @@
 
                         VVTextWidget *commentTextWidget = [[VVTextWidget alloc] init];
                         commentTextWidget.text = commentString;
-                        commentTextWidget.font = [UIFont fontWithName:@"Heiti SC" size:14.0f];
+                        commentTextWidget.font = [UIFont systemFontOfSize:14.0f];
                         commentTextWidget.textAlignment = NSTextAlignmentLeft;
                         commentTextWidget.linespacing = 2.0f;
                         commentTextWidget.textColor = VV_COLOR(40, 40, 40, 1);
@@ -296,11 +295,11 @@
                         commentModel.to = commentDict[@"from"];
                         commentModel.index = index;
                         [commentTextWidget vv_addLinkForWholeTextWidgetWithData:commentModel
-                                                                  highLightColor:VV_COLOR(0, 0, 0, 0.15)];
+                                                                 highLightColor:VV_COLOR(0, 0, 0, 0.15)];
                         [commentTextWidget vv_addLinkWithData:commentModel
-                                                         range:NSMakeRange(0, [(NSString *) commentDict[@"from"] length])
-                                                     linkColor:VV_COLOR(113, 129, 161, 1)
-                                                highLightColor:VV_COLOR(0, 0, 0, 0.15)];
+                                                        range:NSMakeRange(0, [(NSString *) commentDict[@"from"] length])
+                                                    linkColor:VV_COLOR(113, 129, 161, 1)
+                                               highLightColor:VV_COLOR(0, 0, 0, 0.15)];
 
                         [VVTextParser parseTopicWithVVTextWidget:commentTextWidget
                                                        linkColor:VV_COLOR(113, 129, 161, 1)
@@ -328,6 +327,7 @@
             self.height = [self suggestHeightWithBottomMargin:15.0f];
         }
     }
+
     return self;
 }
 

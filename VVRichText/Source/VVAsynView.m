@@ -63,8 +63,8 @@
     _displayFlag = [[VVFlag alloc] init];
 }
 
-- (void)setLayout:(VVWidgetStore *)layout {
-    if ([_layout isEqual:layout]) {
+- (void)setWidgetCollect:(VVWidgetCollect *)widgetCollect {
+    if ([_widgetCollect isEqual:widgetCollect]) {
         return;
     }
 
@@ -72,10 +72,10 @@
     [self _cleanImageViewAddToReusePool];
     [self _cleanupAndReleaseModelOnSubThread];
 
-    _layout = layout;
+    _widgetCollect = widgetCollect;
 
     if (self.imageLevel) {
-        [self.layout.imageWidgets sortUsingComparator:^NSComparisonResult(VVImageWidget *imageWidget1, VVImageWidget *imageWidget2) {
+        [self.widgetCollect.imageWidgets sortUsingComparator:^NSComparisonResult(VVImageWidget *imageWidget1, VVImageWidget *imageWidget2) {
             if (imageWidget1.level < imageWidget2.level) {
                 return NSOrderedAscending;
             } else if (imageWidget1.level > imageWidget2.level) {
@@ -105,14 +105,14 @@
 }
 
 - (void)_cleanupAndReleaseModelOnSubThread {
-    id <VVWidgetStoreProtocol> oldLayout = _layout;
+    id <VVWidgetCollectProtocol> oldWidgetVOS = _widgetCollect;
     VVTextHighlight *oldHighlight = _highlight;
 
-    _layout = nil;
+    _widgetCollect = nil;
     _highlight = nil;
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        [oldLayout class];
+        [oldWidgetVOS class];
         [oldHighlight class];
     });
 }
@@ -142,7 +142,7 @@
         return value != _displayFlag.value;
     };
 
-    for (NSInteger i = 0; i < [self.layout.imageWidgets count]; i++) {
+    for (NSInteger i = 0; i < [self.widgetCollect.imageWidgets count]; i++) {
 
         @autoreleasepool {
 
@@ -151,7 +151,7 @@
             }
 
             VVImageView *reuseImageView;
-            VVImageWidget *imageWidget = self.layout.imageWidgets[i];
+            VVImageWidget *imageWidget = self.widgetCollect.imageWidgets[i];
             if ([imageWidget.contents isKindOfClass:[VVImage class]]) {
                 VVImage *image = (VVImage *) imageWidget.contents;
                 if (image.animatedImageType == YYImageTypeGIF) {
@@ -221,7 +221,7 @@
     //将要显示内容
     transaction.willDisplayBlock = ^(CALayer *layer) {
         //先移除之前的附件Views
-        for (VVTextWidget *textWidget in self.layout.textWidgets) {
+        for (VVTextWidget *textWidget in self.widgetCollect.textWidgets) {
             [textWidget.textLayout vv_removeAttachmentFromSuperViewOrLayer];
         }
     };
@@ -235,7 +235,7 @@
     transaction.didDisplayBlock = ^(CALayer *layer, BOOL finished) {
         if (!finished) {
             // 先移除之前的附件Views
-            for (VVTextWidget *textWidget in self.layout.textWidgets) {
+            for (VVTextWidget *textWidget in self.widgetCollect.textWidgets) {
                 [textWidget.textLayout vv_removeAttachmentFromSuperViewOrLayer];
             }
         }
@@ -255,7 +255,7 @@
     }
 
     // 直接绘制在VVAsyncView上
-    for (VVImageWidget *imageWidget in self.layout.imageWidgets) {
+    for (VVImageWidget *imageWidget in self.widgetCollect.imageWidgets) {
         if (isCancelledBlock()) {
             return;
         }
@@ -264,7 +264,7 @@
     }
 
     // 绘制文字内容
-    for (VVTextWidget *textWidget in self.layout.textWidgets) {
+    for (VVTextWidget *textWidget in self.widgetCollect.textWidgets) {
         [textWidget.textLayout vv_drawIncontext:context
                                             size:CGSizeZero
                                            point:textWidget.frame.origin
@@ -304,7 +304,7 @@
         }
     }
 
-    for (VVTextWidget *textWidget in self.layout.textWidgets) {
+    for (VVTextWidget *textWidget in self.widgetCollect.textWidgets) {
         if (!_highlight) {
             VVTextHighlight *hightlight = [self _searchTextHighlightWithType:NO textWidget:textWidget touchPoint:touchPoint];
             if (hightlight) {
@@ -332,7 +332,7 @@
         return;
     }
 
-    for (VVTextWidget *textWidget in self.layout.textWidgets) {
+    for (VVTextWidget *textWidget in self.widgetCollect.textWidgets) {
         VVTextHighlight *hightlight = [self _searchTextHighlightWithType:NO textWidget:textWidget touchPoint:touchPoint];
         if (hightlight == _highlight) {
             if (!_showingHighlight) {
@@ -358,7 +358,7 @@
     CGPoint touchPoint = [touch locationInView:self];
 
     BOOL found = NO;
-    for (VVImageWidget *imageWidget in self.layout.imageWidgets) {
+    for (VVImageWidget *imageWidget in self.widgetCollect.imageWidgets) {
         if (CGRectContainsPoint(imageWidget.frame, touchPoint)) {
             if (self.delegate &&
                     [self.delegate respondsToSelector:@selector(vv_asynView:didCilickedImageWidget:touch:)] &&
@@ -375,7 +375,7 @@
         return;
     }
 
-    for (VVTextWidget *textWidget in self.layout.textWidgets) {
+    for (VVTextWidget *textWidget in self.widgetCollect.textWidgets) {
         VVTextHighlight *hightlight = [self _searchTextHighlightWithType:NO textWidget:textWidget touchPoint:touchPoint];
         if (hightlight == _highlight) {
             if (self.delegate &&
@@ -404,7 +404,7 @@
         case UIGestureRecognizerStateBegan: {
             CGPoint point = [longPressGestureRecognizer locationInView:self];
             _touchBeganPoint = point;
-            for (VVTextWidget *textWidget in self.layout.textWidgets) {
+            for (VVTextWidget *textWidget in self.widgetCollect.textWidgets) {
                 VVTextHighlight *hightlight = [self _searchTextHighlightWithType:YES textWidget:textWidget touchPoint:_touchBeganPoint];
 
                 if (hightlight.type == VVTextHighLightTypeLongPress) {
@@ -424,7 +424,7 @@
                 _highlight = nil;
                 [self _hideHighlight];
             }
-            for (VVTextWidget *textWidget in self.layout.textWidgets) {
+            for (VVTextWidget *textWidget in self.widgetCollect.textWidgets) {
                 VVTextHighlight *hightlight = [self _searchTextHighlightWithType:YES textWidget:textWidget touchPoint:_touchBeganPoint];
                 if (_highlight && hightlight == _highlight) {
                     if (self.delegate &&

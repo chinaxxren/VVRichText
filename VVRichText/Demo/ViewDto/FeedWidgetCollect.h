@@ -1,6 +1,6 @@
 
 
-#import "VVWidgetStore.h"
+#import "VVWidgetCollect.h"
 #import "StatusModel.h"
 
 
@@ -11,8 +11,7 @@
 #define IMAGE_IDENTIFIER @"image"
 #define WEBSITE_COVER_IDENTIFIER @"cover"
 
-
-@interface FeedWidgetStore : VVWidgetStore
+@interface FeedWidgetCollect : VVWidgetCollect
 
 @property(nonatomic, strong) StatusModel *statusModel;
 @property(nonatomic, assign) CGRect lineRect;
@@ -23,6 +22,5 @@
 @property(nonatomic, copy) NSArray *imagePostions;
 
 - (id)initWithStatusModel:(StatusModel *)stautsModel index:(NSInteger)index dateFormatter:(NSDateFormatter *)dateFormatter;
-
 
 @end

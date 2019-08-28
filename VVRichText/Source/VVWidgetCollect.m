@@ -1,7 +1,7 @@
 
-#import "VVWidgetStore.h"
+#import "VVWidgetCollect.h"
 
-@interface VVWidgetStore ()
+@interface VVWidgetCollect ()
 
 @property(nonatomic, strong) NSMutableArray<VVTextWidget *> *textWidgets;
 @property(nonatomic, strong) NSMutableArray<VVImageWidget *> *imageWidgets;
@@ -9,7 +9,7 @@
 
 @end
 
-@implementation VVWidgetStore
+@implementation VVWidgetCollect
 
 - (void)addWidget:(nullable VVWidget *)widget {
     if (!widget) {

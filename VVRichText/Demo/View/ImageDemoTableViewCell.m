@@ -8,10 +8,7 @@
 
 @end
 
-
 @implementation ImageDemoTableViewCell
-
-
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -31,11 +28,11 @@
     self.displayView.frame = self.bounds;
 }
 
-- (void)setLayout:(VVWidgetStore *)layout {
-    if (_layout != layout) {
-        _layout = layout;
+- (void)setWidgetCollect:(VVWidgetCollect *)widgetCollect {
+    if (_widgetCollect != widgetCollect) {
+        _widgetCollect = widgetCollect;
         
-        self.displayView.layout = self.layout;
+        self.displayView.widgetCollect = self.widgetCollect;
     }
 }
 

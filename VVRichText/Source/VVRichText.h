@@ -8,13 +8,13 @@
 #import "VVAsynView.h"
 #import "VVTextLayout.h"
 #import "VVTextParser.h"
-#import "VVRichTextDefine.h"
 #import "VVRichTextUtils.h"
 #import "VVTextWidget.h"
 #import "VVImageWidget.h"
 #import "VVWidget.h"
 #import "UIImage+VVRichText.h"
 #import "CALayer+WebCache.h"
-#import "VVWidgetStore.h"
+#import "VVWidgetCollect.h"
+#import "CALayer+WebCache.h"
 
 #endif /* VVRichText_h */

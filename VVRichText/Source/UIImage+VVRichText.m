@@ -3,7 +3,10 @@
 #import <Accelerate/Accelerate.h>
 
 #import "VVCGRectTransform.h"
-#import "VVRichTextDefine.h"
+
+#ifndef VV_DEGREES_TO_RADIAN
+#define VV_DEGREES_TO_RADIAN(x) (M_PI * (x) / 180.0)
+#endif
 
 static CGRect swapWidthAndHeight(CGRect rect) {
     CGFloat swap = rect.size.width;

@@ -92,7 +92,7 @@
     self.strokeWidth = 1.0f;
     self.textBoundingStrokeColor = nil;
     self.maxNumberOfLine = 0;
-    self.needDebug = NO;
+    self.needDebugDraw = NO;
     self.vericalAlignment = VVTextVericalAlignmentTop;
 }
 
@@ -387,8 +387,8 @@
     _maxNumberOfLines = maxNumberOfLine;
 }
 
-- (void)setNeedDebug:(BOOL)needDebug {
-    _needDebug = needDebug;
+- (void)needDebug:(BOOL)needDebug {
+    _needDebugDraw = needDebug;
 }
 
 - (void)setVericalAlignment:(VVTextVericalAlignment)vericalAlignment {
@@ -404,7 +404,7 @@
     textContainer.maxNumberOfLines = self.maxNumberOfLines;
     textContainer.vericalAlignment = self.vericalAlignment;
     self.textLayout = [VVTextLayout vv_layoutWithContainer:textContainer text:self.attributedText];
-    self.textLayout.needDebugDraw = self.needDebug;
+    self.textLayout.needDebugDraw = self.needDebugDraw;
 }
 
 #pragma mark - Getter

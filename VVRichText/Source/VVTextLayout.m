@@ -463,7 +463,7 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
 
 
     CGContextAddRect(context, CGRectOffset(textLayout.textBoundingRect, point.x, point.y));
-    CGContextSetFillColorWithColor(context, VV_COLOR(44.0f, 189.0f, 230.0f, 0.1f).CGColor);
+    CGContextSetFillColorWithColor(context, [UIColor colorWithRed:44.0f / 255.0f green:189.0f / 230.0f blue:89.0f / 255.0f alpha:0.1f].CGColor);
     CGContextFillPath(context);
 
     [textLayout.linesArray enumerateObjectsUsingBlock:^(VVTextLine *_Nonnull line,
@@ -502,6 +502,7 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
         if (isCancelld()) {
             return;
         }
+
         for (NSValue *rectValue in highlight.positions) {
             if (isCancelld()) {
                 break;
@@ -511,7 +512,7 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
             CGRect adjustRect = CGRectOffset(rect, point.x, point.y);
             UIBezierPath *beizerPath = [UIBezierPath bezierPathWithRoundedRect:adjustRect
                                                                   cornerRadius:2.0f];
-            [VV_COLOR(133.0f, 116.0f, 89.0f, 0.25f) setFill];
+            [[UIColor colorWithRed:133.0f / 255.0f green:116.0f / 255.0f blue:89.0f / 255.0f alpha:0.25f] setFill];
             [beizerPath fill];
         }
     }];
@@ -629,13 +630,13 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
             continue;
         }
 
-        
+
         CGRect rect = textLayout.attachmentRects[i].CGRectValue;
         rect = UIEdgeInsetsInsetRect(rect, attachment.contentEdgeInsets);
 
 //        CGSize asize = image ? image.size : view ? view.bounds.size : layer.bounds.size;
         CGSize asize;
-        if(image) {
+        if (image) {
             asize = image.size;
         } else {
             asize = rect.size;

@@ -2,7 +2,7 @@
 #import <UIKit/UIKit.h>
 
 #import "VVRichTextUtils.h"
-#import "VVWidgetStore.h"
+#import "VVWidgetCollect.h"
 #import "VVRichTextDefine.h"
 
 @class VVAsynLayer;
@@ -65,7 +65,7 @@ typedef void(^VVAsyncViewLayoutCallback)(VVImageWidget *imageWidget, CGFloat del
 
 @interface VVAsynView : UIView
 
-@property(nonatomic, strong) id <VVWidgetStoreProtocol> layout; //布局模型,需要遵循VVLayoutProtocol协议
+@property(nonatomic, strong) id <VVWidgetCollectProtocol> widgetCollect; //布局模型,需要遵循VVWidgetCollectProtocol协议
 @property(nonatomic, weak) id <VVAsyncViewDelegate> delegate; //代理对象
 @property(nonatomic, assign) BOOL asynDisplay; //是否异步绘制，默认是YES
 @property(nonatomic, assign) BOOL imageLevel; //是否支持图片层级显示

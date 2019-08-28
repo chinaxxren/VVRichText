@@ -5,7 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class FeedWidgetStore;
+@class FeedWidgetCollect;
 @class StatusModel;
 
 
@@ -15,7 +15,7 @@
 
 - (void)loadData;
 
-- (FeedWidgetStore *)layoutWithStatusModel:(StatusModel *)statusModel index:(NSInteger)index;
+- (FeedWidgetCollect *)viewDtoWithStatusModel:(StatusModel *)statusModel index:(NSInteger)index;
 
 - (void)expendData:(NSInteger)index;
 

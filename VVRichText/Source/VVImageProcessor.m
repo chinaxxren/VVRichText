@@ -1,9 +1,9 @@
 
 #import "VVImageProcessor.h"
+
 #import "VVRichTextUtils.h"
 #import "VVRichTextDefine.h"
 #import "UIImage+VVRichText.h"
-
 
 @implementation VVImageProcessor
 
@@ -27,7 +27,7 @@
     UIImage *processedImg = [img vv_processedImageWithContentMode:contentMode size:CGSizeMake(width, height)];
     if (blur) {
         processedImg = [processedImg vv_applyBlurWithRadius:20.0f
-                                                  tintColor:VV_COLOR(0, 0, 0, 0.15f)
+                                                  tintColor:[UIColor colorWithWhite:0.0f alpha:0.15f]
                                       saturationDeltaFactor:1.4f
                                                   maskImage:nil];
     }

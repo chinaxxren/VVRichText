@@ -1,7 +1,7 @@
 
 #import "GifController.h"
 
-#import "VVWidgetStore.h"
+#import "VVWidgetCollect.h"
 #import "VVAsynView.h"
 #import "VVImage.h"
 #import "VVTextParser.h"
@@ -9,7 +9,7 @@
 @interface GifController ()
 
 @property(nonatomic, strong) VVAsynView *asynView;
-@property(nonatomic, strong) VVWidgetStore *layout;
+@property(nonatomic, strong) VVWidgetCollect *viewDto;
 
 @end
 
@@ -62,11 +62,11 @@
     // 解析表情
     [VVTextParser parseGifEmojiWithTextWidget:textWidget];
 
-    self.layout = [[VVWidgetStore alloc] init];
-    [self.layout addWidget:textWidget];
+    self.viewDto = [[VVWidgetCollect alloc] init];
+    [self.viewDto addWidget:textWidget];
 
     self.asynView = [[VVAsynView alloc] initWithFrame:CGRectMake((self.view.bounds.size.width - 200.0f) * 0.5f, (self.view.bounds.size.height - 200) * 0.5f, 200.0f, 200.0f)];
-    self.asynView.layout = self.layout;
+    self.asynView.widgetCollect = self.viewDto;
     [self.view addSubview:self.asynView];
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Test"

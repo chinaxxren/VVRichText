@@ -6,6 +6,6 @@
 @interface ImageDemoTableViewCell : UITableViewCell
 
 
-@property (nonatomic,strong) VVWidgetStore* layout;
+@property (nonatomic,strong) VVWidgetCollect* widgetCollect;
 
 @end

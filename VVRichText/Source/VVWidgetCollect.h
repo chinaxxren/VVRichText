@@ -5,8 +5,7 @@
 #import "VVTextWidget.h"
 #import "VVImageWidget.h"
 
-
-@protocol VVWidgetStoreProtocol <NSObject>
+@protocol VVWidgetCollectProtocol <NSObject>
 
 /**
  *  添加一个VVWidget对象
@@ -67,9 +66,9 @@
 @end
 
 /**
- *  VVRichText的布局模型。其中包含了VVWidget及其子类的对象。
+ * (View Object) VVRichText的布局模型。其中包含了VVWidget及其子类的对象。
  */
-@interface VVWidgetStore : VVIdentifier <VVWidgetStoreProtocol>
+@interface VVWidgetCollect : VVIdentifier <VVWidgetCollectProtocol>
 
 @property(nonatomic, assign) CGFloat height;
 

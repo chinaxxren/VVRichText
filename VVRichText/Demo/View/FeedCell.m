@@ -42,8 +42,8 @@
         CGContextSetLineWidth(context, 0.2f);
         CGContextSetStrokeColorWithColor(context, VV_COLOR(220.0f, 220.0f, 220.0f, 1).CGColor);
         CGContextStrokePath(context);
-        if ([self.feedLayout.statusModel.type isEqualToString:MESSAGE_TYPE_WEBSITE]) {
-            CGContextAddRect(context, self.feedLayout.websitePosition);
+        if ([self.widgetCollect.statusModel.type isEqualToString:MESSAGE_TYPE_WEBSITE]) {
+            CGContextAddRect(context, self.widgetCollect.websitePosition);
             CGContextSetFillColorWithColor(context, VV_COLOR(240, 240, 240, 1).CGColor);
             CGContextFillPath(context);
         }
@@ -161,7 +161,7 @@
         __strong typeof(weakSelf) sself = weakSelf;
         [sself.menu menuHide];
         if (sself.clickedLikeButtonCallback) {
-            sself.clickedLikeButtonCallback(sself, !sself.feedLayout.statusModel.isLike);
+            sself.clickedLikeButtonCallback(sself, !sself.widgetCollect.statusModel.isLike);
         }
     }];
 }
@@ -171,23 +171,23 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    self.asyncView.frame = CGRectMake(0, 0, VV_SCREEN_WIDTH, self.feedLayout.height);
+    self.asyncView.frame = CGRectMake(0, 0, VV_SCREEN_WIDTH, self.widgetCollect.height);
 
-    self.menuButton.frame = self.feedLayout.menuPosition;
-    self.menu.frame = CGRectMake(self.feedLayout.menuPosition.origin.x - 5.0f, self.feedLayout.menuPosition.origin.y - 9.0f + 14.5f, 0.0f, 34.0f);
-    self.line.frame = self.feedLayout.lineRect;
+    self.menuButton.frame = self.widgetCollect.menuPosition;
+    self.menu.frame = CGRectMake(self.widgetCollect.menuPosition.origin.x - 5.0f, self.widgetCollect.menuPosition.origin.y - 9.0f + 14.5f, 0.0f, 34.0f);
+    self.line.frame = self.widgetCollect.lineRect;
 }
 
-- (void)setFeedLayout:(FeedWidgetStore *)feedLayout {
+- (void)setWidgetCollect:(FeedWidgetCollect *)widgetCollect {
     [self.menu menuHide];
 
-    if (_feedLayout && [feedLayout isEqual:_feedLayout]) {
+    if (_widgetCollect && [widgetCollect isEqual:_widgetCollect]) {
         return;
     }
 
-    _feedLayout = feedLayout;
-    self.asyncView.layout = self.feedLayout;
-    self.menu.statusModel = self.feedLayout.statusModel;
+    _widgetCollect = widgetCollect;
+    self.asyncView.widgetCollect = self.widgetCollect;
+    self.menu.statusModel = self.widgetCollect.statusModel;
 }
 
 - (void)setAsynDisplay:(BOOL)asynDisplay {

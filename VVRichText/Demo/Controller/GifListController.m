@@ -58,8 +58,8 @@ static CGFloat gifSize = 30;
     if (!cell) {
         cell = [[TextViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    VVWidgetStore *layout = self.dataSource[indexPath.row];
-    cell.layout = layout;
+    VVWidgetCollect *layout = self.dataSource[indexPath.row];
+    cell.widgetCollect = layout;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -88,7 +88,7 @@ static CGFloat gifSize = 30;
     for (int i = 0; i < 300; i++) {
         CGFloat width = [UIScreen mainScreen].bounds.size.width;
         NSInteger count = (NSInteger) (width / gifSize);
-        VVWidgetStore *layout = [[VVWidgetStore alloc] init];
+        VVWidgetCollect *viewDto = [[VVWidgetCollect alloc] init];
         for (int j = 0; j < count - 1; j++) {
             NSInteger index = arc4random() % 141;
             NSString *name = [self gifWithIndex:index];
@@ -102,17 +102,17 @@ static CGFloat gifSize = 30;
             textWidget.text = [NSString stringWithFormat:@"%d", i];
             textWidget.textColor = [UIColor redColor];
             textWidget.vericalAlignment = VVTextVericalAlignmentCenter;
-            [layout addWidget:textWidget];
+            [viewDto addWidget:textWidget];
 
             VVImageWidget *imageWidget = [[VVImageWidget alloc] init];
             imageWidget.frame = CGRectMake((j + 1) * gifSize, 0, gifSize, gifSize);
             imageWidget.contents = image;
             imageWidget.localImageType = VVLocalImageTypeDrawInVVImageView;
             imageWidget.contentMode = UIViewContentModeScaleAspectFill;
-            [layout addWidget:imageWidget];
+            [viewDto addWidget:imageWidget];
         }
 
-        [_dataSource addObject:layout];
+        [_dataSource addObject:viewDto];
     }
 
     return _dataSource;
@@ -120,6 +120,9 @@ static CGFloat gifSize = 30;
 
 - (NSString *)gifWithRadom {
     NSInteger index = arc4random() % 141;
+    if(index == 0) {
+        return [self gifWithRadom];
+    }
     NSString *name = [self gifWithIndex:index];
     return name;
 }
@@ -132,10 +135,6 @@ static CGFloat gifSize = 30;
         [name appendString:@"0"];
     }
     [name appendFormat:@"%zd", index];
-    
-    if([name isEqualToString:@"000"]) {
-        return @"001";
-    }
     
     return name;
 }
