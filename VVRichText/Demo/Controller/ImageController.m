@@ -16,15 +16,6 @@
 
     [self.view addSubview:self.tableView];
     self.title = @"VVImageWidget使用示例";
-
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Test"
-                                                                              style:UIBarButtonItemStylePlain
-                                                                             target:self
-                                                                             action:@selector(test)];
-
-}
-
-- (void)test {
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

@@ -2,6 +2,8 @@
 #import "ArticleListController.h"
 #import "ArticleListTableViewCell.h"
 
+static NSString *ArticleCellIdentifier = @"ArticleCellIdentifier";
+
 @interface ArticleListController () <UITableViewDelegate, UITableViewDataSource>
 
 @property(nonatomic, strong) UITableView *tableView;
@@ -16,7 +18,7 @@
 
     self.title = @"Ariticle List";
 
-    self.dataSource = [[NSMutableArray alloc] init];
+    self.dataSource = [NSMutableArray new];
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -27,15 +29,15 @@
 
     for (NSDictionary *dict in list) {
         @autoreleasepool {
-            ArticleListModel *model = [[ArticleListModel alloc] init];
+            ArticleListDto *model = [[ArticleListDto alloc] init];
             model.idString = dict[@"id"];
             model.images = dict[@"images"];
             model.title = dict[@"title"];
             [self.dataSource addObject:model];
         }
     }
-    [self.tableView reloadData];
 
+    [self.tableView reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -47,12 +49,11 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentifier = @"cellID";
-    ArticleListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    ArticleListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ArticleCellIdentifier];
     if (!cell) {
-        cell = [[ArticleListTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
+        cell = [[ArticleListTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ArticleCellIdentifier];
     }
-    ArticleListModel *model = self.dataSource[indexPath.row];
+    ArticleListDto *model = self.dataSource[indexPath.row];
     cell.model = model;
     return cell;
 }

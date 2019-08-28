@@ -15,7 +15,7 @@
 @property(nonatomic, copy) void (^clickedImageCallback)(FeedCell *cell, NSInteger imageIndex);
 @property(nonatomic, copy) void (^clickedLikeButtonCallback)(FeedCell *cell, BOOL isLike);
 @property(nonatomic, copy) void (^clickedAvatarCallback)(FeedCell *cell);
-@property(nonatomic, copy) void (^clickedReCommentCallback)(FeedCell *cell, CommentModel *model);
+@property(nonatomic, copy) void (^clickedReCommentCallback)(FeedCell *cell, CommentDto *model);
 @property(nonatomic, copy) void (^clickedCommentButtonCallback)(FeedCell *cell);
 @property(nonatomic, copy) void (^clickedOpenCellCallback)(FeedCell *cell);
 @property(nonatomic, copy) void (^clickedCloseCellCallback)(FeedCell *cell);

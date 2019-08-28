@@ -5,7 +5,7 @@
 
 @implementation FeedWidgetCollect
 
-- (id)initWithStatusModel:(StatusModel *)statusModel index:(NSInteger)index dateFormatter:(NSDateFormatter *)dateFormatter {
+- (id)initWithStatusModel:(StatusDto *)statusModel index:(NSInteger)index dateFormatter:(NSDateFormatter *)dateFormatter {
     self = [super init];
     if (self) {
         @autoreleasepool {
@@ -221,7 +221,7 @@
 
                 for (NSValue *rangeValue in composeArray) {
                     NSRange range = [rangeValue rangeValue];
-                    CommentModel *commentModel = [[CommentModel alloc] init];
+                    CommentDto *commentModel = [[CommentDto alloc] init];
                     commentModel.to = [likeTextWidget.text substringWithRange:range];
                     commentModel.index = index;
                     [likeTextWidget vv_addLinkWithData:commentModel
@@ -252,7 +252,7 @@
                         commentTextWidget.textColor = VV_COLOR(40, 40, 40, 1);
                         commentTextWidget.frame = CGRectMake(rect.origin.x + 10.0f, rect.origin.y + 10.0f + offsetY, VV_SCREEN_WIDTH - 95.0f, CGFLOAT_MAX);
 
-                        CommentModel *commentModel1 = [[CommentModel alloc] init];
+                        CommentDto *commentModel1 = [[CommentDto alloc] init];
                         commentModel1.to = commentDict[@"from"];
                         commentModel1.index = index;
                         [commentTextWidget vv_addLinkForWholeTextWidgetWithData:commentModel1
@@ -263,7 +263,7 @@
                                                     linkColor:VV_COLOR(113, 129, 161, 1)
                                                highLightColor:VV_COLOR(0, 0, 0, 0.15)];
 
-                        CommentModel *commentModel2 = [[CommentModel alloc] init];
+                        CommentDto *commentModel2 = [[CommentDto alloc] init];
                         commentModel2.to = [NSString stringWithFormat:@"%@", commentDict[@"to"]];
                         commentModel2.index = index;
                         [commentTextWidget vv_addLinkWithData:commentModel2
@@ -291,7 +291,7 @@
                         commentTextWidget.textColor = VV_COLOR(40, 40, 40, 1);
                         commentTextWidget.frame = CGRectMake(rect.origin.x + 10.0f, rect.origin.y + 10.0f + offsetY, VV_SCREEN_WIDTH - 95.0f, CGFLOAT_MAX);
 
-                        CommentModel *commentModel = [[CommentModel alloc] init];
+                        CommentDto *commentModel = [[CommentDto alloc] init];
                         commentModel.to = commentDict[@"from"];
                         commentModel.index = index;
                         [commentTextWidget vv_addLinkForWholeTextWidgetWithData:commentModel

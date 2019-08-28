@@ -5,7 +5,7 @@
 #import "FeedController.h"
 #import "ArticleListController.h"
 #import "ImageController.h"
-#import "GifController.h"
+#import "ShowGifController.h"
 #import "AsynController.h"
 #import "GifListController.h"
 
@@ -99,7 +99,7 @@
             break;
         }
         case 4: {
-            GifController *vc = [[GifController alloc] init];
+            ShowGifController *vc = [[ShowGifController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }

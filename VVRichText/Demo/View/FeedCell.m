@@ -84,7 +84,7 @@
 - (void)vv_asynView:(VVAsynView *)asynView didCilickedTextWidget:(VVTextWidget *)textWidget linkdata:(id)data {
 
     //回复评论
-    if ([data isKindOfClass:[CommentModel class]]) {
+    if ([data isKindOfClass:[CommentDto class]]) {
         if (self.clickedReCommentCallback) {
             self.clickedReCommentCallback(self, data);
         }

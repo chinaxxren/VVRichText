@@ -1,13 +1,13 @@
 
-#import "StatusModel.h"
+#import "StatusDto.h"
 
-@implementation StatusModel
+@implementation StatusDto
 
 - (id)initWithDict:(NSDictionary *)dict {
     self = [super init];
     if (self) {
         self.type = dict[@"type"];
-        if([dict[@"avatar"] length]  > 0) {
+        if ([dict[@"avatar"] length] > 0) {
             self.avatar = [NSURL URLWithString:dict[@"avatar"]];
         }
 
@@ -27,7 +27,7 @@
 }
 
 - (id)copyWithZone:(NSZone *)zone {
-    StatusModel *one = [[StatusModel alloc] init];
+    StatusDto *one = [[StatusDto alloc] init];
     one.type = [self.type copy];
     one.avatar = [self.avatar copy];
     one.content = [self.content copy];

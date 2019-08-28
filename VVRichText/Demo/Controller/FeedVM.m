@@ -5,7 +5,7 @@
 
 #import "FeedVM.h"
 
-#import "StatusModel.h"
+#import "StatusDto.h"
 #import "VVWidgetCollect.h"
 #import "FeedWidgetCollect.h"
 
@@ -31,20 +31,20 @@
     //让数据更多
     for (NSInteger i = 0; i < 10; i++) {
         for (NSInteger i = 0; i < self.feedDatas.count; i++) {
-            VVWidgetCollect *viewDto = [self viewDtoWithStatusModel:[[StatusModel alloc] initWithDict:self.feedDatas[i]] index:i];
+            VVWidgetCollect *viewDto = [self viewDtoWithStatusModel:[[StatusDto alloc] initWithDict:self.feedDatas[i]] index:i];
             [self.datas addObject:viewDto];
         }
     }
 }
 
-- (FeedWidgetCollect *)viewDtoWithStatusModel:(StatusModel *)statusModel index:(NSInteger)index {
+- (FeedWidgetCollect *)viewDtoWithStatusModel:(StatusDto *)statusModel index:(NSInteger)index {
     FeedWidgetCollect *vos = [[FeedWidgetCollect alloc] initWithStatusModel:statusModel index:index dateFormatter:self.dateFormatter];
     return vos;
 }
 
 - (void)expendData:(NSInteger)index {
     FeedWidgetCollect *vos = self.datas[index];
-    StatusModel *model = vos.statusModel;
+    StatusDto *model = vos.statusModel;
     model.isExpend = !model.isExpend;
     FeedWidgetCollect *newVOS = [[FeedWidgetCollect alloc] initWithStatusModel:model
                                                               index:index

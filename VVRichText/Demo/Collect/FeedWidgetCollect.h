@@ -1,7 +1,7 @@
 
 
 #import "VVWidgetCollect.h"
-#import "StatusModel.h"
+#import "StatusDto.h"
 
 
 #define MESSAGE_TYPE_IMAGE @"image"
@@ -13,7 +13,7 @@
 
 @interface FeedWidgetCollect : VVWidgetCollect
 
-@property(nonatomic, strong) StatusModel *statusModel;
+@property(nonatomic, strong) StatusDto *statusModel;
 @property(nonatomic, assign) CGRect lineRect;
 @property(nonatomic, assign) CGRect menuPosition;
 @property(nonatomic, assign) CGRect commentBgPosition;
@@ -21,6 +21,6 @@
 @property(nonatomic, assign) CGRect websitePosition;
 @property(nonatomic, copy) NSArray *imagePostions;
 
-- (id)initWithStatusModel:(StatusModel *)stautsModel index:(NSInteger)index dateFormatter:(NSDateFormatter *)dateFormatter;
+- (id)initWithStatusModel:(StatusDto *)stautsModel index:(NSInteger)index dateFormatter:(NSDateFormatter *)dateFormatter;
 
 @end

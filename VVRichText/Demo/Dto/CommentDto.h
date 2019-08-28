@@ -1,7 +1,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CommentModel : NSObject
+@interface CommentDto : NSObject
 
 @property (nonatomic,copy) NSString* from;
 @property (nonatomic,copy) NSString* to;

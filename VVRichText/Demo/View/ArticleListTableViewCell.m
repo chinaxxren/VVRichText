@@ -32,7 +32,7 @@
     self.textLabel.frame = CGRectMake(70.0f, 10.0f, VV_SCREEN_WIDTH - 80.0f, 50.0f);
 }
 
-- (void)setModel:(ArticleListModel *)model {
+- (void)setModel:(ArticleListDto *)model {
     if (_model != model) {
         _model = model;
     }

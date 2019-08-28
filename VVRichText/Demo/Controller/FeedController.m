@@ -10,7 +10,7 @@
 @property(nonatomic, strong) UITableView *tableView;
 @property(nonatomic, strong) FeedVM *feedVM;
 @property(nonatomic, strong) CommentView *commentView;
-@property(nonatomic, strong) CommentModel *postComment;
+@property(nonatomic, strong) CommentDto *postComment;
 @property(nonatomic, assign) BOOL asynDisplay;//是否异步绘制
 
 @end
@@ -107,7 +107,7 @@
         [sself commentWithCell:cell];
     };
 
-    cell.clickedReCommentCallback = ^(FeedCell *cell, CommentModel *model) {
+    cell.clickedReCommentCallback = ^(FeedCell *cell, CommentDto *model) {
         __strong typeof(weakSelf) sself = weakSelf;
         [sself reCommentWithCell:cell commentModel:model];
     };
@@ -147,7 +147,7 @@
 }
 
 //开始回复评论
-- (void)reCommentWithCell:(FeedCell *)cell commentModel:(CommentModel *)commentModel {
+- (void)reCommentWithCell:(FeedCell *)cell commentModel:(CommentDto *)commentModel {
     self.postComment.from = @"beijing";
     self.postComment.to = commentModel.to;
     self.postComment.index = commentModel.index;
@@ -180,7 +180,7 @@
         [newLikeList removeObject:@"chinaxxren的粉丝"];
     }
 
-    StatusModel *statusModel = widgetCollect.statusModel;
+    StatusDto *statusModel = widgetCollect.statusModel;
     statusModel.likeList = newLikeList;
     statusModel.isLike = isLike;
     widgetCollect = [self.feedVM viewDtoWithStatusModel:statusModel index:row];
@@ -204,14 +204,14 @@
 }
 
 //发表评论
-- (void)postCommentWithCommentModel:(CommentModel *)commentModel {
+- (void)postCommentWithCommentModel:(CommentDto *)commentModel {
 
     NSInteger index = commentModel.index;
     FeedWidgetCollect *widgetCollect = self.feedVM.datas[index];
     NSMutableArray *newCommentLists = [[NSMutableArray alloc] initWithArray:widgetCollect.statusModel.commentList];
     NSDictionary *newComment = @{@"from": commentModel.from, @"to": commentModel.to, @"content": commentModel.content};
     [newCommentLists addObject:newComment];
-    StatusModel *statusModel = widgetCollect.statusModel;
+    StatusDto *statusModel = widgetCollect.statusModel;
     statusModel.commentList = newCommentLists;
     FeedWidgetCollect *newViewDto = [self.feedVM viewDtoWithStatusModel:statusModel index:index];
 
@@ -317,12 +317,12 @@
     return _tableView;
 }
 
-- (CommentModel *)postComment {
+- (CommentDto *)postComment {
     if (_postComment) {
         return _postComment;
     }
 
-    _postComment = [[CommentModel alloc] init];
+    _postComment = [[CommentDto alloc] init];
     return _postComment;
 }
 

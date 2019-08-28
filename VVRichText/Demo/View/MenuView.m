@@ -98,7 +98,7 @@
 
 #pragma mark - Getter & Setter
 
-- (void)setStatusModel:(StatusModel *)statusModel {
+- (void)setStatusModel:(StatusDto *)statusModel {
     if (_statusModel != statusModel) {
         _statusModel = statusModel;
     }

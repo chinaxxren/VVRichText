@@ -6,7 +6,7 @@
 #import <Foundation/Foundation.h>
 
 @class FeedWidgetCollect;
-@class StatusModel;
+@class StatusDto;
 
 
 @interface FeedVM : NSObject
@@ -15,7 +15,7 @@
 
 - (void)loadData;
 
-- (FeedWidgetCollect *)viewDtoWithStatusModel:(StatusModel *)statusModel index:(NSInteger)index;
+- (FeedWidgetCollect *)viewDtoWithStatusModel:(StatusDto *)statusModel index:(NSInteger)index;
 
 - (void)expendData:(NSInteger)index;
 

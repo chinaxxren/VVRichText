@@ -1,7 +1,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ArticleListModel : NSObject
+@interface ArticleListDto : NSObject
 
 @property (nonatomic,copy) NSString* idString;
 @property (nonatomic,copy) NSArray* images;
