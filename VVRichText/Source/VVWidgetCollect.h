@@ -5,6 +5,8 @@
 #import "VVTextWidget.h"
 #import "VVImageWidget.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol VVWidgetCollectProtocol <NSObject>
 
 /**
@@ -12,28 +14,28 @@
  *
  *  @param widget 一个VVWidget对象
  */
-- (void)addWidget:(nullable VVWidget *)widget;
+- (void)addWidget:(VVWidget *)widget;
 
 /**
  *  添加一个包含VVWidget对象的数组的所有元素到VVLayout
  *
  *  @param widgets 一个包含VVWidget对象的数组
  */
-- (void)addWidgets:(nullable NSArray <VVWidget *> *)widgets;
+- (void)addWidgets:(NSArray <VVWidget *> *)widgets;
 
 /**
  *  移除一个VVWidget对象
  *
  *  @param widget 一个VVWidget对象
  */
-- (void)removeWidget:(nullable VVWidget *)widget;
+- (void)removeWidget:(VVWidget *)widget;
 
 /**
  *  移除一个包含VVWidget对象的数组的所有元素
  *
  *  @param widgets 一个包含VVWidget对象的数组
  */
-- (void)removeWidgets:(nullable NSArray <VVWidget *> *)widgets;
+- (void)removeWidgets:(NSArray <VVWidget *> *)widgets;
 
 /**
  *  获取到一个建议的高度，主要用于UITabelViewCell的高度设定。
@@ -49,21 +51,23 @@
 /**
  *  获取包含VVTextWidget的数组
  */
-- (nullable NSMutableArray<VVTextWidget *> *)textWidgets;
+- (NSMutableArray<VVTextWidget *> *)textWidgets;
 
 /**
  *  获取包含VVImageWidget的数组
  */
-- (nullable NSMutableArray<VVImageWidget *> *)imageWidgets;
+- (NSMutableArray<VVImageWidget *> *)imageWidgets;
 
 
 /**
  *  获取包含所有的VVWidget的数组
  */
-- (nullable NSMutableArray<VVWidget *> *)totalWidgets;
+- (NSMutableArray<VVWidget *> *)totalWidgets;
 
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 /**
  * (View Object) VVRichText的布局模型。其中包含了VVWidget及其子类的对象。
