@@ -123,7 +123,7 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetterRef, CGS
     CTFrameRef ctFrame = CTFramesetterCreateFrame(framesetterRef, cfRange, suggetPath, NULL);
 
     NSInteger rowIndex = -1;
-    NSUInteger rowCount = 0;
+    NSInteger rowCount = 0;
     CGRect lastRect = CGRectMake(0.0f, -CGFLOAT_MAX, 0.0f, 0.0f);
     CGPoint lastPosition = CGPointMake(0.0f, -CGFLOAT_MAX);
     NSMutableArray *lines = [[NSMutableArray alloc] init];
@@ -546,10 +546,11 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetterRef, CGS
         return;
     }
 
-    NSUInteger glyphCount = CTRunGetGlyphCount(run);
+    CFIndex glyphCount = CTRunGetGlyphCount(run);
     if (glyphCount <= 0) {
         return;
     }
+
     CGGlyph glyphs[glyphCount];
     CTRunGetGlyphs(run, CFRangeMake(0, 0), glyphs);
     CGPoint glyphPositions[glyphCount];
@@ -611,12 +612,7 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetterRef, CGS
         rect = UIEdgeInsetsInsetRect(rect, attachment.contentEdgeInsets);
 
 //        CGSize asize = image ? image.size : view ? view.bounds.size : layer.bounds.size;
-        CGSize asize;
-        if (image) {
-            asize = image.size;
-        } else {
-            asize = rect.size;
-        }
+        CGSize asize = image ? image.size : rect.size;
         rect = [VVCGRectTransform vv_CGRectFitWithContentMode:attachment.contentMode
                                                          rect:rect
                                                          size:asize];
@@ -701,8 +697,8 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetterRef, CGS
     CFIndex count = CFArrayGetCount(lines);
     CGPoint origins[count];
     CGAffineTransform transform = CGAffineTransformIdentity;
-    transform = CGAffineTransformMakeTranslation(0, boundsRect.size.height);
-    transform = CGAffineTransformScale(transform, 1.f, -1.f);
+    transform = CGAffineTransformMakeTranslation(0.0f, boundsRect.size.height);
+    transform = CGAffineTransformScale(transform, 1.0f, -1.0f);
     CTFrameGetLineOrigins(ctFrame, CFRangeMake(0, 0), origins);
 
     for (int i = 0; i < count; i++) {
@@ -784,7 +780,6 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetterRef, CGS
 + (BOOL)_isPosition:(NSInteger)position inRange:(CFRange)range {
     return (position >= range.location && position < range.location + range.length);
 }
-
 
 @end
 

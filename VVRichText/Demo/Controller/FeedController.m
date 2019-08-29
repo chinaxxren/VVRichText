@@ -30,11 +30,11 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Test"
                                                                               style:UIBarButtonItemStylePlain
                                                                              target:self
-                                                                             action:@selector(test)];
+                                                                             action:@selector(refresh)];
     [self loadData];
 }
 
-- (void)test {
+- (void)refresh {
     [self.tableView reloadData];
 }
 

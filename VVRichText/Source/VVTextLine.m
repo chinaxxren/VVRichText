@@ -1,9 +1,7 @@
 
 #import "VVTextLine.h"
+
 #import "VVTextAttachment.h"
-#import <objc/runtime.h>
-#import "VVRichTextUtils.h"
-#import "VVRichTextDefine.h"
 
 @interface VVTextLine ()
 
@@ -132,8 +130,9 @@
     if (!self.CTLine) {
         return;
     }
+
     CFArrayRef runs = CTLineGetGlyphRuns(self.CTLine);
-    NSUInteger runCount = CFArrayGetCount(runs);
+    CFIndex runCount = CFArrayGetCount(runs);
     if (runCount == 0) {
         return;
     }
@@ -185,7 +184,7 @@
         }
 
         NSDictionary *attributes = (id) CTRunGetAttributes(run);
-        VVTextAttachment *attachment = [attributes objectForKey:VVTextAttachmentAttributeName];
+        VVTextAttachment *attachment = attributes[VVTextAttachmentAttributeName];
         if (attachment) {
             [attachments addObject:attachment];
             [attachmentRanges addObject:[NSValue valueWithRange:runRange]];
