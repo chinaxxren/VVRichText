@@ -1,9 +1,5 @@
 
 #import "VVTextContainer.h"
-#import <objc/runtime.h>
-#import "VVRichTextUtils.h"
-#import "VVRichTextDefine.h"
-
 
 @interface VVTextContainer ()
 
@@ -47,11 +43,11 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self) {
-        self.vericalAlignment = [aDecoder decodeIntegerForKey:@"vericalAlignment"];
         self.size = [aDecoder decodeCGSizeForKey:@"size"];
         self.path = [aDecoder decodeObjectForKey:@"path"];
         self.edgeInsets = [aDecoder decodeUIEdgeInsetsForKey:@"edgeInsets"];
-        self.maxNumberOfLines = [aDecoder decodeIntegerForKey:@"maxNumberOfLines"];
+        self.vericalAlignment = (VVTextVericalAlignment) [aDecoder decodeIntegerForKey:@"vericalAlignment"];
+        self.maxNumberOfLines = (NSUInteger) [aDecoder decodeIntegerForKey:@"maxNumberOfLines"];
     }
     return self;
 }
@@ -67,7 +63,7 @@
 
 
 + (id)vv_textContainerWithSize:(CGSize)size {
-    VVTextContainer *textContainer = [[VVTextContainer alloc] init];
+    VVTextContainer *textContainer = [VVTextContainer new];
     UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, size.width, size.height)];
     textContainer.path = bezierPath;
     textContainer.size = size;
@@ -78,7 +74,7 @@
 }
 
 + (id)vv_textContainerWithSize:(CGSize)size edgeInsets:(UIEdgeInsets)edgeInsets {
-    VVTextContainer *textContainer = [[VVTextContainer alloc] init];
+    VVTextContainer *textContainer = [VVTextContainer new];
     CGRect rect = (CGRect) {CGPointZero, size};
     rect = UIEdgeInsetsInsetRect(rect, edgeInsets);
     UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRect:rect];
@@ -98,6 +94,5 @@
     dispatch_semaphore_signal(_lock);
     return width;
 }
-
 
 @end

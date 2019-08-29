@@ -11,11 +11,7 @@
 #import "VVImageView.h"
 #import "YYAnimatedImageView+WebCache.h"
 
-static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
-        NSAttributedString *attributedString,
-        CGSize size,
-        NSUInteger numberOfLines,
-        CFRange *rangeToSize);
+static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetterRef, CGSize size, NSUInteger numberOfLines, CFRange *rangeToSize);
 
 @interface VVTextLayout ()
 
@@ -47,9 +43,26 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
 
 #pragma mark - NSCoding
 
-- (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:self.container forKey:@"container"];
-    [aCoder encodeObject:self.text forKey:@"text"];
+- (void)dealloc {
+    if (self.ctFrame) {
+        CFRelease(self.ctFrame);
+    }
+    if (self.ctFrameSetter) {
+        CFRelease(self.ctFrameSetter);
+    }
+    if (self.suggestPathRef) {
+        CFRelease(self.suggestPathRef);
+    }
+}
+
+#pragma mark - Init
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.needDebugDraw = NO;
+    }
+    return self;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -59,7 +72,10 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
     return textLayout;
 }
 
-#pragma mark - Init
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.container forKey:@"container"];
+    [aCoder encodeObject:self.text forKey:@"text"];
+}
 
 // 构建文本布局模型
 + (VVTextLayout *)vv_layoutWithContainer:(VVTextContainer *)container text:(NSAttributedString *)text {
@@ -68,41 +84,28 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
     }
 
     NSMutableAttributedString *mutableAtrributedText = text.mutableCopy;
-    NSInteger maxNumberOfLines = container.maxNumberOfLines;
+    NSUInteger maxNumberOfLines = container.maxNumberOfLines;
     CGPathRef containerPath = container.path.CGPath;
 
     // 创建framesetter（通过typesetter 和 通过字符串）
-    CTFramesetterRef ctFrameSetter = CTFramesetterCreateWithAttributedString((__bridge CFTypeRef) mutableAtrributedText);
+    CTFramesetterRef framesetterRef = CTFramesetterCreateWithAttributedString((__bridge CFTypeRef) mutableAtrributedText);
     CFRange cfRange = CFRangeMake(0, (CFIndex) [mutableAtrributedText length]);
     NSInteger originLength = cfRange.length;
 
     CGRect containerBoudingBox = CGPathGetPathBoundingBox(containerPath);
-    CGSize suggestSize = _getSuggetSizeAndRange(ctFrameSetter,
-            mutableAtrributedText,
-            containerBoudingBox.size,
-            maxNumberOfLines,
-            &cfRange);
+    CGSize suggestSize = _getSuggetSizeAndRange(framesetterRef, containerBoudingBox.size, maxNumberOfLines, &cfRange);
     NSInteger realLength = cfRange.length;
-    BOOL needTruncation = NO;
-    if (originLength != realLength) {
-        needTruncation = YES;
-    }
-    CGMutablePathRef suggetPath = CGPathCreateMutable();
 
-    CGRect suggestRect = {
-            containerBoudingBox.origin, {
-                    containerBoudingBox.size.width,
-                    suggestSize.height
-            }
-    };
+    BOOL needTruncation = originLength != realLength;
 
+    CGRect suggestRect = {containerBoudingBox.origin.x, containerBoudingBox.origin.y, containerBoudingBox.size.width, suggestSize.height};
     if (containerBoudingBox.size.height != CGFLOAT_MAX) {
         switch (container.vericalAlignment) {
             case VVTextVericalAlignmentTop:
                 break;
             case VVTextVericalAlignmentCenter:
                 suggestRect = CGRectMake(suggestRect.origin.x,
-                        suggestRect.origin.y + (containerBoudingBox.size.height - suggestRect.size.height) / 2.0f,
+                        suggestRect.origin.y + (containerBoudingBox.size.height - suggestRect.size.height) * 0.5f,
                         suggestRect.size.width,
                         suggestRect.size.height);
                 break;
@@ -115,17 +118,9 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
         }
     }
 
+    CGMutablePathRef suggetPath = CGPathCreateMutable();
     CGPathAddRect(suggetPath, NULL, suggestRect);
-
-    /*
-     创建frame
-     四个参数：
-     framesetter：生成frame的工厂
-     range：设置多大就显示多少字符。设置为0时，完整显示。
-     path：
-     frameAttributes：额外控制frame的属性字典。
-    */
-    CTFrameRef ctFrame = CTFramesetterCreateFrame(ctFrameSetter, cfRange, suggetPath, NULL);
+    CTFrameRef ctFrame = CTFramesetterCreateFrame(framesetterRef, cfRange, suggetPath, NULL);
 
     NSInteger rowIndex = -1;
     NSUInteger rowCount = 0;
@@ -223,6 +218,7 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
                     [boundingStrokes addObject:boundingStroke];
                 }
             }
+
             VVTextStroke *textStroke = attributes[VVTextStrokeAttributedName];
             if (textStroke) {
                 isNeedStroke = YES;
@@ -295,7 +291,7 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
     layout.text = mutableAtrributedText;
     layout.suggestPathRef = suggetPath;
     layout.cgPath = [UIBezierPath bezierPathWithRect:suggestRect].CGPath;
-    layout.ctFrameSetter = ctFrameSetter;
+    layout.ctFrameSetter = framesetterRef;
     layout.ctFrame = ctFrame;
     layout.linesArray = lines;
     layout.suggestSize = suggestSize;
@@ -321,26 +317,6 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
     }
 
     return layout;
-}
-
-- (id)init {
-    self = [super init];
-    if (self) {
-        self.needDebugDraw = NO;
-    }
-    return self;
-}
-
-- (void)dealloc {
-    if (self.ctFrame) {
-        CFRelease(self.ctFrame);
-    }
-    if (self.ctFrameSetter) {
-        CFRelease(self.ctFrameSetter);
-    }
-    if (self.suggestPathRef) {
-        CFRelease(self.suggestPathRef);
-    }
 }
 
 #pragma mark - Draw & Remove
@@ -399,13 +375,13 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
                                     point:(CGPoint)point
                               isCancelled:(VVAsyncIsCanclledBlock)isCancelld {
 
-    [textLayout.backgroundColors enumerateObjectsUsingBlock:^(VVTextBackgroundColor *
-    _Nonnull background,
+    [textLayout.backgroundColors enumerateObjectsUsingBlock:^(VVTextBackgroundColor *background,
             NSUInteger idx,
-            BOOL *_Nonnull stop) {
+            BOOL *stop) {
         if (isCancelld()) {
             return;
         }
+
         for (NSValue *value in background.positions) {
             if (isCancelld()) {
                 break;
@@ -425,9 +401,9 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
                                   point:(CGPoint)point
                             isCancelled:(VVAsyncIsCanclledBlock)isCancelld {
 
-    [textLayout.boudingStrokes enumerateObjectsUsingBlock:^(VVTextBoundingStroke *_Nonnull boundingStroke,
+    [textLayout.boudingStrokes enumerateObjectsUsingBlock:^(VVTextBoundingStroke *boundingStroke,
             NSUInteger idx,
-            BOOL *_Nonnull stop) {
+            BOOL *stop) {
         if (isCancelld()) {
             return;
         }
@@ -466,9 +442,9 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
     CGContextSetFillColorWithColor(context, [UIColor colorWithRed:44.0f / 255.0f green:189.0f / 230.0f blue:89.0f / 255.0f alpha:0.1f].CGColor);
     CGContextFillPath(context);
 
-    [textLayout.linesArray enumerateObjectsUsingBlock:^(VVTextLine *_Nonnull line,
+    [textLayout.linesArray enumerateObjectsUsingBlock:^(VVTextLine *line,
             NSUInteger idx,
-            BOOL *_Nonnull stop) {
+            BOOL *stop) {
         if (isCancelld()) {
             return;
         }
@@ -496,9 +472,9 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
     }];
 
 
-    [textLayout.textHighlights enumerateObjectsUsingBlock:^(VVTextHighlight *_Nonnull highlight,
+    [textLayout.textHighlights enumerateObjectsUsingBlock:^(VVTextHighlight *highlight,
             NSUInteger idx,
-            BOOL *_Nonnull stop) {
+            BOOL *stop) {
         if (isCancelld()) {
             return;
         }
@@ -529,7 +505,7 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
     CGContextTranslateCTM(context, 0, size.height);
     CGContextScaleCTM(context, 1, -1);
     NSArray *lines = textLayout.linesArray;
-    [lines enumerateObjectsUsingBlock:^(VVTextLine *_Nonnull line, NSUInteger idx, BOOL *_Nonnull stop) {
+    [lines enumerateObjectsUsingBlock:^(VVTextLine *line, NSUInteger idx, BOOL *stop) {
         if (isCancelld()) {
             return;
         }
@@ -812,18 +788,16 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
 
 @end
 
-
-static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
-        NSAttributedString *attributedString,
-        CGSize size,
-        NSUInteger numberOfLines,
-        CFRange *rangeToSize) {
-
+/*
+ * 获取展示一串文字需要多大的空间
+ */
+static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetterRef, CGSize size, NSUInteger numberOfLines, CFRange *rangeToSize) {
     CGSize constraints = CGSizeMake(size.width, MAXFLOAT);
+
     if (numberOfLines > 0) {
         CGMutablePathRef path = CGPathCreateMutable();
         CGPathAddRect(path, NULL, CGRectMake(0.0f, 0.0f, constraints.width, MAXFLOAT));
-        CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, 0), path, NULL);
+        CTFrameRef frame = CTFramesetterCreateFrame(framesetterRef, CFRangeMake(0, 0), path, NULL);
         CFArrayRef lines = CTFrameGetLines(frame);
 
         if (CFArrayGetCount(lines) > 0) {
@@ -832,12 +806,12 @@ static inline CGSize _getSuggetSizeAndRange(CTFramesetterRef framesetter,
             CFRange rangeToLayout = CTLineGetStringRange(lastVisibleLine);
             *rangeToSize = CFRangeMake(0, rangeToLayout.location + rangeToLayout.length);
         }
+
         CFRelease(frame);
         CFRelease(path);
     }
 
-    // 获取展示一串文字需要多大的空间
-    CGSize suggestedSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, *rangeToSize, NULL, constraints, NULL);
+    CGSize suggestedSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetterRef, *rangeToSize, NULL, constraints, NULL);
     return CGSizeMake(ceilf(suggestedSize.width), ceilf(suggestedSize.height));
 }
 

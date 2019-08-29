@@ -18,7 +18,7 @@
 
 #pragma mark - Init
 
-- (_Nonnull instancetype)initWithIdentifier:(NSString *_Nullable)identifier {
+- (instancetype)initWithIdentifier:(NSString *_Nullable)identifier {
     self = [super init];
     if (self) {
         self.identifier = identifier;

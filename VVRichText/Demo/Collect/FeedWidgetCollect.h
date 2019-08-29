@@ -3,7 +3,6 @@
 #import "VVWidgetCollect.h"
 #import "StatusDto.h"
 
-
 #define MESSAGE_TYPE_IMAGE @"image"
 #define MESSAGE_TYPE_WEBSITE @"website"
 #define MESSAGE_TYPE_VIDEO @"video"

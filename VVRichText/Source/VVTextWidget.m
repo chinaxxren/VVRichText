@@ -144,8 +144,8 @@
         }
             break;
         case VVTextAttachAlignmentCenter: {
-            ascent = size.height / 2;
-            descent = size.height / 2;
+            ascent = size.height * 0.5f;
+            descent = size.height * 0.5f;
         }
             break;
         case VVTextAttachAlignmentBottom: {
@@ -181,8 +181,8 @@
         }
             break;
         case VVTextAttachAlignmentCenter: {
-            ascent = size.height / 2;
-            descent = size.height / 2;
+            ascent = size.height * 0.5f;
+            descent = size.height * 0.5f;
         }
             break;
         case VVTextAttachAlignmentBottom: {
@@ -224,8 +224,8 @@
         }
             break;
         case VVTextAttachAlignmentCenter: {
-            ascent = size.height / 2;
-            descent = size.height / 2;
+            ascent = size.height * 0.5f;
+            descent = size.height * 0.5f;
         }
             break;
         case VVTextAttachAlignmentBottom: {

@@ -29,7 +29,7 @@
             [self addWidget:avatarWidget];
 
             // 名字模型 nameTextWidget
-            VVTextWidget *nameTextWidget = [[VVTextWidget alloc] init];
+            VVTextWidget *nameTextWidget = [VVTextWidget new];
             nameTextWidget.text = statusModel.name;
             nameTextWidget.font = [UIFont systemFontOfSize:15.0f];
             nameTextWidget.frame = CGRectMake(60.0f, 20.0f, VV_SCREEN_WIDTH - 80.0f, CGFLOAT_MAX);
@@ -40,7 +40,7 @@
             [self addWidget:nameTextWidget];
 
             // 正文内容模型 contentTextWidget
-            VVTextWidget *contentTextWidget = [[VVTextWidget alloc] init];
+            VVTextWidget *contentTextWidget = [VVTextWidget new];
             if (statusModel.isExpend) {
                 contentTextWidget.maxNumberOfLines = 0;
             } else {
@@ -66,7 +66,7 @@
             CGFloat contentBottom = contentTextWidget.bottom;
 
             // 折叠文字
-            VVTextWidget *expendWidget = [[VVTextWidget alloc] init];
+            VVTextWidget *expendWidget = [VVTextWidget new];
             expendWidget.font = [UIFont systemFontOfSize:15.0f];
             expendWidget.textColor = VV_COLOR(40, 40, 40, 1);
             expendWidget.frame = CGRectMake(nameTextWidget.left, contentTextWidget.bottom + 5.0f, 200.0f, 30.0f);
@@ -151,7 +151,7 @@
                 [imageWidgetArray addObject:imageWidget];
 
                 //右边的文字
-                VVTextWidget *detailTextWidget = [[VVTextWidget alloc] init];
+                VVTextWidget *detailTextWidget = [VVTextWidget new];
                 detailTextWidget.text = statusModel.detail;
                 detailTextWidget.font = [UIFont systemFontOfSize:12.0f];
                 detailTextWidget.textColor = VV_COLOR(40, 40, 40, 1);
@@ -168,7 +168,7 @@
             //获取最后一张图片的模型
             VVImageWidget *lastImageWidget = (VVImageWidget *) [imageWidgetArray lastObject];
             //生成时间的模型 dateTextWidget
-            VVTextWidget *dateTextWidget = [[VVTextWidget alloc] init];
+            VVTextWidget *dateTextWidget = [VVTextWidget new];
             dateTextWidget.text = [dateFormatter stringFromDate:statusModel.date];
             dateTextWidget.font = [UIFont fontWithName:@"Heiti SC" size:13.0f];
             dateTextWidget.textColor = [UIColor grayColor];
@@ -193,7 +193,7 @@
 
             //点赞
             VVImageWidget *likeImageWidget = [[VVImageWidget alloc] init];
-            VVTextWidget *likeTextWidget = [[VVTextWidget alloc] init];
+            VVTextWidget *likeTextWidget = [VVTextWidget new];
             if (statusModel.likeList.count != 0) {
                 likeImageWidget.contents = [UIImage imageNamed:@"Like"];
                 likeImageWidget.frame = CGRectMake(rect.origin.x + 10.0f, rect.origin.y + 10.0f + offsetY, 16.0f, 16.0f);
@@ -246,7 +246,7 @@
                                                                              commentDict[@"to"],
                                                                              commentDict[@"content"]];
 
-                        VVTextWidget *commentTextWidget = [[VVTextWidget alloc] init];
+                        VVTextWidget *commentTextWidget = [VVTextWidget new];
                         commentTextWidget.text = commentString;
                         commentTextWidget.font = [UIFont systemFontOfSize:14.0f];
                         commentTextWidget.textColor = VV_COLOR(40, 40, 40, 1);
@@ -283,7 +283,7 @@
                                                                              commentDict[@"from"],
                                                                              commentDict[@"content"]];
 
-                        VVTextWidget *commentTextWidget = [[VVTextWidget alloc] init];
+                        VVTextWidget *commentTextWidget = [VVTextWidget new];
                         commentTextWidget.text = commentString;
                         commentTextWidget.font = [UIFont systemFontOfSize:14.0f];
                         commentTextWidget.textAlignment = NSTextAlignmentLeft;

@@ -22,7 +22,7 @@ typedef NS_ENUM(NSUInteger, VVTextVericalAlignment) {
 @property(nonatomic, assign, readonly) CGSize size;//容器的大小
 @property(nonatomic, strong, readonly) UIBezierPath *path;//容器的路径
 @property(nonatomic, assign, readonly) UIEdgeInsets edgeInsets;//边缘内嵌大小
-@property(nonatomic, assign) NSInteger maxNumberOfLines;//最大行数限制
+@property(nonatomic, assign) NSUInteger maxNumberOfLines;//最大行数限制
 
 /**
  *  构造方法
