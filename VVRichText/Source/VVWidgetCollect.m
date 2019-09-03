@@ -11,7 +11,7 @@
 
 @implementation VVWidgetCollect
 
-- (void)addWidget:(nullable VVWidget *)widget {
+- (void)addWidget:(VVWidget *)widget {
     if (!widget) {
         return;
     }
@@ -27,7 +27,7 @@
     [self.totalWidgets addObject:widget];
 }
 
-- (void)addWidgets:(nullable NSArray <VVWidget *> *)widgets {
+- (void)addWidgets:(NSArray <VVWidget *> *)widgets {
     if (!widgets) {
         return;
     }
@@ -40,7 +40,7 @@
 }
 
 
-- (void)removeWidget:(nullable VVWidget *)widget {
+- (void)removeWidget:(VVWidget *)widget {
     if (!widget) {
         return;
     }
@@ -58,7 +58,7 @@
     }
 }
 
-- (void)removeWidgets:(nullable NSArray <VVWidget *> *)widgets {
+- (void)removeWidgets:(NSArray <VVWidget *> *)widgets {
     if (!widgets) {
         return;
     }
