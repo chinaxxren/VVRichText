@@ -177,29 +177,47 @@
         [widgetCollect addWidget:textWidget];
         [_dataSource addObject:widgetCollect];
     }
-
+    
     {
         VVTextWidget *textWidget = [[VVTextWidget alloc] init];
         textWidget.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
         textWidget.text = @"加载网络GIF图片";
         textWidget.vericalAlignment = VVTextVericalAlignmentCenter;
-
+        
         VVImageWidget *vvImageWidget = [[VVImageWidget alloc] init];
         vvImageWidget.contentMode = UIViewContentModeScaleAspectFill;
         vvImageWidget.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
         vvImageWidget.contents = [NSURL URLWithString:@"http://wx2.sinaimg.cn/bmiddle/784fda03gy1fcw8zl4zqrg209h04x7wi.gif"];
         vvImageWidget.clipsToBounds = YES;
         // gif thumbnail
-//        imageWidget.contents = [NSURL URLWithString:@"http://ww3.sinaimg.cn/thumbnail/006qdyzsly1fctmnzwqcwg307505pasc.gif"];
+        //        imageWidget.contents = [NSURL URLWithString:@"http://ww3.sinaimg.cn/thumbnail/006qdyzsly1fctmnzwqcwg307505pasc.gif"];
         // real gif format
-//        imageWidget.contents = [NSURL URLWithString:@"http://ww3.sinaimg.cn/bmiddle/006qdyzsly1fctmnzwqcwg307505pasc.gif"];
+        //        imageWidget.contents = [NSURL URLWithString:@"http://ww3.sinaimg.cn/bmiddle/006qdyzsly1fctmnzwqcwg307505pasc.gif"];
+        
+        VVWidgetCollect *widgetCollect = [VVWidgetCollect new];
+        [widgetCollect addWidget:vvImageWidget];
+        [widgetCollect addWidget:textWidget];
+        [_dataSource addObject:widgetCollect];
+    }
+    
+    {
+        VVTextWidget *textWidget = [[VVTextWidget alloc] init];
+        textWidget.frame = CGRectMake(15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
+        textWidget.text = @"加载Webp图片";
+        textWidget.vericalAlignment = VVTextVericalAlignmentCenter;
+
+        VVImageWidget *vvImageWidget = [[VVImageWidget alloc] init];
+        vvImageWidget.contentMode = UIViewContentModeScaleAspectFill;
+        vvImageWidget.frame = CGRectMake(self.view.bounds.size.width / 2 + 15.0f, 15.0f, self.view.bounds.size.width / 2 - 30.0f, 100.0f);
+        vvImageWidget.contents = [NSURL URLWithString:@"https://upload-images.jianshu.io/upload_images/1387554-6f2bf47eabb4bcaf.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp"];
+        vvImageWidget.clipsToBounds = YES;
 
         VVWidgetCollect *widgetCollect = [VVWidgetCollect new];
         [widgetCollect addWidget:vvImageWidget];
         [widgetCollect addWidget:textWidget];
         [_dataSource addObject:widgetCollect];
     }
-
+    
     return _dataSource;
 }
 

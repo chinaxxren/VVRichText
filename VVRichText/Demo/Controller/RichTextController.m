@@ -30,7 +30,7 @@
     tw0.frame = CGRectMake(20, 30.0f, VV_SCREEN_WIDTH - 40.0f, CGFLOAT_MAX);
     tw0.text = @"VVRichText支持图文混排,可以在文字中插入本地图片→网络图片→这UIView的子类→.给指定位置文字添加链接.快来试试吧。";
     tw0.font = [UIFont fontWithName:@"Heiti SC" size:15.0f];
-    tw0.needDebugDraw = YES;
+    // tw0.needDebugDraw = YES;
 
     //在文字中插入本地图片
     [tw0 vv_replaceTextWithImage:[UIImage imageNamed:@"test"]
