@@ -222,14 +222,12 @@
 - (void)reloadCell:(NSInteger)row {
     // 异步线程渲染会闪,切换为主线程渲染
     self.asynDisplay = NO;
+
     [self.tableView beginUpdates];
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView endUpdates];
+
     self.asynDisplay = YES;
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-
 }
 
 #pragma mark - Keyboard

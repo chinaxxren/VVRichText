@@ -22,7 +22,7 @@
             avatarWidget.cornerRadius = 20.0f;
             avatarWidget.cornerBackgroundColor = [UIColor whiteColor];
             avatarWidget.backgroundColor = [UIColor whiteColor];
-            avatarWidget.frame = CGRectMake(10, 20, 40, 40);
+            avatarWidget.frame = CGRectMake(10.0f, 20.0f, 40.0f, 40.0f);
             avatarWidget.tag = 9;
             avatarWidget.cornerBorderWidth = 1.0f;
             avatarWidget.cornerBorderColor = [UIColor grayColor];
