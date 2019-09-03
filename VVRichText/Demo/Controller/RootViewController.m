@@ -3,7 +3,6 @@
 
 #import "RichTextController.h"
 #import "FeedController.h"
-#import "ArticleListController.h"
 #import "ImageController.h"
 #import "ShowGifController.h"
 #import "AsynController.h"
@@ -24,16 +23,22 @@
     NSDictionary *attributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     self.navigationController.navigationBar.titleTextAttributes = attributes;
 
-    self.title = @"测试";
+    self.title = @"例子";
 
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
+
+    [self.tableView reloadData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
 }
 
 #pragma mark -
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 7;
@@ -56,15 +61,12 @@
             cell.textLabel.text = @"Feed List 示例";
             break;
         case 3:
-            cell.textLabel.text = @"进行HTML解析示例";
-            break;
-        case 4:
             cell.textLabel.text = @"使用一个Gif示例";
             break;
-        case 5:
+        case 4:
             cell.textLabel.text = @"本地加载多个Gif使用示例";
             break;
-        case 6:
+        case 5:
             cell.textLabel.text = @"异步性能示例";
             break;
         default:
@@ -94,21 +96,16 @@
             break;
         }
         case 3: {
-            ArticleListController *vc = [[ArticleListController alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
-            break;
-        }
-        case 4: {
             ShowGifController *vc = [[ShowGifController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
-        case 5: {
+        case 4: {
             GifListController *vc = [[GifListController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
-        case 6: {
+        case 5: {
             AsynController *vc = [AsynController new];
             [self.navigationController pushViewController:vc animated:YES];
             break;
