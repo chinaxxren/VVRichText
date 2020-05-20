@@ -86,6 +86,7 @@ self.height = [self suggestHeightWithBottomMargin:15.0f];
 }
 ```
 
+![](https://user-gold-cdn.xitu.io/2019/9/3/16cf525faeb378ed?w=650&h=734&f=png&s=282428)
 
 ## 集成
 
