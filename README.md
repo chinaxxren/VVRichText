@@ -16,11 +16,3 @@
 ## 集成
 
 * 通过`pod 'VVRichText'`集成到项目中 
-
-## 感谢
-
-* https://github.com/ibireme/YYText
-* https://github.com/SDWebImage/SDWebImageYYPlugin
-* https://github.com/waynezxcv/Gallop
-
-*** 
