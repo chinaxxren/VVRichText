@@ -332,7 +332,6 @@
 		BFD63F0FC4947B9D800A25F717A9A5CB /* 122.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 122.png; sourceTree = "<group>"; };
 		C3AE601DFA25E38050131516 /* TextViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewCell.h; sourceTree = "<group>"; };
 		C3AE60E4A7ECED8A3CD4AEB9 /* TextViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewCell.m; sourceTree = "<group>"; };
-		C3AE62C0CCF305D6C090AD7A /* VVRichTextDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVRichTextDefine.h; sourceTree = "<group>"; };
 		C3AE635ED340B950AD502AC7 /* FeedVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedVM.m; sourceTree = "<group>"; };
 		C3AE6BE0A243F98F3F625C7C /* FeedVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedVM.h; sourceTree = "<group>"; };
 		C402EAF368C91AB314E9CE4BF26FB603 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
@@ -494,7 +493,6 @@
 				FECAB892431A2DF372FFAD3D6589793E /* Assets.xcassets */,
 				B089CE1B515FA730F145EF68727160F3 /* Info.plist */,
 				A40310D714AC4F14236F5ACBBAD035C7 /* LaunchScreen.storyboard */,
-				C3AE62C0CCF305D6C090AD7A /* VVRichTextDefine.h */,
 			);
 			path = VVRichText;
 			sourceTree = "<group>";
