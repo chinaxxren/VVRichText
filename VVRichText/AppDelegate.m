@@ -4,6 +4,10 @@
 
 #import "RootViewController.h"
 
+#ifdef DEBUG
+    #import "YKWoodpecker.h"
+#endif
+
 @interface AppDelegate ()
 
 @end
@@ -17,6 +21,12 @@
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:rootVC];
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
+    
+#ifdef DEBUG
+    // [YKWoodpeckerManager sharedInstance].safePluginMode = YES;
+    [[YKWoodpeckerManager sharedInstance] show];
+#endif
+    
     return YES;
 }
 

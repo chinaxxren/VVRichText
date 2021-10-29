@@ -103,11 +103,11 @@ static NSString *URL_REGULAR = @"[a-zA-z]+://[^\\s]*";
                                       NSString *content = [text substringWithRange:NSMakeRange(range.location + 1, range.length - 2)];
                                       if (textWidget.text.length >= range.location + range.length) {
                                           NSString *motionPath = [MotionQQBundle() pathForResource:content ofType:@"gif"];
-                                          VVImageView *asyncImageView = [[VVImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
-                                          asyncImageView.image = [VVImage imageWithContentsOfFile:motionPath];
-                                          [textWidget vv_replaceTextWithView:asyncImageView
+                                          VVImageView *imageView = [[VVImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
+                                          imageView.image = [VVImage imageWithContentsOfFile:motionPath];
+                                          [textWidget vv_replaceTextWithView:imageView
                                                                   contentMode:UIViewContentModeScaleAspectFill
-                                                                         size:asyncImageView.frame.size
+                                                                         size:imageView.frame.size
                                                                     alignment:VVTextAttachAlignmentTop
                                                                         range:range];
                                       }

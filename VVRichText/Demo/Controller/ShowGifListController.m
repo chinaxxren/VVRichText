@@ -1,5 +1,5 @@
 
-#import "GifListController.h"
+#import "ShowGifListController.h"
 
 #import "TextViewCell.h"
 #import "VVImage.h"
@@ -7,7 +7,7 @@
 static NSString *cellIdentifier = @"cellIdentifier";
 static CGFloat gifSize = 30;
 
-@interface GifListController () <UITableViewDelegate, UITableViewDataSource>
+@interface ShowGifListController () <UITableViewDelegate, UITableViewDataSource>
 
 
 @property(nonatomic, strong) UITableView *tableView;
@@ -15,7 +15,7 @@ static CGFloat gifSize = 30;
 
 @end
 
-@implementation GifListController
+@implementation ShowGifListController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -85,6 +85,9 @@ static CGFloat gifSize = 30;
     }
 
     _dataSource = [[NSMutableArray alloc] init];
+    NSString *bundlePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"EmoticonQQ.bundle"];
+    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+    
     for (int i = 0; i < 300; i++) {
         CGFloat width = [UIScreen mainScreen].bounds.size.width;
         NSInteger count = (NSInteger) (width / gifSize);
@@ -93,8 +96,6 @@ static CGFloat gifSize = 30;
             NSInteger index = arc4random() % 141;
             NSString *name = [self gifWithIndex:index];
             
-            NSString *bundlePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"EmoticonQQ.bundle"];
-            NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
             bundlePath = [bundle pathForResource:name ofType:@"gif"];
             VVImage *image = (VVImage *) [VVImage imageWithContentsOfFile:bundlePath];
             VVTextWidget *textWidget = [[VVTextWidget alloc] init];

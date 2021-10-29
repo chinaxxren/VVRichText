@@ -6,7 +6,7 @@
 #import "ImageController.h"
 #import "ShowGifController.h"
 #import "AsynController.h"
-#import "GifListController.h"
+#import "ShowGifListController.h"
 
 @interface RootViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -101,7 +101,7 @@
             break;
         }
         case 4: {
-            GifListController *vc = [[GifListController alloc] init];
+            ShowGifListController *vc = [[ShowGifListController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }

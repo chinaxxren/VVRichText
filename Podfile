@@ -1,10 +1,11 @@
-source 'https://github.com/CocoaPods/Specs.git'
+source 'https://cdn.cocoapods.org'
 
-platform :ios, '8.0'
+platform :ios, '9.0'
 use_frameworks!
 
 target "VVRichText" do
   pod 'SDWebImage'
   pod 'YYImage/WebP'
-  pod 'MLeaksFinder'
+  pod 'VVRichText', :path => './'
+  pod 'YKWoodpecker', :configurations => ['Debug']
 end
