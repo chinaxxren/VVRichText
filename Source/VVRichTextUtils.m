@@ -15,8 +15,6 @@
 /**
  *  求两个数的最大公约数
  *
- *  @param aView 一个UIView对象
- *
  *  @return 最大公约数
  */
 + (NSUInteger)greatestCommonDivisorWithNumber:(NSUInteger)a another:(NSUInteger)b {

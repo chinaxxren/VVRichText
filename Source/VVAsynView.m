@@ -157,6 +157,7 @@
                 if (image.animatedImageType == YYImageTypeGIF) {
                     reuseImageView = [self createPoolAsyncImageView:imageWidget];
                     reuseImageView.image = image;
+                    if(imageWidget.infinity) reuseImageView.totalLoop = 0;
                     continue;
                 }
             }
@@ -170,6 +171,7 @@
                 VVImage *image = (VVImage *) imageWidget.contents;
                 if (image.animatedImageType == YYImageTypeGIF) {
                     reuseImageView.image = image;
+                    if(imageWidget.infinity) reuseImageView.totalLoop = 0;
                     continue;
                 }
             }

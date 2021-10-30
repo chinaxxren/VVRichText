@@ -88,14 +88,15 @@ static CGFloat gifSize = 30;
     NSString *bundlePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"EmoticonQQ.bundle"];
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
     
-    for (int i = 0; i < 300; i++) {
+    for (int i = 0; i < 1; i++) {
+        NSMutableString *lineGifNames = [NSMutableString new];
         CGFloat width = [UIScreen mainScreen].bounds.size.width;
         NSInteger count = (NSInteger) (width / gifSize);
         VVWidgetCollect *viewDto = [[VVWidgetCollect alloc] init];
         for (int j = 0; j < count - 1; j++) {
-            NSInteger index = arc4random() % 141;
+            NSInteger index = arc4random() % 141 + 1;
             NSString *name = [self gifWithIndex:index];
-            
+            [lineGifNames appendFormat:@" %@",name];
             bundlePath = [bundle pathForResource:name ofType:@"gif"];
             VVImage *image = (VVImage *) [VVImage imageWithContentsOfFile:bundlePath];
             VVTextWidget *textWidget = [[VVTextWidget alloc] init];
@@ -113,6 +114,8 @@ static CGFloat gifSize = 30;
             [viewDto addWidget:imageWidget];
         }
 
+        NSLog(@"%d %@",i,lineGifNames);
+        
         [_dataSource addObject:viewDto];
     }
 

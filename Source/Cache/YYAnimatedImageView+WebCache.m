@@ -11,8 +11,6 @@
 #import "VVImageProcessor.h"
 #import "VVImageWidget.h"
 
-const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
-
 @implementation YYAnimatedImageView (WebCache)
 
 - (nullable NSURL *)sd_imageURL {

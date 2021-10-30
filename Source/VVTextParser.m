@@ -105,6 +105,7 @@ static NSString *URL_REGULAR = @"[a-zA-z]+://[^\\s]*";
                                           NSString *motionPath = [MotionQQBundle() pathForResource:content ofType:@"gif"];
                                           VVImageView *imageView = [[VVImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)];
                                           imageView.image = [VVImage imageWithContentsOfFile:motionPath];
+                                          imageView.totalLoop = 0;
                                           [textWidget vv_replaceTextWithView:imageView
                                                                   contentMode:UIViewContentModeScaleAspectFill
                                                                          size:imageView.frame.size

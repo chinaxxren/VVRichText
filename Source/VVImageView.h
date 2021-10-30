@@ -1,6 +1,6 @@
 
 #import <UIKit/UIKit.h>
-#import <YYImage/YYAnimatedImageView.h>
+#import "YYAnimatedImageView.h"
 
 
 @interface VVImageView : YYAnimatedImageView

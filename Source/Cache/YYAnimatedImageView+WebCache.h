@@ -10,7 +10,6 @@
 @class VVImageWidget;
 @protocol SDWebImageIndicator;
 
-FOUNDATION_EXPORT const int64_t SDWebImageProgressUnitCountUnknown; /* 1LL */
 
 typedef void(^SDSetImageBlock)(UIImage *_Nullable image, NSData *_Nullable imageData, SDImageCacheType cacheType, NSURL *_Nullable imageURL);
 

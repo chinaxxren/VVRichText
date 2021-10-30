@@ -1,6 +1,6 @@
 
 #import <SDWebImage/SDWebImage.h>
-#import <YYImage/YYAnimatedImageView.h>
+#import "YYAnimatedImageView.h"
 
 @interface SDAnimatedImage (YYAdditions) <YYAnimatedImage>
 

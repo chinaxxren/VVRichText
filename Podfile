@@ -4,8 +4,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target "VVRichText" do
-  pod 'SDWebImage'
-  pod 'YYImage/WebP'
+  pod 'YYImage/WebP', :git => 'https://github.com/chinaxxren/YYImage.git'
   pod 'VVRichText', :path => './'
   pod 'YKWoodpecker', :configurations => ['Debug']
 end

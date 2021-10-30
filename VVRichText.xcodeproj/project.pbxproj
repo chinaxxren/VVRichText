@@ -137,6 +137,7 @@
 		B6C53A47053E790766096915B8E4B39F /* 035.png in Resources */ = {isa = PBXBuildFile; fileRef = D5FEA706E66AD1318EF768A10696A5C3 /* 035.png */; };
 		B6CDECA81E8C58AB9D45B783F16D0FBE /* 125.png in Resources */ = {isa = PBXBuildFile; fileRef = 65E3C8336921F56A4BD046A16D38BD6B /* 125.png */; };
 		B7D8E0AB03C4EDDF0B68450707EA578C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B348C926B46956B410DF0D8423875E12 /* main.m */; };
+		B874A4915B584CD68B07A5E8 /* Pods_VVRichText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ADF338602C427FE392CEB39 /* Pods_VVRichText.framework */; };
 		B896A1CE700017BCA4BBB12ABF97B315 /* 131.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B2DDECD1718D8AC23BF05F8D3B55818 /* 131.png */; };
 		B91188CD22AE454C0010AC91 /* football.gif in Resources */ = {isa = PBXBuildFile; fileRef = B91188CC22AE454C0010AC91 /* football.gif */; };
 		B91188D122AE56800010AC91 /* defaultavatar.png in Resources */ = {isa = PBXBuildFile; fileRef = B91188D022AE56800010AC91 /* defaultavatar.png */; };
@@ -172,7 +173,6 @@
 		E679871608A790D2BDC5BE659C5A8256 /* 018.png in Resources */ = {isa = PBXBuildFile; fileRef = B12E439BE74009750020270F862100C8 /* 018.png */; };
 		EB82A261510E74A0E6D0E9E250E0C0AB /* 052.png in Resources */ = {isa = PBXBuildFile; fileRef = 167DB9BB6520A48DD72F23BD243FFD09 /* 052.png */; };
 		EC7CE6FBAB654FE9BC2E078357535296 /* 137.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F17BD7469A2A67D5CE6912983A7B208 /* 137.png */; };
-		ED0B922778050FAE3914166FB467F7F7 /* Pods_VVRichText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 449C42C1662CBFD0F801A89504CFB795 /* Pods_VVRichText.framework */; };
 		F0D3BEBEFCA240D5DE7A12D001008439 /* AsynController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74491F42D8DD1B452657C5726866C0C3 /* AsynController.m */; };
 		F27AFA088BCC062007AD7E8CB9FEA4B4 /* 047.png in Resources */ = {isa = PBXBuildFile; fileRef = E05E95FCAB0D6D1182D1DBD69DCACBAA /* 047.png */; };
 		F45AB9C07E7C66E640D1B07203B46A8E /* 085.png in Resources */ = {isa = PBXBuildFile; fileRef = 1430B85447629247ED0704E451906629 /* 085.png */; };
@@ -226,10 +226,10 @@
 		42B5B0D60041B43A2AE2914B885AAC33 /* VVRichText.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VVRichText.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		437AA1FA6508FA5AD9E127E927222312 /* 113.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 113.png; sourceTree = "<group>"; };
 		43FA07EF26C512EE4CEE19272B2F32DC /* 119.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 119.png; sourceTree = "<group>"; };
-		449C42C1662CBFD0F801A89504CFB795 /* Pods_VVRichText.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VVRichText.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45F7F7E9AAF6F687712F7A6F9CC2E243 /* FeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCell.m; sourceTree = "<group>"; };
 		47F367FD78D41733A41C9C49CA7CE9CE /* 032.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 032.png; sourceTree = "<group>"; };
 		48D78E64BB5185E60DE2FA05DB6FE1E9 /* 091.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 091.png; sourceTree = "<group>"; };
+		4ADF338602C427FE392CEB39 /* Pods_VVRichText.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VVRichText.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B2678E9719FF05C657888924E367C33 /* 097.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 097.png; sourceTree = "<group>"; };
 		4C6C097E03CA518BA0BC8812A55FEEC5 /* 038.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 038.png; sourceTree = "<group>"; };
 		4E523F9DD99DEFE91A43F993C58E39DC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -391,7 +391,7 @@
 				31A8FD168BC4D5AE99B84B6EDB9112A8 /* CoreText.framework in Frameworks */,
 				8CBF4CAB13A401F4A52F72A2881C1E0A /* ImageIO.framework in Frameworks */,
 				92DD8E93CD5C308E11AA66709C3A5411 /* MobileCoreServices.framework in Frameworks */,
-				ED0B922778050FAE3914166FB467F7F7 /* Pods_VVRichText.framework in Frameworks */,
+				B874A4915B584CD68B07A5E8 /* Pods_VVRichText.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,8 +692,8 @@
 				9ACD204D0653216876FC9DB264D8D466 /* CoreText.framework */,
 				BF57D4725A74FE0D0F3837F8ADD9BF31 /* ImageIO.framework */,
 				4E523F9DD99DEFE91A43F993C58E39DC /* MobileCoreServices.framework */,
-				449C42C1662CBFD0F801A89504CFB795 /* Pods_VVRichText.framework */,
 				CA7DD353D44A60A25792C0EEEB6F38E3 /* libxml2.tbd */,
+				4ADF338602C427FE392CEB39 /* Pods_VVRichText.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -709,7 +709,7 @@
 				27002F7BF77D9065BD8BFDE381897B76 /* Sources */,
 				F596C794C6D84655EAD7EBBBCB214524 /* Frameworks */,
 				B1E3F09B457A757D6EA0B01A9DDE7E6A /* Resources */,
-				555A3C8CF5A4013CAB00D61A7DBB2583 /* [CP] Embed Pods Frameworks */,
+				BD4602B2EF7AA2FC85E43C51 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -915,7 +915,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		555A3C8CF5A4013CAB00D61A7DBB2583 /* [CP] Embed Pods Frameworks */ = {
+		57D099B464C549515E1639DA4FB45ACE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VVRichText-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD4602B2EF7AA2FC85E43C51 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -937,24 +955,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VVRichText/Pods-VVRichText-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		57D099B464C549515E1639DA4FB45ACE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VVRichText-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
