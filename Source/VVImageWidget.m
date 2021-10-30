@@ -52,7 +52,6 @@
         self.needResize = NO;
         self.localImageType = VVLocalImageDrawInVVAsyncView;
         self.isBlur = NO;
-        self.infinity = YES;
     }
     return self;
 }

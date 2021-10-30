@@ -26,7 +26,6 @@ typedef NS_ENUM(NSUInteger, VVLocalImageType) {
 @property(nonatomic, assign) BOOL needResize;//是否需要重新设置大小,不要去设置这个值，这个用于VVHTMLView重新调整图片大小比例
 @property(nonatomic, assign) BOOL isBlur;//是否模糊处理
 @property(nonatomic, assign) NSInteger level;//Image显示层级。在同区域时，只能是同时本地图片或者同时网络图片设置level有效，网络图片默认显示本地图片在层级之上
-@property(nonatomic, assign) BOOL infinity;//是否无线循环播放
 
 /**
  *  绘制图片
